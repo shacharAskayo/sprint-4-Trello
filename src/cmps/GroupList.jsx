@@ -12,7 +12,7 @@ export function GroupList() {
         <div  className="group-container">
             
             {boards.map((board,idx) => <GroupPreview key={idx} board={board} />)}
-
+        cart
         </div>
     )
 }
