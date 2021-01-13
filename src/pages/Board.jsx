@@ -4,23 +4,26 @@ import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/Menu.jsx'
 import { getBoardById } from '../store/actions/boardAction'
-import { Card } from '../cmps/Card'
+import { Card } from '../cmps/card/Card'
 
 class _Board extends Component {
-
+ 
   state = {
     isMenuClicked: false
   }
+
   componentDidMount() {
     const { boardId } = this.props.match.params
     this.props.getBoardById(boardId)
-  }
-  toggleMenu = (ev) => {
+  }   
+
+  toggleMenu = (ev) => { 
     ev.preventDefault()
     let isMenuClicked = this.state.isMenuClicked
     isMenuClicked = !isMenuClicked
     this.setState({ isMenuClicked })
   }
+
   render() {
     const { isMenuClicked } = this.state
     return (
@@ -28,7 +31,7 @@ class _Board extends Component {
         <BoardHeader />
         <button onClick={this.toggleMenu}>Menu</button>
         <GroupList groups={this.props.board.groups} />
-        <Card id={this.match?.params.cardId} />
+        <Card />
         {isMenuClicked && <Menu />}
       </div>
     )

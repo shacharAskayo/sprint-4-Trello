@@ -12,11 +12,17 @@
             "fullname": "Abi Abambi",
             "imgUrl": "http://some-img"
         },
-        "lables": [{
-            "id": "l101",
-            "title": "important",
-            "color": "#fffff"
-        }],
+        "labels": [{
+                "id": "l101",
+                "title": "important",
+                "color": "#fffff"
+            },
+            {
+                "id": "l102",
+                "title": "later",
+                "color": "yellow"
+            }
+        ],
         "members": [{
                 "_id": "u101",
                 "fullname": "Tal Tarablus",
@@ -68,7 +74,7 @@
                             "id": "212jX"
                         }]
                     }],
-                    "links": [{
+                    "attachments": [{
                         "id": "lk101",
                         "title": "some attachment",
                         "url": "https://areawsomesite"
@@ -134,11 +140,10 @@
                         "fullname": "Tal Tarablus",
                         "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                     }],
-                    "labels": [{
-                        "id": "101",
-                        "title": "done",
-                        "color": "#61bd4f"
-                    }],
+                    "labels": [
+                        "l101",
+                        "l102"
+                    ],
                     "createdBy": {
                         "_id": "u101",
                         "username": "Tal",
