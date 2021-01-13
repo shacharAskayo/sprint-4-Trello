@@ -1,14 +1,17 @@
 import { boardService } from '../../services/boardService'
 
 
-export function loadBoard() {
+export function getBoardById(id) {
   return async dispatch => {
     try {
-      const board = await boardService.query()
+      const board = await boardService.getById(id)
       dispatch({ type: 'SET_BOARD', board })
-
-    } catch (err) {
-      console.log('ReviewActions: err in loadReviews', err)
+      // socketService.on('board-update',updatedBoard=>{
+      //   dispatch({ type: 'SET_BOARD', updatedBoard })
+      // })
+    } 
+    catch (err) {
+      console.log(' err in loadBoard', err)
     }
   }
 }

@@ -1,15 +1,22 @@
 
-// var board = require('../JSON/data.json')
+const {board} = require('../data/data.json')
+
+
+var gBoard = [board]
 
 export const boardService = {
-    query
+    query,
+    getById
 }
 
-var board =[1,2,3]
 
 function  query() {
-    console.log('here at query')
-    return Promise.resolve(board)
+    return Promise.resolve(gBoard)
 
+  }
+  function getById(id){
+      const currBoard=gBoard.find(board=>board._id===id)
+      return Promise.resolve(currBoard)
+      
   }
   

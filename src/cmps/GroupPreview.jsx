@@ -3,12 +3,13 @@ import { CardList } from "./CardList";
 
 
 export class GroupPreview extends Component {
+
+
     render() {
+        const {cards} = this.props.group
         return (
             <div className="group-preview" >
-                <p>title</p>
-
-                <CardList />
+                <CardList cards={cards} />
             </div>
         )
     }

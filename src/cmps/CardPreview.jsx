@@ -3,9 +3,12 @@ import { boardService } from "../services/boardService";
 
 export  class CardPreview extends Component {
     render() {
+        const {card} = this.props
         return (
             <div className="card-preview">
-                CARD {this.props.idx+1}
+                <span>
+                {card.title}
+                </span>
             </div>
         )
     }
