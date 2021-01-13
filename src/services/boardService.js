@@ -11,16 +11,12 @@ export const boardService = {
     query,
     getById,
     addCard,
-    addGroup
+    addGroup,
+    selectImg,
+    selectColor
+
 }
 
-test()
-function test(){
-   httpService.get('/board')
-    .then(res =>{
-        console.log('dasjhdaskjdvasjkdvasj,',res)
-    })
-}
 
 
 
@@ -59,4 +55,12 @@ async function addGroup(boardId,group){
     catch(err){
         console.log('err in service:',err);
     }
+}
+
+
+function selectImg(board,imgSrc) {
+    return imgSrc
+}
+function selectColor(board,color) {
+    return color
 }
