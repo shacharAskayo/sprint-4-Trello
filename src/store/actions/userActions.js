@@ -59,3 +59,14 @@ export function logout() {
     }
   }
 }
+export function loadUser() {
+  return async dispatch => {
+    try {
+      const user = await userService.getUser()
+      dispatch({ type: 'GET_USER', user })
+    }
+    catch (err) {
+      console.log('userActions: err in loaduser', err)
+    }
+  }
+}

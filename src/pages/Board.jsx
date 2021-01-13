@@ -21,15 +21,19 @@ class _Board extends Component {
     isMenuClicked = !isMenuClicked
     this.setState({ isMenuClicked })
   }
+  closeMenu = () => {
+    this.setState({ isMenuClicked: false })
+  }
   render() {
     const { isMenuClicked } = this.state
+    const { bgColor, bgImg } = this.props
     return (
-      <div>
+      <div className="main-board" style={{ backgroundColor: bgColor, backgroundImage: bgImg }}>
         <BoardHeader />
-        <button onClick={this.toggleMenu}>Menu</button>
+        <button className="menu-btn" onClick={this.toggleMenu}>Menu</button>
         <GroupList groups={this.props.board.groups} />
         <Card id={this.match?.params.cardId} />
-        {isMenuClicked && <Menu />}
+        {isMenuClicked && <Menu closeMenu={this.closeMenu} isMenuClicked={isMenuClicked} />}
       </div>
     )
   }
@@ -40,11 +44,13 @@ class _Board extends Component {
 const mapStateToProps = state => {
   return {
     reviews: state.reviewModule.reviews,
-    board: state.boardModule.board
+    board: state.boardModule.board,
+    bgImg: state.boardModule.bgImg,
+    bgColor: state.boardModule.bgColor
   }
 }
 const mapDispatchToProps = {
-  getBoardById,
+  getBoardById
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

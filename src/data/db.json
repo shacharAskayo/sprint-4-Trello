@@ -4,7 +4,8 @@
         "title": "Robot dev proj",
         "createdAt": 1589983468418,
         "style": {
-            "backgroundImage": "url(someimg.jpg)"
+            "backgroundImage": "url(someimg.jpg)",
+            "backgroundColor": "#ffffff"
         },
         "isPrivate": false,
         "createdBy": {

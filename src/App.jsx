@@ -1,8 +1,9 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import { Header } from './cmps/Header'
-import {Home} from './pages/Home'
-import {Board} from './pages/Board'
+import { Home } from './pages/Home'
+import { Board } from './pages/Board'
+import { BoardList } from './cmps/BoardList.jsx'
 
 export function App() {
   return (
@@ -11,8 +12,9 @@ export function App() {
         <Header />
         <div>
           <Switch>
-            <Route path="/board/:boardId/:cardId?" component={Board}/>
-            <Route path="/" component={Home}/>
+            <Route path="/board/:boardId/:cardId?" component={Board} />
+            <Route path="/board" component={BoardList} />
+            <Route path="/" component={Home} />
           </Switch>
         </div>
       </Router>

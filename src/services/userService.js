@@ -1,7 +1,7 @@
 // import { storageService } from './asyncStorageService'
 import { httpService } from './httpService'
 const SCORE_FOR_REVIEW = 10
-
+const { user } = require('../data/db.json')
 export const userService = {
     login,
     logout,
@@ -11,9 +11,16 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    increaseScore
+    increaseScore,
+    getUser
+}
+function getUser() {
+    console.log('user', user);
+    return Promise.resolve(user)
 }
 
+
+//NOT FROM NOW:  !!!
 window.userService = userService
 // Note: due to async, must run one by one...
 // userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 100, isAdmin: false})
@@ -68,6 +75,7 @@ function _saveLocalUser(user) {
     sessionStorage.setItem('loggedinUser', JSON.stringify(user))
     return user
 }
+
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem('loggedinUser'))
