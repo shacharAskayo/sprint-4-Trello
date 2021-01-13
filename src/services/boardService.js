@@ -1,5 +1,5 @@
 
-const {board} = require('../data/data.json')
+const {board} = require('../data/db.json')
 
 
 var gBoard = [board]
@@ -20,3 +20,4 @@ function  query() {
       
   }
   
+

@@ -6,7 +6,7 @@ import {getBoardById} from '../store/actions/boardAction'
 import {Card} from '../cmps/Card'
 
 
-  class _BoardApp extends Component {
+  class _Board extends Component {
     componentDidMount() {
       const {boardId} =this.props.match.params
         this.props.getBoardById(boardId)
@@ -37,5 +37,5 @@ const mapStateToProps = state => {
     getBoardById,
   }
   
-  export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)
+  export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)
   

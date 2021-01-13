@@ -33,7 +33,7 @@ export class CardList extends Component {
     }
     onAddCard = async () => {
         const { card} = this.state
-        // await boardService.updateCard(card)
+        // await cardService.updateCard(card)
         this.setState({
             card:{...card,title:''},
             isAdding:false 
