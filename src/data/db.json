@@ -3,20 +3,14 @@
         "_id": "b101",
         "title": "Robot dev proj",
         "createdAt": 1589983468418,
-        "style": {
-            "backgroundImage": "url(someimg.jpg)"
-        },
+        "style": { "backgroundImage": "url(someimg.jpg)" },
         "isPrivate": false,
         "createdBy": {
             "_id": "u101",
             "fullname": "Abi Abambi",
             "imgUrl": "http://some-img"
         },
-        "lables": [{
-            "id": "l101",
-            "title": "important",
-            "color": "#fffff"
-        }],
+        "lables": [{ "id": "l101", "title": "important", "color": "#fffff" }],
         "members": [{
                 "_id": "u101",
                 "fullname": "Tal Tarablus",
@@ -31,18 +25,14 @@
         "groups": [{
             "id": "g101",
             "title": "Group 1",
-            "style": {
-                "backgroundColor": "#fgfgfg"
-            },
+            "style": { "backgroundColor": "#fgfgfg" },
             "cards": [{
                     "id": "c101",
                     "title": "Help me",
                     "description": "description",
                     "createdAt": 1590999730348,
                     "dueDate": 16156215211,
-                    "style": {
-                        "backgroundColor": "#ffffff"
-                    },
+                    "style": { "backgroundColor": "#ffffff" },
                     "comments": [{
                         "id": "ZdPnm",
                         "txt": "a comment",
@@ -68,11 +58,7 @@
                             "id": "212jX"
                         }]
                     }],
-                    "links": [{
-                        "id": "lk101",
-                        "title": "some attachment",
-                        "url": "https://areawsomesite"
-                    }],
+                    "links": [{ "id": "lk101", "title": "some attachment", "url": "https://areawsomesite" }],
                     "members": [{
                             "_id": "u101",
                             "fullname": "Tal Tarablus",
@@ -84,10 +70,7 @@
                             "imgUrl": "https://www.google.com"
                         }
                     ],
-                    "labels": [
-                        "l101",
-                        "l102"
-                    ],
+                    "labels": ["l101", "l102"],
                     "createdBy": {
                         "_id": "u101",
                         "fullname": "Tal Tarablus",
@@ -104,15 +87,17 @@
                         "backgroundColor": "#26de81"
                     },
                     "comments": [{
-                        "id": "ZdPnm",
-                        "txt": "a comment",
-                        "createdAt": 1590999817436.0,
-                        "createdBy": {
-                            "_id": "u101",
-                            "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            "id": "ZdPnm",
+                            "txt": "a comment",
+                            "createdAt": 1590999817436.0,
+                            "createdBy": {
+                                "_id": "u101",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            }
                         }
-                    }],
+
+                    ],
                     "checklists": [{
                         "id": "YEhmF",
                         "title": "Checklist",

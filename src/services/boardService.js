@@ -1,6 +1,6 @@
 
 const {board} = require('../data/db.json')
-
+console.log(board);
 
 var gBoard = [board]
 
