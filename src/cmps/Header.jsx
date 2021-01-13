@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 // import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class _Header extends Component {
     render() {
-        return(
+        return (
             <header>
-            <h4>header</h4>
+                <h4>header</h4>
             </header>
         )
 
@@ -14,12 +14,12 @@ class _Header extends Component {
 
 
 }
-    const mapStateToProps = state => {
-        return {
-            loggedInUser: state.userModule.loggedInUser
-        }
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.userModule.loggedInUser
     }
-    const mapDispatchToProps = {}
+}
+const mapDispatchToProps = {}
 
 
-    export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)
+export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)
