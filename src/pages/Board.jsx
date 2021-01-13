@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {GroupList} from "../cmps/GroupList"
 import {BoardHeader} from "../cmps/BoardHeader"
+import {Card} from "../cmps/Card"
 import {connect} from 'react-redux'
 import {loadBoard} from '../store/actions/boardAction'
 
 
-  class _BoardApp extends Component {
+  class _Board extends Component {
     componentDidMount() {
         this.props.loadBoard()
     }
@@ -15,6 +16,7 @@ import {loadBoard} from '../store/actions/boardAction'
             <div>
                 <BoardHeader/>
                 <GroupList/>
+                <Card cardId="c101"/> 
             </div>
         )
     }
@@ -23,7 +25,6 @@ import {loadBoard} from '../store/actions/boardAction'
 
 const mapStateToProps = state => {
     return {
-      reviews: state.reviewModule.reviews,
       board:state.boardModule.board
     }
   }
@@ -31,5 +32,5 @@ const mapStateToProps = state => {
     loadBoard,
   }
   
-  export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)
+  export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)
   

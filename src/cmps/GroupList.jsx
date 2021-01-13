@@ -9,7 +9,7 @@ export function GroupList() {
     }
     const boards = [1, 2, 3, 4,5,6,7,8]
     return (
-        <div  className="group-container">
+        <div  className="groups-container">
             
             {boards.map((board,idx) => <GroupPreview key={idx} board={board} />)}
         cart
