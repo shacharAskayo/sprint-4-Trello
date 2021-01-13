@@ -12,9 +12,9 @@ class _Card extends Component {
     }
 
     componentDidMount() {
-        const cardId = this.props
+        const {cardId, board} = this.props
         if (cardId) {
-            const card = cardService.getCardById(cardId)
+            const card = cardService.getCardById(board, cardId)
             this.setState({ card })
         }
     }
@@ -41,6 +41,7 @@ class _Card extends Component {
 
 const mapStateToProps = state => {
     return {
+        board: state.boardModule.board
     }
   }
   const mapDispatchToProps = {

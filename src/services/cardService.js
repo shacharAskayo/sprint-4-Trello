@@ -1,9 +1,11 @@
 
 
-
 export const cardService = {
     getCardById,
-    updateCard
+    updateCard,
+    getCards,
+    getCardLabels
+
 }
 
 function getCardById(board, cardId) {
@@ -14,6 +16,20 @@ function getCardById(board, cardId) {
 }
 
 function updateCard(board, cardToUpdate) {
-    const newGroups = board.groups.map(cards => cards.map(card => (card._id === cardToUpdate._id) ? cardToUpdate : card))
-    board = {...board, groups: newGroups }
+    const newGroups = board.groups.map(group => group.map(card => (card._id === cardToUpdate._id) ? cardToUpdate : card))
+     board = {...board, groups: newGroups }
+    return board
+    
 }
+
+function getCards(group){
+    const cards = group.cards
+    return cards
+}
+function getCardLabels(board, labels) {
+    return board.labels.filter(label => labels.includes(label.id))
+}
+
+
+
+

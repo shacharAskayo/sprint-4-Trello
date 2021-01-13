@@ -1,6 +1,16 @@
 .card-preview {
     padding: 10px;
     margin: 5px;
-    background-color: rgb(192, 186, 186);
+    background-color: rgb(255, 255, 255);
+    font-family: sans-serif;
     cursor: pointer;
+    box-shadow:0px 1px 1px 0px  #888888;
+    border-radius: 3px;
+    .card-icons {
+        display: flex;
+    }
+    .card-icons > * {
+        font-size: 1rem;
+        margin-right: 12px;
+    }
 }

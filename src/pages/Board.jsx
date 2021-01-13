@@ -3,13 +3,14 @@ import { GroupList } from "../cmps/GroupList"
 import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/Menu.jsx'
-import { getBoardById } from '../store/actions/boardAction'
+import { getBoardById,addGroup } from '../store/actions/boardAction'
 import { Card } from '../cmps/Card'
 
 class _Board extends Component {
 
   state = {
-    isMenuClicked: false
+    isMenuClicked: false,
+
   }
   componentDidMount() {
     const { boardId } = this.props.match.params
@@ -27,7 +28,8 @@ class _Board extends Component {
       <div>
         <BoardHeader />
         <button onClick={this.toggleMenu}>Menu</button>
-        <GroupList groups={this.props.board.groups} />
+        <GroupList groups={this.props.board.groups} board={this.props.board} addGroup={this.props.addGroup} />
+        
         <Card id={this.match?.params.cardId} />
         {isMenuClicked && <Menu />}
       </div>
@@ -45,6 +47,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
   getBoardById,
+  addGroup
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)
