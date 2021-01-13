@@ -2,17 +2,18 @@ import { Component } from 'react'
 import { GroupList } from "../cmps/GroupList"
 import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
-import { loadBoard } from '../store/actions/boardAction'
 import { Menu } from '../cmps/Menu.jsx'
+import { getBoardById } from '../store/actions/boardAction'
+import { Card } from '../cmps/Card'
 
-class _BoardApp extends Component {
+class _Board extends Component {
 
   state = {
     isMenuClicked: false
   }
-
   componentDidMount() {
-    this.props.loadBoard()
+    const { boardId } = this.props.match.params
+    this.props.getBoardById(boardId)
   }
   toggleMenu = (ev) => {
     ev.preventDefault()
@@ -26,12 +27,14 @@ class _BoardApp extends Component {
       <div>
         <BoardHeader />
         <button onClick={this.toggleMenu}>Menu</button>
-        <GroupList />
+        <GroupList groups={this.props.board.groups} />
+        <Card id={this.match?.params.cardId} />
         {isMenuClicked && <Menu />}
       </div>
     )
   }
 }
+
 
 
 const mapStateToProps = state => {
@@ -41,7 +44,8 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = {
-  loadBoard,
+  getBoardById,
 }
 
-export const BoardApp = connect(mapStateToProps, mapDispatchToProps)(_BoardApp)
+export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)
+

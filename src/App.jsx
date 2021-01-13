@@ -1,7 +1,5 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
-
-
 import { Header } from './cmps/Header'
 import {Home} from './pages/Home'
 import {Board} from './pages/Board'
@@ -13,7 +11,7 @@ export function App() {
         <Header />
         <div>
           <Switch>
-            <Route path="/board/:cardId?" component={Board}/>
+            <Route path="/board/:boardId/:cardId?" component={Board}/>
             <Route path="/" component={Home}/>
           </Switch>
         </div>

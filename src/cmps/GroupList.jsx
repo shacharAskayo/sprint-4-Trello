@@ -1,18 +1,16 @@
 import React from 'react'
 import { GroupPreview } from "./GroupPreview";
 
-export function GroupList() {
+export function GroupList(props) {
 
     const style={
         color:'black',
         backgroundColor:'green'
     }
-    const boards = [1, 2, 3, 4,5,6,7,8]
+    const groups= props.groups
     return (
-        <div  className="groups-container">
-            
-            {boards.map((board,idx) => <GroupPreview key={idx} board={board} />)}
-        cart
+        <div  className="group-container">
+            {groups &&groups.map((group,idx) => <GroupPreview key={idx} group={group} />) }
         </div>
     )
 }

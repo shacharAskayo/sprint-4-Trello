@@ -1,14 +1,54 @@
 import React, { Component } from 'react'
+import { boardService } from '../services/boardService';
 import { CardPreview } from "./CardPreview";
 
-export  class CardList extends Component {
+export class CardList extends Component {
+    state = {
+        card:{
+            createdBy:{},
+            id:'',
+            title:'',
+            description:'',
+            createdAt:Date.now(),
+            dueDate:'',
+            style:{},
+            comments:[],
+            checklists:[],
+            attachments:[],
+            members:[],
+            labels:[]
+        },
+        isAdding: false
+    }
 
+    onShowAddbtn = () => {
+        this.setState({ isAdding: true })
+    }
+    handleChange = (ev) => {
+        const { card} = this.state
+        const { value } = ev.target
+        this.setState({ 
+        card:{...card,title:value}
+         })
+    }
+    onAddCard = async () => {
+        const { card} = this.state
+        // await cardService.updateCard(card)
+        this.setState({
+            card:{...card,title:''},
+            isAdding:false 
+      })
+    }
 
     render() {
-        const cards = [1, 2, 3, 4,5,6,7,8,2]
+        const { cards } = this.props
+        const { isAdding } = this.state
+        const { title } = this.state.card
         return (
             <div className="card-list">
-                {cards.map((card,idx)=><CardPreview key={idx} idx={idx} card={card} />)}
+                {cards.map((card, idx) => <CardPreview key={idx} idx={idx} card={card} />)}
+                <input onClick={this.onShowAddbtn} value={title} type="text" placeholder="+ Add another card " onChange={this.handleChange} />
+                { isAdding && <button onClick={this.onAddCard}> Add Card</button>}
             </div>
         )
     }
