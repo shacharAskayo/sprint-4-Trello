@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
-import { CardContent } from "./CardContent";
 import { cardService } from "../../services/cardService.js";
 import { updateBoardCard } from "../../store/actions/boardAction";
 import { withRouter } from "react-router";
 import WebIcon from '@material-ui/icons/Web';
+import { Component } from "react";
+import { CardContent } from "./CardContent";
 
-const { Component } = require("react");
 
 class _Card extends Component {
 

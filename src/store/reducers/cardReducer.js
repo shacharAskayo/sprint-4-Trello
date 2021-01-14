@@ -1,3 +1,5 @@
+
+
 const initialState = {
     cards: [],
     card:{}
@@ -5,8 +7,10 @@ const initialState = {
   
   export function cardReducer(state = initialState, action = {}) {
     switch (action.type) {
-      case 'SET_REVIEWS':
-        return { ...state, reviews: action.reviews }
+      case 'SET_CARDS':
+        return { ...state, cards: action.cards }
+      case 'ADD_CARD':
+        return { ...state, cards: [...state.cards,action.card] }
 
       default:
         return state

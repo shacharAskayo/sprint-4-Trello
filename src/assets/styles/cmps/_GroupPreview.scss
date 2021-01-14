@@ -1,9 +1,29 @@
 .group-preview {
     width: 275px;
     border: 1px solid gray;
-    border-radius: 3px;
-    background-color: rgb(221, 217, 217);
+    border-radius: 4px;
+    background-color: #ebecf0;
     margin: 30px;
     padding: 10px;
     cursor: pointer;
+    height: fit-content;
+    .label-container {
+        display: flex;
+        .label {
+            margin-right: 8px;
+            border-radius: 4px;
+            transition: width 0.2s , height 0.4s ;
+        }
+        .is-close {
+            width: 35px;
+            height: 7px;
+        }
+        .is-open {
+            width: 65px;
+            height: 20px;
+            padding: 0px 5px;
+            overflow: hidden;
+            font-size: 0.75rem;
+        }
+    }
 }

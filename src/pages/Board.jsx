@@ -3,13 +3,14 @@ import { GroupList } from "../cmps/GroupList"
 import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/Menu.jsx'
-import { getBoardById } from '../store/actions/boardAction'
+import { getBoardById,addGroup } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
 
 class _Board extends Component {
  
   state = {
-    isMenuClicked: false
+    isMenuClicked: false,
+
   }
 
   componentDidMount() {
@@ -23,16 +24,20 @@ class _Board extends Component {
     isMenuClicked = !isMenuClicked
     this.setState({ isMenuClicked })
   }
-
+  closeMenu = () => {
+    this.setState({ isMenuClicked: false })
+  }
   render() {
     const { isMenuClicked } = this.state
+    const { bgColor, bgImg } = this.props
     return (
-      <div>
+      <div className="main-board" style={{ backgroundColor: bgColor, backgroundImage: bgImg }}>
         <BoardHeader />
         <button onClick={this.toggleMenu}>Menu</button>
-        <GroupList groups={this.props.board.groups} />
-        <Card />
-        {isMenuClicked && <Menu />}
+        <GroupList groups={this.props.board.groups} board={this.props.board} addGroup={this.props.addGroup} />
+        <button className="menu-btn" onClick={this.toggleMenu}>Menu</button>
+        <Card id={this.match?.params.cardId} />
+        {isMenuClicked && <Menu closeMenu={this.closeMenu} isMenuClicked={isMenuClicked} />}
       </div>
     )
   }
@@ -43,11 +48,14 @@ class _Board extends Component {
 const mapStateToProps = state => {
   return {
     reviews: state.reviewModule.reviews,
-    board: state.boardModule.board
+    board: state.boardModule.board,
+    bgImg: state.boardModule.bgImg,
+    bgColor: state.boardModule.bgColor
   }
 }
 const mapDispatchToProps = {
   getBoardById,
+  addGroup
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

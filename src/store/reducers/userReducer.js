@@ -3,7 +3,8 @@ if (sessionStorage.loggedinUser) localLoggedinUser = JSON.parse(sessionStorage.l
 
 const initialState = {
   loggedInUser: localLoggedinUser,
-  users: []
+  users: [],
+  user: ''
 }
 
 export function userReducer(state = initialState, action = {}) {
@@ -19,6 +20,8 @@ export function userReducer(state = initialState, action = {}) {
       return { ...state, users: action.users }
     case 'SET_SCORE':
       return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
+    case 'GET_USER':
+      return { ...state, user: action.user }
     default:
       return state
   }

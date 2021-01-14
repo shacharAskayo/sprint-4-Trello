@@ -6,7 +6,7 @@ import { CardCommentList } from "./CardCommentList";
 import { CardDescription } from "./CardDescription";
 import { Label } from "./Label";
 
-export class _CardContent extends Component {
+class _CardContent extends Component {
 
     render() { 
         const {card} = this.props

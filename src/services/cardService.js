@@ -1,5 +1,10 @@
+
+
 export const cardService = {
     getCardById,
+    getCards,
+    getCardLabels
+
 }
 
 function getCardById(board, cardId) {
@@ -19,3 +24,12 @@ function _getCardActivities(board, cardId) {
 function getCardLabels(board, labels) {
     return board.labels.filter(label => labels.includes(label.id))
 }
+
+function getCards(group){
+    const cards = group.cards
+    return cards
+}
+
+
+
+

@@ -1,8 +1,8 @@
 .card-list{
     display: flex;
     flex-direction: column;
-    height: 90%;
     // justify-content: space-around;
     width: 250px;
     overflow: overlay;
+    max-height: 50vh;
 }
