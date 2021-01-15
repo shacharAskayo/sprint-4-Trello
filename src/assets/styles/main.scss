@@ -3,21 +3,33 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
+
 // Basics
 @import "basics/helpers";
 @import "basics/layout";
 @import "basics/base";
 @import "basics/links";
 @import "basics/forms";
+
 //Pages
 @import "pages/Board";
-// Components
+
+// Components:::
 @import "cmps/Header";
 @import "cmps/ReviewList";
 @import "cmps/BoardHeader";
+//group:
 @import "cmps/GroupList";
 @import "cmps/GroupPreview";
+//card:
 @import "cmps/CardList";
 @import "cmps/CardPreview";
-@import "cmps/Menu";
 @import "cmps/Card";
+//menu:
+@import "/cmps/_Menu/Menu";
+@import "cmps/_Menu/_MenuCmps/SectionAbout";
+@import "./cmps/_Menu/_MenuCmps/SectionBackground";
+@import "/cmps/_Menu/_MenuCmps/ColorsArea";
+@import "./cmps/_Menu/_MenuCmps/MenuButler";
+@import "./cmps/_Menu/_MenuCmps/PhotosArea";
+@import "./cmps/_Menu/_MenuCmps/MenuActivity";

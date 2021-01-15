@@ -1,44 +1,45 @@
 import { Component } from 'react'
-import { GroupList } from "../cmps/GroupList"
-import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
-import { Menu } from '../cmps/Menu.jsx'
-import { getBoardById,addGroup } from '../store/actions/boardAction'
+
+//cmps:
+import { GroupList } from "../cmps/GroupList"
+import { Header } from '../cmps/Header'
+import { BoardHeader } from "../cmps/BoardHeader"
 import { Card } from '../cmps/card/Card'
 
-class _Board extends Component {
- 
-  state = {
-    isMenuClicked: false,
 
-  }
+//functions:
+import { getBoardById, addGroup } from '../store/actions/boardAction'
+
+
+class _Board extends Component {
+
 
   componentDidMount() {
     const { boardId } = this.props.match.params
+    if (!boardId) return null
     this.props.getBoardById(boardId)
-  }   
 
-  toggleMenu = (ev) => { 
-    ev.preventDefault()
-    let isMenuClicked = this.state.isMenuClicked
-    isMenuClicked = !isMenuClicked
-    this.setState({ isMenuClicked })
   }
-  closeMenu = () => {
-    this.setState({ isMenuClicked: false })
-  }
+  //   componentDidUpdate(prevProps) {
+  //     if (prevProps.board._id !== this.props.board._id) this.props.getBoardById(board._id)
+
+  // }
+
+
   render() {
-    const { isMenuClicked } = this.state
-    const { bgColor, bgImg } = this.props
+
+    if (!this.props.board) return null
+    const { style } = this.props.board
+    console.log('board in board:', this.props.board);
     return (
-      <div className="main-board" style={{ backgroundColor: bgColor, backgroundImage: bgImg }}>
+      <div className="main-board" style={style} >
+        <Header />
         <BoardHeader />
-        <button onClick={this.toggleMenu}>Menu</button>
         <GroupList groups={this.props.board.groups} board={this.props.board} addGroup={this.props.addGroup} />
-        <button className="menu-btn" onClick={this.toggleMenu}>Menu</button>
         <Card id={this.match?.params.cardId} />
-        {isMenuClicked && <Menu closeMenu={this.closeMenu} isMenuClicked={isMenuClicked} />}
-      </div>
+
+      </ div>
     )
   }
 }
@@ -49,8 +50,6 @@ const mapStateToProps = state => {
   return {
     reviews: state.reviewModule.reviews,
     board: state.boardModule.board,
-    bgImg: state.boardModule.bgImg,
-    bgColor: state.boardModule.bgColor
   }
 }
 const mapDispatchToProps = {
