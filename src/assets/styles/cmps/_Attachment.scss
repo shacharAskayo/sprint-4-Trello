@@ -1,0 +1,37 @@
+
+.attachments{
+    a{
+       text-decoration: none;
+    }
+    button{
+        margin-left: 2.6em;
+        margin-top: 5px;
+    }
+}
+
+
+.attachment{
+    
+    width: 100%;
+    margin-bottom: 5px;
+    
+    .MuiSvgIcon-root{
+        font-size: 1em;
+        margin-left: em(5px);
+        margin-top: em(2px);
+    }
+    
+    div:first-child{
+       color: $clr1;
+       margin-left: 2em;
+       background-color: $sec-bgc;
+       padding: 30px 40px;
+       font-size: em(18px);
+       font-weight: 700;
+   }
+
+   div:not(:first-child){
+       margin-left: 10px;
+       color: $clr2;
+   }
+}

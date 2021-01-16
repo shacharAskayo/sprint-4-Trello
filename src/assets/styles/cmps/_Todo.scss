@@ -1,0 +1,28 @@
+.card-todo-preview{
+    padding: 10px 0;
+}
+
+.card-todo-preview:hover:not(.add){
+    background:$sec-bgc;
+    button.icon{
+        background-color: $sec-bgc;
+    }
+    button.icon>*{
+        background-color: $sec-bgc;
+    }
+    
+}
+
+.checklist-container{
+    
+    div.MuiLinearProgress-colorPrimary{
+        margin-left: 5px;
+        background-color: $sec-bgc;
+        padding: 4px;
+        border-radius: 2em;
+    }
+    div.MuiLinearProgress-barColorPrimary{
+        background-color: $clr4;
+    }
+
+}

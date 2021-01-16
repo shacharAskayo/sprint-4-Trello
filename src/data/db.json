@@ -17,7 +17,7 @@
             {
                 "id": "l101",
                 "title": "important",
-                "color": "#fffff"
+                "color": "#e53737"
             },
             {
                 "id": "l102",
@@ -183,7 +183,11 @@
                     "_id": "u101",
                     "fullname": "Abi Abambi",
                     "imgUrl": "http://some-img"
+                },"card": {
+                    "id": "c101",
+                    "title": "Replace Logo"
                 }
+
             }
         ],
         "user": {

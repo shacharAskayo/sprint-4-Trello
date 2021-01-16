@@ -12,7 +12,7 @@
           "fullname": "Abi Abambi",
           "imgUrl": "http://some-img"
       },
-      "labels": [{ "id": "l101", "title": "important", "color": "#3bf59f" },{"id":"l102","title":"fun","color":"#72aaf3"}],
+      "labels": [{ "id": "l101", "title": "important", "color": "#eb5b46" },{"id":"l102","title":"fun","color":"#52e898"}],
       "members": [{
               "_id": "u101",
               "fullname": "Tal Tarablus",

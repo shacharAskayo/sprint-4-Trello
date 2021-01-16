@@ -1,5 +1,6 @@
 import {utilService} from './utilService'
 import {httpService} from './httpService'
+import {cardService} from './cardService'
 
 
 // const { board } = require('../data/db.json')
@@ -29,11 +30,12 @@ function query() {
 function getById(id) {
     const currBoard = gBoards.find(board => board._id === id)
     const copy =JSON.parse(JSON.stringify(currBoard)) 
-    // return Promise.resolve(copy)
-    return Promise.resolve(currBoard)
+    return Promise.resolve(copy)
+    // return Promise.resolve(currBoard)
 }
 
-function updateBoardCard(board, cardToUpdate) {
+function updateBoardCard(board, card) { //will it be a problem with idxs due to d&d?
+    const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
         return {...group, cards }
