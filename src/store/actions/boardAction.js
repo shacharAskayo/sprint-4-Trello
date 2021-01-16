@@ -24,7 +24,7 @@ export function getBoardById(id) {
       // })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -37,7 +37,7 @@ export function addCard(boardId, groupId, cardToAdd) {
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -49,7 +49,7 @@ export function addGroup(boardId, group) {
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -68,30 +68,41 @@ export function openLabel() {
     dispatch({ type: 'OPEN-LABELS' })
   }
 }
-
-export function selectImg(board, imgSrc) {
+export function setBackground(board, background) {
   return async dispatch => {
     try {
-      const selectedImg = await boardService.selectImg(board, imgSrc)
-      dispatch({ type: 'CHANGE_STYLE', selectedImg })
+      const updatedBoard = { ...board, style: background }
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
     }
     catch (err) {
-      console.log('boardActions: err in selectImg', err);
+      console.log('boardActions: err in loadboards', err);
     }
   }
 }
 
-export function selectColor(board, color) {
-  return async dispatch => {
-    try {
-      console.log('hi***');
-      const selectedColor = await boardService.selectColor(board, color)
-      console.log('selectedColor:', selectedColor);
-      dispatch({ type: 'SELECT_COLOR', selectedColor })
-    }
-    catch (err) {
-      console.log('boardActions: err in selectColor', err);
-    }
-  }
-}
+// export function selectImg(board, imgSrc) {
+//   return async dispatch => {
+//     try {
+//       const selectedImg = await boardService.selectImg(board, imgSrc)
+//       dispatch({ type: 'CHANGE_STYLE', selectedImg })
+//     }
+//     catch (err) {
+//       console.log('boardActions: err in selectImg', err);
+//     }
+//   }
+// }
+
+// export function selectColor(board, color) {
+//   return async dispatch => {
+//     try {
+//       console.log('hi***');
+//       const selectedColor = await boardService.selectColor(board, color)
+//       console.log('selectedColor:', selectedColor);
+//       dispatch({ type: 'SELECT_COLOR', selectedColor })
+//     }
+//     catch (err) {
+//       console.log('boardActions: err in selectColor', err);
+//     }
+//   }
+// }
 

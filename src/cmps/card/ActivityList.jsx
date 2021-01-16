@@ -1,5 +1,8 @@
 import { Component } from "react"
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+
+//icons:
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+// import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 export class ActivityList extends Component {
 
@@ -12,17 +15,17 @@ export class ActivityList extends Component {
     }
 
     render() {
-        const { activities } = this.props
-        const {isShown} = this.state
+        const { activities, inMenu } = this.props
+        const { isShown } = this.state
         return <div className="attachments">
             <header className="in-card-section flex space-bt align-end">
-                <div className="flex align-start">
-                    <FormatListBulletedIcon/>
-                    <h3>Activity</h3>
-                </div>
-                <button onClick={this.showActivities}>{isShown ? 'Hide' : 'Show'} Details</button>
+                {!inMenu && <div className="flex align-start">
+                    <span><PlaylistAddCheckIcon /></span>
+                    <h4 className="option-title">Activity</h4>
+                </div>}
+                {!inMenu && <button onClick={this.showActivities}>{isShown ? 'Hide' : 'Show'} Details</button>}
             </header>
-            {isShown && activities.map(act => 
+            {isShown || inMenu && activities.map(act =>
                 <div key={act.id}>
                     <span>{act.createdBy.fullname}: </span>
                     <span> {act.txt}</span>

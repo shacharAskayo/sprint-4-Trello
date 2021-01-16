@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class _Header extends Component {
     render() {
         return (
-            <header>
+            <header className="top-header">
                 <h4>header</h4>
             </header>
         )

@@ -3,10 +3,7 @@
         "_id": "b101",
         "title": "Robot dev proj",
         "createdAt": 1589983468418,
-        "style": {
-            "backgroundImage": "url(someimg.jpg)",
-            "backgroundColor": "#ffffff"
-        },
+        "style": {},
         "isPrivate": false,
         "createdBy": {
             "_id": "u101",

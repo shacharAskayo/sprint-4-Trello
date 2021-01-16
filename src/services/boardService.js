@@ -4,8 +4,8 @@ import {cardService} from './cardService'
 
 
 // const { board } = require('../data/db.json')
-var db  = require('../db.json')
-const {board}=db
+var db = require('../db.json')
+const { board } = db
 
 var gBoards = [board]
 export const boardService = {
@@ -13,9 +13,10 @@ export const boardService = {
     getById,
     addCard,
     addGroup,
-    selectImg,
-    selectColor,
-    updateBoardCard
+    // selectImg,
+    // selectColor,
+    updateBoardCard,
+    setBackground
 
 }
 
@@ -23,7 +24,7 @@ export const boardService = {
 
 
 function query() {
-    const board =httpService.get('/board')
+    const board = httpService.get('/board')
     return board
 }
 
@@ -38,9 +39,9 @@ function updateBoardCard(board, card) { //will it be a problem with idxs due to 
     const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
-        return {...group, cards }
+        return { ...group, cards }
     })
-    return {...board, groups: newGroups }
+    return { ...board, groups: newGroups }
 }
 
 function addCard(boardId, groupId, card) {
@@ -49,29 +50,42 @@ function addCard(boardId, groupId, card) {
     const boardIdx = gBoards.findIndex(board => board._id === boardId)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === groupId)
     copy[boardIdx].groups[groupIdx].cards.push(newCard)
-    gBoards=copy
+    gBoards = copy
     return gBoards[boardIdx]
 }
 
 
 
-async function addGroup(boardId,group){
-    try{
+async function addGroup(boardId, group) {
+    try {
         const currBoard = await getById(boardId)
         // const copy = JSON.parse(JSON.stringify(currBoard))
-        const newGroup = {...group,id:utilService.makeId()}
+        const newGroup = { ...group, id: utilService.makeId() }
         currBoard.groups.push(newGroup)
         return Promise.resolve(currBoard)
     }
-    catch(err){
-        console.log('err in service:',err);
+    catch (err) {
+        console.log('err in service:', err);
+    }
+}
+function setBackground(board, background) {
+    try {
+        const currBoard = getById(board._id)
+        // const style = (background.length > 10) ? imgSrc : color
+        var updatedBoard = { ...currBoard, style: background }
+        return Promise.resolve(updatedBoard)
+    }
+    catch (err) {
+        console.log('err in setting background', err);
     }
 }
 
 
-function selectImg(board,imgSrc) {
-    return imgSrc
-}
-function selectColor(board,color) {
-    return color
-}
+// function selectImg(board,imgSrc) {
+//     return imgSrc
+// }
+// function selectColor(board,color) {
+//     return color
+// }
+
+
