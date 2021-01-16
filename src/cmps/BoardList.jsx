@@ -6,18 +6,14 @@ import { BoardPreview } from './BoardPreview.jsx'
 class _BoardList extends Component {
 
     componentDidMount() {
-        console.log('@@@');
         this.props.loadBoards()
     }
     get boardsForDisplay() {
         let boards = this.props.boards
-        console.log(this.props);
-        console.log('boards', boards);
         return boards
     }
     render() {
         const { boards } = this.boardsForDisplay
-        console.log(boards);
         return (
             <section className="board-list">
                 {boards.map(board => {

@@ -19,7 +19,7 @@ class _Card extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.cardId !== this.props.match.params.cardId) this.loadCard()
-        if (prevProps.board._id !== this.props.board._id) this.loadCard()
+        if (prevProps.board._id !== this.props.board?._id) this.loadCard()
     }
 
     loadCard = () => {
@@ -48,7 +48,6 @@ class _Card extends Component {
     }
 
     render() {
-        console.log(this.props.board);
         const { card } = this.state
         if (!card) return null
         return (

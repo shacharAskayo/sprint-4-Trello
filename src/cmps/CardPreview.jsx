@@ -1,64 +1,100 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { cardService } from "../services/cardService";
-import SubjectIcon from '@material-ui/icons/Subject';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { Link } from 'react-router-dom'
+import SubjectIcon from '@material-ui/icons/Subject';
 import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
 import AttachFileRoundedIcon from '@material-ui/icons/AttachFileRounded';
+import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
+import EditIcon from '@material-ui/icons/Edit';
+import { connect } from 'react-redux'
+import { updateBoardCard } from '../store/actions/boardAction'
+import { CardPrev } from './CardPrev'
+import { CardPrev2 } from './CardPrev2'
 
-export class CardPreview extends Component {
+
+
+class _CardPreview extends Component {
 
     state = {
+        isModalOpen: false,
         labels: [],
-        height: (this.props.isLabelOpen)?'fit-content':'7px',
-        width:(this.props.isLabelOpen)?'fit-content':'35px'
+        isEdit: false,
+        title: ''
     }
 
 
     componentDidMount() {
-        const { styles } = this.state
-        const { card, board,isLabelOpen } = this.props
+        const { card, board, isModalOpen } = this.props
         const labels = cardService.getCardLabels(board, card.labels)
-        this.setState({ labels,
+        this.setState({
+            labels,
+            title: card.title
         })
     }
-    componentDidUpdate(prevProps){
-        if(prevProps!==this.props){
-            this.setState({
-                height: (this.props.isLabelOpen)?'fit-content':'7px',
-                width:(this.props.isLabelOpen)?'fit-content':'35px'
-            })
-        }
+    componentDidUpdate(prevProps) {
+        // const { isModalOpen } = this.props
+        // if (prevProps !== this.props) {
+        //     this.setState({ isModalOpen: isModalOpen })
+        // }
     }
 
-onOpenLabel=()=>{
-    this.props.openLabel()
-}
+
+
+    onOpenLabel = () => {
+        this.props.openLabel()
+    }
+
+    on = (id) => {
+        console.log('id:', id);
+    }
+    EnterEditMode = () => {
+        document.body.classList.add('edit-open')
+        const { isEdit } = this.state
+        this.setState({
+            isEdit: !isEdit
+        })
+    }
+
+    handleChange = (ev) => {
+        const { value } = ev.target
+        this.setState({ title: value })
+    }
+    onSave = () => {
+        const { card, board } = this.props
+        const { title } = this.state
+        card.title = title
+        console.log(card);
+        this.props.updateBoardCard(board, card)
+        this.setState({ isEdit: false })
+    }
 
     render() {
-        const { card, board,isLabelOpen } = this.props
-        const { labels,height,width } = this.state
-        return (
-            <div className="card-preview">
-             
-                <div className="label-container">
-                    { labels.map((label, idx) =>{
-                        return <div onClick={this.onOpenLabel} key={idx} className={`label ${(isLabelOpen)? "is-open":"is-close"}`} style={{backgroundColor:label.color}}>
-                             {isLabelOpen&&label.title}
-                              </div>
-                              })
-                            }
-                </div>
-                    <Link to={`/board/${board._id}/${card.id}`}>{card.title}
-                <div className="card-icons">
-                    {card.description && <SubjectIcon />}
-                    {card.comments?.length > 0 && <ChatBubbleOutlineRoundedIcon />}
-                    {card.attachments?.length > 0 && <AttachFileRoundedIcon style={{ transform: "rotate(35deg)" }} />}
-                    {card.checklists?.length > 0 && <CheckBoxIcon />}
+        const { card, board, isLabelOpen,currGroup } = this.props
+        const { labels, isEdit, title } = this.state
 
-                </div>
-                    </Link>
-            </div>
+        return (
+            <React.Fragment>
+                { <CardPrev isEdit={isEdit} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} EnterEditMode={this.EnterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
+                {isEdit && <CardPrev2 currGroup={currGroup} isEdit={isEdit} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} EnterEditMode={this.EnterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
+            </React.Fragment>
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return {
+        reviews: state.reviewModule.reviews,
+        cards: state.cardModule.cards,
+        board: state.boardModule.board,
+        isLabelOpen: state.boardModule.isLabelOpen
+    }
+}
+const mapDispatchToProps = {
+    updateBoardCard
+
+}
+
+export const CardPreview = connect(mapStateToProps, mapDispatchToProps)(_CardPreview)
+

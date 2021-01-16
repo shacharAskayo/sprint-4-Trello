@@ -3,8 +3,9 @@ import { GroupList } from "../cmps/GroupList"
 import { BoardHeader } from "../cmps/BoardHeader"
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/Menu.jsx'
-import { getBoardById,addGroup } from '../store/actions/boardAction'
+import { getBoardById,addGroup,updateGroupLoaction } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
+import {Dnd} from '../cmps/Dnd'
 
 class _Board extends Component {
  
@@ -24,17 +25,18 @@ class _Board extends Component {
     isMenuClicked = !isMenuClicked
     this.setState({ isMenuClicked })
   }
+  
   closeMenu = () => {
     this.setState({ isMenuClicked: false })
   }
   render() {
     const { isMenuClicked } = this.state
-    const { bgColor, bgImg } = this.props
+    const { bgColor, bgImg,board,updateGroupLoaction,addGroup } = this.props
     return (
-      <div className="main-board" style={{ backgroundColor: bgColor, backgroundImage: bgImg }}>
+      <div className="main-board" style={{  backgroundImage: bgImg ,}}>
         <BoardHeader />
         <button onClick={this.toggleMenu}>Menu</button>
-        <GroupList groups={this.props.board.groups} board={this.props.board} addGroup={this.props.addGroup} />
+        {board&&<GroupList  updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} /> }
         <button className="menu-btn" onClick={this.toggleMenu}>Menu</button>
         <Card id={this.match?.params.cardId} />
         {isMenuClicked && <Menu closeMenu={this.closeMenu} isMenuClicked={isMenuClicked} />}
@@ -55,7 +57,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
   getBoardById,
-  addGroup
+  addGroup,
+  updateGroupLoaction
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

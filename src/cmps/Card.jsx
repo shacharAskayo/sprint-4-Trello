@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import { CardContent } from "./CardContent";
+import { CardContent } from "./card/CardContent";
 import { cardService } from "../services/cardService.js";
 
 const { Component } = require("react");

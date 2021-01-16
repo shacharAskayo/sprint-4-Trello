@@ -7,7 +7,7 @@ import { BoardList } from './cmps/BoardList.jsx'
 
 export function App() {
   return (
-    <div className="app">
+    <div className="app" >
       <Router>
         <Header />
         <div>

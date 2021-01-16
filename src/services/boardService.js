@@ -1,10 +1,11 @@
-import {utilService} from './utilService'
-import {httpService} from './httpService'
+import { utilService } from './utilService'
+import { httpService } from './httpService'
+import { RestaurantMenuRounded } from '@material-ui/icons'
 
 
 // const { board } = require('../data/db.json')
-var db  = require('../db.json')
-const {board}=db
+var db = require('../db.json')
+const { board } = db
 
 var gBoards = [board]
 export const boardService = {
@@ -14,31 +15,43 @@ export const boardService = {
     addGroup,
     selectImg,
     selectColor,
-    updateBoardCard
+    updateBoardCard,
+    updateCardsLocation,
+    updateGroupLoaction,
+    addBoard,
+    updateGroupTitle
 
 }
 
 
 
 
-function query() {
-    const board =httpService.get('/board')
-    return board
+async function query() {
+    // const board =await httpService.get('/board')
+    return gBoards
+}
+
+function addBoard(board) {
+    const newBoard = { ...board, _id: utilService.makeId() }
+    const copy = [...gBoards]
+    const newBoards = [...copy, newBoard]
+    gBoards = newBoards
+    return newBoard
 }
 
 function getById(id) {
     const currBoard = gBoards.find(board => board._id === id)
-    const copy =JSON.parse(JSON.stringify(currBoard)) 
-    // return Promise.resolve(copy)
-    return Promise.resolve(currBoard)
+    const copy = JSON.parse(JSON.stringify(currBoard))
+    return Promise.resolve(copy)
+    // return Promise.resolve(currBoard)
 }
 
 function updateBoardCard(board, cardToUpdate) {
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
-        return {...group, cards }
+        return { ...group, cards }
     })
-    return {...board, groups: newGroups }
+    return { ...board, groups: newGroups }
 }
 
 function addCard(boardId, groupId, card) {
@@ -47,29 +60,58 @@ function addCard(boardId, groupId, card) {
     const boardIdx = gBoards.findIndex(board => board._id === boardId)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === groupId)
     copy[boardIdx].groups[groupIdx].cards.push(newCard)
-    gBoards=copy
+    gBoards = copy
     return gBoards[boardIdx]
 }
 
 
-
-async function addGroup(boardId,group){
-    try{
-        const currBoard = await getById(boardId)
-        // const copy = JSON.parse(JSON.stringify(currBoard))
-        const newGroup = {...group,id:utilService.makeId()}
-        currBoard.groups.push(newGroup)
-        return Promise.resolve(currBoard)
+async function addGroup(boardId, group) {
+    try {
+        var copy = JSON.parse(JSON.stringify(gBoards))
+        var newGroup = { ...group, id: utilService.makeId() }
+        const boardIdx = gBoards.findIndex(board => board._id === boardId)
+        copy[boardIdx].groups.push(newGroup)
+        gBoards = copy
+        return Promise.resolve(gBoards[boardIdx])
     }
-    catch(err){
-        console.log('err in service:',err);
+    catch (err) {
+        console.log('err in service:', err);
     }
 }
 
 
-function selectImg(board,imgSrc) {
+function selectImg(board, imgSrc) {
     return imgSrc
 }
-function selectColor(board,color) {
+function selectColor(board, color) {
     return color
+}
+
+
+function updateCardsLocation(currBoard, currGroup, cards) {
+    const {boardIdx,copy,groupIdx}=update(currBoard,currGroup)
+    copy[boardIdx].groups[groupIdx].cards = cards
+    gBoards = copy
+    return Promise.resolve(gBoards[boardIdx])
+}
+
+function updateGroupLoaction(currBoard, groups) {
+    const {boardIdx,copy} = update(currBoard)
+    copy[boardIdx].groups = groups
+    gBoards = copy
+    return Promise.resolve(gBoards[boardIdx])
+}
+
+function updateGroupTitle(currBoard, currGroup, groupTitle) {
+    const {boardIdx,copy,groupIdx} = update(currBoard,currGroup)
+    copy[boardIdx].groups[groupIdx].title = groupTitle
+    gBoards = copy
+    return gBoards[boardIdx]
+}
+
+function update(currBoard,currGroup=gBoards[0].groups[0]){
+    var copy = JSON.parse(JSON.stringify(gBoards))
+    const boardIdx = copy.findIndex(board => board._id === currBoard._id)
+    const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
+    return {boardIdx,copy,groupIdx}
 }

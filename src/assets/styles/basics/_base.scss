@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
+    
 }
-
 ::selection {
     background-color: $clr1;
     color: $clr6;
@@ -9,9 +9,10 @@
 
 html {
     font-family: montserrat;
-    line-height: 1.6;
+    // line-height: 1.6;
     color: $clr2;
 }
+
 
 body {
     font-size: rem(18px);
@@ -19,11 +20,16 @@ body {
     min-width: 100vw;
     width: fit-content;
     
+    
 }
+
+// body.edit-open{
+//     background-color: #e4dcdca8;
+// }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: caveat;
-    margin: 0 0 0.6em;
+    margin: 0 0 0em;
     line-height: 1;
 }
 
@@ -35,7 +41,7 @@ section, main, footer {
 img {
     width: 100%;
 }
-
+s
 p {
     margin: 0 0 0em;
     max-width: 40ch;
@@ -45,7 +51,8 @@ a {
     text-decoration: none;
     color: rgb(12, 11, 11);
 }
-a:hover {
-    text-decoration: underline;
-}
 
+
+.rotate{
+    transform: rotate(180deg);
+}

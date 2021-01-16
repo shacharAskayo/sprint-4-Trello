@@ -236,22 +236,22 @@ class _Menu extends Component {
                             </button>
                         </section>
                         <section className="butler-section" style={{ display: "grid" }}>
-                            <button className="butler-btn" onClick={''}>
+                            <button className="butler-btn" >
                                 <h4 className="butler-title">🤖 Butler</h4>
                                 <span className="butler-desc">Automate cards and more...</span>
                             </button>
                         </section>
                         <section className="others-seciton" style={{ display: "grid" }}>
-                            <button className="power-ups" onClick={''}>
+                            <button className="power-ups" >
                                 <h4 className="power-uops-title">Power-Ups</h4>
                                 <span className="power-ups-desc">Calendar, Google Drive and more...</span>
                             </button>
-                            <button className="map" onClick={''}>
+                            <button className="map" >
                                 <h4 className="map-title"><span><RoomIcon /></span>Map</h4>
                             </button>
                         </section>
                         <section className="activity" style={{ display: "grid" }}>
-                            <button className="activity" onClick={''}>
+                            <button className="activity" >
                                 <h4 className="activity-title"><span><PlaylistAddCheckIcon /></span>Activity</h4>
                             </button>
                             <Link to="/activities">View all activity...</Link>
