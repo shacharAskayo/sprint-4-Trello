@@ -1,22 +1,21 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { ActivityList } from "./ActivityList";
 import { CardAttachmentList } from "./CardAttachmentList";
+import { CardChecklistList } from "./CardChecklistList";
 import { CardCommentList } from "./CardCommentList";
 import { CardDescription } from "./CardDescription";
-import { Label } from "./Label";
+import { LabelList } from "./LabelList";
 
 class _CardContent extends Component {
 
     render() { 
-        const {card} = this.props
-        return <div className="card-content">
-            <Label card={card} save={this.props.save}/>
-            <CardDescription card={card} save={this.props.save}/>
-            {/* <Checklist checklists={card.checklists}/> */}
-            <CardAttachmentList card={card} save={this.props.save}/>
-            <ActivityList activities={card.activities}/>
-            <CardCommentList card={card} save={this.props.save}/>
+        const {card, save, user} = this.props
+        return <div onClick={this.props.closeActionsModal} className="card-content">
+            <LabelList card={card} user={user} save={save}/>
+            <CardDescription card={card} user={user} save={save}/>
+            <CardChecklistList card={card} user={user} save={save}/>
+            <CardAttachmentList card={card} user={user} save={save}/>
+            <CardCommentList card={card} user={user} save={save}/>
         </div>
     }
 }

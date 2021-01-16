@@ -29,7 +29,7 @@ export function getBoardById(id) {
       // })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -42,7 +42,7 @@ export function addCard(boardId, groupId, cardToAdd) {
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -54,7 +54,7 @@ export function addGroup(boardId, group) {
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
-      console.log(' err in loadBoard', err)
+      console.log('err in loadBoard', err)
     }
   }
 }
@@ -71,6 +71,17 @@ export function updateBoardCard(board, card) {
 export function openLabel() {
   return dispatch => {
     dispatch({ type: 'OPEN-LABELS' })
+  }
+}
+export function setBackground(board, background) {
+  return async dispatch => {
+    try {
+      const updatedBoard = { ...board, style: background }
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
+    }
+    catch (err) {
+      console.log('boardActions: err in loadboards', err);
+    }
   }
 }
 

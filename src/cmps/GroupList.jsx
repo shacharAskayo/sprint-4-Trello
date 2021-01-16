@@ -69,7 +69,7 @@ export class GroupList extends Component {
                             })}
                             <div >
                                 <form action="">
-                                    <input type="text" placeholder="+ Add another list" value={this.state.group.title} onClick={this.onShowAddBtn} onChange={this.handleChange} style={{ marginTop: '30px' }} />
+                                    <input className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onClick={this.onShowAddBtn} onChange={this.handleChange}  />
                                     {this.state.isAdding && <button onClick={this.onAddGroup}>Add List</button>}
                                 </form>
                             </div>

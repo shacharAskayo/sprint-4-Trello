@@ -18,7 +18,7 @@ import { Archive } from '@material-ui/icons';
 
 export class CardPrev2 extends Component {
     state={
-        editPos:85
+        editPos:60
     }
     componentDidMount(){
         this.findCardPos()

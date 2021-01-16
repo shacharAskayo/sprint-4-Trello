@@ -1,0 +1,71 @@
+.card-action-modal {
+    position: fixed;
+    left: calc(50% + 195px);
+    background-color: white;
+    padding: 12px;
+    color: $clr1;
+    hr {
+        border-color: $sec-bgc;
+        border-top: 0;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $sec-bgc;
+        background-color: $main-bgc;
+        margin-top: 4px;
+        margin-bottom: 20px;
+    }
+    input:hover {
+        background-color: $sec-bgc;
+    }
+    button:not(.icon) {
+        width: 100%;
+    }
+    button.icon {
+        background: transparent;
+        position: absolute;
+        left: 90%;
+        top: 15px;
+        padding: 0;
+        margin: 0;
+        .MuiSvgIcon-root {
+            font-size: 1.2em;
+            color: $clr1;
+        }
+    }
+    &.label-modal {
+        top: calc(130px + 8em);
+        width: 305px;
+    }
+    .label-container {
+        color: white;
+    }
+    .label-container>* {
+        div:first-child {
+            width: 100%;
+            margin-bottom: 5px;
+            padding: 3px;
+            border-radius: 3px;
+            transition: box-shadow 0.1s;
+        }
+        div:first-child {
+            &.bgc-eb5b46:hover {
+                box-shadow: -8px 0px 0px 0px #ff8d7c;
+            }
+            &.bgc-52e898:hover {
+                box-shadow: -8px 0px 0px 0px #c4ecd7;
+            }
+        }
+        .MuiSvgIcon-root {
+            font-size: 2.2em;
+            color: $clr1;
+            padding: 8px;
+            margin-left: 5px;
+            border-radius: 3px;
+        }
+        .MuiSvgIcon-root:hover {
+            background-color: $sec-bgc;
+        }
+    }
+}

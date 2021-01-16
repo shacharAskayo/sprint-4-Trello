@@ -25,7 +25,8 @@ export class _GroupPreview extends Component {
             members: [],
             labels: []
         },
-        isAdding: false
+        isAdding: false,
+        isChangeTitle:false
     }
 
     componentDidMount() {
@@ -76,18 +77,20 @@ export class _GroupPreview extends Component {
         const { group } = this.props
         ev.currentTarget.blur()
         this.setState({ groupTitle:group.title })
+        this.setState({isChangeTitle:false})
     }
     
     editGroupTitle=()=>{
         const { board, group } = this.props
         const {groupTitle}= this.state
         this.props.editGroupTitle(board,group,groupTitle)
+        this.setState({isChangeTitle:false})
     }
 
     render() {
         const { group, board, isLabelOpen, openLabel, updateCardsLocation,isModalOpen,onEditModalOpen } = this.props
         const { cards } = group
-        const { isAdding ,groupTitle } = this.state
+        const { isAdding ,groupTitle,isChangeTitle } = this.state
         const { title } = this.state.card
         return (
 
@@ -95,14 +98,15 @@ export class _GroupPreview extends Component {
                         <span className="group-menu-btn" onClick={this.openMenu}>...</span>
                             <div className={`hidden-actions-form-container`}>
                                 <form action="" className={`hidden-actions-form`}>
-                                    <input onChange={this.handleEditGroupTitle} type="text"  value={groupTitle} autoComplete="off"/>
+                                    <input onClick={()=>{this.setState({isChangeTitle:true})}} onChange={this.handleEditGroupTitle} type="text"  value={groupTitle} autoComplete="off"/>
                                 </form>
-                                    <div className="hidden-actions flex">
-                                        <button type="button" onClick={this.editGroupTitle} > save </button>
+                                {isChangeTitle&&<div className="hidden-actions flex">
+                                        <button type="button" onClick={this.editGroupTitle} style={{marginLeft:'6px'}} > save </button>
                                         <button onClick={this.discardChanges} className="icon">
                                         <CloseSharpIcon />
                                         </button>
                                     </div>
+    }
                             </div>
                             <CardList cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group}    />
                             <form action="">

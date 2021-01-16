@@ -90,7 +90,7 @@
 
     .edit-menu-btn {
         display: inline-flex;
-        box-shadow: 1px 0px 2vmax #8f8f8f45;
+        box-shadow:0px 0px 4px 1px #8f8f8f25;
         font-size: 15px;
         color: #e6e6e6ef;
         background-color: rgba(0, 0, 0, 0.6);
@@ -112,10 +112,9 @@
 }
 
 .card-save-btn {
+    margin-left: 5px;
     position: absolute;
     z-index: 5;
-    // top: 240px;
-    // box-shadow: 0 0 0 1000px rgba(0,0,0,.3);
     box-shadow: 0 0 0 0vmax rgba(0, 0, 0, 0.3);
     pointer-events: none;
 

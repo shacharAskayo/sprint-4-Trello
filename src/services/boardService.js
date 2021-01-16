@@ -1,6 +1,6 @@
-import { utilService } from './utilService'
-import { httpService } from './httpService'
-import { RestaurantMenuRounded } from '@material-ui/icons'
+import {utilService} from './utilService'
+import {httpService} from './httpService'
+import {cardService} from './cardService'
 
 
 // const { board } = require('../data/db.json')
@@ -13,13 +13,12 @@ export const boardService = {
     getById,
     addCard,
     addGroup,
-    selectImg,
-    selectColor,
     updateBoardCard,
     updateCardsLocation,
     updateGroupLoaction,
     addBoard,
-    updateGroupTitle
+    updateGroupTitle,
+    setBackground
 
 }
 
@@ -46,7 +45,8 @@ function getById(id) {
     // return Promise.resolve(currBoard)
 }
 
-function updateBoardCard(board, cardToUpdate) {
+function updateBoardCard(board, card) { //will it be a problem with idxs due to d&d?
+    const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
         return { ...group, cards }
@@ -79,15 +79,6 @@ async function addGroup(boardId, group) {
     }
 }
 
-
-function selectImg(board, imgSrc) {
-    return imgSrc
-}
-function selectColor(board, color) {
-    return color
-}
-
-
 function updateCardsLocation(currBoard, currGroup, cards) {
     const {boardIdx,copy,groupIdx}=update(currBoard,currGroup)
     copy[boardIdx].groups[groupIdx].cards = cards
@@ -114,4 +105,16 @@ function update(currBoard,currGroup=gBoards[0].groups[0]){
     const boardIdx = copy.findIndex(board => board._id === currBoard._id)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
     return {boardIdx,copy,groupIdx}
+}
+
+function setBackground(board, background) {
+    try {
+        const currBoard = getById(board._id)
+        // const style = (background.length > 10) ? imgSrc : color
+        var updatedBoard = { ...currBoard, style: background }
+        return Promise.resolve(updatedBoard)
+    }
+    catch (err) {
+        console.log('err in setting background', err);
+    }
 }

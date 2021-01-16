@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { CardPreview } from "./CardPreview";
 // ////React DND///
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { CardEdit } from './CardEdit'
 
 
 

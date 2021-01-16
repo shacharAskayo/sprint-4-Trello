@@ -5,12 +5,17 @@ import { withRouter } from "react-router";
 import WebIcon from '@material-ui/icons/Web';
 import { Component } from "react";
 import { CardContent } from "./CardContent";
-
+import { Link } from "react-router-dom";
+import CloseSharpIcon from '@material-ui/icons/CloseSharp';
+import { CardMenu } from "./CardMenu.jsx";
+import { DynamicCardActionModal } from "./DynamicCardActionModal.jsx";
+// import { CardAction } from "./CardAction";
 
 class _Card extends Component {
 
     state = {
-        card: null
+        card: null,
+        currModal: null
     }
 
     componentDidMount() {
@@ -28,54 +33,59 @@ class _Card extends Component {
         if (cardId && board.groups) {
             const card = cardService.getCardById(board, cardId)
             this.setState({ card })
+        } else this.setState({ card: null })
+    }
+
+    saveCardChanges = async (card, txt) => {
+        var { board, loggedUser } = this.props
+        if (txt) {
+            const activity = cardService.getActivityToAdd(card, loggedUser, txt)
+            board = {...board, activities: [activity, ...board.activities]}
         }
+        await this.props.updateBoardCard(board, card)
+        this.loadCard()
     }
 
-    saveCardChanges = async (card) => {
-        const { board } = this.props
-        const newBoard = await this.props.updateBoardCard(board, card)
-        this.setState({card})
+    onChangetitle = ({ target }) => {
+        const { value } = target
+        this.setState(prevState => ({ card: { ...prevState.card, title: value } }))
     }
 
-    onChangetitle = ({target}) => {
-        const {value} = target
-        this.setState(prevState => ({card:{...prevState.card, title: value}}))
-    }
-
-    onSaveTitle(ev){
-        ev.preventDefault()
-        this.saveCardChanges(this.state.card)
+    onSaveTitle = () => {
+        this.saveCardChanges(this.state.card,'Edited card title')
     }
 
     render() {
-        const { card } = this.state
+        const { board, loggedUser } = this.props
+        const { card, currModal } = this.state
         if (!card) return null
         return (
-            <section className={"card-modal-screen flex center"}>
-                <div className="card-modal grid">
-                    <div className="header flex">
-                        <WebIcon/>
-                        <form onSubmit={this.onSaveTitle}></form>
-                        <input 
-                        type="text"
-                        value={card.title}
-                        onChange={this.onChangetitle}
-                        />
+            <Link to={`/board/${board._id}`}>
+                <section className={"card-modal-screen flex justify-center"}>
+                    <div onClick={(ev) => { ev.preventDefault() }} className="card-modal grid">
+                        <div className="header flex">
+                            <WebIcon />
+                            <input
+                                type="text"
+                                value={card.title}
+                                onChange={this.onChangetitle}
+                                onBlur={this.onSaveTitle}
+                            />
+                            <Link to={`/board/${board._id}`}><CloseSharpIcon /></Link>
+                        </div>
+                        <CardContent closeActionsModal={() => this.setState({currModal: null})} user={loggedUser} card={card} save={this.saveCardChanges} />
+                        <CardMenu setCurrModal={(currModal) => this.setState({ currModal })} />
+                        <DynamicCardActionModal closeModal={() => this.setState({ currModal: null })} currModal={currModal} card={card} board={board}/>
                     </div>
-                    <CardContent card={card} save={this.saveCardChanges} />
-                    <div className="card-options">
-                        options <br/>options <br/>options <br/>options
-                    <div className="add-to-card"></div>
-                        <div className="card-actions"></div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </Link>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
+        loggedUser: state.boardModule.loggedUser, 
         board: state.boardModule.board
     }
 }
