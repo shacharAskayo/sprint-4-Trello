@@ -61,7 +61,7 @@ export class CardCommentList extends Component {
                         type="text"
                         onChange={this.onInput}
                         value={this.state.newCommentTxt}
-                        autocomplete="off"
+                        autoComplete="off"
                         placeholder="Write a comment.."
                         name="newCommentTxt"
                     />
