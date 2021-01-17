@@ -1,0 +1,132 @@
+.about-section {
+    .user-icon {
+        margin-left: 15px;
+    }
+    .made-by {
+        display: inline-block;
+        width: auto;
+        margin: 0;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+        margin-left: 20px;
+        color: $clr2;
+    }
+    .user-details-menu {
+        margin-left: 14px;
+        display: grid;
+        grid-template-columns: 1fr 10fr;
+        margin-bottom: 2rem;
+        a {
+            margin-right: 120px;
+            margin-left: -42px;
+            color: $clr2;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+
+    .user-details-user-name {
+        grid-column: -2/-1;
+        margin: -20px 140px 0px 0px;
+        font-size: 14px;
+        color: #5e6c84;
+    }
+    .board-description {
+        margin-left: 15px;
+    }
+    .description-board {
+        font-size: 16px;
+        margin-left: 20px;
+        font-weight: 600;
+        margin-top: 4px;
+    }
+    .board-desc-btn {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+        background-color: $clr10;
+        transition: 0.1s;
+        border-radius: 3px;
+        padding: 0px 12px;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: $clr2;
+        width: 93%;
+        margin-left: 15px;
+    }
+    .board-desc-btn:hover {
+        background-color: $clr11;
+    }
+    .board-desc-textarea {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+        box-shadow: inset 0 0 0 1.5px $clr12;
+        margin-bottom: 4px;
+        margin-top: 5px;
+        height: 108px;
+        width: 92%;
+        border-radius: 3px;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        color: $clr2;
+    }
+    .board-desc-textarea:focus {
+        outline: none;
+    }
+    .save-desc {
+        background-color: $clr3;
+        color: $clr6;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        cursor: pointer;
+        height: 32px;
+        width: 52.6px;
+        margin-left: 10px;
+        transition: 0.1s;
+        margin-left: 14px;
+        padding: 0;
+    }
+    .save-desc:hover {
+        background-color: $clr4;
+    }
+    .close-desc {
+        background-color: $clr8;
+        margin-left: -5px;
+        color: #42526e;
+        margin-top: 0;
+    }
+    .close-desc:hover {
+        color: $clr2;
+        background-color: $main-bgc;
+    }
+    .edit-board-desc-btn {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+        color: $clr2;
+        font-size: 14px;
+        font-weight: 400;
+        border-radius: 3px;
+        padding: 8px 12px;
+        margin-left: 8px;
+        background-color: rgba(9, 30, 66, 0.04);
+        margin-top: -8px;
+    }
+    .board-desc-btn-with {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+        background-color: $clr8;
+        color: $clr2;
+        font-weight: 400;
+        font-size: 14px;
+        float: left;
+    }
+}

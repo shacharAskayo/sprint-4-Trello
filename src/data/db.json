@@ -3,6 +3,7 @@
         "_id": "b101",
         "title": "Robot dev proj",
         "createdAt": 1589983468418,
+        "description": "description",
         "style": {},
         "isPrivate": false,
         "createdBy": {
@@ -14,12 +15,14 @@
             {
                 "id": "l101",
                 "title": "important",
-                "color": "#e53737"
+                "color": "#eb5a46",
+                "isClickedInMenu": false
             },
             {
                 "id": "l102",
                 "title": "later",
-                "color": "yellow"
+                "color": "yellow",
+                "isClickedInMenu": false
             }
         ],
         "members": [
@@ -180,11 +183,11 @@
                     "_id": "u101",
                     "fullname": "Abi Abambi",
                     "imgUrl": "http://some-img"
-                },"card": {
+                },
+                "card": {
                     "id": "c101",
                     "title": "Replace Logo"
                 }
-
             }
         ],
         "user": {

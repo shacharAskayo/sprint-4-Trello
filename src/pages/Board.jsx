@@ -25,14 +25,14 @@ class _Board extends Component {
   render() {
     if (!this.props.board) return null
 
-    const { board, updateGroupLoaction, addGroup } = this.props
+    const { board, updateGroupLoaction, addGroup, loggedUser } = this.props
     const { style, groups, } = board
 
     return (
       <div className="main-board" style={style} >
         <Header />
         <BoardHeader />
-        <Menu board={board} />
+        <Menu board={board} loggedUser={loggedUser} />
         <GroupList groups={groups} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />
         <Card />
       </ div>
@@ -46,6 +46,7 @@ const mapStateToProps = state => {
   return {
     reviews: state.reviewModule.reviews,
     board: state.boardModule.board,
+    loggedUser: state.boardModule.loggedUser
   }
 }
 const mapDispatchToProps = {

@@ -11,7 +11,7 @@ import { MenuButler } from './menuFirstSee/MenuButler';
 import { MenuPowerups } from './menuFirstSee/MenuPowerups';
 import { MenuMap } from './menuFirstSee/MenuMap';
 import { MenuActivity } from './menuFirstSee/MenuActivity';
-import { ActivityList } from '../card/ActivityList.jsx'
+import { MenuActivitiesList } from './menuFirstSee/MenuActivitiesList.jsx'
 
 
 //icons:
@@ -32,12 +32,12 @@ export class Menu extends Component {
     state = {
         menuTitle: 'Menu',
         currMenu: null,
-        inMenu: true,   
+        inMenu: true,
         isMenuOpen: false
     }
-    
-    toggleMenu = () => { 
-      this.setState({ isMenuOpen: !this.state.isMenuOpen}) 
+
+    toggleMenu = () => {
+        this.setState({ isMenuOpen: !this.state.isMenuOpen })
     }
 
     goBack = () => { this.setState({ currMenu: null }) }
@@ -57,17 +57,18 @@ export class Menu extends Component {
 
         const { currMenu, menuTitle, inMenu, isMenuOpen } = this.state
         const { board } = this.props
+        console.log('board in manu:', board);
         if (!board.activities) return null
         console.log('render');
         return (
             <section className={`menu flex col ${isMenuOpen ? 'open' : ''}`}>
-                <button className="menu-btn flex align-center" onClick={this.toggleMenu}><MoreHorizIcon/>Show Menu</button>
+                <button className="menu-btn flex align-center" onClick={this.toggleMenu}><MoreHorizIcon />Show Menu</button>
                 <div className="menu-top">
                     {currMenu && <button className="back-menu-btn" onClick={this.goBack}><ArrowBackIosIcon /></button>}
                     <h3>{(currMenu === null) ? 'Menu' : menuTitle}</h3>
                     <button className="close-menu-btn" onClick={this.toggleMenu}><CloseIcon /></button>
+                    <hr className="hr-menu" />
                 </div>
-                <hr className="hr-menu" />
                 {currMenu === null && <section className="menu-options" style={{ display: "grid" }}>
 
                     <button className="menu-option" onClick={this.openAbout}>
@@ -123,10 +124,10 @@ export class Menu extends Component {
                         <span><PlaylistAddCheckIcon /></span>
                         <h4 className="option-title">Activity</h4>
                     </button>
-                    <ActivityList activities={board.activities} inMenu={inMenu} />
+                    <MenuActivitiesList board={board} />
                     <span className="view-all-activities-span" onClick={this.openActivity}>View all activity...</span>
                 </section>}
-                <DynamicCmp currMenu={currMenu} />
+                <DynamicCmp currMenu={currMenu} board={board} />
             </section >
         )
     }
@@ -134,18 +135,19 @@ export class Menu extends Component {
 
 
 
-function DynamicCmp({ currMenu }) {
+
+function DynamicCmp({ currMenu, board }) {
     switch (currMenu) {
         case 'SectionAbout':
-            return <SectionAbout />
+            return <SectionAbout board={board} />
         case 'SectionBackground':
             return <SectionBackground />
         case 'SectionSearch':
-            return <SectionSearch />
+            return <SectionSearch board={board} />
         case 'SectionStickers':
             return <SectionStickers />
         case 'SectionMore':
-            return <SectionMore />
+            return <SectionMore board={board} />
         case 'MenuButler':
             return <MenuButler />
         case 'MenuPowerups':
@@ -153,7 +155,7 @@ function DynamicCmp({ currMenu }) {
         case 'MenuMap':
             return <MenuMap />
         case 'MenuActivity':
-            return <MenuActivity />
+            return <MenuActivity board={board} />
         default:
             return null
     }

@@ -76,8 +76,7 @@ export class _GroupPreview extends Component {
     discardChanges = (ev) => {
         const { group } = this.props
         ev.currentTarget.blur()
-        this.setState({ groupTitle:group.title })
-        this.setState({isChangeTitle:false})
+        this.setState({ groupTitle:group.title, isChangeTitle:false})
     }
     
     editGroupTitle=()=>{

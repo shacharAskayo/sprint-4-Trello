@@ -1,0 +1,25 @@
+.searchBy-labels-area {
+    display: grid;
+    .label {
+        display: flex;
+        background-color: $main-bgc;
+        transition: 0.1s;
+        margin: -1px 0;
+        margin-bottom: 2px;
+        .label-color {
+            height: 31px;
+            width: 30px;
+            border-radius: 5px;
+            margin-left: -11px;
+        }
+        .label-title {
+            color: $clr13;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                Helvetica Neue, sans-serif;
+            margin-left: 7px;
+        }
+    }
+    .label:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}

@@ -1,0 +1,11 @@
+.stickers-section {
+    .stickers-area {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin: 30px 10px 0 30px;
+        .sticker-img {
+            cursor: pointer;
+        }
+    }
+}

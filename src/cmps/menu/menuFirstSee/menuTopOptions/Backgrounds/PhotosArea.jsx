@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 
+// import {menuService} from '../'
 //icons:
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -56,6 +57,7 @@ class _PhotosArea extends Component {
             { src: src17, _id: 'img117', title: "Cloudy mountains", isImgTitleShow: false },
             { src: src18, _id: 'img118', title: "Rear passage", isImgTitleShow: false }
         ]
+        // bgImgs:[]
     }
     componentDidMount() {
         // console.log(this.state.bgImgs[0]);
@@ -67,6 +69,14 @@ class _PhotosArea extends Component {
             this.props.setFilter(this.state.filterBy)
         })
     }
+    // getFromNet = (q) => {
+    //     menuService.getPhotos(q)
+    //         .then(res => this.setState({ books: res.items.splice(0, 4) }));
+    // }
+    // handleChange = (ev) => {
+    //     console.log('your search:', ev.target.value);
+    //     this.getFromNet(ev.target.value);
+    // };
     toggleImgTitle = (imgIdx) => {
         let bgImgs = this.state.bgImgs.map((img, idx) => {
             return (imgIdx !== idx) ? img : { ...img, isImgTitleShow: !img.isImgTitleShow }

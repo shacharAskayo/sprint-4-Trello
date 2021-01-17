@@ -1,17 +1,11 @@
-import { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { MenuMapShow } from './MenuMapShow'
 
-//icons:
-import RoomIcon from '@material-ui/icons/Room';
-
-
-export class MenuMap extends Component {
-    render() {
-        return (
-            <section className="map-section">
-                <button className="map" >
-                    <h4 className="map-title"><span><RoomIcon /></span>Map</h4>
-                </button>
-            </section>
-        )
-    }
+export function MenuMap() {
+    return (
+        <section>
+            <MenuMapShow />
+            <Link to="/map"></Link>
+        </section>
+    )
 }

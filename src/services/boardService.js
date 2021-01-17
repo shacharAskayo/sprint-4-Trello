@@ -1,6 +1,6 @@
-import {utilService} from './utilService'
-import {httpService} from './httpService'
-import {cardService} from './cardService'
+import { utilService } from './utilService'
+import { httpService } from './httpService'
+import { cardService } from './cardService'
 
 
 // const { board } = require('../data/db.json')
@@ -18,7 +18,9 @@ export const boardService = {
     updateGroupLoaction,
     addBoard,
     updateGroupTitle,
-    setBackground
+    setBackground,
+    updateBoardDesc,
+    getActivities
 
 }
 
@@ -80,41 +82,67 @@ async function addGroup(boardId, group) {
 }
 
 function updateCardsLocation(currBoard, currGroup, cards) {
-    const {boardIdx,copy,groupIdx}=update(currBoard,currGroup)
+    const { boardIdx, copy, groupIdx } = update(currBoard, currGroup)
     copy[boardIdx].groups[groupIdx].cards = cards
     gBoards = copy
     return Promise.resolve(gBoards[boardIdx])
 }
 
 function updateGroupLoaction(currBoard, groups) {
-    const {boardIdx,copy} = update(currBoard)
+    const { boardIdx, copy } = update(currBoard)
     copy[boardIdx].groups = groups
     gBoards = copy
     return Promise.resolve(gBoards[boardIdx])
 }
 
 function updateGroupTitle(currBoard, currGroup, groupTitle) {
-    const {boardIdx,copy,groupIdx} = update(currBoard,currGroup)
+    const { boardIdx, copy, groupIdx } = update(currBoard, currGroup)
     copy[boardIdx].groups[groupIdx].title = groupTitle
     gBoards = copy
     return gBoards[boardIdx]
 }
 
-function update(currBoard,currGroup=gBoards[0].groups[0]){
+function update(currBoard, currGroup = gBoards[0].groups[0]) {
     var copy = JSON.parse(JSON.stringify(gBoards))
     const boardIdx = copy.findIndex(board => board._id === currBoard._id)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
-    return {boardIdx,copy,groupIdx}
+    return { boardIdx, copy, groupIdx }
 }
 
 function setBackground(board, background) {
     try {
         const currBoard = getById(board._id)
-        // const style = (background.length > 10) ? imgSrc : color
         var updatedBoard = { ...currBoard, style: background }
         return Promise.resolve(updatedBoard)
     }
     catch (err) {
         console.log('err in setting background', err);
     }
+}
+
+function updateBoardDesc(currBoard, description) {
+    var copy = JSON.parse(JSON.stringify(gBoards))
+    const boardIdx = copy.findIndex(board => board._id === currBoard._id)
+    copy[boardIdx].description = description
+    gBoards = copy
+    return gBoards[boardIdx]
+}
+
+function getActivities(currBoard, filter) {
+    const boardIdx = gBoards.findIndex(board => board._id === currBoard._id)
+    var cardsActivities = []
+    gBoards[boardIdx].groups.map(group => {
+        return group.cards.forEach(card => {
+            card.comments.forEach(comment => {
+                cardsActivities.push(comment)
+            })
+        })
+    })
+    var boardActivities = []
+    gBoards[boardIdx].activities.forEach(activity => {
+        boardActivities.push(activity)
+    })
+    if (filter === 'all')
+        return [...cardsActivities, ...boardActivities]
+    else return [...cardsActivities]
 }

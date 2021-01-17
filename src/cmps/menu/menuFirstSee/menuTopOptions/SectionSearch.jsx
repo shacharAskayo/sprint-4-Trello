@@ -1,4 +1,8 @@
 import { Component } from 'react'
+
+//cmps:
+import { LabelSearchBy } from './menuSearchBy/LabelSearchBy'
+import { UserSearchBy } from './menuSearchBy/UserSearchBy'
 // import { connect } from 'react-redux'
 
 export class SectionSearch extends Component {
@@ -21,11 +25,15 @@ export class SectionSearch extends Component {
     render() {
 
         const { name } = this.state.filterBy
-
+        const { board } = this.props
         return (
             <section className="search-section" style={{ display: "grid" }}>
                 <input type="text" name="name" value={name} onChange={this.handleChange} autoComplete='off' />
-                <span style={{ fontSize: "13px", marginTop: "18px" }}>Search by term, label, member, or due time</span>
+                <span >Search by term, label, member, or due time</span>
+                <hr className="hr-menu" />
+                <LabelSearchBy board={board} />
+                <hr className="hr-menu" />
+                <UserSearchBy board={board} />
             </section >
         )
     }
