@@ -1,6 +1,7 @@
-import {utilService} from './utilService'
-import {httpService} from './httpService'
-import {cardService} from './cardService'
+import { utilService } from './utilService'
+import { httpService } from './httpService'
+import { cardService } from './cardService'
+import { Sort } from '@material-ui/icons'
 
 
 // const { board } = require('../data/db.json')
@@ -14,7 +15,7 @@ export const boardService = {
     addCard,
     addGroup,
     updateBoardCard,
-    updateCardsLocation,
+    updateCardLocation,
     updateGroupLoaction,
     addBoard,
     updateGroupTitle,
@@ -80,32 +81,42 @@ async function addGroup(boardId, group) {
     }
 }
 
-function updateCardsLocation(currBoard, currGroup, cards) {
-    const {boardIdx,copy,groupIdx}=update(currBoard,currGroup)
-    copy[boardIdx].groups[groupIdx].cards = cards
-    gBoards = copy
-    return Promise.resolve(gBoards[boardIdx])
+function updateCardLocation(board, cardId, source, destination) {
+    const currBoard = JSON.parse(JSON.stringify(board))
+    const fromGroupIdx = currBoard.groups.findIndex(group => group.id === source.droppableId)
+    const toGroupIdx = currBoard.groups.findIndex(group => group.id === destination.droppableId)
+    const currCard = currBoard.groups[fromGroupIdx].cards[source.index]
+    currBoard.groups[fromGroupIdx].cards[source.index] = currBoard.groups[toGroupIdx].cards[destination.index]
+    currBoard.groups[toGroupIdx].cards[destination.index] = currCard
+    return currBoard
+
+
 }
 
-function updateGroupLoaction(currBoard, groups) {
-    const {boardIdx,copy} = update(currBoard)
-    copy[boardIdx].groups = groups
-    gBoards = copy
-    return Promise.resolve(gBoards[boardIdx])
+function updateGroupLoaction(board, groupId, source, destination) {
+    console.log('update group location')
+    // console.log('the board before changes',currBoard.groups);
+    const currBoard = JSON.parse(JSON.stringify(board))
+    const currGroup = currBoard.groups[source.index]
+    const changedGroup = currBoard.groups[destination.index]
+    currBoard.groups[destination.index] = currGroup
+    currBoard.groups[source.index] = changedGroup
+    // console.log('the board after changes',currBoard.groups);
+    return currBoard
 }
 
 function updateGroupTitle(currBoard, currGroup, groupTitle) {
-    const {boardIdx,copy,groupIdx} = update(currBoard,currGroup)
+    const { boardIdx, copy, groupIdx } = update(currBoard, currGroup)
     copy[boardIdx].groups[groupIdx].title = groupTitle
     gBoards = copy
     return gBoards[boardIdx]
 }
 
-function update(currBoard,currGroup=gBoards[0].groups[0]){
+function update(currBoard, currGroup = gBoards[0].groups[0]) {
     var copy = JSON.parse(JSON.stringify(gBoards))
     const boardIdx = copy.findIndex(board => board._id === currBoard._id)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
-    return {boardIdx,copy,groupIdx}
+    return { boardIdx, copy, groupIdx }
 }
 
 function setBackground(board, background) {

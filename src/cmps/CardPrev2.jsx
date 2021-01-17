@@ -18,7 +18,7 @@ import { Archive } from '@material-ui/icons';
 
 export class CardPrev2 extends Component {
     state={
-        editPos:60
+        editPos:70
     }
     componentDidMount(){
         this.findCardPos()
@@ -30,15 +30,21 @@ export class CardPrev2 extends Component {
         const idx = currGroup.cards.findIndex( groupCard=>groupCard.id===card.id)
         const top=idx+1
         const pos= editPos*top
-        this.setState({editPos:pos})
+        if(idx===0){
+            
+            this.setState({editPos:40})
+        }else{
+            this.setState({editPos:pos})
+        }
         
     }
-
-
+    test=()=>{
+        console.log('test');
+    }
 
     render() {
         const {editPos}=this.state
-        const { labels, isEdit, currGroup, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode } = this.props
+        const { labels, isEdit,onSave, currGroup, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode } = this.props
         return (
             <React.Fragment>
 
@@ -58,7 +64,7 @@ export class CardPrev2 extends Component {
                             <div className="edit-and-title">
                                 <Link to={`/board/${board._id}/${card.id}`}>
                                     <div>
-                                        <form action="">
+                                        <form action="" onSubmit="return false">
 
                                             <input disabled={!isEdit} onChange={handleChange}
                                                 onClick={(ev) => {
@@ -100,7 +106,7 @@ export class CardPrev2 extends Component {
                     </div>
 
                     <div className='card-save-btn'>
-                        { <button onClick={this.onSave} >save</button>}
+                        <button   onClick={onSave} style={{cursor:'pointer'}} >Save</button>
                     </div>
 
                 </div >

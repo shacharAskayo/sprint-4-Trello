@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { GroupPreview } from "./GroupPreview";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import CloseSharpIcon from '@material-ui/icons/CloseSharp';
+import { boardService } from '../services/boardService';
+
 
 export class GroupList extends Component {
 
@@ -35,48 +38,83 @@ export class GroupList extends Component {
             group: { ...group, title: '' },
             isAdding: false
         })
+        
+    }
+
+    handleEnter=(ev)=>{
+        if(ev.key==='Enter'){
+            this.onAddGroup()
+            ev.currentTarget.blur()
+        } 
+    }
+
+    discardChanges=(ev)=>{
+        const { group } = this.state
+        this.setState({
+            group: { ...group, title: '' },
+            isAdding: false
+        })
+        ev.currentTarget.blur()
 
     }
-    handleOnDragEnd = (result) => {
-        if (!result.destination) return;
-        const { board } = this.props
-        const { groups } = board
-        const items = Array.from(groups)
-        const [reorderedItem] = items.splice(result.source.index, 1)
-        items.splice(result.destination.index, 0, reorderedItem)
-        this.props.updateGroupLoaction(board, items)
+
+    // handleOnDragEnd = (result) => {
+    //     console.log(result);
+    //     if (!result.destination) return;
+    //     const { board } = this.props
+    //     const { groups } = board
+    //     const items = Array.from(groups)
+    //     const [reorderedItem] = items.splice(result.source.index, 1)
+    //     items.splice(result.destination.index, 0, reorderedItem)
+    //     this.props.updateGroupLoaction(board, items)
+    // }
+    
+    handleDrag=(result)=>{
+        const {board} = this.props
+        const {source,destination}  = result
+        
+        if(result.type==='GROUP'){
+            const groupId = result.draggableId
+            this.props.updateGroupLoaction(board,groupId,source,destination)
+        }else{
+            const cardId = result.draggableId
+            this.props.updateCardLocation(board,cardId,source,destination)
+            
+        }
+        
     }
     
-
     render() {
         const { groups } = this.props.board
         return (
-            // <DragDropContext>
-                // <Droppable droppableId='board' type="GROUP">
-                    // {(provided) => (
-                        // <div className="group-container" ref={provided.innerRef} {...provided.droppableProps}  >
-                        <div className="group-container" onClick={this.onEditModalClose}   >
+            // <DragDropContext onDragEnd={this.handleOnDragEnd}>
+            <DragDropContext onDragEnd={this.handleDrag}>
+                <Droppable droppableId="board" type="GROUP" direction="horizontal">
+                    {provided => (
+
+                        <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.onEditModalClose}   >
                             {groups && groups.map((group, idx) => {
                                 return (
-                                        // <Draggable key={group.id} draggableId={group.id} index={idx}>
-                                            // {(provided) => (
-                                                // <div ref={provided.innerRef} {...provided.draggbleProps} {...provided.dragHandleProps}>
-                                                    <GroupPreview group={group}   />
-                                                // </div>
-                                            // )}
-                                    // </Draggable>
-                                     )
+                                    <GroupPreview key={group.id} idx={idx} listId={group.id} group={group} />
+                                )
                             })}
-                            <div >
-                                <form action="">
-                                    <input className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onClick={this.onShowAddBtn} onChange={this.handleChange}  />
-                                    {this.state.isAdding && <button onClick={this.onAddGroup}>Add List</button>}
+                            {provided.placeholder}
+
+                            <div className="hidden-actions-form-container add-group" >
+                                <form action="" className="hidden-actions-form">
+                                    <input onKeyDown={this.handleEnter}  className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title}  onChange={this.handleChange} />
                                 </form>
+                                <div className="hidden-actions flex list">
+                                      <button onClick={this.onAddGroup}>Add List</button>
+                                    <button onClick={this.discardChanges} className="icon">
+                                        <CloseSharpIcon />
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    // )}
-                // </Droppable>
-            // </DragDropContext>
+                    )}
+                </Droppable>
+            </DragDropContext>
         )
     }
 }
