@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function MyAvatar({user}){
      const classes = useStyles()
-     console.log(user);
 
     if( user.imgUrl) return  <Avatar alt={user.fullname} src={user.imgUrl} />
     return <Avatar className={classes[user.color]}>{user.fullname.substring(0, 1)}</Avatar>

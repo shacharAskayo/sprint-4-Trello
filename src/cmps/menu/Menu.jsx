@@ -57,7 +57,6 @@ export class Menu extends Component {
 
         const { currMenu, menuTitle, inMenu, isMenuOpen } = this.state
         const { board } = this.props
-        console.log('board in manu:', board);
         if (!board.activities) return null
         return (
             <section className={`menu flex col ${isMenuOpen ? 'open' : ''}`}>
