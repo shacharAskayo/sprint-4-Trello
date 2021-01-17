@@ -34,7 +34,7 @@ function _getCardActivities(board, cardId) {
 }
 
 function getCardLabels(board, labels) {
-    return board.labels.filter(label => labels.includes(label.id))
+    return board.labels.filter(label => labels?.includes(label.id))
 }
 
 function getCards(group){

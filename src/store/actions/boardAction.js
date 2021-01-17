@@ -112,10 +112,10 @@ export function selectColor(board, color) {
 }
 
 
-export function updateCardsLocation(board,group,cards){
+export function updateCardLocation(board,cardId,source,destination){
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateCardsLocation(board,group,cards)
+      const updatedBoard = await boardService.updateCardLocation(board,cardId,source,destination)
       dispatch({ type: 'SET_BOARD', board:updatedBoard })
     }
     catch (err) {
@@ -124,10 +124,10 @@ export function updateCardsLocation(board,group,cards){
   }
 }
 
-export function updateGroupLoaction(board,groups){
+export function updateGroupLoaction(board,groupId,source,destination){
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateGroupLoaction(board,groups)
+      const updatedBoard = await boardService.updateGroupLoaction(board,groupId,source,destination)
       dispatch({ type: 'SET_BOARD', board:updatedBoard })
     }
     catch (err) {

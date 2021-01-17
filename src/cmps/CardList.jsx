@@ -21,7 +21,6 @@ export class CardList extends Component {
     }
 
 
-
     handleOnDragEnd = (result) => {
         if (!result.destination) return;
         const { board, currGroup } = this.props
@@ -34,36 +33,36 @@ export class CardList extends Component {
         this.props.updateCardsLocation(board, currGroup, items)
     }
 
-    render()
-    {
-        const { board, isLabelOpen, openLabel, currGroup } = this.props
+    render() {
+        const { board, listId, isLabelOpen, openLabel, currGroup } = this.props
         const { cards } = this.props
         return (
-            
-            <div className="card-list" >
-                {cards.map((card, idx) => {
-                    
-                    return (
-                        
-                        // <Draggable key={card.id} draggableId={card.id} index={idx}>
-                        //  {(provided)=>(
-                            // <div ref={provided.innerRef} {...provided.draggbleProps} {...provided.dragHandleProps} >
-                            <CardPreview currGroup={currGroup} key={card.id}  board={board} idx={card.id} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
-                            // </div>
-                            // )}
-                            // </Draggable>
-                            )
+            <Droppable droppableId={listId} type="CARD">
+                {(droppableProvided) => (
+
+                    <div className="card-list" ref={droppableProvided.innerRef} >
+                        {cards.map((card, idx) => {
+                            if (card) {
+
+                                return (
+
+                                    <CardPreview currGroup={currGroup} key={card.id} listId={listId} board={board} idx={idx} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
+                                )
+                            }
                         })}
-            </div>
+                        {droppableProvided.placeholder}
+                    </div>
+                )}
+            </Droppable>
         )
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
     //     {
     //         const { board, isLabelOpen, openLabel, currGroup } = this.props
     //         console.log('the fucking', board);
@@ -93,5 +92,5 @@ export class CardList extends Component {
     //         )
     //     }
     // }
- 
+
 }

@@ -59,7 +59,6 @@ export class Menu extends Component {
         const { board } = this.props
         console.log('board in manu:', board);
         if (!board.activities) return null
-        console.log('render');
         return (
             <section className={`menu flex col ${isMenuOpen ? 'open' : ''}`}>
                 <button className="menu-btn flex align-center" onClick={this.toggleMenu}><MoreHorizIcon />Show Menu</button>
