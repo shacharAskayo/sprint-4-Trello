@@ -155,7 +155,7 @@ const mapDispatchToProps = {
     loadCards,
     addCard,
     openLabel,
-    
+
     editGroupTitle
 }
 

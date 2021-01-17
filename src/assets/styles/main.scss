@@ -33,12 +33,16 @@
 @import "cmps/CardComment";
 @import "cmps/DynamicCardActionModal";
 
-
 //menu:
 @import "/cmps/Menu/Menu";
-@import "cmps/Menu/MenuCmps/SectionAbout";
-@import "./cmps/Menu/MenuCmps/SectionBackground";
-@import "/cmps/Menu/MenuCmps/ColorsArea";
-@import "./cmps/Menu/MenuCmps/MenuButler";
-@import "./cmps/Menu/MenuCmps/PhotosArea";
-@import "./cmps/Menu/MenuCmps/MenuActivity";
+@import "cmps/Menu/SectionAbout";
+@import "/cmps/Menu/SectionBackground";
+@import "/cmps/Menu/ColorsArea";
+@import "/cmps/Menu/MenuButler";
+@import "/cmps/Menu/PhotosArea";
+@import "/cmps/Menu/MenuActivitiesList";
+@import "/cmps/Menu/MenuActivity";
+@import "/cmps/Menu/SecitonStickers";
+@import "/cmps/Menu/SectionSearch";
+@import "/cmps/Menu/LabelSearchBy";
+@import "/cmps/Menu/MenuMap";

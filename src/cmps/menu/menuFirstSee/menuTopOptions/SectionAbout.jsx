@@ -3,13 +3,16 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 //icons:
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SubjectIcon from '@material-ui/icons/Subject';
 import CloseIcon from '@material-ui/icons/Close';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 //functions:
 import { loadUser } from '../../../../store/actions/userActions.js'
+import { saveBoardDesc } from '../../../../store/actions/menuAction.js'
+
+//cmps:
+import { MyAvatar } from '../../../MyAvatar.jsx';
 
 class _SectionAbout extends Component {
 
@@ -25,7 +28,11 @@ class _SectionAbout extends Component {
 
     openDesc = () => { this.setState({ isDescClicked: true }) }
     openEditedDesc = () => { this.setState({ isDescClicked: true }) }
-    closeDesc = () => { this.setState({ isDescClicked: false }) }
+    closeDesc = (ev) => {
+        const { board } = this.props
+        ev.currentTarget.blur()
+        this.setState({ description: board.description, isDescClicked: false })
+    }
 
     onDescChange = (ev) => {
         let value = ev.target.value
@@ -35,14 +42,18 @@ class _SectionAbout extends Component {
     }
 
     saveDesc = () => {
-        if (this.state.description)
-            this.setState({ isDescClicked: false, isDescExist: true })
-        else this.setState({ isDescClicked: false })
+        const { board } = this.props
+        const { description } = this.state
+        this.props.saveBoardDesc(board, description)
+        if (this.state.description.length === 0)
+            this.setState({ isDescClicked: false })
+        else this.setState({ isDescClicked: false, isDescExist: true })
     }
 
     render() {
         const desc = 'It is your board is time to shine! Let people know what this board is used for and what they can expect to see.'
         const { user } = this.props
+        if (!user) return null
         const { description, isDescClicked, isDescExist } = this.state
         return (
             <section className="about-section">
@@ -51,7 +62,7 @@ class _SectionAbout extends Component {
                     <h3 className="made-by">Made by</h3>
                 </div>
                 <div className="user-details-menu">
-                    <span className="user-details-user-icon"><AccountCircleIcon /></span>
+                    <span className="user-details-user-icon"> <MyAvatar user={user} /></span>
                     <Link>{user.fullname}</Link>
                     <span className="user-details-user-name">{user.username}</span>
                 </div>
@@ -83,6 +94,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    loadUser
+    loadUser,
+    saveBoardDesc
 }
 export const SectionAbout = connect(mapStateToProps, mapDispatchToProps)(_SectionAbout)
