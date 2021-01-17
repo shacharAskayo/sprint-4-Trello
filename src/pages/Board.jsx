@@ -1,16 +1,16 @@
 import { Component } from 'react'
-import { connect } from 'react-redux'
-
 //cmps:
 import { GroupList } from "../cmps/GroupList"
 import { Header } from '../cmps/Header'
 import { BoardHeader } from "../cmps/BoardHeader"
+import { connect } from 'react-redux'
+import { Menu } from '../cmps/menu/Menu'
+import { getBoardById, addGroup, updateGroupLoaction } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
+// import {Dnd} from '../cmps/Dnd'
 
 
 //functions:
-import { getBoardById, addGroup } from '../store/actions/boardAction'
-import { Menu } from '../cmps/menu/Menu'
 
 
 class _Board extends Component {
@@ -25,16 +25,16 @@ class _Board extends Component {
   render() {
     if (!this.props.board) return null
 
-    const {board} = this.props
+    const { board, updateGroupLoaction, addGroup } = this.props
     const { style, groups, } = board
 
     return (
       <div className="main-board" style={style} >
         <Header />
-        <BoardHeader/>
-        <Menu board={board}/>
-        <GroupList groups={groups} board={board} addGroup={this.props.addGroup} />
-        <Card/>
+        <BoardHeader />
+        <Menu board={board} />
+        <GroupList groups={groups} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />
+        <Card />
       </ div>
     )
   }
@@ -50,7 +50,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
   getBoardById,
-  addGroup
+  addGroup,
+  updateGroupLoaction
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

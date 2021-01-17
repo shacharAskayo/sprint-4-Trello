@@ -10,7 +10,8 @@
         "createdBy": {
             "_id": "u101",
             "fullname": "Abi Abambi",
-            "imgUrl": "http://some-img"
+            "imgUrl": "http://some-img",
+            "color": "green"
         },
         "labels": [
             {
@@ -21,7 +22,7 @@
             {
                 "id": "l102",
                 "title": "",
-                "color": "#eb5b46"
+                "color": "#ff9f1a"
             },
             {
                 "id": "l103",
@@ -115,12 +116,14 @@
                             {
                                 "_id": "u101",
                                 "fullname": "Tal Tarablus",
-                                "imgUrl": "https://www.google.com"
+                                "imgUrl": "https://www.google.com",
+                                "color": "green"
                             },
                             {
                                 "_id": "u102",
                                 "fullname": "ron ohana",
-                                "imgUrl": "https://www.google.com"
+                                "imgUrl": "https://www.google.com",
+                                "color": "blue"
                             }
                         ],
                         "labels": [
@@ -176,9 +179,9 @@
                         "members": [
                             {
                                 "_id": "u101",
-                                "username": "Tal",
                                 "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                "imgUrl": "https://www.google.com",
+                                "color": "green"
                             }
                         ],
                         "labels": [
@@ -186,9 +189,9 @@
                         ],
                         "createdBy": {
                             "_id": "u101",
-                            "username": "Tal",
                             "fullname": "Tal Tarablus",
-                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                            "color": "red"
                         }
                     }
                 ]

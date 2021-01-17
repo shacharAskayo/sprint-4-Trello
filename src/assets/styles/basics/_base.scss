@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 ::selection {
     background-color: $clr1;
     color: $clr6;
@@ -11,6 +12,7 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
 }
+
 
 body {
     margin: 0;
@@ -31,13 +33,19 @@ h6 {
 img {
     width: 100%;
 }
-
+s
 p {
     margin: 0 0 0em;
 }
 
 a {
     color: $clr1;
+    text-decoration: none;
+}
+
+
+.rotate{
+    transform: rotate(180deg);
 }
 
 a:hover {
@@ -51,6 +59,12 @@ button:focus {
 
 * {
     transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.MuiAvatar-root{
+    text-transform: capitalize;
+    height: em(30px);
+    width: em(30px);
 }
 
 // :focus{

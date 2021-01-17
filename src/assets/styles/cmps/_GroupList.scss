@@ -1,5 +1,17 @@
 .group-container {
-    height: 85vh;
-    // background-color: rgb(114, 170, 243);
+    height: 80vh;
     display: flex;
+    .add-list-input{
+        background-color: inherit;
+        border: 0;
+        margin: 0;
+        //     margin-top: -30px;
+        padding: 10px;
+    }
+    .add-list-input::placeholder {
+        color: rgba(53, 52, 52, 0.767);
+        font-size: 16px;
+    // color: red;
+        // opacity: 1; /* Firefox */
+      }
 }

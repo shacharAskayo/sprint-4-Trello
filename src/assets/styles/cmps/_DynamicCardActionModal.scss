@@ -1,5 +1,6 @@
 .card-action-modal {
     position: fixed;
+    z-index: 1;
     left: calc(50% + 195px);
     background-color: white;
     padding: 12px;
@@ -19,6 +20,9 @@
     input:hover {
         background-color: $sec-bgc;
     }
+    button{
+        padding: 10px 15px;
+    }
     button:not(.icon) {
         width: 100%;
     }
@@ -34,14 +38,17 @@
             color: $clr1;
         }
     }
+
+    //label container
     &.label-modal {
-        top: calc(130px + 8em);
+        top: 25%;
         width: 305px;
+        z-index: 1;
     }
-    .label-container {
+    .labels-container {
         color: white;
     }
-    .label-container>* {
+    .labels-container>* {
         div:first-child {
             width: 100%;
             margin-bottom: 5px;
@@ -49,15 +56,29 @@
             border-radius: 3px;
             transition: box-shadow 0.1s;
         }
+
         div:first-child {
             &.bgc-eb5b46:hover {
                 box-shadow: -8px 0px 0px 0px #ff8d7c;
             }
             &.bgc-52e898:hover {
-                box-shadow: -8px 0px 0px 0px #c4ecd7;
+                box-shadow: -8px 0px 0px 0px #84febe;
             }
+            &.bgc-f2d600:hover {
+                box-shadow: -8px 0px 0px 0px #f5f047;
+            }
+            &.bgc-ff9f1a:hover {
+                box-shadow: -8px 0px 0px 0px #ffc06b;
+            }
+            &.bgc-c377e0:hover {
+                box-shadow: -8px 0px 0px 0px #ecb3ff;
+            }
+            &.bgc-01c2df:hover {
+                box-shadow: -8px 0px 0px 0px #5deaff;
+            }
+
         }
-        .MuiSvgIcon-root {
+             .MuiSvgIcon-root {
             font-size: 2.2em;
             color: $clr1;
             padding: 8px;
@@ -68,4 +89,41 @@
             background-color: $sec-bgc;
         }
     }
+
+    //members-container
+
+    &.member-modal {
+        top:21%;
+
+    }
+    &.attachments-modal {
+        top:38%;
+        button:not(.icon){
+            width: fit-content;
+        }
+
+    }
+    .members-container div{
+        margin-top: 5px;
+        padding: 2px;
+        color: $clr2;
+        font-weight: 500;
+        .MuiAvatar-root{
+            color: white;
+            margin-right: 5px;
+        }
+        span{
+            margin-right: 10px;
+        }
+
+    }
+    .members-container div:hover{
+        background-color: $main-bgc;
+
+    }
+
+    &.checklist-modal{
+        top: 29%;
+    }
+
 }

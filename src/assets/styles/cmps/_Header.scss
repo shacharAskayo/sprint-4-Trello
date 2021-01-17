@@ -1,3 +1,24 @@
+header.main-header {
+    background-color: #0303038a;
+    color: rgba(248, 248, 255, 0.753);
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44.5px;
+}
+.icons-container {
+    display: flex;
+
+    .apps-icon {
+        cursor: pointer;
+        padding: 6px 8px 2px 9px;
+        margin: 2px;
+        color: white;
+        background-color: rgba(247, 247, 247, 0.253);
+        border-radius: 3px;
+    }
+}
 .top-header {
     height: 40px;
     background-color: rgba(0, 0, 0, 0.15);

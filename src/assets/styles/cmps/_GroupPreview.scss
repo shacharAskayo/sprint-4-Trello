@@ -1,12 +1,24 @@
 .group-preview {
     width: 275px;
     border: 1px solid gray;
-    border-radius: 4px;
-    background-color: #ebecf0;
-    margin: 30px;
+    border-radius: 3px;
+    background-color: #e9eaebea;
+    margin: 0px 30px 30px 30px;
+    input{
+        background-color: inherit;
+        border: 0;
+        margin-left: 8px;
+    }
     padding: 10px;
     cursor: pointer;
     height: fit-content;
+    position:relative;
+    .group-title{
+        background-color: inherit;
+        border: 0;
+        padding: 10px;
+    }
+    
     .label-container {
         display: flex;
         .label {
@@ -26,4 +38,13 @@
             font-size: 0.75rem;
         }
     }
+        
+.group-menu-btn{
+    position:absolute;
+    right: 12px;
+    top:0;
+    font-weight: 600;
 }
+}
+
+

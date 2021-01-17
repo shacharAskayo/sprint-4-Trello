@@ -1,11 +1,31 @@
 .card-preview {
     padding: 10px;
     margin: 5px;
+    // background-color: saddlebrown;
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
     cursor: pointer;
-    box-shadow:0px 1px 1px 0px  #888888;
+    box-shadow: 0px 1px 1px 0px #888888;
     border-radius: 3px;
+    // flex-direction: column;
+    input {
+        background-color: inherit;
+        border: 0;
+        position: relative;
+        margin: 1px 0 1px 0;
+        left: 10;
+    }
+    .edit-icon > * {
+        font-size: 1rem;
+        position: relative;
+        top: -8px;
+    }
+    .edit-and-title {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0px 5px 0px;
+    }
+
     .card-icons {
         display: flex;
     }
@@ -13,4 +33,107 @@
         font-size: 1rem;
         margin-right: 12px;
     }
+} // //// EDIT MODE
+
+.edit {
+    position: absolute;
+    z-index: 4;
+    .edit-menu {
+        position: absolute;
+        z-index: 8;
+        left: 250px;
+    }
+    .card-save-btn {
+        position: absolute;
+        z-index: 8;
+        bottom: 0;
+    }
+    input{
+        padding: 5px;
+    }
+}
+.edit-container {
+    position: absolute !important;
+    display: flex;
+    z-index: 4;
+    border-radius: 8px;
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+.card-preview.edit {
+    padding-right: 20px;
+    width: 239.8px;
+    height: 129.5px;
+    position: fixed;
+    display: grid;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
+
+    .edit-and-title {
+        align-self: flex-start;
+        position: relative;
+        top: -18px;
+    }
+
+    .card-icons {
+        align-self: flex-end;
+    }
+}
+.edit-menu {
+    // position: absolute;
+    // left: 250px;
+    display: grid;
+    flex-direction: column;
+    justify-content: space-around;
+    // background-color: lawngreen;
+    padding: 6px;
+    align-items: flex-start;
+
+    .edit-menu-btn {
+        display: inline-flex;
+        box-shadow:0px 0px 4px 1px #8f8f8f25;
+        font-size: 15px;
+        color: #e6e6e6ef;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 3px;
+        margin-bottom: 3px;
+        padding: 10px 12px 8px 8px;
+        width: max-content;
+        transition: all 0.2s;
+        &:hover{
+            margin-left: 5px;
+            background: rgba(0,0,0,.8);
+        }
+        
+    }
+    .edit-menu-icons {
+        font-size: 17px;
+        margin-right: 6px;
+    }
+}
+
+.card-save-btn {
+    margin-left: 5px;
+    position: absolute;
+    z-index: 5;
+    box-shadow: 0 0 0 0vmax rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+
+    button {
+        background-color: #5aac44;
+        position: absolute;
+        top: 137px;
+        // top: 235px;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        margin-top: 8px;
+        font-weight: 400;
+        height: 32px;
+        width: 76px;
+        text-transform: capitalize;
+        font-size: 14px;
+    }
+
+    //  align-self: flex-start;
 }

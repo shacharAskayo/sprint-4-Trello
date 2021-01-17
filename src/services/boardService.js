@@ -13,9 +13,11 @@ export const boardService = {
     getById,
     addCard,
     addGroup,
-    // selectImg,
-    // selectColor,
     updateBoardCard,
+    updateCardsLocation,
+    updateGroupLoaction,
+    addBoard,
+    updateGroupTitle,
     setBackground
 
 }
@@ -23,14 +25,22 @@ export const boardService = {
 
 
 
-function query() {
-    const board = httpService.get('/board')
-    return board
+async function query() {
+    // const board =await httpService.get('/board')
+    return gBoards
+}
+
+function addBoard(board) {
+    const newBoard = { ...board, _id: utilService.makeId() }
+    const copy = [...gBoards]
+    const newBoards = [...copy, newBoard]
+    gBoards = newBoards
+    return newBoard
 }
 
 function getById(id) {
     const currBoard = gBoards.find(board => board._id === id)
-    const copy =JSON.parse(JSON.stringify(currBoard)) 
+    const copy = JSON.parse(JSON.stringify(currBoard))
     return Promise.resolve(copy)
     // return Promise.resolve(currBoard)
 }
@@ -56,19 +66,48 @@ function addCard(boardId, groupId, card) {
 }
 
 
-
 async function addGroup(boardId, group) {
     try {
-        const currBoard = await getById(boardId)
-        // const copy = JSON.parse(JSON.stringify(currBoard))
-        const newGroup = { ...group, id: utilService.makeId() }
-        currBoard.groups.push(newGroup)
-        return Promise.resolve(currBoard)
+        var copy = JSON.parse(JSON.stringify(gBoards))
+        var newGroup = { ...group, id: utilService.makeId() }
+        const boardIdx = gBoards.findIndex(board => board._id === boardId)
+        copy[boardIdx].groups.push(newGroup)
+        gBoards = copy
+        return Promise.resolve(gBoards[boardIdx])
     }
     catch (err) {
         console.log('err in service:', err);
     }
 }
+
+function updateCardsLocation(currBoard, currGroup, cards) {
+    const {boardIdx,copy,groupIdx}=update(currBoard,currGroup)
+    copy[boardIdx].groups[groupIdx].cards = cards
+    gBoards = copy
+    return Promise.resolve(gBoards[boardIdx])
+}
+
+function updateGroupLoaction(currBoard, groups) {
+    const {boardIdx,copy} = update(currBoard)
+    copy[boardIdx].groups = groups
+    gBoards = copy
+    return Promise.resolve(gBoards[boardIdx])
+}
+
+function updateGroupTitle(currBoard, currGroup, groupTitle) {
+    const {boardIdx,copy,groupIdx} = update(currBoard,currGroup)
+    copy[boardIdx].groups[groupIdx].title = groupTitle
+    gBoards = copy
+    return gBoards[boardIdx]
+}
+
+function update(currBoard,currGroup=gBoards[0].groups[0]){
+    var copy = JSON.parse(JSON.stringify(gBoards))
+    const boardIdx = copy.findIndex(board => board._id === currBoard._id)
+    const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
+    return {boardIdx,copy,groupIdx}
+}
+
 function setBackground(board, background) {
     try {
         const currBoard = getById(board._id)
@@ -80,13 +119,3 @@ function setBackground(board, background) {
         console.log('err in setting background', err);
     }
 }
-
-
-// function selectImg(board,imgSrc) {
-//     return imgSrc
-// }
-// function selectColor(board,color) {
-//     return color
-// }
-
-

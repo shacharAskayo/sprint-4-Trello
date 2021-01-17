@@ -6,7 +6,7 @@ import { BoardList } from './cmps/BoardList.jsx'
 
 export function App() {
   return (
-    <div className="app">
+    <div className="app" >
       <Router>
         <div>
           <Switch>
@@ -19,5 +19,3 @@ export function App() {
     </div>
   )
 }
-
-//Todo: connect board 
