@@ -30,31 +30,20 @@ export class CardDescription extends Component {
 
     render() {
         const { description } = this.state
-        if (!description) return null
         return <div className="card-description hidden-btn">
             <header className="flex">
                 <SubjectRoundedIcon />
                 <h3>Description</h3>
             </header>
-            {/* <form className="hidden-btn" onSubmit={this.onChangeDesc}>
-                <div className="flex">
-                
-            <textarea 
-            name="description" 
-            value={description}
-            
-            />
-            </div>
-
-            <button>Save</button>
-            </form> */}
+        
             <div className={`hidden-actions-form-container`}>
-                <form onKeyDown={this.onChangeDesc} className={`hidden-actions-form`}>
+                <form onKeyDown={this.onChangeDesc} className={`hidden-actions-form flex full ${description ? '' : 'add'}`}>
                     <input
                         type="text"
                         onChange={({ target }) => this.setState({ description: target.value })}
                         value={description}
                         autocomplete="off"
+                        placeholder="Add a more detailed description..."
                     />
                 </form>
                 <div className="hidden-actions flex">

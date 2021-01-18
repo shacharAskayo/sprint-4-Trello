@@ -35,10 +35,10 @@ export function getBoardById(id) {
 }
 
 
-export function addCard(boardId, groupId, cardToAdd) {
+export function addCard(boardId, groupId, cardToAdd,isAdding) {
   return async dispatch => {
     try {
-      const board = await boardService.addCard(boardId, groupId, cardToAdd)
+      const board = await boardService.addCard(boardId, groupId, cardToAdd,isAdding)
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
@@ -147,3 +147,16 @@ export function editGroupTitle(board,group,groupTitle){
     }
   }
 }
+
+export function copyList(board,group){
+  return async dispatch => {
+    try {
+      const updatedBoard = await boardService.copyList(board,group)
+      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+    }
+    catch (err) {
+      console.log('boardActions: err in selectColor', err);
+    }
+  }
+}
+

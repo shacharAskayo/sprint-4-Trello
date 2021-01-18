@@ -21,5 +21,3 @@ export function App() {
     </div>
   )
 }
-
-//Todo: connect board 

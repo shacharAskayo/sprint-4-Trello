@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { cardService } from "../services/cardService";
 import { connect } from 'react-redux'
-import { updateBoardCard } from '../store/actions/boardAction'
+import { updateBoardCard,copyList } from '../store/actions/boardAction'
 import { CardPrev } from './CardPrev'
 import { CardPrev2 } from './CardPrev2'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
@@ -13,40 +13,37 @@ class _CardPreview extends Component {
 
     state = {
         isModalOpen: false,
-        labels: [],
+        // labels: [],
         isEdit: false,
-        title: ''
+        title: '',
+        card: null
     }
 
 
     componentDidMount() {
         const { card, board, isModalOpen } = this.props
-        // const updatedCard =cardService.getCardById()
-        // console.log(updatedCard);
-        const labels = cardService.getCardLabels(board, card.labels)
+        const updatedCard = cardService.getCardById(board, card.id)
+        // const labels = cardService.getCardLabels(board, card.labels)
         this.setState({
-            labels,
+            card: updatedCard,
             title: card.title
         })
     }
     componentDidUpdate(prevProps) {
-        // const { isModalOpen } = this.props
-        // if (prevProps !== this.props) {
-        //     this.setState({ isModalOpen: isModalOpen })
-        // }
+        const { card, board } = this.props
+        const updatedCard = cardService.getCardById(board, card.id)
+        if (prevProps !== this.props) {
+            this.setState({ card: updatedCard })
+
+        }
     }
 
-
-
-    onOpenLabel = () => {
+    onOpenLabel = (ev) => {
+        ev.preventDefault()
         this.props.openLabel()
     }
 
-    on = (id) => {
-        console.log('id:', id);
-    }
-    EnterEditMode = () => {
-        console.log('edit');
+    enterEditMode = () => {
         const { isEdit } = this.state
         this.setState({
             isEdit: !isEdit
@@ -57,6 +54,7 @@ class _CardPreview extends Component {
         const { value } = ev.target
         this.setState({ title: value })
     }
+
     onSave = () => {
         console.log('save');
         const { card, board } = this.props
@@ -67,10 +65,18 @@ class _CardPreview extends Component {
         this.setState({ isEdit: false })
     }
 
-    render() {
-        const { card, board,idx, isLabelOpen, currGroup } = this.props
-        const { labels, isEdit, title } = this.state
+    copyList=()=>{
+        const { currGroup,board } = this.props
+        this.props.copyList(board,currGroup)
+    }
 
+    render() {
+        //  frim props
+        const { board, idx, isLabelOpen, currGroup, enterEditMode, isEdit, exitEditMode,updateBoardCard,loggedUser } = this.props
+        // isEdit
+        const { title, card, } = this.state
+        if (!this.state.card) return <h1> loading</h1>
+        const { labels } = this.state.card
         return (
             <React.Fragment>
                 <Draggable
@@ -79,14 +85,15 @@ class _CardPreview extends Component {
                 >
                     {(draggbleProvided) => (
                         <div ref={draggbleProvided.innerRef}
-                        {...draggbleProvided.draggableProps}
-                        {...draggbleProvided.dragHandleProps}>
+                            {...draggbleProvided.draggableProps}
+                            {...draggbleProvided.dragHandleProps}>
 
-                            { <CardPrev isEdit={isEdit} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} EnterEditMode={this.EnterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
-                            {isEdit && <CardPrev2 onSave={this.onSave} currGroup={currGroup} isEdit={isEdit} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} EnterEditMode={this.EnterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
+
+                            { <CardPrev isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
+                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardPrev2 copyList={this.copyList}  loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
                         </div>
                     )}
-                    </Draggable>
+                </Draggable>
             </React.Fragment>
         )
     }
@@ -95,16 +102,18 @@ class _CardPreview extends Component {
 
 const mapStateToProps = state => {
     return {
-                    reviews: state.reviewModule.reviews,
+        reviews: state.reviewModule.reviews,
         cards: state.cardModule.cards,
         board: state.boardModule.board,
+        loggedUser:state.boardModule.loggedUser,
         isLabelOpen: state.boardModule.isLabelOpen
     }
 }
 const mapDispatchToProps = {
-                    updateBoardCard
+    updateBoardCard,
+    copyList
 
-                }
+}
 
 export const CardPreview = connect(mapStateToProps, mapDispatchToProps)(_CardPreview)
 

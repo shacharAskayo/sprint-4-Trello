@@ -12,21 +12,27 @@ import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 
 export function CardMenu(props) {
 
+    function setModal(modal,ev){
+        ev.stopPropagation()
+        ev.preventDefault() 
+        props.setCurrModal({name: modal})
+    }
+
     return (
-        <div className="card-action-menu flex col">
+        <div onClick={props.closeModal} className="card-action-menu flex col">
             <h5>ADD TO CARD</h5>
-            <span className="flex align-center" onClick={() => props.setCurrModal('members')}><PersonOutlineIcon/> Members</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('labels')}><LabelOutlinedIcon/> Labels</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('checklist')}><PlaylistAddCheckIcon/> Checklist</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('dueDate')}><AccessTimeIcon/> Due Date</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('attachment')}><AttachFileIcon style={{transform: "rotate(35deg)"}}/> Attachment</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('cover')}><WebIcon/> Cover</span>
+            <span className="flex align-center" onClick={(ev) => setModal('members',ev)}><PersonOutlineIcon/> Members</span>
+            <span className="flex align-center" onClick={(ev) => setModal('labels', ev)}><LabelOutlinedIcon/> Labels</span>
+            <span className="flex align-center" onClick={(ev) => setModal('checklist', ev)}><PlaylistAddCheckIcon/> Checklist</span>
+            <span className="flex align-center" onClick={(ev) => setModal('dueDate', ev)}><AccessTimeIcon/> Due Date</span>
+            <span className="flex align-center" onClick={(ev) => setModal('attachment', ev)}><AttachFileIcon style={{transform: "rotate(35deg)"}}/> Attachment</span>
+            <span className="flex align-center" onClick={(ev) => setModal('cover', ev)}><WebIcon/> Cover</span>
             <h5>ACTIONS</h5>
-            <span className="flex align-center" onClick={() => props.setCurrModal('move')}><ArrowRightAltIcon/> Move</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('copy')}><FileCopyOutlinedIcon/> Copy</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('watch')}><RemoveRedEyeOutlinedIcon/> Watch</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('archive')}><ArchiveOutlinedIcon/> Archive</span>
-            <span className="flex align-center" onClick={() => props.setCurrModal('share')}><ShareOutlinedIcon/> Share</span>
+            <span className="flex align-center" onClick={(ev) => setModal('move', ev)}><ArrowRightAltIcon/> Move</span>
+            <span className="flex align-center" onClick={(ev) => setModal('copy', ev)}><FileCopyOutlinedIcon/> Copy</span>
+            <span className="flex align-center" onClick={(ev) => setModal('watch', ev)}><RemoveRedEyeOutlinedIcon/> Watch</span>
+            <span className="flex align-center" onClick={(ev) => setModal('archive', ev)}><ArchiveOutlinedIcon/> Archive</span>
+            <span className="flex align-center" onClick={(ev) => setModal('share', ev)}><ShareOutlinedIcon/> Share</span>
         </div>
     )
 }

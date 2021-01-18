@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { CardList } from "./CardList";
 import { connect } from 'react-redux'
 import { loadCards } from '../store/actions/cardActions'
-import { addCard, openLabel, editGroupTitle } from '../store/actions/boardAction'
+import { addCard, openLabel, editGroupTitle,copyList } from '../store/actions/boardAction'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
+import { GroupMenu } from './GroupMenu';
+import { AddCardInput } from './AddCardInput';
 
 
 export class _GroupPreview extends Component {
@@ -16,7 +18,7 @@ export class _GroupPreview extends Component {
             id: '',
             title: '',
             description: '',
-            createdAt: Date.now(),
+            createdAt: '',
             dueDate: '',
             style: {},
             comments: [],
@@ -26,8 +28,12 @@ export class _GroupPreview extends Component {
             labels: []
         },
         isAdding: false,
-        isChangeTitle: false
+        isChangeTitle: true,
+        isMenuOpen: false,
+        isAddingToTop:false,
+        topTitle:''
     }
+
 
     componentDidMount() {
         const { group } = this.props
@@ -40,32 +46,37 @@ export class _GroupPreview extends Component {
         this.setState({ isAdding: true })
     }
     handleChange = (ev) => {
-        const { card } = this.state
+        const { card} = this.state
         const { value } = ev.target
         this.setState({
             card: { ...card, title: value }
         })
     }
-    onAddCard = async () => {
-        const { card } = this.state
+    onAddCard = async (ev) => {
+        const { card,isAddingToTop } = this.state
         const { board, group } = this.props
-        this.props.addCard(board._id, group.id, card)
+        this.props.addCard(board._id, group.id, card,isAddingToTop)
         this.setState({
-            card: { ...card, title: '' },
-            isAdding: false
+            card: { 
+                createdBy: {},
+                id: '',
+                title: '',
+                description: '',
+                createdAt: '',
+                dueDate: '',
+                style: {},
+                comments: [],
+                checklists: [],
+                attachments: [],
+                members: [],
+                labels: []
+            },
+            isAdding: false,
+            isAddingToTop:false
         })
+        // ev.currentTarget?.blur()
     }
 
-    // handleOnDragEnd = (result) => {
-    //     if (!result.destination) return;
-    //     const { board, group } = this.props
-    //     const { cards } = group
-    //     const items = Array.from(cards)
-    //     const [reorderedItem] = items.splice(result.source.index, 1)
-    //     items.splice(result.destination.index, 0, reorderedItem)
-    //     this.setState({ cards: items })
-    //     this.props.updateCardsLocation(board, group, items)
-    // }
 
     handleEditGroupTitle = (ev) => {
         const { value } = ev.target
@@ -88,53 +99,61 @@ export class _GroupPreview extends Component {
     }
     handleEnter = (ev) => {
         if (ev.key === 'Enter') {
+            ev.currentTarget?.blur()
             this.onAddCard()
-            ev.currentTarget.blur()
         }
+    }
+    toggleMenu = () => {
+        const { isMenuOpen } = this.state
+        this.setState({ isMenuOpen: !isMenuOpen })
+        
+    }
+    openInput=(ev)=>{
+        ev.preventDefault()
+        ev.stopPropagation()
+        this.setState({isAddingToTop:true,isMenuOpen:false})
+    }
+    
+    copyList=()=>{
+        const { group,board } = this.props
+        this.props.copyList(board,group)
+        this.setState({isMenuOpen:false})
+    }
+    
+    closeMenu=()=>{
+        const { isMenuOpen } = this.state
+        if(isMenuOpen) this.setState({isMenuOpen:false})
     }
 
     render() {
-        const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation } = this.props
+        const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation,isEdit,enterEditMode,exitEditMode } = this.props
         const { cards } = group
-        const { isAdding, groupTitle, isChangeTitle } = this.state
+        const { isAdding, groupTitle, isChangeTitle, isMenuOpen,isAddingToTop,topTitle } = this.state
         const { title } = this.state.card
         return (
             <Draggable draggableId={listId} index={idx} >
                 {provided => (
-                    <div className="group-preview" ref={provided.innerRef} {...provided.draggableProps} >
+                    <div className="group-preview" onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
                         <div {...provided.dragHandleProps} listId={listId}>
-                            <span className="group-menu-btn" onClick={this.openMenu}>...</span>
+                            <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
+
+                            {isMenuOpen && <GroupMenu  openInput={this.openInput} copyList={this.copyList} />}
+
                             <div className={`hidden-actions-form-container`}>
                                 <form action="" className={`hidden-actions-form`}>
-
                                     <input className="group-title-input" onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
-
                                 </form>
                                 {isChangeTitle && <div className="hidden-actions flex">
-                                    <button type="button" onClick={this.editGroupTitle} style={{ marginLeft: '6px' }} > save </button>
-                                    <button onClick={this.discardChanges} className="icon">
-                                        <CloseSharpIcon />
-                                    </button>
-                                </div>
-                                }
+                                    <button type="button" onClick={this.editGroupTitle} style={{ marginLeft: '0' }} > save </button>
+                                    <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
+                                </div>}
                             </div>
                         </div>
-                        <CardList listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
+                        
+                        {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
+                        <CardList  exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
+                        {!isAddingToTop&&<AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
 
-                        <div className="hidden-actions-form-container">
-
-                            <form action="" className="hidden-actions-form">
-                                <input onClick={this.onShowAddBtn} onKeyDown={this.handleEnter} value={title} type="text" placeholder="+ Add another card " onChange={this.handleChange} />
-                            </form>
-
-                            <div className="hidden-actions flex">
-                                <button onClick={this.onAddCard}> Add Card</button>
-                                <button onClick={this.discardChanges} className="icon">
-                                    <CloseSharpIcon />
-                                </button>
-
-                            </div>
-                        </div>
 
                     </div>
                 )}
@@ -155,38 +174,8 @@ const mapDispatchToProps = {
     loadCards,
     addCard,
     openLabel,
-
+    copyList,
     editGroupTitle
 }
 
 export const GroupPreview = connect(mapStateToProps, mapDispatchToProps)(_GroupPreview)
-
-
-/**{
- *
- *
- *
- *          TOP
- *             // <Droppable droppableId={group.id} type="CARD">
-            //  {(provided)=>(
-                // <div className="group-preview" ref={provided.innerRef} {...provided.droppableProps}    >
-                  // )}
-            //  </Droppable>
-
-
-
-        const {group,board,isLabelOpen,openLabel,updateCardsLocation} = this.props
-        const { cards } = group
-        const { isAdding } = this.state
-        const { title } = this.state.card
-        return (
-            <div className="group-preview" >
-                <h3>{group.title}</h3>
-                <CardList cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group}/>
-                <form action="">
-                <input onClick={this.onShowAddBtn} value={title} type="text" placeholder="+ Add another card " onChange={this.handleChange} />
-                { isAdding && <button onClick={this.onAddCard}> Add Card</button>}
-                </form>
-            </div>
-        )
-    } */

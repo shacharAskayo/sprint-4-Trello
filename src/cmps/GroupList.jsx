@@ -15,8 +15,12 @@ export class GroupList extends Component {
             style: {},
             cards: []
         },
-        isAdding: false
-    }
+        isAdding: false,
+        isEdit:{
+            isOpen:false,
+            id:''
+        }
+    } 
 
 
     handleChange = (ev) => {
@@ -30,7 +34,7 @@ export class GroupList extends Component {
     onShowAddBtn = () => {
         this.setState({ isAdding: true })
     }
-    onAddGroup = () => {
+    onAddGroup = (ev) => {
         const { group } = this.state
         const { board } = this.props
         this.props.addGroup(board._id, group)
@@ -38,17 +42,20 @@ export class GroupList extends Component {
             group: { ...group, title: '' },
             isAdding: false
         })
+        // ev.currentTarget.blur()
+
+    }
+
+    handleEnter = (ev) => {
         
-    }
-
-    handleEnter=(ev)=>{
-        if(ev.key==='Enter'){
+        if (ev.key === 'Enter') {
+            ev.preventDefault()
             this.onAddGroup()
-            ev.currentTarget.blur()
-        } 
+            // ev.currentTarget.blur()
+        }
     }
 
-    discardChanges=(ev)=>{
+    discardChanges = (ev) => {
         const { group } = this.state
         this.setState({
             group: { ...group, title: '' },
@@ -68,50 +75,70 @@ export class GroupList extends Component {
     //     items.splice(result.destination.index, 0, reorderedItem)
     //     this.props.updateGroupLoaction(board, items)
     // }
-    
-    handleDrag=(result)=>{
-        const {board} = this.props
-        const {source,destination}  = result
-        
-        if(result.type==='GROUP'){
+
+    handleDrag = (result) => {
+        const { board } = this.props
+        const { source, destination } = result
+
+        if (result.type === 'GROUP') {
             const groupId = result.draggableId
-            this.props.updateGroupLoaction(board,groupId,source,destination)
-        }else{
+            this.props.updateGroupLoaction(board, groupId, source, destination)
+        } else {
             const cardId = result.draggableId
-            this.props.updateCardLocation(board,cardId,source,destination)
-            
+            this.props.updateCardLocation(board, cardId, source, destination)
+
         }
-        
+
+    }
+    enterEditMode = (ev,id) => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        this.setState({
+            isEdit:{isOpen:true,id:id} 
+        })
     }
     
+    exitEditMode = (ev) => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        this.setState({
+            isEdit:{isOpen:false,id:''}
+         })
+    }
+
     render() {
         const { groups } = this.props.board
+        const { isEdit } = this.state
         return (
             // <DragDropContext onDragEnd={this.handleOnDragEnd}>
             <DragDropContext onDragEnd={this.handleDrag}>
                 <Droppable droppableId="board" type="GROUP" direction="horizontal">
                     {provided => (
 
-                        <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.onEditModalClose}   >
-                            {groups && groups.map((group, idx) => {
-                                return (
-                                    <GroupPreview key={group.id} idx={idx} listId={group.id} group={group} />
-                                )
-                            })}
-                            {provided.placeholder}
+                        // <div onClick={this.exitEditMode} >
 
-                            <div className="hidden-actions-form-container" >
-                                <form action="" className="hidden-actions-form">
-                                    <input onKeyDown={this.handleEnter}  className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title}  onChange={this.handleChange} />
-                                </form>
-                                <div className="hidden-actions flex list">
-                                      <button onClick={this.onAddGroup}>Add List</button>
-                                    <button onClick={this.discardChanges} className="icon">
-                                        <CloseSharpIcon />
-                                    </button>
+                            <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.exitEditMode}  >
+                                {groups && groups.map((group, idx) => {
+                                    return (
+                                        <GroupPreview exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
+                                    )
+                                })}
+                                {provided.placeholder}
+
+                                <div className="hidden-actions-form-container add-group" >
+                                    <form action="" className="hidden-actions-form">
+                                        <input onKeyDown={this.handleEnter} className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onChange={this.handleChange} />
+                                    </form>
+                                    <div className="hidden-actions flex list">
+                                        <button onClick={this.onAddGroup}>Add List</button>
+                                        <button onClick={this.discardChanges} className="icon">
+                                            <CloseSharpIcon />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        // </div>
+
                     )}
                 </Droppable>
             </DragDropContext>

@@ -1,5 +1,6 @@
 .card-modal-screen {
     min-height: 100vh;
+    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
@@ -66,6 +67,23 @@
         }
         a .MuiSvgIcon-root:hover {
             background-color: $sec-bgc;
+        }
+    }
+    .card-members{
+        margin-right: 10px;
+
+        div{
+            margin-right: 4px;
+        }
+        .add-user-button {
+
+            .MuiAvatar-root{
+                background-color: $light-bgc;
+                color: $clr2;
+            }
+            .MuiAvatar-root:hover{
+                background-color: $sec-bgc;
+            }
         }
     }
 }

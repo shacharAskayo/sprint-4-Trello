@@ -1,25 +1,28 @@
 import { Component } from "react";
+import { LabelListModal } from "./LabelListModal";
 
-export class LabelList extends Component {
-    state = {
+export function LabelList(props) {
+
+    function openModal(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        props.setCurrModal({ name: 'labels', style: { top: '21%', left: 'calc(50% - 100px)' } })
     }
 
-    componentDidMount() {
-    }
-
-    render() {
-        const { labels } = this.props.card
-        return (
-            <div>
-                <h5>LABELS</h5>
-                <div className="label-container flex">
-                    {labels.map(label =>
-                        <div key={label.id} className={`label is-open`} style={{ backgroundColor: label.color }}>
-                            {label.title}
-                        </div>
-                    )}
-                </div>
+    const { card, board, save } = props
+    return (
+        <div className="card-labels">
+            <h5>LABELS</h5> 
+            <div className="label-container flex">
+                {card.labels.map(label =>
+                    <div onClick={openModal} key={label.id} className={`label flex center`} style={{ backgroundColor: label.color }}>
+                        {label.title}
+                    </div>
+                )}
+                <div onClick={openModal} className="add-label flex center">+</div>
             </div>
-        )
-    }
+
+        </div>
+    )
+
 }

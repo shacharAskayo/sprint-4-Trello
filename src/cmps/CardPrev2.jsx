@@ -12,43 +12,101 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import { Archive } from '@material-ui/icons';
+import { DynamicCardActionModal } from "../cmps/card/DynamicCardActionModal";
+import {cardService} from '../services/cardService'
 
 
 
 
 export class CardPrev2 extends Component {
     state={
-        editPos:70
+        editPos:100,
+        isModalOpen:false,
+        currModal:{
+            name:'',
+            style:{
+                position:'absolute',
+                // top:'20px',
+                left:'257px',
+                'z-index':'20'
+            }
     }
+}
+
+
+
     componentDidMount(){
+        const {currGroup,board} =this.props
+        const idx = board.groups.findIndex(group=>group.id===currGroup.id)
+            const pos = idx+1
+            const finalPos=266*pos        
+        this.setState({
+            // currModal:{...this.state.currModal, style:{...this.state.currModal.style,left:`${finalPos}px`}}
+        })
         this.findCardPos()
     }
+
+
 
     findCardPos=()=>{
         const {editPos}=this.state
         const {currGroup,card}=this.props
         const idx = currGroup.cards.findIndex( groupCard=>groupCard.id===card.id)
-        const top=idx+1
-        const pos= editPos*top
+        var pos= editPos*idx
+        // if(card.labels.length>0 || card.comments.length>0||card.description.length>0) pos+=120
         if(idx===0){
-            
             this.setState({editPos:40})
-        }else{
+        }
+        else if(idx=== 1)this.setState({editPos:120})
+        else if(pos>=160)this.setState({editPos:160}) 
+        else{
             this.setState({editPos:pos})
         }
         
     }
-    test=()=>{
-        console.log('test');
+
+
+
+    edit=(ev)=>{
+        ev.stopPropagation()
+        ev.preventDefault()
+    }
+    
+    openModal=(currName)=>{
+        this.setState({isModalOpen:true,
+        currModal:{...this.state.currModal,name:currName}
+        })
+    }
+    closeModal=()=>{
+        this.setState({isModalOpen:false})
+    }
+
+    
+    saveCardChanges = async (card, txt) => {
+        var { board, loggedUser } = this.props
+        if (txt) {
+            const activity = cardService.getActivityToAdd(card, loggedUser, txt)
+            board = {...board, activities: [activity, ...board.activities]}
+        }
+        await this.props.updateBoardCard(board, card)
+        this.loadCard()
+    }
+    
+    loadCard = () => {
+        const { board } = this.props
+        const { cardId } = this.props.card.id
+        if (cardId && board.groups) {
+            const card = cardService.getCardById(board, cardId)
+            this.setState({ card })
+        } else this.setState({ card: null })
     }
 
     render() {
-        const {editPos}=this.state
-        const { labels, isEdit,onSave, currGroup, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode } = this.props
+        const {editPos,currModal,isModalOpen}=this.state
+        const {copyList, labels, isEdit,onSave, currGroup, onOpenLabel, updateBoardCard, card, isLabelOpen, board, handleChange, title, enterEditMode,exitEditMode } = this.props
         return (
             <React.Fragment>
-
-                <div className={`${isEdit ? 'edit' : ''}`}  style={{top:`${editPos}px`}}>
+                <div onClick={this.edit} className={`${isEdit ? 'edit' : ''}`}  style={{top:`${editPos}px`}}>
 
                     <div className="edit-container">
 
@@ -75,7 +133,7 @@ export class CardPrev2 extends Component {
                                     </div>
                                 </Link>
                                 <span className="edit-icon" onClick={(ev) => {
-                                }} onClick={EnterEditMode} >
+                                }} onClick={(ev)=>enterEditMode(ev,card.id)} >
                                     <EditIcon />
                                 </span>
                             </div>
@@ -91,12 +149,11 @@ export class CardPrev2 extends Component {
 
 
                         { <div className={'edit-menu'}>
-                        
                             <div className="edit-menu-btn">  <PaymentIcon className="edit-menu-icons rotate" /> <span>  Open Card </span></div>
-                            <div className="edit-menu-btn">  <LabelOutlinedIcon className="edit-menu-icons"  />  Edit labels </div>
-                            <div className="edit-menu-btn"> <PersonOutlineIcon className="edit-menu-icons"/> change members</div>
+                            <div className="edit-menu-btn" onClick={()=>this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons"  />  Edit labels </div>
+                            <div className="edit-menu-btn" > <PersonOutlineIcon className="edit-menu-icons"/> change members</div>
                             <div className="edit-menu-btn"> <ArrowRightAltIcon className="edit-menu-icons"/> move  </div>
-                            <div className="edit-menu-btn"> <PaymentIcon className="edit-menu-icons rotate"/> copy </div>
+                            <div className="edit-menu-btn"  onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate"/> copy </div>
                             <div className="edit-menu-btn"> <AccessTimeIcon className="edit-menu-icons"/> change due date </div>
                             <div className="edit-menu-btn"> <ArchiveOutlinedIcon className="edit-menu-icons"/> archive </div>
                         </div>
@@ -104,10 +161,16 @@ export class CardPrev2 extends Component {
 
 
                     </div>
-
                     <div className='card-save-btn'>
-                        <button   onClick={onSave} style={{cursor:'pointer'}} >Save</button>
+                        <button   onClick={exitEditMode} style={{cursor:'pointer'}} >Save</button>
                     </div>
+
+               {isModalOpen&& <div className="card-edit-modals" >   
+                    <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board}/>
+                </div>
+                }
+
+
 
                 </div >
             </React.Fragment >

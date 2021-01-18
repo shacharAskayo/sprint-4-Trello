@@ -5,13 +5,17 @@ import { CardChecklistList } from "./CardChecklistList";
 import { CardCommentList } from "./CardCommentList";
 import { CardDescription } from "./CardDescription";
 import { LabelList } from "./LabelList";
+import { MemberList } from "./MemberList";
 
 class _CardContent extends Component {
 
     render() { 
-        const {card, save, user} = this.props
-        return <div onClick={this.props.closeActionsModal} className="card-content">
-            <LabelList card={card} user={user} save={save}/>
+        const {card, save, user, board} = this.props
+        return <div onClick={this.props.closeModal} className="card-content">
+            <div className="flex wrap">
+            <MemberList setCurrModal={this.props.setCurrModal} card={card} save={save} user={user} board={board}/>
+            <LabelList setCurrModal={this.props.setCurrModal} card={card} save={save} user={user} board={board}/>
+            </div>
             <CardDescription card={card} user={user} save={save}/>
             <CardChecklistList card={card} user={user} save={save}/>
             <CardAttachmentList card={card} user={user} save={save}/>

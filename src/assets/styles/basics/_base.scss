@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 ::selection {
     background-color: $clr1;
     color: $clr6;
@@ -12,10 +13,13 @@ html {
     line-height: 1.6;
 }
 
+
 body {
     margin: 0;
     color: $clr1;
+    // overflow-y: hidden;
     overflow: hidden;
+    max-height: 100%;
 }
 
 h1,
@@ -55,6 +59,12 @@ button:focus {
 
 * {
     transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.MuiAvatar-root {
+    text-transform: capitalize;
+    height: em(30px);
+    width: em(30px);
 }
 
 // :focus{

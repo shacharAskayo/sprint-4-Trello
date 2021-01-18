@@ -1,8 +1,40 @@
 .card-list{
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
     width: 250px;
-    overflow: overlay;
-    max-height: 50vh;
+    overflow-y: auto;
+    max-height: 61vh;
+  
 }
+.card-list::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    position: absolute;
+    z-index: 0;
+  }
+  /* Track */
+  .card-list::-webkit-scrollbar-track {
+    background: rgba(9,30,66,.08);; 
+    border-radius: 8px;
+  }
+  /* Handle */
+  .card-list::-webkit-scrollbar-thumb {
+    background: rgba(190, 190, 189, 0.788);
+    border-radius: 8px;
+    // border
+    
+  }
+
+  .add.card.input.bottom{
+    // transition: all 0.2s;
+  }
+
+  .add.card.input.bottom:focus{ //ask or about: add and enter get problems if i css the focus
+    // outline: none;
+    // // background-color: pink;
+    // // background-color: inherit;
+    // box-shadow: 0px 1px 1px 0px #888888;
+    // border-radius: 3px;
+    // padding-bottom: 45px ;
+    // width: 238px;
+  }

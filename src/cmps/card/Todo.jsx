@@ -17,12 +17,16 @@ export class Todo extends Component {
         this.refInput = React.createRef()
     }
 
-    handelInput = async ({ target }) => {
-        const { name, value, checked, type } = target
-        if (type === 'checkbox') {
-            await this.setState(prevState => ({ todo: { ...prevState.todo, [name]: checked } }))
-            this.saveTodo()
-        } else this.setState(prevState => ({ todo: { ...prevState.todo, [name]: value } }))
+    handelInput = (ev) => {
+        const { name, value} = ev.target
+        this.setState(prevState => ({ todo: { ...prevState.todo, [name]: value } }))
+    }
+
+    toggleIsDone = async(ev) => {
+        const { checked } = ev.target
+        await this.setState(prevState => ({ todo: { ...prevState.todo, isDone: checked } }))
+        console.log();
+        this.saveTodo()
     }
 
     discardChanges = () => {
@@ -36,8 +40,8 @@ export class Todo extends Component {
 
     saveTodo = (ev) => {
         if (ev?.key && ev.key !== "Enter") return
-        ev.preventDefault()
-        if (this.state.todo.id) ev.currentTarget.blur()
+        ev && ev.preventDefault()
+        if (this.state.todo.id) ev?.currentTarget.blur()
         const { todo } = this.state
         if (!todo.title) return
         this.props.saveTodo(todo)
@@ -56,16 +60,18 @@ export class Todo extends Component {
         const { isInputFocused } = this.state
 
 
+
         return (
-            <div className={`card-todo-preview hidden-actions-form-container ${isAdd ? 'add' : ''}`}>
-                <form onKeyDown={this.saveTodo} className={`hidden-actions-form ${isAdd ? 'add' : ''}`}>
-                    <input
-                        type="checkbox"
-                        onChange={this.handelInput}
-                        name="isDone"
-                        checked={this.state.todo.isDone}
-                        style={{ visibility: isAdd ? 'hidden' : 'visible' }}
+            <section className="card-todo-preview flex align-start">
+                <input
+                    type="checkbox"
+                    onChange={this.toggleIsDone}
+                    name="isDone"
+                    checked={this.props.todo?.isDone}
+                    style={{ visibility: isAdd ? 'hidden' : 'visible' }}
                     />
+            <div className={`hidden-actions-form-container  ${isAdd ? 'add' : ''}`}>
+                <form onKeyDown={this.saveTodo} className={`hidden-actions-form ${isAdd ? 'add' : ''}`}>
                     <input
                         autoFocus={isInputFocused}
                         type="text"
@@ -73,24 +79,25 @@ export class Todo extends Component {
                         ref={this.refInput}
                         name="title" placeholder="Add an item"
                         value={this.state.todo.title}
-                        autocomplete="off"
-                    />
+                        autoComplete="off"
+                        />
                 </form>
                 <div className="hidden-actions flex">
                     <button
                         type="button"
                         onClick={this.saveTodo}
-                    >
+                        >
                         {isAdd ? 'Add' : 'Save'}
                     </button>
                     <button
                         onClick={this.discardChanges}
                         className="icon"
-                    >
+                        >
                         <CloseSharpIcon />
                     </button>
                 </div>
             </div>
+        </section>
         )
     }
 }

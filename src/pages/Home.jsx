@@ -20,7 +20,6 @@ class _Home extends Component {
             { color: 'pink' }
         ],
         board:{
-            _id:'',
             title:'',
             createdAt:Date.now(),
             style:{},

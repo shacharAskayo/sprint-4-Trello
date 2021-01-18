@@ -15,7 +15,7 @@ class _Card extends Component {
 
     state = {
         card: null,
-        currModal: null
+        currModal: {}
     }
 
     componentDidMount() {
@@ -55,13 +55,22 @@ class _Card extends Component {
         this.saveCardChanges(this.state.card,'Edited card title')
     }
 
+    closeModal = () =>{
+        const {currModal} = this.state
+        if (currModal?.name) this.setState({currModal: null})
+    }
+
+    setCurrModal = (currModal) => {
+        this.setState({currModal})
+    }
+
     render() {
         const { board, loggedUser } = this.props
         const { card, currModal } = this.state
         if (!card) return null
         return (
             <Link to={`/board/${board._id}`}>
-                <section className={"card-modal-screen flex justify-center"}>
+                <section onClick={this.closeModal} className={"card-modal-screen flex justify-center"}>
                     <div onClick={(ev) => { ev.preventDefault() }} className="card-modal grid">
                         <div className="header flex">
                             <WebIcon />
@@ -73,9 +82,9 @@ class _Card extends Component {
                             />
                             <Link to={`/board/${board._id}`}><CloseSharpIcon /></Link>
                         </div>
-                        <CardContent closeActionsModal={() => this.setState({currModal: null})} user={loggedUser} card={card} save={this.saveCardChanges} />
-                        <CardMenu setCurrModal={(currModal) => this.setState({ currModal })} />
-                        <DynamicCardActionModal closeModal={() => this.setState({ currModal: null })} currModal={currModal} card={card} board={board}/>
+                        <CardContent setCurrModal={this.setCurrModal} closeModal={this.closeModal} user={loggedUser} board={board} card={card} save={this.saveCardChanges} />
+                        <CardMenu setCurrModal={this.setCurrModal} closeModal={this.closeModal}/>
+                        <DynamicCardActionModal closeModal={this.closeModal} save={this.saveCardChanges} currModal={currModal} card={card} board={board}/>
                     </div>
                 </section>
             </Link>
