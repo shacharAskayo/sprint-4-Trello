@@ -81,6 +81,7 @@
 .edit-menu {
     // position: absolute;
     // left: 250px;
+    top: 39px;
     display: grid;
     flex-direction: column;
     justify-content: space-around;
@@ -120,7 +121,7 @@
     button {
         background-color: #5aac44;
         position: absolute;
-        top: 137px;
+        top: 175px;
         // top: 235px;
         border-radius: 4px;
         color: #fff;

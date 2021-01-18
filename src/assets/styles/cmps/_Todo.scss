@@ -1,5 +1,12 @@
 .card-todo-preview{
     padding: 10px 0;
+
+    .hidden-actions-form-container{
+        width: 95%;
+    }
+    input[type="checkbox"]{
+        margin-top: 0.5em;
+    }
 }
 
 .card-todo-preview:hover:not(.add){

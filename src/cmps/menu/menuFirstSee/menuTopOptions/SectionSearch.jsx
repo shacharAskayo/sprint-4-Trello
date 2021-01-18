@@ -3,7 +3,6 @@ import { Component } from 'react'
 //cmps:
 import { LabelSearchBy } from './menuSearchBy/LabelSearchBy'
 import { UserSearchBy } from './menuSearchBy/UserSearchBy'
-// import { connect } from 'react-redux'
 
 export class SectionSearch extends Component {
 

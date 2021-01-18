@@ -58,6 +58,10 @@
     &.space-bt {
         justify-content: space-between;
     }
+    &.todo-form{
+        align-items: flex-start;
+        justify-content: stretch;
+    }
 }
 
 //grid helpers

@@ -68,6 +68,23 @@
             background-color: $sec-bgc;
         }
     }
+    .card-members{
+        margin-right: 10px;
+
+        div{
+            margin-right: 4px;
+        }
+        .add-user-button {
+
+            .MuiAvatar-root{
+                background-color: $light-bgc;
+                color: $clr2;
+            }
+            .MuiAvatar-root:hover{
+                background-color: $sec-bgc;
+            }
+        }
+    }
 }
 
 .card-action-menu {

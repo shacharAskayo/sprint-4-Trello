@@ -45,19 +45,18 @@ export class SectionBackground extends Component {
                         </button>
                     </div>
                 </section>}
-                {currType && <button className="back-bg-btn" onClick={this.goBackBg}><ArrowBackIosIcon /></button>}
-                <hr className="hr-menu" />
-                <DynamicCmpBg currType={currType} />
+                {currType === null && <hr className="hr-menu" />}
+                <DynamicCmpBg currType={currType} goBack={this.goBackBg} />
             </section>
         )
     }
 }
-function DynamicCmpBg({ currType }) {
+function DynamicCmpBg({ currType, goBack }) {
     switch (currType) {
         case 'PhotosArea':
-            return <PhotosArea />
+            return <PhotosArea goBack={goBack} />
         case 'ColorsArea':
-            return <ColorsArea />
+            return <ColorsArea goBack={goBack} />
         default:
             return <h1></h1>
     }

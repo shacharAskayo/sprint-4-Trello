@@ -1,7 +1,32 @@
 .group-container {
-        .hidden-actions.flex.list{
-            height: 50px;
+        .hidden-actions-form-container{
+            align-self: flex-start;
+            padding: 5px;
         }
+        .hidden-actions-form-container:focus-within{
+            background-color: $main-bgc;
+            border-radius: 3px;
+            input[type="text"]{
+                min-height: 1em;
+                max-height: 1.5em;
+                padding: 2px;
+            }
+        }
+
+        .hidden-actions.flex.list > *{
+            justify-self: flex-start;
+            align-self: flex-start;
+        }
+        .add-group{
+            button.icon{
+               padding: 4px 4px 2px;
+                .MuiSvgIcon-root{
+                    font-size: 1.3em;
+                    
+                }
+            }
+        }
+        
 
     height: 80vh;
     display: flex;
@@ -10,11 +35,11 @@
         border: 0;
         margin: 0;
             // margin-top: -30px;
-        padding: 10px;
+        padding-bottom: 10px;
     }
     .add-list-input::placeholder {
         color: rgba(53, 52, 52, 0.767);
-        font-size: 16px;
+        font-size: 14px;
     // color: red;
         // opacity: 1; /* Firefox */
       }

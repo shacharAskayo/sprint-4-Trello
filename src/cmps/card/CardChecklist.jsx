@@ -12,7 +12,7 @@ export class CardChecklist extends Component {
     get progress() {
         const { todos } = this.props.checklist
         const doneTodos = todos.filter(todo => todo.isDone)
-        return doneTodos.length / todos.length * 100
+        return (doneTodos.length / todos.length * 100) || 0
     }
     onToggleAdd = () => {
         this.setState({ isAddOpen: !this.state.isAddOpen })

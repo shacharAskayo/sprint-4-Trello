@@ -21,7 +21,8 @@ export const boardService = {
     updateGroupTitle,
     setBackground,
     updateBoardDesc,
-    getActivities
+    getActivities,
+    editCurrLabel
 
 }
 
@@ -48,7 +49,8 @@ function getById(id) {
     // return Promise.resolve(currBoard)
 }
 
-function updateBoardCard(board, card) { //will it be a problem with idxs due to d&d?
+function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
+    const board = JSON.parse(JSON.stringify(currBoard))
     const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
@@ -156,4 +158,34 @@ function getActivities(currBoard, filter) {
     if (filter === 'all')
         return [...cardsActivities, ...boardActivities]
     else return [...cardsActivities]
+}
+
+
+
+async function editCurrLabel(boardId, label, deleteOption) {
+    try {
+        var copy = JSON.parse(JSON.stringify(gBoards))
+        const boardIdx = gBoards.findIndex(board => board._id === boardId)
+        if (label.id) {
+            var labelIdx = copy[boardIdx].labels.findIndex(currLabel => {
+                return currLabel.id === label.id
+            })
+            if (deleteOption !== 'delete') {
+                var editedLabel = { ...label, color: label.color, title: label.title, id: label.id }
+                copy[boardIdx].labels[labelIdx] = editedLabel
+            } else {
+                copy[boardIdx].labels.splice(labelIdx, 1)
+            }
+        }
+        else {
+            var newLabel = { ...label, id: utilService.makeId(), color: label.color, title: label.title }
+            copy[boardIdx].labels.push(newLabel)
+        }
+
+        gBoards = copy
+        return Promise.resolve(gBoards[boardIdx])
+    }
+    catch (err) {
+        console.log('err in adding labels', err);
+    }
 }

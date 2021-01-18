@@ -17,6 +17,7 @@ function getCardById(board, cardId) {
     board.groups.forEach(group => group.cards.forEach(card => {
         if (card.id === cardId) currCard = card
     }))
+    if (!currCard) return null
     const labels = getCardLabels(board, currCard.labels)
     const activities = _getCardActivities(board, cardId)
     return {...currCard, labels, activities }
@@ -25,7 +26,8 @@ function getCardById(board, cardId) {
 function getCardForUpdate(card){
     delete card.activities
     const labels = card.labels.map(label => label.id)
-    return {...card, labels}
+    const newCard = JSON.parse(JSON.stringify(card))
+    return {...newCard, labels}
 
 
 }

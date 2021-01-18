@@ -24,14 +24,15 @@
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
             sans-serif;
         font-size: 14px;
-        color: $clr2;
+        color: #172b4d;
         font-weight: 400;
-        margin-bottom: 12px;
         padding: 8px 12px;
-        width: 96%;
-        background-color: $clr6;
+        width: 89%;
+        background-color: #fff;
         border-radius: 3px;
-        margin-left: 18px;
+        margin-left: 14px;
+        position: fixed;
+        margin-top: -30px;
         input {
             padding-left: 32px;
             border: none;
@@ -48,7 +49,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
-        margin: 30px 10px 0 30px;
+        margin: 30px 10px 23px 30px;
         .photos {
             margin-right: 5px;
         }
@@ -60,5 +61,15 @@
         box-shadow: 1px -1px 6px 0px black;
         object-fit: cover;
         transition: 0.2s;
+    }
+    .go-back {
+        cursor: pointer;
+        color: $clr2;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+    }
+    .go-back:hover {
+        text-decoration: underline;
     }
 }
