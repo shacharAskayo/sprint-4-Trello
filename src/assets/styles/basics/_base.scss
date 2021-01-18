@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+.app {
+    height: 100vh;
+    background-color: cadetblue;
+}
 ::selection {
     background-color: $clr1;
     color: $clr6;

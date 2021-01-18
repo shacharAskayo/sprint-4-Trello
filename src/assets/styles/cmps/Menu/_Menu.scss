@@ -4,13 +4,15 @@
     right: 0;
     height: 94%;
     width: 340px;
+    z-index: 1;
     background-color: $main-bgc;
     text-align: center;
+    padding-bottom: 20px;
     justify-content: flex-start;
-    transition: all 0.2s ease;
+    transition: all 0.4s ease;
     transform: translateX(100%);
     box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
-
+    margin-top: 38px;
     &.open {
         transform: translateX(0);
         .menu-btn {
@@ -41,7 +43,6 @@
         display: grid;
         grid-template-columns: 1fr 10fr 1fr;
         align-items: flex-end;
-        margin-top: -5px;
 
         h3 {
             grid-column: 2/3;
@@ -93,6 +94,10 @@
     }
     .menu-options {
         margin-left: 10px;
+        margin-top: 16px;
+        .top-option {
+            padding-top: 9px;
+        }
     }
     .menu-option {
         background-color: transparent;
@@ -101,7 +106,7 @@
         padding: 2px;
         margin-bottom: 0;
         margin-top: 0;
-        color: $clr2;
+        color: #153976;
         overflow-y: overlay;
         padding-left: 20px;
         transition: 0;
@@ -146,6 +151,8 @@
         font-size: 14px;
         font-weight: 400;
         cursor: pointer;
+        width: 97%;
+        text-align: start;
     }
     .view-all-activities-span:hover {
         background-color: rgba(9, 30, 66, 0.08);

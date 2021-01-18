@@ -1,7 +1,7 @@
 import { Component } from "react";
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import {cardService} from '../../services/cardService';
+// import { cardService } from '../../services/cardService';
 import { Save } from "@material-ui/icons";
 
 
@@ -18,14 +18,14 @@ export class LabelListModal extends Component {
         return labels.filter(label => label.title.match(regex))
     }
 
-    onAddLable = (label ) => {
-        const card = {...this.props.card, labels:[...this.props.card.labels, label]}
+    onAddLable = (label) => {
+        const card = { ...this.props.card, labels: [...this.props.card.labels, label] }
         this.props.save(card, `added label ${label.title}`)
     }
 
     removeLabel = (labelId) => {
         const labels = this.props.card.labels.filter(label => label.id !== labelId)
-        const card = {...this.props.card, labels}
+        const card = { ...this.props.card, labels }
         this.props.save(card, `removed a label`)
     }
 
@@ -33,7 +33,7 @@ export class LabelListModal extends Component {
 
         const { card, closeModal, style } = this.props
         return (
-            <div onClick={(ev) => {ev.stopPropagation(); ev.preventDefault()}} className="label-modal card-action-modal" style={style}>
+            <div onClick={(ev) => { ev.stopPropagation(); ev.preventDefault() }} className="label-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
                     Labels
                 </div>
@@ -46,7 +46,7 @@ export class LabelListModal extends Component {
                         <div onClick={() => this.onAddLable(label)} key={label.id} className="flex">
                             <div className={`flex space-bt bgc-${label.color?.substring(1)}`} style={{ backgroundColor: label.color }}>
                                 <span>{label.title}</span>
-                                {(card.labels.includes(label) && <span onClick={(ev) => {ev.stopPropagation(); ev.preventDefault(); this.removeLabel(label.id)}}>&#10003;</span>)}
+                                {(card.labels.includes(label) && <span onClick={(ev) => { ev.stopPropagation(); ev.preventDefault(); this.removeLabel(label.id) }}>&#10003;</span>)}
                             </div>
                             <EditOutlinedIcon />
                         </div>

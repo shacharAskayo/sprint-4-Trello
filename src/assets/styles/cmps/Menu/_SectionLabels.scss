@@ -1,0 +1,230 @@
+.section-labels {
+    overflow-y: auto;
+    overflow-x: hidden;
+    .create-btn {
+        border-radius: 3px;
+        border: none;
+        margin-bottom: 8px;
+        padding: 6px 12px;
+        background-color: rgba(9, 30, 66, 0.08);
+        width: 93%;
+        margin-left: 13px;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+    }
+
+    .top-section-label {
+        input {
+            margin-bottom: 12px;
+            margin-top: 4px;
+            padding: 8px 12px;
+            outline: none;
+            border: none;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+            border-radius: 3px;
+            color: $clr2;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                Helvetica Neue, sans-serif;
+            height: 36px;
+            width: 321px;
+        }
+        input:focus {
+            box-shadow: inset 0 0 0 2px #0079bf;
+        }
+        small {
+            color: #5e6c84;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            line-height: 16px;
+            margin: 16px 100px 16px -161px;
+            text-transform: uppercase;
+            display: block;
+        }
+    }
+    .labels-modal {
+        .top-modal-labels {
+            margin-bottom: -12px;
+            .modal-title {
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                    Helvetica Neue, sans-serif;
+                font-size: 14px;
+                margin-left: 115px;
+            }
+        }
+        .modal-labels-btn {
+            background-color: $clr6;
+            margin-left: 73px;
+        }
+        .modal-labels-btn > * {
+            font-size: 16px;
+        }
+        margin: -3px 0 0 15px;
+        width: 90%;
+        z-index: 7;
+        background-color: $clr6;
+        border-radius: 3px;
+        box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+        .all-color-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            width: 93%;
+            margin-left: 9px;
+            .color-op {
+                float: left;
+                height: 32px;
+                margin: 0 -4px 8px 7px;
+                padding: 0;
+                width: 48px;
+                border-radius: 4px;
+                cursor: pointer;
+                span {
+                    color: $clr6;
+                }
+            }
+            .color-op:hover {
+                opacity: 0.8;
+            }
+        }
+        .label-name-edit {
+            .title-name {
+                font-weight: 700;
+                color: #5e6c84;
+                font-size: 12px;
+                line-height: 16px;
+                margin-top: 12px;
+                margin-bottom: 4px;
+                display: block;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                    Helvetica Neue, sans-serif;
+                margin-top: 4px;
+                float: left;
+                margin-left: 16px;
+            }
+            input {
+                margin: 4px 0 12px;
+                padding: 8px 12px;
+                width: 90%;
+                height: 36px;
+                outline: none;
+                border: none;
+                box-shadow: inset 0 0 0 2px #dfe1e6;
+                background-color: #fafbfc;
+                border-radius: 3px;
+                color: $clr2;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                    Helvetica Neue, sans-serif;
+                font-size: 14px;
+            }
+            input:focus {
+                box-shadow: inset 0 0 0 2px #0079bf;
+            }
+        }
+        .select-color-label {
+            .select-color-title {
+                font-weight: 700;
+                color: #5e6c84;
+                font-size: 12px;
+                line-height: 16px;
+                margin-bottom: 7px;
+                display: block;
+                float: left;
+                margin-left: 16px;
+            }
+        }
+        .modal-bottom-btns {
+            .create-new-label,
+            .delete-label-btn {
+                padding-left: 24px;
+                padding-right: 24px;
+                box-shadow: none;
+                border: none;
+                color: $clr6;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                    Helvetica Neue, sans-serif;
+                height: 32px;
+            }
+            .create-new-label {
+                background-color: $clr3;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            .create-new-label:hover {
+                opacity: 0.9;
+            }
+            .delete-label-btn {
+                background-color: #cf513d;
+                margin-left: 109px;
+            }
+            .delete-label-btn:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+    .labels-list {
+        margin-left: 16px;
+        .declared-labels {
+            span {
+                color: $clr6;
+                margin-top: -2px;
+                font-size: 14px;
+            }
+            .pencil {
+                color: #42526e;
+                margin-left: 6px;
+                cursor: pointer;
+            }
+            .pencil > * {
+                font-size: 16px;
+                margin-top: 7px;
+                margin-left: 4px;
+            }
+
+            div:first-child {
+                &.bgc-eb5b46:hover {
+                    box-shadow: -8px 0px 0px 0px #ff8d7c;
+                }
+                &.bgc-52e898:hover {
+                    box-shadow: -8px 0px 0px 0px #84febe;
+                }
+                &.bgc-f2d600:hover {
+                    box-shadow: -8px 0px 0px 0px #f5f047;
+                }
+                &.bgc-ff9f1a:hover {
+                    box-shadow: -8px 0px 0px 0px #ffc06b;
+                }
+                &.bgc-c377e0:hover {
+                    box-shadow: -8px 0px 0px 0px #ecb3ff;
+                }
+                &.bgc-01c2df:hover {
+                    box-shadow: -8px 0px 0px 0px #5deaff;
+                }
+                &.bgc-344563:hover {
+                    box-shadow: -8px 0px 0px 0px #63698b;
+                }
+                &.bgc-ff78cb:hover {
+                    box-shadow: -8px 0px 0px 0px#ffa9e8;
+                }
+                &.bgc-61bd4f:hover {
+                    box-shadow: -8px 0px 0px 0px#80df6d;
+                }
+            }
+        }
+        .label {
+            width: 90%;
+            margin-left: 4px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 0 0 4px;
+            min-height: 20px;
+            width: 280px;
+            height: 32px;
+            padding: 6px 12px;
+            position: relative;
+            font-weight: 700;
+            transition: padding 85ms, margin 85ms, box-shadow 85ms;
+        }
+    }
+}

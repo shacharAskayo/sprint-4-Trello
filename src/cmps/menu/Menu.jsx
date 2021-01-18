@@ -1,17 +1,13 @@
 import { Component } from 'react'
-import { connect } from 'react-redux'
 
 //cmps:
 import { SectionAbout } from './menuFirstSee/menuTopOptions/SectionAbout.jsx'
 import { SectionBackground } from './menuFirstSee/menuTopOptions/SectionBackground.jsx'
 import { SectionSearch } from './menuFirstSee/menuTopOptions/SectionSearch.jsx'
 import { SectionStickers } from './menuFirstSee/menuTopOptions/SectionStickers.jsx'
-import { SectionMore } from './menuFirstSee/menuTopOptions/SectionMore.jsx'
-import { MenuButler } from './menuFirstSee/MenuButler';
-import { MenuPowerups } from './menuFirstSee/MenuPowerups';
-import { MenuMap } from './menuFirstSee/MenuMap';
 import { MenuActivity } from './menuFirstSee/MenuActivity';
 import { MenuActivitiesList } from './menuFirstSee/MenuActivitiesList.jsx'
+import { SectionLabels } from './menuFirstSee/menuTopOptions/SectionLabels.jsx'
 
 
 //icons:
@@ -22,9 +18,8 @@ import WallpaperIcon from '@material-ui/icons/Wallpaper';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import SearchIcon from '@material-ui/icons/Search';
-import RoomIcon from '@material-ui/icons/Room';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
-import ArrowUpwardSharpIcon from '@material-ui/icons/ArrowUpwardSharp';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 
 
 export class Menu extends Component {
@@ -47,15 +42,13 @@ export class Menu extends Component {
     openSearch = () => { this.setState({ menuTitle: "Search Cards", currMenu: 'SectionSearch' }) }
     openStickers = () => { this.setState({ menuTitle: "Stickers", currMenu: 'SectionStickers' }) }
     openMore = () => { this.setState({ menuTitle: "More", currMenu: 'SectionMore' }) }
-    openButler = () => { this.setState({ menuTitle: "butler", currMenu: 'MenuButler' }) }
-    openPowerups = () => { this.setState({ menuTitle: "Power-ups", currMenu: 'MenuPowerups' }) }
-    openMap = () => { this.setState({ menuTitle: "Map", currMenu: 'MenuMap' }) }
     openActivity = () => { this.setState({ menuTitle: "Activity", currMenu: 'MenuActivity' }) }
+    openLabels = () => { this.setState({ menuTitle: "Labels", currMenu: 'SectionLabels' }) }
 
     render() {
 
 
-        const { currMenu, menuTitle, inMenu, isMenuOpen } = this.state
+        const { currMenu, menuTitle, isMenuOpen } = this.state
         const { board } = this.props
         if (!board.activities) return null
         return (
@@ -65,11 +58,11 @@ export class Menu extends Component {
                     {currMenu && <button className="back-menu-btn" onClick={this.goBack}><ArrowBackIosIcon /></button>}
                     <h3>{(currMenu === null) ? 'Menu' : menuTitle}</h3>
                     <button className="close-menu-btn" onClick={this.toggleMenu}><CloseIcon /></button>
-                    <hr className="hr-menu" />
                 </div>
+                <hr className="hr-menu" />
                 {currMenu === null && <section className="menu-options" style={{ display: "grid" }}>
 
-                    <button className="menu-option" onClick={this.openAbout}>
+                    <button className="menu-option top-option" onClick={this.openAbout}>
                         <span><InfoIcon /></span>
                         <div className="about-all-desc">
                             <h4 className="about-this-board">About This Board</h4>
@@ -82,40 +75,19 @@ export class Menu extends Component {
                         <h4 className="option-title">Change Background</h4>
                     </button>
 
-                    <button className="menu-option" onClick={this.openSearch}>
+                    {/* <button className="menu-option" onClick={this.openSearch}>
                         <span><SearchIcon /></span>
                         <h4 className="option-title">Search Cards</h4>
-                    </button>
+                    </button> */}
 
-                    <button className="menu-option" onClick={this.openStickers}>
+                    {/* <button className="menu-option" onClick={this.openStickers}>
                         <span><LabelImportantIcon /></span>
                         <h4 className="option-title">Stickers</h4>
-                    </button>
+                    </button> */}
 
-                    <button className="menu-option" onClick={this.openMore}>
-                        <span><MoreHorizIcon /></span>
-                        <h4 className="option-title">More</h4>
-                    </button>
-                    <hr className="hr-menu" />
-                    <button className="menu-option" onClick={this.openButler}>
-                        <span className="butler-icon">🤖</span>
-                        <div className="butler-div">
-                            <h4> Butler</h4>
-                            <span>Automate cards and more...</span>
-                        </div>
-                    </button>
-                    <hr className="hr-menu" />
-                    <button className="menu-option" onClick={this.openPowerups}>
-                        <span className="powerups-icon"><ArrowUpwardSharpIcon /></span>
-                        <div className="powerups-div">
-                            <h4>Power-Ups</h4>
-                            <span className="power-ups-desc">Calendar, Google Drive and more...</span>
-                        </div>
-                    </button>
-
-                    <button className="menu-option" onClick={this.openMap}>
-                        <span><RoomIcon /></span>
-                        <h4 className="option-title">Map</h4>
+                    <button className="menu-option" onClick={this.openLabels}>
+                        <span><LabelOutlinedIcon /></span>
+                        <h4 className="option-title">Labels</h4>
                     </button>
                     <hr className="hr-menu" />
                     <button className="menu-option" onClick={this.openActivity}>
@@ -144,14 +116,8 @@ function DynamicCmp({ currMenu, board }) {
             return <SectionSearch board={board} />
         case 'SectionStickers':
             return <SectionStickers />
-        case 'SectionMore':
-            return <SectionMore board={board} />
-        case 'MenuButler':
-            return <MenuButler />
-        case 'MenuPowerups':
-            return <MenuPowerups />
-        case 'MenuMap':
-            return <MenuMap />
+        case 'SectionLabels':
+            return <SectionLabels board={board} />
         case 'MenuActivity':
             return <MenuActivity board={board} />
         default:

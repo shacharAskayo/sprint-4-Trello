@@ -1,5 +1,4 @@
 header.main-header {
-    background-color: #0303038a;
     color: rgba(248, 248, 255, 0.753);
     font-size: 1.3rem;
     display: flex;
@@ -9,7 +8,7 @@ header.main-header {
 }
 .icons-container {
     display: flex;
-
+    margin-right: 115px;
     .apps-icon {
         cursor: pointer;
         padding: 6px 8px 2px 9px;

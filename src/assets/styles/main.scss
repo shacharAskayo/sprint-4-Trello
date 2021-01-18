@@ -14,9 +14,10 @@
 @import "pages/Board";
 @import "pages/Home";
 @import "pages/App";
-// Components
+@import "/pages/BoardsPick";
 
 // Components:::
+@import "/cmps/AppHeader";
 @import "cmps/Header";
 @import "cmps/ReviewList";
 @import "cmps/BoardHeader";
@@ -33,17 +34,15 @@
 @import "cmps/Attachment";
 @import "cmps/CardComment";
 @import "cmps/DynamicCardActionModal";
-
 //menu:
 @import "/cmps/Menu/Menu";
 @import "cmps/Menu/SectionAbout";
 @import "/cmps/Menu/SectionBackground";
 @import "/cmps/Menu/ColorsArea";
-@import "/cmps/Menu/MenuButler";
 @import "/cmps/Menu/PhotosArea";
 @import "/cmps/Menu/MenuActivitiesList";
 @import "/cmps/Menu/MenuActivity";
 @import "/cmps/Menu/SecitonStickers";
 @import "/cmps/Menu/SectionSearch";
 @import "/cmps/Menu/LabelSearchBy";
-@import "/cmps/Menu/MenuMap";
+@import "/cmps/Menu/SectionLabels";

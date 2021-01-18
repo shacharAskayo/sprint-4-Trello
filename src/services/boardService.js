@@ -22,7 +22,8 @@ export const boardService = {
     setBackground,
     updateBoardDesc,
     getActivities,
-    copyList
+    copyList,
+    editCurrLabel
 
 }
 
@@ -49,30 +50,31 @@ function getById(id) {
     // return Promise.resolve(currBoard)
 }
 
-function updateBoardCard(board, card) { //will it be a problem with idxs due to d&d?
+function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
+    const board = JSON.parse(JSON.stringify(currBoard))
     const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
         return { ...group, cards }
     })
     const newBoard = { ...board, groups: newGroups }
-    gBoards = gBoards.map(b => (b._id === board._id) ? newBoard : b )
+    gBoards = gBoards.map(b => (b._id === board._id) ? newBoard : b)
     return newBoard
 
 
     // return { ...board, groups: newGroups }
 }
 
-function addCard(boardId, groupId, card,isAddingToTheTop) {
+function addCard(boardId, groupId, card, isAddingToTheTop) {
     console.log(gBoards[0].groups[0].cards[0].labels);
     var copy = JSON.parse(JSON.stringify(gBoards))
     var newCard = JSON.parse(JSON.stringify(card))
-        newCard.id=utilService.makeId()
+    newCard.id = utilService.makeId()
     // var newCard = { ...card, id: utilService.makeId() }
     const boardIdx = copy.findIndex(board => board._id === boardId)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === groupId)
-    if(!isAddingToTheTop)copy[boardIdx].groups[groupIdx].cards.push(newCard)
-    else{copy[boardIdx].groups[groupIdx].cards.unshift(newCard)}
+    if (!isAddingToTheTop) copy[boardIdx].groups[groupIdx].cards.push(newCard)
+    else { copy[boardIdx].groups[groupIdx].cards.unshift(newCard) }
     gBoards = copy
     return copy[boardIdx]
 }
@@ -97,18 +99,18 @@ function updateCardLocation(board, cardId, source, destination) {
     const fromGroupIdx = currBoard.groups.findIndex(group => group.id === source.droppableId)
     const toGroupIdx = currBoard.groups.findIndex(group => group.id === destination.droppableId)
     const currCard = currBoard.groups[fromGroupIdx].cards[source.index]
-    currBoard.groups[fromGroupIdx].cards.splice(source.index,1)
-    currBoard.groups[toGroupIdx].cards.splice(destination.index,0, currCard)
-    gBoards[0]=currBoard
+    currBoard.groups[fromGroupIdx].cards.splice(source.index, 1)
+    currBoard.groups[toGroupIdx].cards.splice(destination.index, 0, currCard)
+    gBoards[0] = currBoard
     return currBoard
 }
 
 function updateGroupLoaction(board, groupId, source, destination) {
     const currBoard = JSON.parse(JSON.stringify(board))
-    const currGroup = currBoard.groups.find(group=>group.id===groupId)
-    currBoard.groups.splice(source.index,1)
-    currBoard.groups.splice(destination.index,0,currGroup)
-    gBoards[0]=currBoard
+    const currGroup = currBoard.groups.find(group => group.id === groupId)
+    currBoard.groups.splice(source.index, 1)
+    currBoard.groups.splice(destination.index, 0, currGroup)
+    gBoards[0] = currBoard
     return currBoard
 }
 
@@ -164,15 +166,43 @@ function getActivities(currBoard, filter) {
     else return [...cardsActivities]
 }
 
-function copyList(board,currGroup){
-    const boardCopy=JSON.parse(JSON.stringify(board))
+function copyList(board, currGroup) {
+    const boardCopy = JSON.parse(JSON.stringify(board))
     const groupCopy = JSON.parse(JSON.stringify(currGroup))
-    groupCopy.id=utilService.makeId()
-    groupCopy.cards.forEach(card=>card.id=utilService.makeId())
-    const groupIdx=board.groups.findIndex(group=>group.id===currGroup.id)
-    boardCopy.groups.splice((groupIdx+1),0,groupCopy)
-    console.log('the focking copy',boardCopy);
-    gBoards[0]=boardCopy
+    groupCopy.id = utilService.makeId()
+    groupCopy.cards.forEach(card => card.id = utilService.makeId())
+    const groupIdx = board.groups.findIndex(group => group.id === currGroup.id)
+    boardCopy.groups.splice((groupIdx + 1), 0, groupCopy)
+    console.log('the focking copy', boardCopy);
+    gBoards[0] = boardCopy
     return boardCopy
-    
 }
+
+
+    async function editCurrLabel(boardId, label, deleteOption) {
+        try {
+            var copy = JSON.parse(JSON.stringify(gBoards))
+            const boardIdx = gBoards.findIndex(board => board._id === boardId)
+            if (label.id) {
+                var labelIdx = copy[boardIdx].labels.findIndex(currLabel => {
+                    return currLabel.id === label.id
+                })
+                if (deleteOption !== 'delete') {
+                    var editedLabel = { ...label, color: label.color, title: label.title, id: label.id }
+                    copy[boardIdx].labels[labelIdx] = editedLabel
+                } else {
+                    copy[boardIdx].labels.splice(labelIdx, 1)
+                }
+            }
+            else {
+                var newLabel = { ...label, id: utilService.makeId(), color: label.color, title: label.title }
+                copy[boardIdx].labels.push(newLabel)
+            }
+
+            gBoards = copy
+            return Promise.resolve(gBoards[boardIdx])
+        }
+        catch (err) {
+            console.log('err in adding labels', err);
+        }
+    }

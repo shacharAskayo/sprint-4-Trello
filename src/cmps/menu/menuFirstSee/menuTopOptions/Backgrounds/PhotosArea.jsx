@@ -34,9 +34,7 @@ class _PhotosArea extends Component {
 
     state = {
         photoSearch: '',
-        filterBy: {
-            name: ''
-        },
+        filter: '',
         bgImgs: [
             { src: src1, _id: 'img101', title: "sunset", isImgTitleShow: false },
             { src: src2, _id: 'img102', title: "Snowy mountains", isImgTitleShow: false },
@@ -57,11 +55,11 @@ class _PhotosArea extends Component {
             { src: src17, _id: 'img117', title: "Cloudy mountains", isImgTitleShow: false },
             { src: src18, _id: 'img118', title: "Rear passage", isImgTitleShow: false }
         ]
-        // bgImgs:[]
     }
     componentDidMount() {
         // console.log(this.state.bgImgs[0]);
     }
+
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.value
@@ -69,49 +67,38 @@ class _PhotosArea extends Component {
             this.props.setFilter(this.state.filterBy)
         })
     }
-    // getFromNet = (q) => {
-    //     menuService.getPhotos(q)
-    //         .then(res => this.setState({ books: res.items.splice(0, 4) }));
-    // }
-    // handleChange = (ev) => {
-    //     console.log('your search:', ev.target.value);
-    //     this.getFromNet(ev.target.value);
-    // };
+
     toggleImgTitle = (imgIdx) => {
         let bgImgs = this.state.bgImgs.map((img, idx) => {
             return (imgIdx !== idx) ? img : { ...img, isImgTitleShow: !img.isImgTitleShow }
         })
         this.setState({ bgImgs })
     }
-    selectImg = (imgSrc) => {
-        imgSrc = '../assets/bgImgs/' + (imgSrc.substr(14)).substr(0, 8) + '.jpg'
-        console.log('edited imgSrc:', imgSrc);
-        this.props.setBackground(this.props.board, { backgroundImage: imgSrc })
+
+    selectImg = (imgSrc) => { this.props.setBackground(this.props.board, { backgroundImage: `url(${imgSrc})` }) }
+
+    get imgs() {
+        const { bgImgs, filter } = this.state
+        const regex = new RegExp(filter, 'i')
+        return bgImgs.filter(img => regex.test(img.title))
     }
 
-    get imgsForDidsplay() {
-        let imgs = this.state.bgImgs
-        const regex = new RegExp(this.props.filterBy, 'i')
-        imgs = imgs.filter(img => regex.test(img.title))
-        return imgs
-    }
     render() {
-        const { name } = this.state.filterBy
-        const imgs = this.imgsForDidsplay
+        const imgs = this.imgs
         if (!imgs || !imgs.length) return <h1>Loading...</h1>
         return (
             <section className="photo-type">
                 <div className="flex search-photo">
                     <SearchIcon /><input type="text"
-                        name="name"
-                        value={name}
-                        onChange={this.handleChange}
+                        name="filter"
+                        onChange={({ target }) => this.setState({ filter: target.value })}
                         placeholder="Photos"
                         autoComplete="off"
+                        autoFocus
                     />
                 </div>
                 <div className="photos-area">
-                    {imgs.map((img, idx) => {
+                    {this.imgs.map((img, idx) => {
                         return <div className="bgImg" key={img._id} onMouseOver={() => { this.toggleImgTitle(idx) }}
                             onMouseOut={() => { this.toggleImgTitle(idx) }}
                             onClick={() => { this.selectImg(img.src) }}>
@@ -120,6 +107,7 @@ class _PhotosArea extends Component {
                         </div>
                     })}
                 </div>
+                <span className="go-back" onClick={this.props.goBack}>Go back to backgrounds</span>
             </section>
         )
     }

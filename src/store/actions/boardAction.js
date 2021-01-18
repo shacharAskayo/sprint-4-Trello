@@ -12,10 +12,10 @@ export function loadBoards() {
     }
   }
 }
-export function addBoard(newBoard){
-  return dispatch=>{
+export function addBoard(newBoard) {
+  return dispatch => {
     const board = boardService.addBoard(newBoard)
-    dispatch({type:'ADD_BOARD',board:board})
+    dispatch({ type: 'ADD_BOARD', board: board })
   }
 }
 
@@ -112,11 +112,11 @@ export function selectColor(board, color) {
 }
 
 
-export function updateCardLocation(board,cardId,source,destination){
+export function updateCardLocation(board, cardId, source, destination) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateCardLocation(board,cardId,source,destination)
-      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+      const updatedBoard = await boardService.updateCardLocation(board, cardId, source, destination)
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
@@ -124,11 +124,11 @@ export function updateCardLocation(board,cardId,source,destination){
   }
 }
 
-export function updateGroupLoaction(board,groupId,source,destination){
+export function updateGroupLoaction(board, groupId, source, destination) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateGroupLoaction(board,groupId,source,destination)
-      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+      const updatedBoard = await boardService.updateGroupLoaction(board, groupId, source, destination)
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
@@ -136,11 +136,11 @@ export function updateGroupLoaction(board,groupId,source,destination){
   }
 }
 
-export function editGroupTitle(board,group,groupTitle){
+export function editGroupTitle(board, group, groupTitle) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateGroupTitle(board,group,groupTitle)
-      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+      const updatedBoard = await boardService.updateGroupTitle(board, group, groupTitle)
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
@@ -156,6 +156,30 @@ export function copyList(board,group){
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
+
+    }
+  }
+}
+
+export function setFilter(filterBy) {
+  return (dispatch) => {
+    const action = {
+      type: 'SET_GROUPS_FILTER',
+      filterBy
+    }
+    dispatch(action)
+  }
+}
+
+
+export function editCurrLabel(currBoard, label, selectedColorLabel, act) {
+  return async dispatch => {
+    try {
+      const board = await boardService.editCurrLabel(currBoard, label, selectedColorLabel, act)
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
     }
   }
 }
