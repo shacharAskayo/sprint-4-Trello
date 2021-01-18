@@ -66,11 +66,9 @@ function updateBoardCard(currBoard, card) { //will it be a problem with idxs due
 }
 
 function addCard(boardId, groupId, card, isAddingToTheTop) {
-    console.log(gBoards[0].groups[0].cards[0].labels);
     var copy = JSON.parse(JSON.stringify(gBoards))
     var newCard = JSON.parse(JSON.stringify(card))
     newCard.id = utilService.makeId()
-    // var newCard = { ...card, id: utilService.makeId() }
     const boardIdx = copy.findIndex(board => board._id === boardId)
     const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === groupId)
     if (!isAddingToTheTop) copy[boardIdx].groups[groupIdx].cards.push(newCard)
