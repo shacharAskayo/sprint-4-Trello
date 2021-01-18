@@ -4,6 +4,8 @@ import { AddChecklistModal } from "./AddChecklistModal";
 import { LabelListModal } from "./LabelListModal";
 import { MemberListModal } from "./MemberListModal";
 import { AddAttachmentModal } from "./AddAttachmentModal";
+import { AddDueDateModal } from "./AddDueDateModal";
+import { AddCoverModal } from "./AddCoverModal";
 
 
 class _DynamicCardActionModal extends Component {
@@ -16,13 +18,13 @@ class _DynamicCardActionModal extends Component {
             case 'labels':
                 return <LabelListModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board}/>
             case 'checklist':
-                return <AddChecklistModal card={card} save={save} />
-            // case 'dueDate':
-            //     return <AddDueDateModal card={card} save={save} />
+                return <AddChecklistModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board}/>
+            case 'dueDate':
+                return <AddDueDateModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
             case 'attachment':
-                return <AddAttachmentModal card={card} save={save} />
-            // case 'cover':
-            //     return  <AddCover card={card} save={save} />
+                return <AddAttachmentModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
+            case 'cover':
+                return  <AddCoverModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
             // case 'move':
             //     return 
             // case 'copy':

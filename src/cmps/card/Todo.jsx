@@ -8,7 +8,6 @@ export class Todo extends Component {
             title: '',
             isDone: false
         },
-        isInputFocused: false
     }
 
     componentDidMount() {
@@ -22,11 +21,14 @@ export class Todo extends Component {
         this.setState(prevState => ({ todo: { ...prevState.todo, [name]: value } }))
     }
 
-    toggleIsDone = async(ev) => {
+    toggleIsDone = (ev) => {
+        ev.target.blur()
         const { checked } = ev.target
-        await this.setState(prevState => ({ todo: { ...prevState.todo, isDone: checked } }))
-        console.log();
-        this.saveTodo()
+        const {todo} = this.state
+        todo.isDone = checked
+        console.log(todo);
+        this.setState({ todo })
+        this.props.saveTodo(todo)
     }
 
     discardChanges = () => {
@@ -39,17 +41,18 @@ export class Todo extends Component {
     }
 
     saveTodo = (ev) => {
-        if (ev?.key && ev.key !== "Enter") return
-        ev && ev.preventDefault()
-        if (this.state.todo.id) ev?.currentTarget.blur()
+        if (ev.key !== "Enter") return
+        ev.preventDefault()
+
         const { todo } = this.state
+        if (todo.id) ev.currentTarget.blur()
         if (!todo.title) return
         this.props.saveTodo(todo)
         if (todo.id) {
-            this.setState({ todo })
             this.refInput.current.blur()
         } else {
-            this.setState({ isInputFocused: true, todo: { title: '', isDone: false } })
+            this.setState({todo: { title: '', isDone: false } })
+            this.refInput.current.focus()
 
         }
     }
@@ -65,7 +68,7 @@ export class Todo extends Component {
             <section className="card-todo-preview flex align-start">
                 <input
                     type="checkbox"
-                    onChange={this.toggleIsDone}
+                    onClick={this.toggleIsDone}
                     name="isDone"
                     checked={this.props.todo?.isDone}
                     style={{ visibility: isAdd ? 'hidden' : 'visible' }}
@@ -73,7 +76,6 @@ export class Todo extends Component {
             <div className={`hidden-actions-form-container  ${isAdd ? 'add' : ''}`}>
                 <form onKeyDown={this.saveTodo} className={`hidden-actions-form ${isAdd ? 'add' : ''}`}>
                     <input
-                        autoFocus={isInputFocused}
                         type="text"
                         onChange={this.handelInput}
                         ref={this.refInput}

@@ -15,7 +15,7 @@ export const cardService = {
 function getCardById(board, cardId) {
     var currCard
     board.groups.forEach(group => group.cards.forEach(card => {
-        if (card.id === cardId) currCard = card
+        if (card.id === cardId) currCard = JSON.parse(JSON.stringify(card))
     }))
     if (!currCard) return null
     const labels = getCardLabels(board, currCard.labels)
@@ -24,9 +24,10 @@ function getCardById(board, cardId) {
 }
 
 function getCardForUpdate(card){
-    delete card.activities
     const labels = card.labels.map(label => label.id)
     const newCard = JSON.parse(JSON.stringify(card))
+    delete newCard.activities
+    // const newCard = JSON.parse(JSON.stringify(card))  //got error on json actions
     return {...newCard, labels}
 
 
@@ -45,20 +46,22 @@ function getCards(group){
 }
 
 function updateChecklistTodo(card, checklist, todo){
-    const todoToUpdate = {...todo}
+    const todoToUpdate = JSON.parse(JSON.stringify(todo))
+    const newCard = JSON.parse(JSON.stringify(card))
     if (todoToUpdate.id) var todos = checklist.todos.map(todo => (todo.id === todoToUpdate.id) ? todoToUpdate : todo)
     else {
         todoToUpdate.id = utilService.makeId()
-        var todos = [...checklist.todos, todoToUpdate]
+        todos = [...checklist.todos, todoToUpdate]
     }
     const currChecklist = {...checklist, todos}
     const checklists = card.checklists.map(checklist => (checklist.id === currChecklist.id) ? currChecklist : checklist)
-    return {...card, checklists}
+    return {...newCard, checklists}
 }
 
 function removeChecklist(card, currChecklist){
     const checklists = card.checklists.filter(checklist => checklist.id !== currChecklist.id)
-    return {...card, checklists}
+    const newCard = JSON.parse(JSON.stringify(card))
+    return {...newCard, checklists}
 }
 
 function getActivityToAdd(card, user, txt ){

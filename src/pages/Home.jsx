@@ -20,9 +20,7 @@ class _Home extends Component {
             { color: 'pink' }
         ],
         board:{
-            _id:'',
             title:'',
-            createdAt:Date.now(),
             style:{},
             isPrivate:false,
             createBy:{},
@@ -53,10 +51,11 @@ class _Home extends Component {
     }
 
 
-    addBoard = () => {
+    addBoard = async() => {
         const {board} = this.state
-        this.props.addBoard(board)
+        await this.props.addBoard(board)
         this.setState({isOpen:false})
+        this.props.loadBoards()
     }
     render() {
         const { isOpen, bgColors } = this.state
@@ -85,7 +84,7 @@ class _Home extends Component {
 
                 <section className="my-boards">
                     <h1>My Boards</h1>
-                    {boards&& boards.map((board,idx) => {
+                    {boards && boards.map((board,idx) => {
                         return (
                             <div key={board.id}>
                                 <Link to={`/board/${board._id}`}>

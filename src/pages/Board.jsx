@@ -30,7 +30,6 @@ class _Board extends Component {
 
     return (
       <div className="main-board" style={style} >
-        <Header />
         <BoardHeader />
         <Menu board={board} />
         <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />

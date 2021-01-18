@@ -15,6 +15,10 @@ export class CardAttachmentList extends Component {
         newCard.comments.unshift(comment)
     }
 
+    openModal = () => {
+        this.props.setCurrModal({name: 'attachment', style: {left: '15%', top: '69%'}})
+    }
+
     render() {
         const { attachments } = this.props.card
         if (!attachments) return null
@@ -28,13 +32,13 @@ export class CardAttachmentList extends Component {
                     <div className="attachment flex align-center">
                         <div>LINK</div>
                         <div className="flex align-start">
-                            <h4>{att.title}</h4>
+                            <h4>{att.title || att.url}</h4>
                             <CallMadeOutlinedIcon />
                         </div>
                     </div>
                 </a>
             )}
-            <button>Add an attachment</button>
+            <button onClick={this.openModal}>Add an attachment</button>
         </div>
     }
 }

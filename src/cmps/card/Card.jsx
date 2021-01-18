@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 import { CardMenu } from "./CardMenu.jsx";
 import { DynamicCardActionModal } from "./DynamicCardActionModal.jsx";
+import {AddDueDateModal} from "./AddDueDateModal.jsx";
 // import { CardAction } from "./CardAction";
 
 class _Card extends Component {
@@ -84,7 +85,9 @@ class _Card extends Component {
                         </div>
                         <CardContent setCurrModal={this.setCurrModal} closeModal={this.closeModal} user={loggedUser} board={board} card={card} save={this.saveCardChanges} />
                         <CardMenu setCurrModal={this.setCurrModal} closeModal={this.closeModal}/>
+                        <div  onClick={(ev) => {ev.stopPropagation(); ev.preventDefault()}}>
                         <DynamicCardActionModal closeModal={this.closeModal} save={this.saveCardChanges} currModal={currModal} card={card} board={board}/>
+                        </div>
                     </div>
                 </section>
             </Link>

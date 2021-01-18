@@ -25,7 +25,6 @@ export class _GroupPreview extends Component {
             members: [],
             labels: []
         },
-        isAdding: false,
         isChangeTitle: false
     }
 
@@ -35,10 +34,6 @@ export class _GroupPreview extends Component {
         this.setState({ groupTitle: group.title })
     }
 
-
-    onShowAddBtn = () => {
-        this.setState({ isAdding: true })
-    }
     handleChange = (ev) => {
         const { card } = this.state
         const { value } = ev.target
@@ -49,10 +44,9 @@ export class _GroupPreview extends Component {
     onAddCard = async () => {
         const { card } = this.state
         const { board, group } = this.props
-        this.props.addCard(board._id, group.id, card)
+        this.props.addCard(board, group, card)
         this.setState({
             card: { ...card, title: '' },
-            isAdding: false
         })
     }
 
@@ -96,7 +90,7 @@ export class _GroupPreview extends Component {
     render() {
         const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation } = this.props
         const { cards } = group
-        const { isAdding, groupTitle, isChangeTitle } = this.state
+        const { groupTitle, isChangeTitle } = this.state
         const { title } = this.state.card
         return (
             <Draggable draggableId={listId} index={idx} >
@@ -155,7 +149,6 @@ const mapDispatchToProps = {
     loadCards,
     addCard,
     openLabel,
-
     editGroupTitle
 }
 

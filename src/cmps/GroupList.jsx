@@ -10,12 +10,10 @@ export class GroupList extends Component {
     state = {
         // isModalOpen:false,
         group: {
-            id: '',
             title: '',
             style: {},
             cards: []
         },
-        isAdding: false
     }
 
 
@@ -27,35 +25,24 @@ export class GroupList extends Component {
         })
     }
 
-    onShowAddBtn = () => {
-        this.setState({ isAdding: true })
-    }
     onAddGroup = () => {
         const { group } = this.state
         const { board } = this.props
-        this.props.addGroup(board._id, group)
-        this.setState({
-            group: { ...group, title: '' },
-            isAdding: false
-        })
-        
+        this.props.addGroup(board, group)
+        this.setState({ group: { title: '', style: {}, cards: [] } })
+
     }
 
-    handleEnter=(ev)=>{
-        if(ev.key==='Enter'){
+    handleEnter = (ev) => {
+        ev.preventDefault()
+        if (ev.key === 'Enter') {
             this.onAddGroup()
-            ev.currentTarget.blur()
-        } 
+        }
     }
 
-    discardChanges=(ev)=>{
-        const { group } = this.state
-        this.setState({
-            group: { ...group, title: '' },
-            isAdding: false
-        })
+    discardChanges = (ev) => {
+        this.setState({ group: { title: '', style: {}, cards: [] } })
         ev.currentTarget.blur()
-
     }
 
     // handleOnDragEnd = (result) => {
@@ -68,22 +55,22 @@ export class GroupList extends Component {
     //     items.splice(result.destination.index, 0, reorderedItem)
     //     this.props.updateGroupLoaction(board, items)
     // }
-    
-    handleDrag=(result)=>{
-        const {board} = this.props
-        const {source,destination}  = result
-        
-        if(result.type==='GROUP'){
+
+    handleDrag = (result) => {
+        const { board } = this.props
+        const { source, destination } = result
+
+        if (result.type === 'GROUP') {
             const groupId = result.draggableId
-            this.props.updateGroupLoaction(board,groupId,source,destination)
-        }else{
+            this.props.updateGroupLoaction(board, groupId, source, destination)
+        } else {
             const cardId = result.draggableId
-            this.props.updateCardLocation(board,cardId,source,destination)
-            
+            this.props.updateCardLocation(board, cardId, source, destination)
+
         }
-        
+
     }
-    
+
     render() {
         const { groups } = this.props.board
         return (
@@ -101,11 +88,11 @@ export class GroupList extends Component {
                             {provided.placeholder}
 
                             <div className="hidden-actions-form-container add-group" >
-                                <form action="" className="hidden-actions-form">
-                                    <input onKeyDown={this.handleEnter}  className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title}  onChange={this.handleChange} />
+                                <form className="hidden-actions-form">
+                                    <input onKeyDown={this.handleEnter} className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onChange={this.handleChange} />
                                 </form>
                                 <div className="hidden-actions flex list">
-                                      <button onClick={this.onAddGroup}>Add List</button>
+                                    <button onClick={this.onAddGroup}>Add List</button>
                                     <button onClick={this.discardChanges} className="icon">
                                         <CloseSharpIcon />
                                     </button>

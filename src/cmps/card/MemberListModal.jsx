@@ -36,7 +36,7 @@ export class MemberListModal extends Component {
 
         const { card, closeModal, style } = this.props
         return (
-            <div onClick={(ev) => {ev.stopPropagation(); ev.preventDefault()}} className="member-modal card-action-modal" style={style}>
+            <div className="member-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
                     Members
                 </div>

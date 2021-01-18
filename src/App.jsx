@@ -4,12 +4,14 @@ import { Home } from './pages/Home'
 import { Board } from './pages/Board'
 import { BoardList } from './cmps/BoardList.jsx'
 import { MenuMapShow } from './cmps/menu/menuFirstSee/MenuMapShow'
+import { Header } from './cmps/Header'
 
 export function App() {
   return (
     <div className="app" >
       <Router>
         <div>
+       <Header />
           <Switch>
             <Route path="/board/:boardId/:cardId?" component={Board} />
             <Route path="/map" component={MenuMapShow} />

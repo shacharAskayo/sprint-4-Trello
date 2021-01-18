@@ -8,8 +8,10 @@ export class AddChecklistModal extends Component{
         title: 'Checklist'
     }
 
-    onAddCheckList = () => {
-        const newCheckList = {
+    onAddChecklist = (ev) => {
+        if (ev.key && ev.key !== "Enter") return 
+        const { card, save, closeModal } = this.props
+        const newChecklist = {
             id: utilService.makeId(),
             title: this.state.title,
             createdAt: Date.now(),
@@ -20,8 +22,9 @@ export class AddChecklistModal extends Component{
             },
             todos: []
         }
-        const card = {...this.props.card, checklists:[...this.props.card.checklists, newCheckList]}
-        this.props.save(card, `added checklist${newCheckList.title} to card`)
+        const newCard = {...card, checklists:[...card.checklists, newChecklist]}
+        save(newCard, `added checklist ${newChecklist.title} to card`)
+        closeModal()
     }
 
     handleFocus = (ev) => {
@@ -32,15 +35,22 @@ export class AddChecklistModal extends Component{
 
         const { card, closeModal, style } = this.props
         return (
-            <div onClick={(ev) => {ev.stopPropagation(); ev.preventDefault()}} className="checklist-modal card-action-modal" style={style}>
+            <div className="checklist-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
                     Add Checklist
                 </div>
                 <button className="icon" onClick={closeModal}><CloseSharpIcon /></button>
                 <hr />
                 <small>Title</small>
-                <input onFocus={this.handleFocus} autoFocus onChange={({ target }) => this.setState({ title: target.value })} value={this.state.title} type="text" name="title" />
-                <button onClick={this.onAddCheckList}>Add</button>
+                <input 
+                autoComplete="off" 
+                onFocus={this.handleFocus} 
+                autoFocus 
+                type="text" name="title" 
+                onChange={({ target }) => this.setState({ title: target.value })} value={this.state.title}
+                onKeyDown={this.onAddChecklist}
+                />
+                <button onClick={this.onAddChecklist}>Add</button>
             </div>
         )
 
