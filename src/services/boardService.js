@@ -16,7 +16,9 @@ export const boardService = {
     updateGroupTitle,
     updateBoardDesc,
     getActivities,
-    setStyle
+    setStyle,
+    copyList,
+    editCurrLabel
 
 }
 
@@ -69,8 +71,9 @@ async function updateBoardCard(currBoard, card) { //will it be a problem with id
     }
 }
 
-async function addCard(board, group, card) {
-    const newGroup = { ...group, cards: [...group.cards, { ...card }] }
+async function addCard(board, group, currCard, isAddingToTop) {
+    const card = {...currCard, createdAt: Date.now(), id: utilService.makeId()}
+    const newGroup = (isAddingToTop ) ? { ...group, cards: [card , ...group.cards] } : { ...group, cards: [...group.cards, card] }
     const newGroups = board.groups.map(group => (group.id === newGroup.id ? newGroup : group))
     const newBoard = { ...board, groups: newGroups }
     try {
@@ -124,8 +127,8 @@ async function updateGroupLoaction(board, groupId, source, destination) {
 
 async function updateGroupTitle(board, currGroup, title) {
 
-    const newGroups = board.groups.map(group => (group.id === currGroup.id) ? {...group, title} : group)
-    const newBoard = {...board, groups: newGroups}
+    const newGroups = board.groups.map(group => (group.id === currGroup.id) ? { ...group, title } : group)
+    const newBoard = { ...board, groups: newGroups }
     try {
         const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
         return boardAfter
@@ -145,7 +148,7 @@ async function setStyle(board, background) {
 }
 
 async function updateBoardDesc(board, description) {
-    const newBoard = {...board, description }
+    const newBoard = { ...board, description }
     try {
         const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
         return boardAfter
@@ -155,11 +158,50 @@ async function updateBoardDesc(board, description) {
 }
 
 function getActivities(board, filter) {
-    console.log('board is:' ,board);
     const cardsComments = []
     board.groups.forEach(group => group.cards.forEach(card => {
         if (card.comments) cardsComments.push(...card.comments)
     }))
     if (filter === 'all') return [...cardsComments, ...board.activities]
     else return [...cardsComments]
+}
+
+async function copyList(board, currGroup) {
+    const boardCopy = JSON.parse(JSON.stringify(board))
+    const groupCopy = JSON.parse(JSON.stringify(currGroup))
+    groupCopy.id = utilService.makeId()
+    groupCopy.cards.forEach(card => card.id = utilService.makeId())
+    const groupIdx = board.groups.findIndex(group => group.id === currGroup.id)
+    boardCopy.groups.splice((groupIdx + 1), 0, groupCopy)
+    try {
+        const boardAfter = await httpService.put('/board/' + boardCopy._id, boardCopy)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
+
+async function editCurrLabel(board, currLabel, deleteOption) {
+
+        if (currLabel.id) {
+            if (deleteOption !== 'delete') {
+                var labels = board.labels.map(label => (label.id === currLabel.id) ? currLabel : label)
+            } else {
+                var labels = board.labels.filter(label => (label.id !== currLabel.id))
+            }
+        }
+        else {
+             currLabel.id = utilService.makeId()
+            var labels = [...board.labels, currLabel]
+        }
+        const newBoard = {...board, labels}
+        
+        try {
+            const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+            return boardAfter
+        } catch (err) {
+            console.log(err)
+        }
 }

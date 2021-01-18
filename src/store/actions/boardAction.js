@@ -123,3 +123,40 @@ export function editGroupTitle(board, group, groupTitle) {
     }
   }
 }
+
+export function copyList(board,group){
+  return async dispatch => {
+    try {
+      const updatedBoard = await boardService.copyList(board,group)
+      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+    }
+    catch (err) {
+      console.log('boardActions: err in selectColor', err);
+
+    }
+  }
+}
+
+export function setFilter(filterBy) {
+  return (dispatch) => {
+    const action = {
+      type: 'SET_GROUPS_FILTER',
+      filterBy
+    }
+    dispatch(action)
+  }
+}
+
+
+export function editCurrLabel(currBoard, label, selectedColorLabel, act) {
+  return async dispatch => {
+    try {
+      const board = await boardService.editCurrLabel(currBoard, label, selectedColorLabel, act)
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+

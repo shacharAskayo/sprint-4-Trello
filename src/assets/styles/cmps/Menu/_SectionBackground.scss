@@ -1,46 +1,37 @@
 .background-section {
-    margin: -11px 13px 0px 0px;
     color: $clr2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 2px 13px 0px 0px;
     button {
         background-color: $clr8;
     }
     button:focus {
         outline: none;
     }
-
-    .img-select {
-        background-size: cover;
-        border-radius: 8px;
-        height: 96px;
-        margin-bottom: 8px;
-        width: 120%;
-        object-fit: cover;
-        margin-left: -5px;
-    }
-    .img-select:hover {
-        opacity: 0.7;
-        background-color: #dfe1e6;
-    }
-
-    .select-img-title {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
-            sans-serif;
-        margin-left: 30px;
-        font-weight: 400;
-        font-size: 14px;
-    }
-    .back-bg-btn {
-        padding: 0;
-        background-color: $clr8;
-        margin-bottom: 1px;
+    .photos-colors {
         margin-left: 15px;
-        float: left;
-        margin-top: 6px;
-        margin-bottom: 1rem;
-        display: flex;
-        color: rgb(170, 169, 169);
-    }
-    .back-bg-btn:focus {
-        outline: none;
+        margin-top: 15px;
+
+        .img-select {
+            background-size: cover;
+            border-radius: 8px;
+            height: 96px;
+            margin-bottom: 8px;
+            width: 110%;
+            object-fit: cover;
+            margin-left: -5px;
+        }
+        .img-select:hover {
+            opacity: 0.2;
+            background-color: #dfe1e6;
+        }
+
+        .select-img-title {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                Helvetica Neue, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
     }
 }

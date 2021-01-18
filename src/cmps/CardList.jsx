@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { CardPreview } from "./CardPreview";
 // ////React DND///
+import CloseSharpIcon from '@material-ui/icons/CloseSharp';
+
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 
@@ -34,23 +36,36 @@ export class CardList extends Component {
     }
 
     render() {
-        const { board, listId, isLabelOpen, openLabel, currGroup } = this.props
+        const { board, listId, isLabelOpen, openLabel, currGroup,isEdit,enterEditMode,exitEditMode } = this.props
         const { cards } = this.props
         return (
             <Droppable droppableId={listId} type="CARD">
                 {(droppableProvided) => (
 
-                    <div className="card-list" ref={droppableProvided.innerRef} >
+                    <div className="card-list" ref={droppableProvided.innerRef} style={{overflow:'none'}} >
                         {cards.map((card, idx) => {
                             if (card) {
 
                                 return (
 
-                                    <CardPreview currGroup={currGroup} key={card.id} listId={listId} board={board} idx={idx} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
+                                    <CardPreview exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} currGroup={currGroup} key={card.id} listId={listId} board={board} idx={idx} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
                                 )
                             }
                         })}
                         {droppableProvided.placeholder}
+                        
+            {/* <div className="hidden-actions-form-container">
+                <form action="" className="hidden-actions-form">
+                    <input  type="text" placeholder="+ Add another card "  />
+                </form> 
+
+                <div className="hidden-actions flex">
+                    <button > Add Card</button>
+                    <button  className="icon">
+                        <CloseSharpIcon />
+                    </button>
+                </div>
+            </div> */}
                     </div>
                 )}
             </Droppable>

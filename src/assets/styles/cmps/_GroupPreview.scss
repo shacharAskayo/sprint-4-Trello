@@ -13,14 +13,13 @@
             margin-left: 13px;
         }
     }
-    border: 1px solid gray;
     border-radius: 3px;
-    background-color: #e9eaebea;
-    margin: 0px 30px 30px 30px;
+    background-color: $sec-bgc;
+    margin: 0px 4px  4px;
     input {
         background-color: inherit;
         border: 0;
-        margin-left: 13px;
+        margin-left: 2px;
     }
     padding: 5px 3px 8px 3px;
     cursor: pointer;
@@ -53,6 +52,7 @@
     }
 
     .group-menu-btn {
+        cursor: pointer;
         position: absolute;
         right: 12px;
         top: 0;

@@ -27,7 +27,7 @@ class _Header extends Component {
                     </span>
                 </div>
 
-                <h3>Trello</h3>
+
                 <div className="icons-container">
                     <span className="apps-icon" onClick={this.toggleMap}>
                         {/* <Link to="/map"></Link> */}

@@ -2,9 +2,6 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 
 
-//icons:
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-
 class _BoardHeader extends Component {
 
     render() {
@@ -19,7 +16,6 @@ class _BoardHeader extends Component {
 
 const mapStateToProps = state => {
     return {
-        reviews: state.reviewModule.reviews,
         board: state.boardModule.board,
     }
 }

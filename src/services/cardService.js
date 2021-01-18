@@ -13,6 +13,7 @@ export const cardService = {
 }
 
 function getCardById(board, cardId) {
+    console.log(board);
     var currCard
     board.groups.forEach(group => group.cards.forEach(card => {
         if (card.id === cardId) currCard = JSON.parse(JSON.stringify(card))
@@ -20,6 +21,7 @@ function getCardById(board, cardId) {
     if (!currCard) return null
     const labels = getCardLabels(board, currCard.labels)
     const activities = _getCardActivities(board, cardId)
+    console.log(currCard);
     return {...currCard, labels, activities }
 }
 

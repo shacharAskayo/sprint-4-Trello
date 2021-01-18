@@ -10,6 +10,7 @@ const initialState = {
   isLabelOpen: false,
 }
 
+
 export function boardReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_BOARDS':
@@ -20,6 +21,8 @@ export function boardReducer(state = initialState, action = {}) {
       return { ...state, board: action.board }
     case 'OPEN-LABELS':
       return { ...state, isLabelOpen: !state.isLabelOpen }
+    case 'SET_GROUPS_FILTER':
+      return { ...state, filterBy: action.filterBy }
     default:
       return state
   }

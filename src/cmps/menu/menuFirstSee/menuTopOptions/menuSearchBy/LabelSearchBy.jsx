@@ -1,6 +1,10 @@
 import { Component } from 'react'
+import { connect } from 'react-redux'
 
-export class LabelSearchBy extends Component {
+//funcitons:
+import { setFilter } from '../../../../../store/actions/boardAction'
+
+class _LabelSearchBy extends Component {
 
     state = {
         labals: this.props.board.labels,
@@ -12,13 +16,8 @@ export class LabelSearchBy extends Component {
     }
 
     toggleNoLab = () => { this.setState({ isNoLabClickedInMenu: !this.state.isNoLabClickedInMenu }) }
-    toggleChooseLabel = (labelIdx) => {
-        // let labels = this.state.labels.map((label, idx) => {
-        //     return (labelIdx !== idx) ? label : { ...label, isClickedInMenu=!isClickedInMenu }
-        // })
-
-        // this.setState({ labels })
-        console.log(labelIdx);
+    toggleChooseLabel = (labelTitle) => {
+        this.props.setFilter(labelTitle)
     }
     render() {
         const { isNoLabClickedInMenu } = this.state
@@ -26,27 +25,30 @@ export class LabelSearchBy extends Component {
         if (!labels || !labels.length) return null
         return (
             <section className="searchBy-labels-area">
-                <button className="label">
-                    <div className="label-color" style={{ backgroundColor: '#b3bac5' }} onClick={this.toggleNoLab}></div>
+                <button className="label" onClick={this.toggleNoLab}>
+                    <div className="label-color" style={{ backgroundColor: '#b3bac5' }} ></div>
                     <span className="label-title">No Labels</span>
                     {isNoLabClickedInMenu && <span className="label-choosed">✔</span>}
                 </button>
                 {labels.map((label, idx) => {
-                    return <button className="label" key={idx} onClick={(idx) => this.toggleChooseLabel(idx)}>
+                    return <button className="label" key={idx} onClick={(idx) => this.toggleChooseLabel(label.title)}>
                         <div className="label-color" style={{ backgroundColor: label.color }}></div>
                         <span className="label-title">{label.title}</span>
                         {label.isClickedInMenu && <span className="label-choosed">✔</span>}
                     </button>
 
                 })}
-                {/* {labels[labels.length - 1].map((defLabel, idx) => {
-                    return <button className="label" key={idx} onClick={() => this.chooseLabel(defLabel)}>
-                        <div className="label-color" style={{ backgroundColor: defLabel.color }}></div>
-                        <span className="label-title">{defLabel.title}</span>
-                        {label.isClickedInMenu && <div className="label-choosed">✔</div>}
-                    </button>
-                })} */}
+
             </section>
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        filterBy: state.boardModule.filterBy
+    }
+}
+const mapDispatchToProps = {
+    setFilter
+}
+export const LabelSearchBy = connect(mapStateToProps, mapDispatchToProps)(_LabelSearchBy)

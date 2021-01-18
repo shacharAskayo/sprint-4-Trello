@@ -35,6 +35,7 @@ class _ColorsArea extends Component {
                         ></div>
                     })}
                 </div>
+                <span onClick={this.props.goBack} className="go-back">Go back to backgrounds</span>
             </section>
         )
     }
