@@ -12,13 +12,13 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import { Archive } from '@material-ui/icons';
-import { DynamicCardActionModal } from "../cmps/card/DynamicCardActionModal";
+import { DynamicCardActionModal } from "./card/DynamicCardActionModal";
 import {cardService} from '../services/cardService'
 
 
 
 
-export class CardPrev2 extends Component {
+export class CardEdit extends Component {
     state={
         editPos:100,
         isModalOpen:false,

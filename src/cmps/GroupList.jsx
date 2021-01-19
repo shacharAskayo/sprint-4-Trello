@@ -59,7 +59,7 @@ export class GroupList extends Component {
             this.props.updateGroupLoaction(board, groupId, source, destination)
         } else {
             const cardId = result.draggableId
-            this.props.updateCardLocation(board, cardId, source, destination)
+            this.props.updateCardLocation(board, source, destination)
 
         }
 

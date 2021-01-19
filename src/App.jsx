@@ -9,9 +9,11 @@ import { Board } from './pages/Board'
 import { BoardList } from './cmps/BoardList.jsx'
 
 import { Header } from './cmps/Header'
+import { socketService } from './services/socketService'
 
 function _App(props) {
 
+  socketService.setup()
   const style = props.board?.style
 
   return (

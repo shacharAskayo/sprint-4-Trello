@@ -13,12 +13,12 @@ class _CardContent extends Component {
         const {card, save, user, board} = this.props
         return <div onClick={this.props.closeModal} className="card-content">
             <div className="flex wrap">
-            <MemberList setCurrModal={this.props.setCurrModal} card={card} save={save} user={user} board={board}/>
-            <LabelList setCurrModal={this.props.setCurrModal} card={card} save={save} user={user} board={board}/>
+            <MemberList setCurrModal={this.props.setCurrModal} card={card}/>
+            <LabelList setCurrModal={this.props.setCurrModal} card={card}/>
             </div>
             <CardDescription card={card} user={user} save={save}/>
             <CardChecklistList card={card} user={user} save={save}/>
-            <CardAttachmentList setCurrModal={this.props.setCurrModal} card={card} user={user} save={save}/>
+            <CardAttachmentList setCurrModal={this.props.setCurrModal} card={card}/>
             <CardCommentList card={card} user={user} save={save}/>
         </div>
     }

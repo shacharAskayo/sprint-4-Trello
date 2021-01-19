@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { cardService } from "../services/cardService";
 import { connect } from 'react-redux'
 import { updateBoardCard,copyList } from '../store/actions/boardAction'
-import { CardPrev } from './CardPrev'
-import { CardPrev2 } from './CardPrev2'
+import { CardDetails } from './CardDetails'
+import { CardEdit } from './CardEdit'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 
@@ -89,8 +89,8 @@ class _CardPreview extends Component {
                             {...draggbleProvided.dragHandleProps}>
 
 
-                            { <CardPrev isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
-                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardPrev2 copyList={this.copyList}  loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
+                            { <CardDetails isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
+                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardEdit copyList={this.copyList}  loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
                         </div>
                     )}
                 </Draggable>

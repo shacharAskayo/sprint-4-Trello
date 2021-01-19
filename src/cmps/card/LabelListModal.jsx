@@ -2,7 +2,6 @@ import { Component } from "react";
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 // import { cardService } from '../../services/cardService';
-import { Save } from "@material-ui/icons";
 
 
 export class LabelListModal extends Component {
@@ -18,7 +17,7 @@ export class LabelListModal extends Component {
         return labels.filter(label => label.title.match(regex))
     }
 
-    onAddLable = (label) => {
+    onAddLabel = (label) => {
         const card = { ...this.props.card, labels: [...this.props.card.labels, label] }
         this.props.save(card, `added label ${label.title}`)
     }
@@ -43,7 +42,7 @@ export class LabelListModal extends Component {
                 <small>LABELS</small>
                 <div className="labels-container">
                     {this.labels.map(label =>
-                        <div onClick={() => this.onAddLable(label)} key={label.id} className="flex">
+                        <div onClick={() => this.onAddLabel(label)} key={label.id} className="flex">
                             <div className={`flex space-bt bgc-${label.color?.substring(1)}`} style={{ backgroundColor: label.color }}>
                                 <span>{label.title}</span>
                                 {(card.labels.includes(label) && <span onClick={(ev) => { ev.stopPropagation(); ev.preventDefault(); this.removeLabel(label.id) }}>&#10003;</span>)}

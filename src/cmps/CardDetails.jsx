@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {MyAvatar} from './MyAvatar'
 
-export class CardPrev extends Component {
+export class CardDetails extends Component {
 
     state = {
         isSmall: false
@@ -17,7 +17,6 @@ export class CardPrev extends Component {
 
     componentDidMount() {
         const { card } = this.props
-        console.log(card);
         if (card.comments.length === 0 && card.description.length === 0 && card.labels.length === 0 && card.attachments.length === 0 && card.members.length === 0) {
             this.setState({ isSmall: true })
         }

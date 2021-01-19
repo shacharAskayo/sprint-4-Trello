@@ -34,7 +34,7 @@ export class MemberListModal extends Component {
 
     render() {
 
-        const { card, closeModal, style } = this.props
+        const { closeModal, style } = this.props
         return (
             <div className="member-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
