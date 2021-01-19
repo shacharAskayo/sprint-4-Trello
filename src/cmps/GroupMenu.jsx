@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class GroupMenu extends Component {
 
     render() {
-        const { openInput,copyList } = this.props
+        const { openInput,copyList,onArchive } = this.props
         return (
                 <div className="group-menu">
                     <div className="group-menu-header"> list actions</div>
@@ -24,7 +24,7 @@ export class GroupMenu extends Component {
                         <span> archive all cards in this list</span>
                     </div>
                     <hr />
-                    <div className="item">archive this list</div>
+                    <div className="item" onClick={onArchive}>archive this list</div>
                 </div>
         )
     }

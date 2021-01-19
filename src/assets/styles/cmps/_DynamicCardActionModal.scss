@@ -2,6 +2,7 @@
     position: fixed;
     z-index: 1;
     left: calc(50% + 195px);
+    width: 305px;
     background-color: white;
     padding: 12px;
     color: $clr1;
@@ -42,7 +43,6 @@
     //label container
     &.label-modal {
         top: 25%;
-        width: 305px;
         z-index: 1;
     }
     .labels-container {
@@ -124,6 +124,55 @@
 
     &.checklist-modal{
         top: 29%;
+    }
+    //due-date
+    &.due-date-modal{
+        top: 34%;
+        button{
+            width: fit-content;
+            padding: 0px;
+        }
+        .due-date-bouttons{
+            button{
+                padding: 10px;
+                margin: 0;
+                min-width: 80px;
+                color: white;
+                background-color: #cf513d;
+                &:hover{
+                    background-color: #eb5a46;
+                }
+            }
+            :first-child{
+                background-color: $clr3;
+                &:hover{
+                    background-color: $clr4;
+                }
+            }
+        }
+        .react-datepicker__header {
+            background-color: $main-bgc;
+            border: 0;
+        }
+        .react-datepicker{
+            border: 0;
+        }
+        select{
+            border: 0;
+            background: transparent;
+        }
+    }
+
+    //cover-modal 
+    &.cover-modal{
+        top: 43%;
+        .color-box{
+            height: 40px;
+            width: 60px;
+            margin-right: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
     }
 
 }

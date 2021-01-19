@@ -33,7 +33,7 @@ export class LabelListModal extends Component {
 
         const { card, closeModal, style } = this.props
         return (
-            <div onClick={(ev) => { ev.stopPropagation(); ev.preventDefault() }} className="label-modal card-action-modal" style={style}>
+            <div className="label-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
                     Labels
                 </div>

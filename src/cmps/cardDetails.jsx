@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {MyAvatar} from './MyAvatar'
 
-export class CardPrev extends Component {
+export class CardDetails extends Component {
 
     state = {
         isSmall: false
@@ -22,6 +22,7 @@ export class CardPrev extends Component {
         }
     }
 
+
     componentDidUpdate(prevProps) {
         const { card } = this.props
         if (prevProps !== this.props) {
@@ -33,15 +34,16 @@ export class CardPrev extends Component {
 
 
 
+
     render() {
-        const { labels, isEdit, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode, enterEditMode } = this.props
+        const { labels,isDragging , onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode, enterEditMode } = this.props
         const { isSmall } = this.state
-
-
+        var cardClass = isDragging? 'card-preview dragging':'card-preview' 
         return (
             <React.Fragment>
                 <Link to={`/board/${board._id}/${card.id}`}>
-                    <div className={`card-preview `} style={isSmall ? { padding: '4px 8px 2px' } : card.style}   >
+
+                    <div className={cardClass} style={isSmall ? {  padding: '4px 8px 2px', ...card.style } : card.style}>
                         <div className="label-container">
                             {labels.map((label, idx) => {
                                 return <div onClick={(ev) => onOpenLabel(ev, card.id)} key={label.id} className={`label ${(isLabelOpen) ? "is-open" : "is-close"}`} style={{ backgroundColor: label.color }}>

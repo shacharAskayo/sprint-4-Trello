@@ -1,13 +1,12 @@
 import { Component } from 'react'
 //cmps:
 import { GroupList } from "../cmps/GroupList"
-import { Header } from '../cmps/Header'
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/menu/Menu'
 import { getBoardById, addGroup, updateGroupLoaction, updateCardLocation } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
-import { boardService } from '../services/boardService'
-// import {Dnd} from '../cmps/Dnd'
+import { BoardHeader } from '../cmps/BoardHeader'
+import { Archive } from '../cmps/Archive'
 
 
 //functions:
@@ -15,29 +14,37 @@ import { boardService } from '../services/boardService'
 
 class _Board extends Component {
 
+  state={
+    isArchiveOpen:false
+  }
+
+
   componentDidMount() {
     const { boardId } = this.props.match.params
     if (!boardId) return null
     this.props.getBoardById(boardId)
 
   }
-  // get groups() {
-  //   const { groups } = this.props.board
-  //   const { filterBy } = this.props
-  //   const groupsForDisplay = boardService.getGroupsForDisplay(groups, filterBy)
-  //   return groupsForDisplay
-  // }
-  render() {
-    if (!this.props.board) return null
 
+  openArchive=()=>{
+    const {isArchiveOpen} = this.state
+    this.setState({isArchiveOpen:!isArchiveOpen})
+  }
+ 
+
+  render() {
+
+    if (!this.props.board) return null
     const { board, updateGroupLoaction, updateCardLocation, addGroup } = this.props
     const { groups } = board
+    const {isArchiveOpen} = this.state
 
     return (
-      <div className="main-board"  >
-        <Header />
+      <div className="main-board" >
+        <BoardHeader openArchive={this.openArchive} />
         <Menu board={board} />
-        <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />
+      {!isArchiveOpen&&  <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />}
+        {isArchiveOpen&&<Archive board={board}/>}
         <Card />
       </ div>
     )

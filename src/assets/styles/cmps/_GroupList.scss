@@ -29,7 +29,8 @@
         }
     }
 
-    height: 83vh;
+    height: calc(100vh - 100px);
+    // height: 83vh;
     display: flex;
     .add-list-input {
         cursor: pointer;

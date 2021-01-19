@@ -1,7 +1,8 @@
 .card-preview {
     position: relative;// can cause a problem
-    padding: 10px;
+    padding: 8px 2px 2px 10px;
     margin: 5px;
+    background-size: 100%;
     // background-color: saddlebrown;
     background-color: rgb(255, 255, 255);
     font-family: sans-serif;
@@ -84,12 +85,18 @@
     //     bottom: 3px;
     // }
 
+    &.dragging{
+        transform: rotate(6deg);
+
+    }
+
  }
   // //// EDIT MODE
 
 .edit {
     position: absolute;
     z-index: 4;
+    
     .edit-menu {
         position: absolute;
         z-index: 8;
@@ -116,9 +123,8 @@
     padding-right: 20px;
     width: 239.8px;
     height: 129.5px;
-    position: fixed; // causing problems  with the screen scroll to the right 
+    position: fixed; // causing problems  with the screen scroll to the right ,and fix the screen shadow
     display: grid;
-    // z-index: 100;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
 
     .edit-and-title {
@@ -129,6 +135,11 @@
 
     .card-icons {
         align-self: flex-end;
+        justify-content: flex-start;
+        gap: 8px;
+        .MuiSvgIcon-root{
+            font-size: 14px;
+        }
     }
 }
 .edit-menu {

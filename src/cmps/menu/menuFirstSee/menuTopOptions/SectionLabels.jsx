@@ -81,7 +81,7 @@ class _SectionLabels extends Component {
     editCurrLabel = (deleteOption) => {
         const { board } = this.props
         if (!this.state.label.color) return
-        this.props.editCurrLabel(board._id, this.state.label, deleteOption)
+        this.props.editCurrLabel(board, this.state.label, deleteOption)
         let colorsOpts = this.state.colorsOpts.map(currColor => {
             return { ...currColor, isSelected: false }
         })

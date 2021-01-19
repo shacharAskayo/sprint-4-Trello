@@ -1,14 +1,9 @@
 import { utilService } from './utilService'
 import { httpService } from './httpService'
 import { cardService } from './cardService'
-import { Sort } from '@material-ui/icons'
 
 
-// const { board } = require('../data/db.json')
-var db = require('../db.json')
-const { board } = db
 
-var gBoards = [board]
 export const boardService = {
     query,
     getById,
@@ -19,11 +14,14 @@ export const boardService = {
     updateGroupLoaction,
     addBoard,
     updateGroupTitle,
-    setBackground,
     updateBoardDesc,
     getActivities,
+    setStyle,
     copyList,
-    editCurrLabel
+    editCurrLabel,
+    archiveList,
+    archiveCard
+
 
 }
 
@@ -31,26 +29,36 @@ export const boardService = {
 
 
 async function query() {
-    // const board =await httpService.get('/board')
-    return gBoards
+    console.log('sevice got req');
+    try {
+        const boards = await httpService.get('/board')
+        return boards
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function addBoard(board) {
-    const newBoard = { ...board, _id: utilService.makeId() }
-    const copy = [...gBoards]
-    const newBoards = [...copy, newBoard]
-    gBoards = newBoards
-    return newBoard
+async function getById(id) {
+    try {
+        const board = await httpService.get('/board/' + id)
+        return board
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-function getById(id) {
-    const currBoard = gBoards.find(board => board._id === id)
-    const copy = JSON.parse(JSON.stringify(currBoard))
-    return Promise.resolve(copy)
-    // return Promise.resolve(currBoard)
+async function addBoard(board) {
+    try {
+        const newBoard = await httpService.post('/board', board)
+        return newBoard
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
+
+async function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
     const board = JSON.parse(JSON.stringify(currBoard))
     const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {
@@ -58,149 +66,176 @@ function updateBoardCard(currBoard, card) { //will it be a problem with idxs due
         return { ...group, cards }
     })
     const newBoard = { ...board, groups: newGroups }
-    gBoards = gBoards.map(b => (b._id === board._id) ? newBoard : b)
-    return newBoard
-
-
-    // return { ...board, groups: newGroups }
-}
-
-function addCard(boardId, groupId, card, isAddingToTheTop) {
-    var copy = JSON.parse(JSON.stringify(gBoards))
-    var newCard = JSON.parse(JSON.stringify(card))
-    newCard.id = utilService.makeId()
-    const boardIdx = copy.findIndex(board => board._id === boardId)
-    const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === groupId)
-    if (!isAddingToTheTop) copy[boardIdx].groups[groupIdx].cards.push(newCard)
-    else { copy[boardIdx].groups[groupIdx].cards.unshift(newCard) }
-    gBoards = copy
-    return copy[boardIdx]
-}
-
-
-async function addGroup(boardId, group) {
     try {
-        var copy = JSON.parse(JSON.stringify(gBoards))
-        var newGroup = { ...group, id: utilService.makeId() }
-        const boardIdx = gBoards.findIndex(board => board._id === boardId)
-        copy[boardIdx].groups.push(newGroup)
-        gBoards = copy
-        return Promise.resolve(gBoards[boardIdx])
-    }
-    catch (err) {
-        console.log('err in service:', err);
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
     }
 }
 
-function updateCardLocation(board, cardId, source, destination) {
+async function addCard(board, group, currCard, isAddingToTop) {
+    const card = {...currCard, createdAt: Date.now(), id: utilService.makeId()}
+    const newGroup = (isAddingToTop ) ? { ...group, cards: [card , ...group.cards] } : { ...group, cards: [...group.cards, card] }
+    const newGroups = board.groups.map(group => (group.id === newGroup.id ? newGroup : group))
+    const newBoard = { ...board, groups: newGroups }
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
+async function addGroup(board, group) {
+    const newGroup = {...group, createdAt: Date.now() ,id: utilService.makeId()}
+    const newGroups = [...board.groups, newGroup ]
+    const newBoard = { ...board, groups: newGroups }
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function updateCardLocation(board, source, destination) {
     const currBoard = JSON.parse(JSON.stringify(board))
     const fromGroupIdx = currBoard.groups.findIndex(group => group.id === source.droppableId)
     const toGroupIdx = currBoard.groups.findIndex(group => group.id === destination.droppableId)
     const currCard = currBoard.groups[fromGroupIdx].cards[source.index]
     currBoard.groups[fromGroupIdx].cards.splice(source.index, 1)
     currBoard.groups[toGroupIdx].cards.splice(destination.index, 0, currCard)
-    gBoards[0] = currBoard
-    return currBoard
+
+    try {
+        const boardAfter = await httpService.put('/board/' + currBoard._id, currBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function updateGroupLoaction(board, groupId, source, destination) {
+async function updateGroupLoaction(board, groupId, source, destination) {
     const currBoard = JSON.parse(JSON.stringify(board))
     const currGroup = currBoard.groups.find(group => group.id === groupId)
     currBoard.groups.splice(source.index, 1)
     currBoard.groups.splice(destination.index, 0, currGroup)
-    gBoards[0] = currBoard
-    return currBoard
-}
-
-function updateGroupTitle(currBoard, currGroup, groupTitle) {
-    const { boardIdx, copy, groupIdx } = update(currBoard, currGroup)
-    copy[boardIdx].groups[groupIdx].title = groupTitle
-    gBoards = copy
-    return gBoards[boardIdx]
-}
-
-function update(currBoard, currGroup = gBoards[0].groups[0]) {
-    var copy = JSON.parse(JSON.stringify(gBoards))
-    const boardIdx = copy.findIndex(board => board._id === currBoard._id)
-    const groupIdx = copy[boardIdx].groups.findIndex(group => group.id === currGroup.id)
-    return { boardIdx, copy, groupIdx }
-}
-
-function setBackground(board, background) {
     try {
-        const currBoard = getById(board._id)
-        var updatedBoard = { ...currBoard, style: background }
-        return Promise.resolve(updatedBoard)
-    }
-    catch (err) {
-        console.log('err in setting background', err);
+        const boardAfter = await httpService.put('/board/' + currBoard._id, currBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
     }
 }
 
-function updateBoardDesc(currBoard, description) {
-    var copy = JSON.parse(JSON.stringify(gBoards))
-    const boardIdx = copy.findIndex(board => board._id === currBoard._id)
-    copy[boardIdx].description = description
-    gBoards = copy
-    return gBoards[boardIdx]
+async function updateGroupTitle(board, currGroup, title) {
+
+    const newGroups = board.groups.map(group => (group.id === currGroup.id) ? { ...group, title } : group)
+    const newBoard = { ...board, groups: newGroups }
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function getActivities(currBoard, filter) {
-    const boardIdx = gBoards.findIndex(board => board._id === currBoard._id)
-    var cardsActivities = []
-    gBoards[boardIdx].groups.map(group => {
-        return group.cards.forEach(card => {
-            card.comments.forEach(comment => {
-                cardsActivities.push(comment)
-            })
-        })
-    })
-    var boardActivities = []
-    gBoards[boardIdx].activities.forEach(activity => {
-        boardActivities.push(activity)
-    })
-    if (filter === 'all')
-        return [...cardsActivities, ...boardActivities]
-    else return [...cardsActivities]
+async function setStyle(board, background) {
+    const newBoard = { ...board, style: background }
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function copyList(board, currGroup) {
+async function updateBoardDesc(board, description) {
+    const newBoard = { ...board, description }
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+function getActivities(board, filter) {
+    const cardsComments = []
+    console.log('the fucking board board of the cukgin servcie',board);
+    board.groups.forEach(group => group.cards.forEach(card => {
+        if (card.comments) cardsComments.push(...card.comments)
+    }))
+    if (filter === 'all') return [...cardsComments, ...board.activities]
+    else return [...cardsComments]
+}
+
+async function copyList(board, currGroup) {
     const boardCopy = JSON.parse(JSON.stringify(board))
     const groupCopy = JSON.parse(JSON.stringify(currGroup))
     groupCopy.id = utilService.makeId()
     groupCopy.cards.forEach(card => card.id = utilService.makeId())
     const groupIdx = board.groups.findIndex(group => group.id === currGroup.id)
     boardCopy.groups.splice((groupIdx + 1), 0, groupCopy)
-    console.log('the focking copy', boardCopy);
-    gBoards[0] = boardCopy
-    return boardCopy
+    try {
+        const boardAfter = await httpService.put('/board/' + boardCopy._id, boardCopy)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
 
-    async function editCurrLabel(boardId, label, deleteOption) {
-        try {
-            var copy = JSON.parse(JSON.stringify(gBoards))
-            const boardIdx = gBoards.findIndex(board => board._id === boardId)
-            if (label.id) {
-                var labelIdx = copy[boardIdx].labels.findIndex(currLabel => {
-                    return currLabel.id === label.id
-                })
-                if (deleteOption !== 'delete') {
-                    var editedLabel = { ...label, color: label.color, title: label.title, id: label.id }
-                    copy[boardIdx].labels[labelIdx] = editedLabel
-                } else {
-                    copy[boardIdx].labels.splice(labelIdx, 1)
-                }
-            }
-            else {
-                var newLabel = { ...label, id: utilService.makeId(), color: label.color, title: label.title }
-                copy[boardIdx].labels.push(newLabel)
-            }
+async function editCurrLabel(board, currLabel, deleteOption) {
 
-            gBoards = copy
-            return Promise.resolve(gBoards[boardIdx])
+        if (currLabel.id) {
+            if (deleteOption !== 'delete') {
+                var labels = board.labels.map(label => (label.id === currLabel.id) ? currLabel : label)
+            } else {
+                var labels = board.labels.filter(label => (label.id !== currLabel.id))
+            }
         }
-        catch (err) {
-            console.log('err in adding labels', err);
+        else {
+             currLabel.id = utilService.makeId()
+            var labels = [...board.labels, currLabel]
         }
+        const newBoard = {...board, labels}
+        
+        try {
+            const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+            return boardAfter
+        } catch (err) {
+            console.log(err)
+        }
+}
+
+
+async function archiveList(currBoard,currGroup){
+    const newBoard = {...currBoard,groups: currBoard.groups.filter(group=>group.id!==currGroup.id),archives:{...currBoard.archives,groups:[...currBoard.archives.groups,currGroup]}}
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+        
+    } catch (err) {
+        console.log(err)
     }
+    
+}
+
+
+async function archiveCard(currBoard,currGroup,currCard){
+    const newBoard= {...currBoard}
+    const groupIdx = currBoard.groups.findIndex(group=>group.id===currGroup.id)
+    const newCards= currBoard.groups[groupIdx].cards.filter(card=>card.id!==currCard.id)
+    newBoard.groups[groupIdx].cards=newCards
+    newBoard.archives.cards.unshift(currCard)
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+        
+    } catch (err) {
+        console.log(err)
+    }
+}

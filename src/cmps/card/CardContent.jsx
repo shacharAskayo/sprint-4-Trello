@@ -18,7 +18,7 @@ class _CardContent extends Component {
             </div>
             <CardDescription card={card} user={user} save={save}/>
             <CardChecklistList card={card} user={user} save={save}/>
-            <CardAttachmentList card={card} user={user} save={save}/>
+            <CardAttachmentList setCurrModal={this.props.setCurrModal} card={card} user={user} save={save}/>
             <CardCommentList card={card} user={user} save={save}/>
         </div>
     }
