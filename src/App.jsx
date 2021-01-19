@@ -4,11 +4,15 @@ import { Component } from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 //cmps:
+import { Header } from './cmps/Header'
 import { Home } from './pages/Home'
 import { Board } from './pages/Board'
 import { BoardList } from './cmps/BoardList.jsx'
 
-import { Header } from './cmps/Header'
+import { BoardsPick } from './pages/BoardsPick.jsx'
+import { Login } from './pages/Login'
+import { Signup } from './pages/Signup'
+import { Dashboard } from './pages/Dashboard'
 
 function _App(props) {
 
@@ -22,6 +26,9 @@ function _App(props) {
           <Switch>
             <Route path="/board/:boardId/:cardId?" component={Board} />
             <Route path="/board" component={BoardList} />
+            <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/signup" component={Signup} /> */}
+            {/* <Route path="/login" component={Login} /> */}
             <Route path="/" component={Home} />
           </Switch>
         </div>

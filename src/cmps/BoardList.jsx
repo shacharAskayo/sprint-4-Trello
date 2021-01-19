@@ -8,16 +8,13 @@ class _BoardList extends Component {
     componentDidMount() {
         this.props.loadBoards()
     }
-    get boardsForDisplay() {
-        let boards = this.props.boards
-        return boards
-    }
+
     render() {
-        const { boards } = this.boardsForDisplay
+        const { boards } = this.props
         return (
             <section className="board-list">
                 {boards.map(board => {
-                    <div> key={board._id}
+                    return <div key={board._id}>
                         <BoardPreview board={board} /></div>
                 })}
             </section>

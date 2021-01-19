@@ -46,9 +46,10 @@ async function getById(id) {
 }
 
 async function addBoard(board) {
+    const newBoard = { ...board, _id: utilService.makeId() }
     try {
-        const newBoard = await httpService.post('/board', board)
-        return newBoard
+        const boardAfter = await httpService.post('/board', newBoard)
+        return boardAfter
     } catch (err) {
         console.log(err)
     }
@@ -72,8 +73,8 @@ async function updateBoardCard(currBoard, card) { //will it be a problem with id
 }
 
 async function addCard(board, group, currCard, isAddingToTop) {
-    const card = {...currCard, createdAt: Date.now(), id: utilService.makeId()}
-    const newGroup = (isAddingToTop ) ? { ...group, cards: [card , ...group.cards] } : { ...group, cards: [...group.cards, card] }
+    const card = { ...currCard, createdAt: Date.now(), id: utilService.makeId() }
+    const newGroup = (isAddingToTop) ? { ...group, cards: [card, ...group.cards] } : { ...group, cards: [...group.cards, card] }
     const newGroups = board.groups.map(group => (group.id === newGroup.id ? newGroup : group))
     const newBoard = { ...board, groups: newGroups }
     try {
@@ -86,7 +87,9 @@ async function addCard(board, group, currCard, isAddingToTop) {
 
 
 async function addGroup(board, group) {
-    const newGroups = { ...board.groups, group }
+    const newGroup = { ...group, createdAt: Date.now(), id: utilService.makeId() }
+    const newGroups = [...board.groups, newGroup]
+
     const newBoard = { ...board, groups: newGroups }
     try {
         const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
@@ -185,23 +188,23 @@ async function copyList(board, currGroup) {
 
 async function editCurrLabel(board, currLabel, deleteOption) {
 
-        if (currLabel.id) {
-            if (deleteOption !== 'delete') {
-                var labels = board.labels.map(label => (label.id === currLabel.id) ? currLabel : label)
-            } else {
-                var labels = board.labels.filter(label => (label.id !== currLabel.id))
-            }
+    if (currLabel.id) {
+        if (deleteOption !== 'delete') {
+            var labels = board.labels.map(label => (label.id === currLabel.id) ? currLabel : label)
+        } else {
+            var labels = board.labels.filter(label => (label.id !== currLabel.id))
         }
-        else {
-             currLabel.id = utilService.makeId()
-            var labels = [...board.labels, currLabel]
-        }
-        const newBoard = {...board, labels}
-        
-        try {
-            const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-            return boardAfter
-        } catch (err) {
-            console.log(err)
-        }
+    }
+    else {
+        currLabel.id = utilService.makeId()
+        var labels = [...board.labels, currLabel]
+    }
+    const newBoard = { ...board, labels }
+
+    try {
+        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
+        return boardAfter
+    } catch (err) {
+        console.log(err)
+    }
 }
