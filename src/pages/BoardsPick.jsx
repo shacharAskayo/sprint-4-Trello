@@ -55,6 +55,10 @@ class _BoardsPick extends Component {
         })
     }
 
+    closeModal = () => {
+        let isOpen = this.state.isOpen
+        if (isOpen) this.setState({ isOpen: false })
+    }
 
     addBoard = () => {
         const { board } = this.state
@@ -71,7 +75,7 @@ class _BoardsPick extends Component {
         const { boards } = this.props
         return (
 
-            <section className="boards-pick-main-container">
+            <section className="boards-pick-main-container" >
                 <section className="boards-container">
                     <p className="pick-title">Public Boards</p>
                     <section className="board-opts">

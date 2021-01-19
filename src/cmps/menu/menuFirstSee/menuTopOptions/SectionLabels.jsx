@@ -119,7 +119,7 @@ class _SectionLabels extends Component {
                 <button className="create-btn" onClick={this.onOpenModal}>Create a new label</button>
                 {isModalOpen &&
                     <div className="labels-modal">
-                        <div className="flex top-modal-labels">
+                        <div className="top-modal-labels">
                             <p className="modal-title">Create Label</p>
                             <button className="modal-labels-btn"><CloseRoundedIcon onClick={this.onCloseModal} /></button>
                         </div>

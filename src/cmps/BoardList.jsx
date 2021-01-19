@@ -9,15 +9,12 @@ class _BoardList extends Component {
         this.props.loadBoards()
     }
 
-
-    
     render() {
-        const {boards} = this.props
-        console.log(boards);
+        const { boards } = this.props
         return (
             <section className="board-list">
                 {boards.map(board => {
-                    return <div key={board._id}> 
+                    return <div key={board._id}>
                         <BoardPreview board={board} /></div>
                 })}
             </section>

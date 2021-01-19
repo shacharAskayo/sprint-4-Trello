@@ -4,6 +4,9 @@
 @import "setup/mixins";
 @import "setup/typography";
 
+//views:
+@import "/views/loginSignup";
+
 // Basics
 @import "basics/helpers";
 @import "basics/layout";
@@ -15,12 +18,15 @@
 @import "pages/Home";
 @import "pages/App";
 @import "/pages/BoardsPick";
+// @import "/pages/LoginSignup";
+@import "/pages/Dashboard";
 
 // Components:::
 @import "/cmps/AppHeader";
 @import "cmps/Header";
 @import "cmps/ReviewList";
 @import "cmps/BoardHeader";
+@import "/cmps/UserModalFromHeader";
 //group:
 @import "cmps/GroupList";
 @import "cmps/GroupPreview";
