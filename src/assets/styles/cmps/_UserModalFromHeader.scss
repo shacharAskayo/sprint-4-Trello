@@ -1,0 +1,94 @@
+.user-modal-from-header {
+    width: 350px;
+    min-height: 207px;
+    max-height: calc(100vh - 200px);
+    background-color: white;
+    color: black;
+    top: 49px;
+    left: 576px;
+    border-radius: 3px;
+    position: fixed;
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+    position: fixed;
+    z-index: 2;
+    padding: 10px;
+
+    .top-modal {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        margin-bottom: -15px;
+        .title {
+            grid-column: 2/3;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                Helvetica Neue, sans-serif;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .close-modal-btn {
+            grid-column: -2/-1;
+            background-color: $clr6;
+            margin-top: 8px;
+            margin-left: 18px;
+        }
+
+        .close-modal-btn > * {
+            font-size: 16px;
+        }
+    }
+    hr {
+        width: 90%;
+    }
+    .user-details-menu {
+        margin-left: 14px;
+        display: grid;
+        grid-template-columns: 1fr 10fr;
+        p {
+            margin-right: 120px;
+            margin-left: -42px;
+            color: $clr2;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .user-details-user-icon {
+            margin-right: 53px;
+        }
+        .user-details-user-name {
+            grid-column: -2/-1;
+            margin: -20px 140px 0px -42px;
+            font-size: 14px;
+            color: #5e6c84;
+        }
+    }
+    .user-acts {
+        margin-left: 5px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        .act {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans,
+                Helvetica Neue, sans-serif;
+            font-size: 14px;
+            color: rgb(23, 43, 77);
+            background-color: $clr6;
+            width: 95%;
+            height: 30px;
+            padding-top: 0.2em;
+            margin-left: 5px;
+            text-align: left;
+        }
+        .act:hover {
+            background-color: #e2e2e285;
+        }
+    }
+    .go-back {
+        cursor: pointer;
+        color: #172b4d;
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+            sans-serif;
+    }
+    .go-back:hover {
+        text-decoration: underline;
+    }
+}

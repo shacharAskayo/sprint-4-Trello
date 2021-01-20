@@ -6,6 +6,7 @@ import { Menu } from '../cmps/menu/Menu'
 import { getBoardById, addGroup, updateGroupLoaction, updateCardLocation } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
 import { BoardHeader } from '../cmps/BoardHeader'
+import { Archive } from '../cmps/Archive'
 
 
 //functions:
@@ -13,24 +14,37 @@ import { BoardHeader } from '../cmps/BoardHeader'
 
 class _Board extends Component {
 
+  state={
+    isArchiveOpen:false
+  }
+
+
   componentDidMount() {
     const { boardId } = this.props.match.params
     if (!boardId) return null
     this.props.getBoardById(boardId)
 
   }
- 
-  render() {
-    if (!this.props.board) return null
 
+  openArchive=()=>{
+    const {isArchiveOpen} = this.state
+    this.setState({isArchiveOpen:!isArchiveOpen})
+  }
+ 
+
+  render() {
+
+    if (!this.props.board) return null
     const { board, updateGroupLoaction, updateCardLocation, addGroup } = this.props
     const { groups } = board
+    const {isArchiveOpen} = this.state
 
     return (
       <div className="main-board" >
-        <BoardHeader />
+        <BoardHeader openArchive={this.openArchive} />
         <Menu board={board} />
-        <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />
+      {!isArchiveOpen&&  <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />}
+        {isArchiveOpen&&<Archive board={board}/>}
         <Card />
       </ div>
     )

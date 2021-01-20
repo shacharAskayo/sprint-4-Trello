@@ -10,12 +10,12 @@ export class AddCardInput extends Component {
         return (
 
             <div className="hidden-actions-form-container">
-                <form action="" className="hidden-actions-form">
+                <form action="" className="hidden-actions-form" >
                     <input  onClick={onShowAddBtn} onKeyDown={handleEnter}  value ={title}  type="text" placeholder="+ Add another card " onChange={handleChange} />
                 </form> 
                 {/* className="add-card-input-bottom" */}
 
-                <div className="hidden-actions flex">
+                <div className="hidden-actions flex" style={{margin:'0'}}>
                     <button  onClick={onAddCard}> Add Card</button>
                     <button onClick={discardChanges} className="icon">
                         <CloseSharpIcon />

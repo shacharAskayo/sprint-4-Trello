@@ -184,3 +184,26 @@ export function moveCard(currBoard, card, to) {
   }
 }
 
+export function onArchiveList(currBoard, currGroup) {
+  return async dispatch => {
+    try {
+      const board = await boardService.archiveList(currBoard,currGroup)
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+
+export function onArchiveCard(currBoard, currGroup,card) {
+  return async dispatch => {
+    try {
+      const board = await boardService.archiveCard(currBoard,currGroup,card)
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}

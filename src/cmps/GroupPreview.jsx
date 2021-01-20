@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { CardList } from "./CardList";
 import { connect } from 'react-redux'
 import { loadCards } from '../store/actions/cardActions'
-import { addCard, openLabel, editGroupTitle ,copyList } from '../store/actions/boardAction'
+import { addCard, openLabel, editGroupTitle ,copyList,onArchiveList } from '../store/actions/boardAction'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 import { GroupMenu } from './GroupMenu';
@@ -26,7 +26,7 @@ export class _GroupPreview extends Component {
             labels: []
         },
         isAdding: false,
-        isChangeTitle: true,
+        isChangeTitle: false,
         isMenuOpen: false,
         isAddingToTop:false,
         topTitle:''
@@ -37,6 +37,10 @@ export class _GroupPreview extends Component {
         const { group } = this.props
         this.props.loadCards(group)
         this.setState({ groupTitle: group.title })
+    }
+
+    openTitleBtn=()=>{
+        this.setState({isChangeTitle:true})
     }
 
     handleChange = (ev) => {
@@ -68,13 +72,11 @@ export class _GroupPreview extends Component {
             isAdding: false,
             isAddingToTop:false
         })
-        // ev.currentTarget?.blur()
     }
 
 
     handleEditGroupTitle = (ev) => {
         const { value } = ev.target
-        // console.log(ev.target.value);
         this.setState({ groupTitle: value })
     }
 
@@ -91,6 +93,7 @@ export class _GroupPreview extends Component {
         const { board, group } = this.props
         const { groupTitle } = this.state
         this.props.editGroupTitle(board, group, groupTitle)
+        this.setState({ isChangeTitle: false })
         ev.currentTarget.blur()        
     }
     handleEnter = (ev) => {
@@ -122,36 +125,49 @@ export class _GroupPreview extends Component {
         if(isMenuOpen) this.setState({isMenuOpen:false})
     }
 
+    onArchive=()=>{
+        const {board,group} = this.props
+        this.props.onArchiveList(board,group)
+        
+    }
+
+
+
     render() {
         const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation,isEdit,enterEditMode,exitEditMode } = this.props
         const { cards } = group
-        const { isAdding, groupTitle, isChangeTitle, isMenuOpen,isAddingToTop,topTitle } = this.state
+        const { groupTitle, isChangeTitle, isMenuOpen,isAddingToTop } = this.state
         const { title } = this.state.card
+
         return (
             <Draggable draggableId={listId} index={idx} >
-                {provided => (
-                    <div className="group-preview" onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
+                {(provided,snapshot) => (
+
+
+                    <div className={(snapshot.isDragging)?'group-preview dragging':'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
+
                         <div {...provided.dragHandleProps} listId={listId}>
                             <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
 
-                            {isMenuOpen && <GroupMenu  openInput={this.openInput} copyList={this.copyList} />}
+                            {isMenuOpen && <GroupMenu onArchive={this.onArchive}  openInput={this.openInput} copyList={this.copyList} />}
+
 
                             <div className={`hidden-actions-form-container`}>
                                 <form className={`hidden-actions-form`}>
-                                    <input className="group-title-input" onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
+                                    <input className="group-title-input" onClick={this.openTitleBtn} onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
                                 </form>
-                                {isChangeTitle && <div className="hidden-actions flex">
-                                    <button type="button" onClick={this.editGroupTitle} style={{ marginLeft: '0' }} > save </button>
+                                {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
+                                    <button type="button" onClick={this.editGroupTitle}  > save </button>
                                     <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
                                 </div>}
                             </div>
                         </div>
                         
                         {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
-                        <CardList  exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
+                        <CardList isDragging={snapshot.isDragging}  exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
                         {!isAddingToTop&&<AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
 
-
+                    
                     </div>
                 )}
             </Draggable>
@@ -172,7 +188,8 @@ const mapDispatchToProps = {
     addCard,
     openLabel,
     copyList,
-    editGroupTitle
+    editGroupTitle,
+    onArchiveList
 }
 
 export const GroupPreview = connect(mapStateToProps, mapDispatchToProps)(_GroupPreview)

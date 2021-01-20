@@ -19,7 +19,9 @@ export const userService = {
     update,
     getLoggedinUser,
     increaseScore,
-    getUser
+    getUser,
+    getUserActivities,
+    getUserCards
 }
 function getUser() {
     console.log('user', user);
@@ -87,4 +89,22 @@ function _saveLocalUser(user) {
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem('loggedinUser'))
 }
+
+function getUserActivities(board, user) {
+    const userActivities = []
+    board.groups.forEach(group => group.cards.forEach(card => {
+        if (card.createdBy === user) userActivities.push(card)
+    }))
+    // return userActivities
+    return [...board.activities]
+}
+function getUserCards(board, user) {
+    const userCards = []
+    board.groups.forEach(group => group.cards.forEach(card => {
+        if (card.createdBy === user) userCards.push(card)
+    }))
+    return userCards
+}
+
+
 

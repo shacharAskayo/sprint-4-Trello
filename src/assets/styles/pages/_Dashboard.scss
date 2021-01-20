@@ -1,0 +1,19 @@
+.dashboard {
+    background-color: white;
+    width: 90%;
+    margin: 20px auto;
+    height: 90vh;
+    border-radius: 3px;
+    box-shadow: 0 0 20px 0px #615050;
+    .dashboard-top {
+        display: grid;
+        grid-template-columns: 1fr 8fr 1fr;
+        .dashboard-title {
+            grid-column: 2/3;
+            text-align: center;
+        }
+        .close-modal-btn {
+            grid-column: -2/-1;
+        }
+    }
+}

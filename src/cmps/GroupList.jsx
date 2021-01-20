@@ -87,15 +87,15 @@ export class GroupList extends Component {
             // <DragDropContext onDragEnd={this.handleOnDragEnd}>
             <DragDropContext onDragEnd={this.handleDrag}>
                 <Droppable droppableId="board" type="GROUP" direction="horizontal">
-                    {provided => (
+                    {(provided ) => (
 
                             <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.exitEditMode}  >
                                 {groups && groups.map((group, idx) => {
                                     return (
-                                        <GroupPreview exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
+                                        <GroupPreview  exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
                                     )
                                 })}
-                                {provided.placeholder}
+                                {provided.placeholder }
 
                                 <div className="hidden-actions-form-container add-group" >
                                     <form action="" className="hidden-actions-form">

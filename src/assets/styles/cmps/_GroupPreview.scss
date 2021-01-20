@@ -33,8 +33,11 @@
 
     .label-container {
         display: flex;
+        width: 90%;
+        flex-wrap: wrap;
         .label {
             margin-right: 8px;
+            margin-top: 5px;
             border-radius: 4px;
             transition: width 0.2s, height 0.4s;
         }
@@ -58,4 +61,9 @@
         top: 0;
         font-weight: 600;
     }
+
+    &.dragging{
+        background-color: rgba(207, 205, 205, 0.877);
+    }
+
 }

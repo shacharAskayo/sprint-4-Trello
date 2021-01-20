@@ -23,13 +23,18 @@
     .add-group {
         button.icon {
             padding: 4px 4px 2px;
+            background-color: $sec-bgc;
             .MuiSvgIcon-root {
                 font-size: 1.3em;
             }
         }
+        input{
+            width: 240px !important;
+        }
     }
 
-    height: 83vh;
+    height: calc(100vh - 100px);
+    // height: 83vh;
     display: flex;
     .add-list-input {
         cursor: pointer;

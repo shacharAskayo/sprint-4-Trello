@@ -4,7 +4,6 @@
 
 .app {
     height: 100vh;
-    background-color: cadetblue;
 }
 ::selection {
     background-color: $clr1;
@@ -43,8 +42,8 @@ h6 {
 img {
     width: 100%;
 }
-s p {
-    margin: 0 0 0em;
+p {
+    margin: 0 0 0.6em;
 }
 
 a {

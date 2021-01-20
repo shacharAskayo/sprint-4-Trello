@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadBoards } from '../store/actions/boardAction.js'
-import { BoardPreview } from './BoardPreview.jsx'
+import { BoardPreview } from './BoardPreview'
 
 class _BoardList extends Component {
 
@@ -15,7 +15,6 @@ class _BoardList extends Component {
 
     render() {
         const { boards } = this.props
-        console.log(boards);
         if (!boards) return 
         return (
             <section className="board-list">

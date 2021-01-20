@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 export function BoardPreview({ board }) {
 
+    console.log('the board',board);
+
     return (
         <article className="board-preview">
 
