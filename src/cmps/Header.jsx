@@ -15,10 +15,13 @@ import { MenuMapShow } from './menu/menuFirstSee/MenuMapShow';
 import { UserModalFromHeader } from './UserModalFromHeader';
 
 class _Header extends Component {
+    
     state = {
         isMapOpen: false,
         isUserModalOpen: false
     }
+
+
     toggleMap = () => { this.setState({ isMapOpen: !this.state.isMapOpen }) }
 
     closeModal = () => { this.setState({ isUserModalOpen: false }) }
@@ -44,6 +47,9 @@ class _Header extends Component {
                     </span>
                 </div>
 
+                    <div style={{fontWeight:'700',position:'absolute',left:'50%',transform:'translateX(-50%)',fontFamily:'serif'}}>
+                        Trello
+                    </div>
 
                 <div className="icons-container">
                     <span className="apps-icon" onClick={this.toggleMap}>

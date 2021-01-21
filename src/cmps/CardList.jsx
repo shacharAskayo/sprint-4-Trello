@@ -42,6 +42,7 @@ export class CardList extends Component {
                 {(droppableProvided) => (
 
                     <div className={'card-list'} ref={droppableProvided.innerRef} style={{overflow:'none'}} >
+                        <div style={{height: '1px'}}></div>
                         {cards.map((card, idx) => {
                             if (card) {
 

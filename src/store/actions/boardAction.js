@@ -3,7 +3,6 @@ import { cardService } from '../../services/cardService.js'
 import { socketService } from '../../services/socketService.js'
 
 export function loadBoards() {
-  console.log('actions got req')
   return async dispatch => {
     try {
       const boards = await boardService.query()
@@ -67,10 +66,10 @@ export function addCard(board, group, cardToAdd) {
 export function updateBoardCard(board, card) {
   return async dispatch => {
     try {
-      const updatedBoard =  await boardService.updateBoardCard(board, card)
+      const updatedBoard = await boardService.updateBoardCard(board, card)
       console.log(updatedBoard);
       dispatch({ type: 'SET_BOARD', board: updatedBoard }) //drag end drop deley
-      boardService.updateBoard({...updatedBoard})
+      boardService.updateBoard({ ...updatedBoard })
     }
     catch (err) {
       dispatch({ type: 'SET_BOARD', board }) // if server returns error 
@@ -114,8 +113,9 @@ export function updateCardLocation(board, source, destination) {
 export function updateGroupLoaction(board, groupId, source, destination) {
   return async dispatch => {
     try {
-      const updatedBoard = boardService.updateGroupLoaction(board, groupId, source, destination)
+      const updatedBoard = await boardService.updateGroupLoaction(board, groupId, source, destination)
       dispatch({ type: 'SET_BOARD', board: updatedBoard }) //drag end drop deley
+      console.log('the updated one', updatedBoard);
       boardService.updateBoard(updatedBoard)
     }
     catch (err) {
@@ -137,11 +137,11 @@ export function editGroupTitle(board, group, groupTitle) {
   }
 }
 
-export function copyList(board,group){
+export function copyList(board, group) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.copyList(board,group)
-      dispatch({ type: 'SET_BOARD', board:updatedBoard })
+      const updatedBoard = await boardService.copyList(board, group)
+      dispatch({ type: 'SET_BOARD', board: updatedBoard })
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
@@ -187,7 +187,7 @@ export function moveCard(currBoard, card, to) {
 export function onArchiveList(currBoard, currGroup) {
   return async dispatch => {
     try {
-      const board = await boardService.archiveList(currBoard,currGroup)
+      const board = await boardService.archiveList(currBoard, currGroup)
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
@@ -196,11 +196,36 @@ export function onArchiveList(currBoard, currGroup) {
   }
 }
 
-export function onArchiveCard(currBoard, currGroup,card) {
+export function onArchiveCard(currBoard, currGroup, card) {
   return async dispatch => {
     try {
-      const board = await boardService.archiveCard(currBoard,currGroup,card)
+      const board = await boardService.archiveCard(currBoard, currGroup, card)
       dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+
+export function sortCards(currBoard, sortBy, group) {
+  return async dispatch => {
+    try {
+      const board = await boardService.sortCards(currBoard, sortBy, group)
+      console.log('board in action after changes', board);
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+
+export function moveGroup(boards,currBoard, currGroup,  destinationBoard, position) {
+  return async dispatch => {
+    try {
+      const board = await boardService.moveGroup(boards,currBoard, currGroup, destinationBoard, position)
+      // dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
       console.log('err in loadBoard', err);

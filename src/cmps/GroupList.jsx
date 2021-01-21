@@ -18,7 +18,8 @@ export class GroupList extends Component {
         isEdit:{
             isOpen:false,
             id:''
-        }
+        },
+        isMenuOpen:false
     } 
 
 
@@ -33,6 +34,7 @@ export class GroupList extends Component {
     onAddGroup = () => {
         const { group } = this.state
         const { board } = this.props
+        if(group.title.length===0) return 
         this.props.addGroup(board, group)
         this.setState({ group: { title: '', style: {}, cards: [] } })
 
@@ -79,10 +81,16 @@ export class GroupList extends Component {
             isEdit:{isOpen:false,id:''}
          })
     }
+    // openMenu=()=>{
+    //     this.setState({isMenuOpen:true})
+    // }
+    // closeMenu=()=>{
+    //     this.setState({isMenuOpen:true})
+    // }
 
     render() {
         const { groups } = this.props.board
-        const { isEdit } = this.state
+        const { isEdit,isMenuOpen } = this.state
         return (
             // <DragDropContext onDragEnd={this.handleOnDragEnd}>
             <DragDropContext onDragEnd={this.handleDrag}>
@@ -92,10 +100,9 @@ export class GroupList extends Component {
                             <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.exitEditMode}  >
                                 {groups && groups.map((group, idx) => {
                                     return (
-                                        <GroupPreview  exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
+                                        <GroupPreview  isMenuOpen={isMenuOpen}  exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
                                     )
                                 })}
-                                {provided.placeholder }
 
                                 <div className="hidden-actions-form-container add-group" >
                                     <form action="" className="hidden-actions-form">
@@ -108,7 +115,9 @@ export class GroupList extends Component {
                                         </button>
                                     </div>
                                 </div>
+                                {provided.placeholder }
                             </div>
+                            
                     )}
                 </Droppable>
             </DragDropContext>

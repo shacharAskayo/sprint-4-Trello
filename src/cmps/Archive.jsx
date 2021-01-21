@@ -24,7 +24,7 @@ export class Archive extends Component {
 
                                 <div>
                                     <span className="group-menu-btn" >...</span>
-                                    <p>Group Archives</p>
+                                    <p>Group Archives </p>
                                 </div>
                                 <div className={'card-list'} style={{ overflow: 'none' }} >
                                     {group.cards.map((card) => {
