@@ -92,18 +92,20 @@ function getLoggedinUser() {
 
 function getUserActivities(board, user) {
     const userActivities = []
-    board.groups.forEach(group => group.cards.forEach(card => {
-        if (card.createdBy === user) userActivities.push(card)
-    }))
+    board.activities.forEach(activity => (activity.createdBy === user) ? userActivities.push(...activity) : userActivities.push(''))
+    console.log('userActivities:', userActivities);
     // return userActivities
-    return [...board.activities]
+    return [...board.activities] //for now the user has no activities so i returned all the board's activities
 }
 function getUserCards(board, user) {
     const userCards = []
     board.groups.forEach(group => group.cards.forEach(card => {
         if (card.createdBy === user) userCards.push(card)
     }))
-    return userCards
+    console.log('userCards:', userCards);
+    // return userCards
+    console.log(board.groups[0].cards[0]);
+    return board.groups[0].cards[0]
 }
 
 
