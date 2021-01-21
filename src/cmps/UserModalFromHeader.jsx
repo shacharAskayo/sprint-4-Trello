@@ -17,7 +17,7 @@ export class UserModalFromHeader extends Component {
 
         const { currAct } = this.state
         const { user, board } = this.props
-        if (!user || !board) return <h2>Loading</h2>
+        if (!user || !board) return null 
         return (
             <section className="user-modal-from-header">
                 <div className="top-modal">

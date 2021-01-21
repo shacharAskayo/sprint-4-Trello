@@ -27,12 +27,15 @@ export class AddCoverModal extends Component {
         const card = JSON.parse(JSON.stringify(this.props.card))
         const NewCard = { ...card, style: { backgroundColor: color } }
         this.props.save(NewCard, `Set background color`)
+        this.props.closeModal()
 
     }
 
     setImg = (url) => {
         const card = { ...this.props.card, style: { backgroundImage: `url(${url})` } }
         this.props.save(card, `Set background image`)
+        this.props.closeModal()
+
     }
 
     render() {

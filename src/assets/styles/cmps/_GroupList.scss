@@ -23,9 +23,13 @@
     .add-group {
         button.icon {
             padding: 4px 4px 2px;
+            background-color: $sec-bgc;
             .MuiSvgIcon-root {
                 font-size: 1.3em;
             }
+        }
+        input{
+            width: 240px !important;
         }
     }
 

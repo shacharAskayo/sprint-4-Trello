@@ -1,7 +1,7 @@
 .card-action-modal {
     position: fixed;
     z-index: 1;
-    left: calc(50% + 195px);
+    left: calc(50% + 185px);
     width: 305px;
     background-color: white;
     padding: 12px;
@@ -40,6 +40,34 @@
         }
     }
 
+    label{
+        font-size: 0.8em;
+        padding: 5px;
+        background-color: $light-bgc;
+        border: 0;
+        border-radius: 3px;
+        width: 25%;
+        &:first-child{
+            width:70%;
+        }
+        select{
+            border: 0;
+            width: 100%;
+            background: transparent;
+            color: $clr2;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
+    button.green{
+        background-color: $clr3;
+        color: white;
+        width: fit-content;
+        margin-top: 10px;
+    }
+    
     //label container
     &.label-modal {
         top: 25%;
@@ -173,6 +201,13 @@
             margin-top: 10px;
             border-radius: 5px;
         }
+    }
+
+    &.move-card-modal{
+        top: 51%;
+    }
+    &.copy-card-modal{
+        top: 55%;
     }
 
 }

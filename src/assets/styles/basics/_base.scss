@@ -4,11 +4,14 @@
 
 .app {
     height: 100vh;
-    background-color: cadetblue;
 }
 ::selection {
     background-color: $clr1;
     color: $clr6;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 html {

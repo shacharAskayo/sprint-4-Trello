@@ -1,4 +1,5 @@
 import { boardService } from '../../services/boardService.js'
+import { cardService } from '../../services/cardService.js'
 import { socketService } from '../../services/socketService.js'
 
 export function loadBoards() {
@@ -21,6 +22,7 @@ export function getBoardById(id) {
       socketService.emit('join board', board._id)
       dispatch({ type: 'SET_BOARD', board })
       socketService.on('board update', updatedBoard => {
+        console.log('got socket event');
         dispatch({ type: 'SET_BOARD', updatedBoard })
       })
     }
@@ -64,8 +66,16 @@ export function addCard(board, group, cardToAdd) {
 
 export function updateBoardCard(board, card) {
   return async dispatch => {
-    const newBoard = await boardService.updateBoardCard(board, card)
-    dispatch({ type: 'SET_BOARD', board: newBoard })
+    try {
+      const updatedBoard =  await boardService.updateBoardCard(board, card)
+      console.log(updatedBoard);
+      dispatch({ type: 'SET_BOARD', board: updatedBoard }) //drag end drop deley
+      boardService.updateBoard({...updatedBoard})
+    }
+    catch (err) {
+      dispatch({ type: 'SET_BOARD', board }) // if server returns error 
+      console.log('boardActions: could not save', err);
+    }
 
   }
 }
@@ -88,11 +98,12 @@ export function setBackground(board, background) {
   }
 }
 
-export function updateCardLocation(board, cardId, source, destination) {
+export function updateCardLocation(board, source, destination) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateCardLocation(board, cardId, source, destination)
+      const updatedBoard = await boardService.updateCardLocation(board, source, destination)
       dispatch({ type: 'SET_BOARD', board: updatedBoard })
+      boardService.updateBoard(updatedBoard)
     }
     catch (err) {
       console.log('boardActions: err in selectColor', err);
@@ -103,11 +114,13 @@ export function updateCardLocation(board, cardId, source, destination) {
 export function updateGroupLoaction(board, groupId, source, destination) {
   return async dispatch => {
     try {
-      const updatedBoard = await boardService.updateGroupLoaction(board, groupId, source, destination)
-      dispatch({ type: 'SET_BOARD', board: updatedBoard })
+      const updatedBoard = boardService.updateGroupLoaction(board, groupId, source, destination)
+      dispatch({ type: 'SET_BOARD', board: updatedBoard }) //drag end drop deley
+      boardService.updateBoard(updatedBoard)
     }
     catch (err) {
-      console.log('boardActions: err in selectColor', err);
+      dispatch({ type: 'SET_BOARD', board }) // if server returns error 
+      console.log('boardActions: could not save', err);
     }
   }
 }
@@ -147,7 +160,6 @@ export function setFilter(filterBy) {
   }
 }
 
-
 export function editCurrLabel(currBoard, label, selectedColorLabel, act) {
   return async dispatch => {
     try {
@@ -155,7 +167,19 @@ export function editCurrLabel(currBoard, label, selectedColorLabel, act) {
       dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
-      console.log('err in loadBoard', err);
+      console.log('err in loadBoard', err)
+    }
+  }
+}
+
+export function moveCard(currBoard, card, to) {
+  return async dispatch => {
+    try {
+      const board = await boardService.moveCard(currBoard, card, to)
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in moving card', err)
     }
   }
 }

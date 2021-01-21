@@ -6,6 +6,8 @@ import { MemberListModal } from "./MemberListModal";
 import { AddAttachmentModal } from "./AddAttachmentModal";
 import { AddDueDateModal } from "./AddDueDateModal";
 import { AddCoverModal } from "./AddCoverModal";
+import { MoveCardModal } from "./MoveCardModal";
+import { CopyCardModal } from "./CopyCardModal";
 
 
 class _DynamicCardActionModal extends Component {
@@ -25,10 +27,10 @@ class _DynamicCardActionModal extends Component {
                 return <AddAttachmentModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
             case 'cover':
                 return  <AddCoverModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
-            // case 'move':
-            //     return 
-            // case 'copy':
-            //     return
+            case 'move':
+                return <MoveCardModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
+                case 'copy':
+                return <CopyCardModal style={currModal.style} closeModal={closeModal} card={card} save={save} board={board} />
             // case 'watch':
             //     return
             // case 'archive':

@@ -1,7 +1,8 @@
-import { Component } from "react"
+import React, { Component } from "react"
 import { utilService } from "../../services/utilService";
 import AttachFileRoundedIcon from '@material-ui/icons/AttachFileRounded';
 import CallMadeOutlinedIcon from '@material-ui/icons/CallMadeOutlined';
+import { CallReceived } from "@material-ui/icons";
 
 export class CardAttachmentList extends Component {
 
@@ -15,9 +16,11 @@ export class CardAttachmentList extends Component {
         newCard.comments.unshift(comment)
     }
 
-    openModal = () => {
-        this.props.setCurrModal({name: 'attachment', style: {left: '15%', top: '69%'}})
+    openModal = (ev) => {
+        const top = ev.target.offsetTop + 40 + ev.target.offsetParent.offsetTop
+        this.props.setCurrModal({name: 'attachment', style: {left: 'calc(50% - 350px)', top}})
     }
+
 
     render() {
         const { attachments } = this.props.card

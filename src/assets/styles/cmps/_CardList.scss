@@ -3,9 +3,8 @@
     flex-direction: column;
     width: 250px;
     overflow-y: auto;
-    max-height: 61vh;
+    overflow-x: hidden;
     max-height: calc(100vh - 230px);
-    // max-height: 61vh;
     &.dragging{
       transform: rotate(6deg);
   }

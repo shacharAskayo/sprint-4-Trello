@@ -8,14 +8,12 @@ import { Header } from './cmps/Header'
 import { Home } from './pages/Home'
 import { Board } from './pages/Board'
 import { BoardList } from './cmps/BoardList.jsx'
-
-import { BoardsPick } from './pages/BoardsPick.jsx'
-import { Login } from './pages/Login'
-import { Signup } from './pages/Signup'
+import { socketService } from './services/socketService'
 import { Dashboard } from './pages/Dashboard'
 
 function _App(props) {
 
+  socketService.setup()
   const style = props.board?.style
 
   return (

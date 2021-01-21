@@ -33,8 +33,11 @@
 
     .label-container {
         display: flex;
+        width: 90%;
+        flex-wrap: wrap;
         .label {
             margin-right: 8px;
+            margin-top: 5px;
             border-radius: 4px;
             transition: width 0.2s, height 0.4s;
         }

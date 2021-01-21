@@ -3,8 +3,9 @@ import { cardService } from "../services/cardService";
 import { connect } from 'react-redux'
 import { updateBoardCard,copyList,onArchiveCard } from '../store/actions/boardAction'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { CardDetails } from './cardDetails';
-import { CardEdit } from './cardEdit';
+import { CardDetails } from './CardDetails';
+import { CardEdit } from './CardEdit';
+
 
 
 
