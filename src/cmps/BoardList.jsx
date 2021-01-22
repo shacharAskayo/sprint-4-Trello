@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadBoards,addBoard } from '../store/actions/boardAction.js'
+import { loadBoards, addBoard } from '../store/actions/boardAction.js'
 import { BoardPreview } from './BoardPreview'
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -18,8 +18,8 @@ class _BoardList extends Component {
     componentDidMount() {
         this.props.loadBoards()
         const { boards, loggedUser } = this.props
-        if(boards&&loggedUser){
-            console.log('the boards we run on ',boards);
+        if (boards && loggedUser) {
+            console.log('the boards we run on ', boards);
             console.log(loggedUser);
             const userBoards = boards.filter(board => board.createdBy.id === loggedUser.id)
             this.setState({ userBoards })
@@ -35,35 +35,24 @@ class _BoardList extends Component {
             this.setState({ userBoards })
         }
     }
-    closeModal=(ev)=>{
-            ev.stopPropagation()
-            ev.preventDefault()
-            this.setState({ isModalOpen: false })
+    closeModal = (ev) => {
+        ev.stopPropagation()
+        ev.preventDefault()
+        this.setState({ isModalOpen: false })
     }
 
-    openModal=(ev)=>{
+    openModal = (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
-         this.setState({ isModalOpen: true })
+        this.setState({ isModalOpen: true })
     }
 
-    openTemplates=()=>{
+    openTemplates = () => {
 
     }
 
     render() {
-<<<<<<< HEAD
-        const { boards } = this.props
-        if (!boards) return
-        return (
-            <section className="board-list">
-                {boards.map(board =>
-                    <div key={board._id}>
-                        <BoardPreview board={board} /></div>
-                )}
-            </section>
-=======
-        const { boards, loggedUser,addBoard } = this.props
+        const { boards, loggedUser, addBoard } = this.props
         const { userBoards, isModalOpen } = this.state
         if (!boards) return
         if (!userBoards) return
@@ -73,7 +62,7 @@ class _BoardList extends Component {
 
                 <aside>
 
-                    <div  className='aside-btn'>
+                    <div className='aside-btn'>
                         <span> <DashboardIcon /></span>
                         <span>Boards </span>
                     </div>
@@ -89,16 +78,16 @@ class _BoardList extends Component {
 
 
                     <span>My Boards</span>
-                    <div  className='flex '>
-                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style}} >{board.title}</div> </Link>)}
+                    <div className='flex '>
+                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style }} >{board.title}</div> </Link>)}
                     </div>
 
 
                     <span>All Boards</span>
                     <div className='flex ' >
-                        {boards.map(board => <Link to={`/board/${board._id}`}> <div className='board-preview' style={{ color: 'white',  ...board.style }} >{board.title}</div> </Link>)}
+                        {boards.map(board => <Link to={`/board/${board._id}`}> <div className='board-preview' style={{ color: 'white', ...board.style }} >{board.title}</div> </Link>)}
 
-                        <div className='board-preview' onClick={this.openBoardModal} onClick={ this.openModal} > Add New Board... </div>
+                        <div className='board-preview' onClick={this.openBoardModal} onClick={this.openModal} > Add New Board... </div>
                     </div>
 
 
@@ -109,7 +98,6 @@ class _BoardList extends Component {
             </div>
 
 
->>>>>>> 446d208307bf59014326a90686e85647d5a2b9f4
         )
     }
 }

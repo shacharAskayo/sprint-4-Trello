@@ -126,7 +126,6 @@ class _Dashboard extends Component {
         const { groups } = this.props.board
         const { board } = this.props
         if (!board) return null
-        const { groups } = board
         const { currGroup } = this.state
         if (!this.state.dataCards) return <h1>Loading...</h1>
         return (
