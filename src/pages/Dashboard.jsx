@@ -8,10 +8,7 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 446d208307bf59014326a90686e85647d5a2b9f4
 class _Dashboard extends Component {
     state = {
         groups: [],
@@ -126,13 +123,10 @@ class _Dashboard extends Component {
     }
 
     render() {
-<<<<<<< HEAD
         const { groups } = this.props.board
-=======
         const { board } = this.props
         if (!board) return null
         const { groups } = board
->>>>>>> 446d208307bf59014326a90686e85647d5a2b9f4
         const { currGroup } = this.state
         if (!this.state.dataCards) return <h1>Loading...</h1>
         return (
