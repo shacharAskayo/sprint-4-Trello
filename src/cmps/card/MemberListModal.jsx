@@ -22,8 +22,14 @@ export class MemberListModal extends Component {
     }
 
     onAddMember = (member) => {
-        const card = {...this.props.card, members:[...this.props.card.members, member]}
-        this.props.save(card, `added ${member.fullname} to card`)
+        const {card} =  this.props
+        const membersIds = card.members.map(member => member._id)
+        if (membersIds.includes(member._id)) {
+            this.removeMember(member)
+            return 
+        }
+        const newCard = {...card, members:[...card.members, member]}
+        this.props.save(newCard, `added ${member.fullname} to card`)
     }
 
     removeMember = (currMember) => {

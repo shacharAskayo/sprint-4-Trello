@@ -24,15 +24,15 @@ export class Archive extends Component {
 
                                 <div>
                                     <span className="group-menu-btn" >...</span>
-                                    <p>Group Archives</p>
+                                    <p>{group.title}-Archives</p>
                                 </div>
                                 <div className={'card-list'} style={{ overflow: 'none' }} >
                                     {group.cards.map((card) => {
                                         return (
                                             <div className='card-preview' style={card.style}   >
                                                 <div className="label-container">
-                                                    {card.labels.map((label, idx) => {
-                                                        return <div key={label.id} className={`label is-close`} style={{ backgroundColor: label.color }}>
+                                                    {card.labels?.map((label, idx) => {
+                                                        return <div key={label?.id} className={`label is-close`} style={{ backgroundColor: label?.color }}>
                                                         </div>
                                                     })
                                                     }

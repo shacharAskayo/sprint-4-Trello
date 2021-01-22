@@ -1,4 +1,5 @@
 import { MyAvatar } from "../MyAvatar"
+import { TimeDisplay } from "../TimeDisplay"
 
 export function CardCommentPreview({data}){
     return(
@@ -8,7 +9,7 @@ export function CardCommentPreview({data}){
             <div className="flex wrap">
             <h5>{obj.createdBy.fullname}: </h5>
             {obj.card ? <span>{obj.txt} in: {obj.card.title}</span> : <pre>{obj.txt}</pre> }
-            <small>At: {obj.createdAt}</small>
+            <span className="time"> <TimeDisplay time={obj.createdAt}/> </span>
             </div>
         </div>
     )

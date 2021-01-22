@@ -6,6 +6,9 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import './assets/styles/main.scss'
 import { store } from './store/store'
 import reportWebVitals from './reportWebVitals';
+import { socketService } from './services/socketService';
+
+socketService.setup()
 
 ReactDOM.render(
   <Provider store={store}>

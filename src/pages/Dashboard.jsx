@@ -4,11 +4,14 @@ import { Pie } from 'react-chartjs-2'
 import { Bar } from 'react-chartjs-2'
 
 import { getBoardById } from '../store/actions/boardAction'
-import { loadUsers } from '../store/actions/userActions'
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 446d208307bf59014326a90686e85647d5a2b9f4
 class _Dashboard extends Component {
     state = {
         groups: [],
@@ -51,7 +54,7 @@ class _Dashboard extends Component {
             const colors = []
             groups.forEach(group => {
                 groupsTitles.push(group.title)
-                const groupIdx = board.groups.findIndex(currGroup => currGroup.id === group.id)
+                const groupIdx = board?.groups.findIndex(currGroup => currGroup.id === group.id)
                 colors.push(`rgb(${(groupIdx + 1) * 15},${(groupIdx + 1) * 40},${(groupIdx + 1) * 100})`)
             })
             const dataCards = {
@@ -123,7 +126,13 @@ class _Dashboard extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         const { groups } = this.props.board
+=======
+        const { board } = this.props
+        if (!board) return null
+        const { groups } = board
+>>>>>>> 446d208307bf59014326a90686e85647d5a2b9f4
         const { currGroup } = this.state
         if (!this.state.dataCards) return <h1>Loading...</h1>
         return (
@@ -176,6 +185,5 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     getBoardById,
-    loadUsers
 }
 export const Dashboard = connect(mapStateToProps, mapDispatchToProps)(_Dashboard)

@@ -17,8 +17,8 @@ export class CardAttachmentList extends Component {
     }
 
     openModal = (ev) => {
-        const top = ev.target.offsetTop + 40 + ev.target.offsetParent.offsetTop
-        this.props.setCurrModal({name: 'attachment', style: {left: 'calc(50% - 350px)', top}})
+        const top = ev.target.offsetTop
+        this.props.setCurrModal({name: 'attachment', style: {left: 'calc(50% - 350px)', top, transform: 'translateY(-80%)'}})
     }
 
 
@@ -31,7 +31,7 @@ export class CardAttachmentList extends Component {
                 <h3>Attachments</h3>
             </header>
             {attachments.map(att =>
-                <a key={att.id} target="_blank" href={att.url}>
+                <a onClick={() => window.open(att.url, "_blank")} key={att.id} >
                     <div className="attachment flex align-center">
                         <div>LINK</div>
                         <div className="flex align-start">

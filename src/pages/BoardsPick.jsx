@@ -28,7 +28,7 @@ class _BoardsPick extends Component {
             createdAt: Date.now(),
             style: {},
             isPrivate: false,
-            createBy: {},
+            createdBy: {},
             labels: [],
             members: [],
             groups: [],

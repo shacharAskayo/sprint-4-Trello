@@ -4,8 +4,16 @@
     .hidden-actions-form-container{
         width: 95%;
     }
-    input[type="checkbox"]{
-        margin-top: 0.5em;
+    span.checkbox{
+        cursor: pointer;
+        color: $main-bgc;
+        border: 1px solid $clr1;
+        border-radius: 3px;
+        line-height: 0.9em;
+        margin: 3px;
+        padding: 3px;
+        transition: background-color 0.5s;
+        font-size: em(13px);
     }
 }
 
@@ -16,6 +24,10 @@
     }
     button.icon>*{
         background-color: $sec-bgc;
+    }
+    span.checkbox{
+        background-color: $main-bgc;
+
     }
     
 }

@@ -1,9 +1,10 @@
 .group-preview {
-    .group-title-input{
-        color:#172b4d;
+    .group-title-input {
+        color: #172b4d;
         font-size: 14px;
         margin-left: 0px;
-
+        font-weight: 700;
+        text-transform: capitalize;
     }
     .hidden-actions-form-container {
         input {
@@ -15,7 +16,7 @@
     }
     border-radius: 3px;
     background-color: $sec-bgc;
-    margin: 0px 4px  4px;
+    margin: 0px 4px 4px;
     input {
         background-color: inherit;
         border: 0;
@@ -40,13 +41,13 @@
             margin-top: 5px;
             border-radius: 4px;
             transition: width 0.2s, height 0.4s;
-        }
-        .is-close {
-            width: 35px;
+            color: white;
+            min-width: 35px;
+            max-width: 200px;
             height: 7px;
         }
         .is-open {
-            width: 65px;
+            min-width: 55px;
             height: 20px;
             padding: 0px 5px;
             overflow: hidden;
@@ -62,8 +63,15 @@
         font-weight: 600;
     }
 
-    &.dragging{
+    &.dragging {
         background-color: rgba(207, 205, 205, 0.877);
     }
 
+    .move-select-btn {
+        border: none;
+        cursor: pointer;
+        height: 30px;
+        width: 100%;
+        background-color: inherit;
+    }
 }

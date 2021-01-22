@@ -22,12 +22,8 @@ export class Todo extends Component {
     }
 
     toggleIsDone = (ev) => {
-        ev.target.blur()
-        const { checked } = ev.target
         const {todo} = this.state
-        todo.isDone = checked
-        console.log(todo);
-        this.setState({ todo })
+        todo.isDone = !todo.isDone
         this.props.saveTodo(todo)
     }
 
@@ -41,7 +37,7 @@ export class Todo extends Component {
     }
 
     saveTodo = (ev) => {
-        if (ev.key !== "Enter") return
+        if (ev.key && ev.key !== "Enter") return
         ev.preventDefault()
 
         const { todo } = this.state
@@ -60,19 +56,15 @@ export class Todo extends Component {
 
     render() {
         const isAdd = !this.props.todo
-        const { isInputFocused } = this.state
-
-
 
         return (
             <section className="card-todo-preview flex align-start">
-                <input
-                    type="checkbox"
+                <span
+                    className="checkbox"
                     onClick={this.toggleIsDone}
-                    name="isDone"
                     checked={this.props.todo?.isDone}
-                    style={{ visibility: isAdd ? 'hidden' : 'visible' }}
-                    />
+                    style={{ visibility: isAdd ? 'hidden' : 'visible' ,backgroundColor: this.state.todo.isDone ? '#0179bf' : ''}}
+                    >&#10003;</span>
             <div className={`hidden-actions-form-container  ${isAdd ? 'add' : ''}`}>
                 <form onKeyDown={this.saveTodo} className={`hidden-actions-form ${isAdd ? 'add' : ''}`}>
                     <input

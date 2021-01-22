@@ -1,0 +1,1366 @@
+/* 1 */
+{
+    "_id" : ObjectId("6005aa3ae83dca4e7c7f1dc3"),
+    "title" : "Robot dev proj",
+    "createdAt" : 1589983468418.0,
+    "style" : {
+        "backgroundImage" : "url(/static/media/image-08.84a25ce2.jpg)"
+    },
+    "isPrivate" : false,
+    "createdBy" : {
+        "_id" : "6005a706a8c0ad4b8a34699d",
+        "fullname" : "Abi Abambi",
+        "imgUrl" : "http://some-img",
+        "color" : "green"
+    },
+    "archives" : {
+        "groups" : [],
+        "cards" : []
+    },
+    "labels" : [ 
+        {
+            "id" : "l101",
+            "title" : "fun",
+            "color" : "#f2d600"
+        }, 
+        {
+            "id" : "l102",
+            "title" : "",
+            "color" : "#ff9f1a"
+        }, 
+        {
+            "id" : "l103",
+            "title" : "important",
+            "color" : "#eb5b46"
+        }, 
+        {
+            "id" : "l104",
+            "title" : "",
+            "color" : "#c377e0"
+        }, 
+        {
+            "id" : "l105",
+            "title" : "",
+            "color" : "#01c2df"
+        }, 
+        {
+            "id" : "l106",
+            "title" : "",
+            "color" : "#52e898"
+        }
+    ],
+    "members" : [ 
+        {
+            "_id" : "6005a7ace83dca4e7c7f1dc1",
+            "fullname" : "Tal Tarablus",
+            "imgUrl" : "https://www.google.com"
+        }, 
+        {
+            "_id" : "6005a80be83dca4e7c7f1dc2",
+            "fullname" : "ron ohana",
+            "imgUrl" : "https://www.google.com"
+        }
+    ],
+    "groups" : [ 
+        {
+            "title" : "todo",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "card edit :change due date modal",
+                    "description" : "taking the modal from nadav",
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundImage" : "url(/static/media/image-02.08a6481e.jpg)"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        null
+                    ],
+                    "createdAt" : 1611149256844.0,
+                    "id" : "GYCmo4s4Kv"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "IhRzvIBj23",
+                    "title" : "card edit : fixing modal position according to nadav mav ",
+                    "description" : "",
+                    "createdAt" : 1611149314122.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [ 
+                        {
+                            "txt" : "bal bla",
+                            "createdAt" : 1611152048458.0,
+                            "createdBy" : {
+                                "_id" : "u101",
+                                "username" : "Tal",
+                                "fullname" : "Tal Tarablus",
+                                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            },
+                            "id" : "P7b2STu62i"
+                        }
+                    ],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "Login page",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103"
+                    ],
+                    "createdAt" : 1611150332109.0,
+                    "id" : "XsvZOd3M8i"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "WN4YkYfW22",
+                    "title" : "group preview menu: adding move and sort modals and functions",
+                    "description" : "",
+                    "createdAt" : 1611149420693.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundImage" : "url(/static/media/image-01.05f84e46.jpg)"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103"
+                    ]
+                }
+            ],
+            "createdAt" : 1611149171920.0,
+            "id" : "tlWku8uHPy"
+        }, 
+        {
+            "title" : "in doing",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "dashbord , statistics pages",
+                    "description" : "dashboard section",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [ 
+                        {
+                            "_id" : "6005a7ace83dca4e7c7f1dc1",
+                            "fullname" : "Tal Tarablus",
+                            "imgUrl" : "https://www.google.com"
+                        }
+                    ],
+                    "labels" : [ 
+                        "l102", 
+                        "l103"
+                    ],
+                    "createdAt" : 1611150396320.0,
+                    "id" : "96uh0TGizY"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "xSx8Wm7UlY",
+                    "title" : "fixing edit mode position in scroll",
+                    "description" : "",
+                    "createdAt" : 1611150831007.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [ 
+                        {
+                            "_id" : "6005a80be83dca4e7c7f1dc2",
+                            "fullname" : "ron ohana",
+                            "imgUrl" : "https://www.google.com"
+                        }
+                    ],
+                    "labels" : [ 
+                        "l105", 
+                        "l106"
+                    ]
+                }
+            ],
+            "createdAt" : 1611150006701.0,
+            "id" : "iN8Cj3f62T"
+        }, 
+        {
+            "title" : "asi questions",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundImage" : "url(/static/media/image-06.37dbb6da.jpg)"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103"
+                    ],
+                    "createdAt" : 1611149641201.0,
+                    "id" : "XEgXMLC2jW"
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "nadav test",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611153803083.0,
+                    "id" : "NcCU2S6z6L"
+                }
+            ],
+            "createdAt" : 1611149180961.0,
+            "id" : "DxPSOdNDb7"
+        }, 
+        {
+            "title" : "done",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "id" : "v7ylMifW5x",
+                    "title" : "Archive section",
+                    "description" : "",
+                    "createdAt" : 1611150797921.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "#adad85"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103", 
+                        "l105", 
+                        "l106"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "bibW5k9Y5V",
+                    "title" : "card modal :   dynamic positon to the modals",
+                    "description" : "",
+                    "createdAt" : 1611150691864.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "lightgray"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103", 
+                        "l106"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "p6rTCcsQRP",
+                    "title" : "card edit : archive",
+                    "description" : "",
+                    "createdAt" : 1611150465112.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l106", 
+                        "l105"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "card edit : copy",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611150440891.0,
+                    "id" : "i8yrOzZYu7"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "VztA5EdWWo",
+                    "title" : "card modal : checklist DND",
+                    "description" : "",
+                    "createdAt" : 1611150747895.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "8ADVnwriLH",
+                    "title" : "card modal : checklists functionality",
+                    "description" : "",
+                    "createdAt" : 1611150734388.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l101", 
+                        "l104", 
+                        "l106"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "91ne3d73ND",
+                    "title" : "card edit : move ",
+                    "description" : "",
+                    "createdAt" : 1611150454767.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "4f9gQnb6F3",
+                    "title" : "card edit : labels modal",
+                    "description" : "",
+                    "createdAt" : 1611150478601.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "PyUJ79sGix",
+                    "title" : "card edit : members modal",
+                    "description" : "",
+                    "createdAt" : 1611150485860.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "dWlToqd5RL",
+                    "title" : "group preview menu : copy",
+                    "description" : "",
+                    "createdAt" : 1611150513288.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "2AO38w5i6D",
+                    "title" : "group preview : archive",
+                    "description" : "",
+                    "createdAt" : 1611150523086.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "gJMOsclr8R",
+                    "title" : "DND",
+                    "description" : "",
+                    "createdAt" : 1611150590871.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "PvsgL6QuFV",
+                    "title" : "group preview menu : adding to the top",
+                    "description" : "",
+                    "createdAt" : 1611150565670.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "BndzR0ixwP",
+                    "title" : "card preview : icons and labels",
+                    "description" : "",
+                    "createdAt" : 1611150586082.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "MmbW68qnp0",
+                    "title" : "card modal: labels modal",
+                    "description" : "",
+                    "createdAt" : 1611150611268.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }
+            ],
+            "createdAt" : 1611149219589.0,
+            "id" : "q0olNQyvrS"
+        }, 
+        {
+            "title" : "bonuses",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "Login with google",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "teal"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611151693591.0,
+                    "id" : "mIJGgndy0O"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "TFiI8zoqCF",
+                    "title" : "confeti cannon",
+                    "description" : "",
+                    "createdAt" : 1611151703569.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "#3385ff"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "UR8uEUGmrV",
+                    "title" : "virtual reality mode",
+                    "description" : "",
+                    "createdAt" : 1611151728307.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "yellowgreen"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "HCkGPdQgjx",
+                    "title" : "Tutorial",
+                    "description" : "",
+                    "createdAt" : 1611151784669.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "coral"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "Card Edit: changing cover  theme",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611152509505.0,
+                    "id" : "eBLVCbB3yl"
+                }
+            ],
+            "createdAt" : 1611149215986.0,
+            "id" : "eghqBgoNkU"
+        }, 
+        {
+            "title" : "friday tasks",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "clean unused props",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "lightgray"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l101"
+                    ],
+                    "createdAt" : 1611154290187.0,
+                    "id" : "RHYXKe139b"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "qNS47enuLD",
+                    "title" : "orgenize code stracture",
+                    "description" : "",
+                    "createdAt" : 1611154373426.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "backgroundColor" : "lightgray"
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l101"
+                    ]
+                }
+            ],
+            "createdAt" : 1611154258738.0,
+            "id" : "5QSJ3PqW89"
+        }
+    ],
+    "activities" : [ 
+        {
+            "id" : "A3zwKST3tF",
+            "txt" : "added label fun",
+            "createdAt" : 1611154445201.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "qNS47enuLD",
+                "title" : "orgenize code stracture"
+            }
+        }, 
+        {
+            "id" : "In6AoHeZVF",
+            "txt" : "added label fun",
+            "createdAt" : 1611154430634.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "RHYXKe139b",
+                "title" : "clean unused props"
+            }
+        }, 
+        {
+            "id" : "RZTrEqiJOg",
+            "txt" : "removed a label",
+            "createdAt" : 1611154428439.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "RHYXKe139b",
+                "title" : "clean unused props"
+            }
+        }, 
+        {
+            "id" : "FdbWcEc7mU",
+            "txt" : "added label important",
+            "createdAt" : 1611154422872.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "RHYXKe139b",
+                "title" : "clean unused props"
+            }
+        }, 
+        {
+            "id" : "kcfYhdmhlV",
+            "txt" : "added label important",
+            "createdAt" : 1611154418064.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "RHYXKe139b",
+                "title" : "clean unused props"
+            }
+        }, 
+        {
+            "id" : "3k4ek6hv2U",
+            "txt" : "Set background color",
+            "createdAt" : 1611154395813.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "qNS47enuLD",
+                "title" : "orgenize code stracture"
+            }
+        }, 
+        {
+            "id" : "Ixvpxln1Uc",
+            "txt" : "Set background color",
+            "createdAt" : 1611154391641.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "RHYXKe139b",
+                "title" : "clean unused props"
+            }
+        }, 
+        {
+            "id" : "ttr799M1Ex",
+            "txt" : "Set background image",
+            "createdAt" : 1611152544194.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "GYCmo4s4Kv",
+                "title" : "card edit :cahnge due date modal"
+            }
+        }, 
+        {
+            "id" : "NIZIA0XhtI",
+            "txt" : "Set background image",
+            "createdAt" : 1611152538758.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "GYCmo4s4Kv",
+                "title" : "card edit :cahnge due date modal"
+            }
+        }, 
+        {
+            "id" : "EVgk08tn17",
+            "txt" : "Set background color",
+            "createdAt" : 1611152479778.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "v7ylMifW5x",
+                "title" : "Archive section"
+            }
+        }, 
+        {
+            "id" : "0Ygha4LAZr",
+            "txt" : "Set background color",
+            "createdAt" : 1611152470400.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "bibW5k9Y5V",
+                "title" : "card modal :   dynamic positon to the modals"
+            }
+        }, 
+        {
+            "id" : "tHFTsWvB9h",
+            "txt" : "added label ",
+            "createdAt" : 1611152441883.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "8ADVnwriLH",
+                "title" : "card modal : checklists functionality"
+            }
+        }, 
+        {
+            "id" : "EVuUeLIqLs",
+            "txt" : "added label ",
+            "createdAt" : 1611152440758.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "8ADVnwriLH",
+                "title" : "card modal : checklists functionality"
+            }
+        }, 
+        {
+            "id" : "4RdiKfmTgd",
+            "txt" : "added label fun",
+            "createdAt" : 1611152440084.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "8ADVnwriLH",
+                "title" : "card modal : checklists functionality"
+            }
+        }, 
+        {
+            "id" : "aZQdo6vcOC",
+            "txt" : "added label fun",
+            "createdAt" : 1611152439702.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "8ADVnwriLH",
+                "title" : "card modal : checklists functionality"
+            }
+        }, 
+        {
+            "id" : "5U0SyQmyE8",
+            "txt" : "added label fun",
+            "createdAt" : 1611152438825.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "8ADVnwriLH",
+                "title" : "card modal : checklists functionality"
+            }
+        }, 
+        {
+            "id" : "bA0U2iUpZH",
+            "txt" : "added label ",
+            "createdAt" : 1611152428334.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "p6rTCcsQRP",
+                "title" : "card edit : archive"
+            }
+        }, 
+        {
+            "id" : "jIdILusfpv",
+            "txt" : "added label ",
+            "createdAt" : 1611152427102.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "p6rTCcsQRP",
+                "title" : "card edit : archive"
+            }
+        }, 
+        {
+            "id" : "g11vZYS4uW",
+            "txt" : "added label ",
+            "createdAt" : 1611152138623.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "xSx8Wm7UlY",
+                "title" : "fixing edit mode position in scroll"
+            }
+        }, 
+        {
+            "id" : "Vl0JUbgZ8f",
+            "txt" : "added label ",
+            "createdAt" : 1611152136853.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "xSx8Wm7UlY",
+                "title" : "fixing edit mode position in scroll"
+            }
+        }, 
+        {
+            "id" : "L1BzeFqaGm",
+            "txt" : "Edited card description",
+            "createdAt" : 1611152029856.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "GYCmo4s4Kv",
+                "title" : "card edit :cahnge due date modal"
+            }
+        }, 
+        {
+            "id" : "8X1E4LZtyE",
+            "txt" : "Edited card description",
+            "createdAt" : 1611152010567.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "96uh0TGizY",
+                "title" : "dashbord , statistics pages"
+            }
+        }, 
+        {
+            "id" : "HcBRMqX47O",
+            "txt" : "added ron ohana to card",
+            "createdAt" : 1611151994650.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "xSx8Wm7UlY",
+                "title" : "fixing edit mode position in scroll"
+            }
+        }, 
+        {
+            "id" : "PIlqYY9eXB",
+            "txt" : "added Tal Tarablus to card",
+            "createdAt" : 1611151985225.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "96uh0TGizY",
+                "title" : "dashbord , statistics pages"
+            }
+        }, 
+        {
+            "id" : "ozDb3Y1COr",
+            "txt" : "added label important",
+            "createdAt" : 1611151971654.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XsvZOd3M8i",
+                "title" : "Login page"
+            }
+        }, 
+        {
+            "id" : "D1JjrvVjHn",
+            "txt" : "added label important",
+            "createdAt" : 1611151959611.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "IhRzvIBj23",
+                "title" : "card edit : fixing modal position according to nadav mav "
+            }
+        }, 
+        {
+            "id" : "49pLkRnMpH",
+            "txt" : "added label important",
+            "createdAt" : 1611151956842.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "IhRzvIBj23",
+                "title" : "card edit : fixing modal position according to nadav mav "
+            }
+        }, 
+        {
+            "id" : "DWvh5GOt35",
+            "txt" : "added label important",
+            "createdAt" : 1611151951186.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "WN4YkYfW22",
+                "title" : "group preview menu: adding move and sort modals and functions"
+            }
+        }, 
+        {
+            "id" : "VcI1lZfamu",
+            "txt" : "added label important",
+            "createdAt" : 1611151940251.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "GYCmo4s4Kv",
+                "title" : "card edit :cahnge due date modal"
+            }
+        }, 
+        {
+            "id" : "hiyckFEUFm",
+            "txt" : "added label ",
+            "createdAt" : 1611151915568.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "96uh0TGizY",
+                "title" : "dashbord , statistics pages"
+            }
+        }, 
+        {
+            "id" : "WLC5Or7yzf",
+            "txt" : "added label important",
+            "createdAt" : 1611151914999.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "96uh0TGizY",
+                "title" : "dashbord , statistics pages"
+            }
+        }, 
+        {
+            "id" : "fwJ5l9ZBHv",
+            "txt" : "added label important",
+            "createdAt" : 1611151889799.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "6JtwyCUS7b",
+            "txt" : "added label ",
+            "createdAt" : 1611151876718.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "bibW5k9Y5V",
+                "title" : "card modal :   dynamic positon to the modals"
+            }
+        }, 
+        {
+            "id" : "77vGJVzLXx",
+            "txt" : "added label important",
+            "createdAt" : 1611151875998.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "bibW5k9Y5V",
+                "title" : "card modal :   dynamic positon to the modals"
+            }
+        }, 
+        {
+            "id" : "2ykVxOvm7U",
+            "txt" : "added label ",
+            "createdAt" : 1611151867480.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "v7ylMifW5x",
+                "title" : "Archive section"
+            }
+        }, 
+        {
+            "id" : "EC3dBkiDvA",
+            "txt" : "added label important",
+            "createdAt" : 1611151866698.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "v7ylMifW5x",
+                "title" : "Archive section"
+            }
+        }, 
+        {
+            "id" : "votIa8k69j",
+            "txt" : "added label ",
+            "createdAt" : 1611151856792.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "v7ylMifW5x",
+                "title" : "Archive section"
+            }
+        }, 
+        {
+            "id" : "uhXFugyC7f",
+            "txt" : "Set background color",
+            "createdAt" : 1611151842955.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "HCkGPdQgjx",
+                "title" : "Tutorial"
+            }
+        }, 
+        {
+            "id" : "861Uv4Wuny",
+            "txt" : "Set background color",
+            "createdAt" : 1611151834671.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "UR8uEUGmrV",
+                "title" : "virtual reality mode"
+            }
+        }, 
+        {
+            "id" : "X4dUkmsHAd",
+            "txt" : "Set background color",
+            "createdAt" : 1611151818114.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "TFiI8zoqCF",
+                "title" : "confeti cannon"
+            }
+        }, 
+        {
+            "id" : "GzLQ9BSv5V",
+            "txt" : "Set background color",
+            "createdAt" : 1611151807468.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "mIJGgndy0O",
+                "title" : "Login with google"
+            }
+        }, 
+        {
+            "id" : "S2qgQIvwy5",
+            "txt" : "Set background image",
+            "createdAt" : 1611151565937.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "WN4YkYfW22",
+                "title" : "group preview menu: adding move and sort modals and functions"
+            }
+        }, 
+        {
+            "id" : "CRF5VvMnlX",
+            "txt" : "Set background image",
+            "createdAt" : 1611151524301.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "ZhlVYad0GL",
+            "txt" : "Set background image",
+            "createdAt" : 1611151501488.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "fQ7ebh4Ahb",
+            "txt" : "Set background image",
+            "createdAt" : 1611151479787.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "tHcm1BoqoF",
+            "txt" : "Set background image",
+            "createdAt" : 1611151469124.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "WN4YkYfW22",
+                "title" : "group preview menu: adding move and sort modals and functions"
+            }
+        }, 
+        {
+            "id" : "3RuNByxNdq",
+            "txt" : "Set background image",
+            "createdAt" : 1611151452743.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "WQzqewPHaO",
+            "txt" : "Set background image",
+            "createdAt" : 1611151440512.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }, 
+        {
+            "id" : "AtYm71muP0",
+            "txt" : "Set background image",
+            "createdAt" : 1611151232042.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "WN4YkYfW22",
+                "title" : "group preview menu: adding move and sort modals and functions"
+            }
+        }, 
+        {
+            "id" : "AsmNTmGIO3",
+            "txt" : "Set background image",
+            "createdAt" : 1611150843951.0,
+            "createdBy" : {
+                "_id" : "u101",
+                "username" : "Tal",
+                "fullname" : "Tal Tarablus",
+                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            },
+            "card" : {
+                "id" : "XEgXMLC2jW",
+                "title" : "in card edit mode,i'm using fixsed positon to make the screen darker and when i scroll to the right the position of the card get destroy by the fixed position . but if i put other positon, like (absolute or relative), the postion of the card fit perfectly but the shadow of the screen not working well , so how to fix this problem"
+            }
+        }
+    ]
+}

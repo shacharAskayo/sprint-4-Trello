@@ -1,20 +1,32 @@
 .card-preview {
-    position: relative;// can cause a problem
-    padding: 0px 2px 2px 10px;
+    position: relative; // can cause a problem
     margin: 5px;
-    background-size: 100%;
+    background-size: cover;
     background-color: rgb(255, 255, 255);
-    font-family: sans-serif;
     cursor: pointer;
     box-shadow: 0px 1px 1px 0px #888888;
     border-radius: 3px;
     color: $clr2;
-    
+    padding-bottom: 5px;
+    .details-container{
+        padding-left: 10px;
+    }
+    &.small{
+        padding-bottom: 0;
+    }
+    .card-cover{
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        &.color-bg{
+        height: 20px;
+        }
+    }
 
-    &:not(.edit):hover{
+    &:not(.edit):hover {
         opacity: 0.8;
-        .edit-icon{
-            .MuiSvgIcon-root{
+        .edit-icon {
+            .MuiSvgIcon-root {
                 color: $clr1;
             }
         }
@@ -22,28 +34,54 @@
     p {
         margin: 0;
         font-size: em(14px);
+        line-height: 20px;
+        display: flex;
+        align-items: center;
     }
-    input {
+
+    textarea {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        resize: none;
+        overflow: hidden;
+        height: 60px;
         background-color: inherit;
         border: 0;
         position: relative;
-        margin: 1px 0 1px 0;
+        margin: 20px 0 1px 0;
         left: 10;
     }
     .edit-icon {
-        .MuiSvgIcon-root{
-        position: relative;
-        padding: 3px;
-        top: -15px;
-        color: rgba(255, 255, 255, 0);
-        font-size: 1.3em;
-        border-radius: 3px;
-        &:hover {
-            background-color: $sec-bgc;
-            color: $clr2;
+        .MuiSvgIcon-root {
+            position: relative;
+            padding: 5px;
+            top: 5px;
+            left: -5px;
+            color: rgba(255, 255, 255, 0);
+            font-size: 1.6em;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: $sec-bgc;
+                color: $clr2;
+            }
         }
+        &.with-label {
+            .MuiSvgIcon-root {
+                top: -12px;
+            }
         }
-        
+    }
+
+    .small-card {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        // padding-top: 5px;
+        // padding-bottom: 2px;
+        // .MuiSvgIcon-root {
+        //     top: -7px;
+        //     left: 0;
+        // }
     }
 
     .edit-and-title {
@@ -51,68 +89,42 @@
         justify-content: space-between;
         padding-top: 5px;
     }
-    .small-card {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 5px;
-        padding-bottom: 2px;
-        .MuiSvgIcon-root{
-            top: -7px;
-            left: 0;
-        }
-    }
 
     .card-icons {
-        display: flex;
         justify-content: space-between;
-    }
-    
-    .card-icons-section1 > *{
-        font-size: em(25px);
-        margin-right: 7px;
-        
-    }
-
-    .card-icons  {
         font-size: 0.85rem;
-        align-items: center;
     }
 
-    .members-container{
+    .card-icons-section1 {
+        padding-top: 2px;
+    }
+    .card-icons-section1 > * {
+        font-size: 1.3em;
+        margin-right: 7px;
+        color: $clr1;
+    }
+
+    .members-container {
+        padding-right: 5px;
         gap: 3px;
         display: flex;
     }
-    .MuiAvatar-root.MuiAvatar-circle.MuiAvatar-colorDefault{
+    .MuiAvatar-root.MuiAvatar-circle.MuiAvatar-colorDefault {
         width: 25px !important;
         height: 25px !important;
-        font-size: 0.875em
+        font-size: 0.875em;
     }
 
-    // .card-avatars-container{
-    //     display: flex;
-    //     position: absolute;
-    //     right: -2px;
-    //     gap: 3px;
-    //     bottom: 3px;
-    // }
-    // .card-avatars-container-single{
-    //     position: absolute;
-    //     right: -2px;;
-    //     bottom: 3px;
-    // }
-
-    &.dragging{
+    &.dragging:active {
         transform: rotate(6deg);
-
     }
-
- }
-  // //// EDIT MODE
+}
+// //// EDIT MODE
 
 .edit {
     position: absolute;
     z-index: 4;
-    
+
     .edit-menu {
         position: absolute;
         z-index: 8;
@@ -123,8 +135,12 @@
         z-index: 8;
         bottom: 0;
     }
-    input {
+    textarea {
         padding: 5px;
+        width: 220px;
+    }
+    .card-icons {
+        align-self: flex-start;
     }
 }
 .edit-container {
@@ -133,14 +149,12 @@
     z-index: 4;
     border-radius: 8px;
     text-transform: capitalize;
-    font-family: sans-serif;
 }
 .card-preview.edit {
     padding-right: 20px;
     width: 239.8px;
     height: 129.5px;
     position: fixed; // causing problems  with the screen scroll to the right ,and fix the screen shadow
-    display: grid;
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
 
     .edit-and-title {
@@ -150,10 +164,9 @@
     }
 
     .card-icons {
-        align-self: flex-end;
         justify-content: flex-start;
         gap: 8px;
-        .MuiSvgIcon-root{
+        .MuiSvgIcon-root {
             font-size: 1.7em;
         }
     }
@@ -161,11 +174,11 @@
 .edit-menu {
     position: absolute;
     left: 250px;
+    z-index: 8;
     top: 0;
     display: grid;
     flex-direction: column;
     justify-content: space-around;
-    // background-color: lawngreen;
     padding: 6px;
     align-items: flex-start;
 
@@ -188,6 +201,9 @@
         font-size: 17px;
         margin-right: 6px;
     }
+    a{
+        color: inherit;
+    }
 }
 
 .card-save-btn {
@@ -200,7 +216,6 @@
         background-color: #5aac44;
         position: absolute;
         top: 139px;
-        // top: 235px;
         border-radius: 4px;
         color: #fff;
         border: none;
@@ -213,10 +228,5 @@
         font-size: 14px;
     }
 
-    //  align-self: flex-start;
 }
 
-
-.card-preview:hover {
-    // background-color: $main-bgc;
-}

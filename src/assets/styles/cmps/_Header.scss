@@ -1,29 +1,53 @@
 header.main-header {
-    color: rgba(248, 248, 255, 0.753);
-    background-color: rgba(0, 0, 0, 0.384);
+    color: rgba(255, 255, 255, 0.623);
+    background-color: rgba(0, 0, 0, 0.287);
     font-size: 1.3rem;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 44.5px;
-}
-.icons-container {
+    height: 40px;
+    padding: 0 10px;
+    a {
+        height: 34px;
+    }
+    span {
+        height: 34px;
+        margin-left: 2px;
+        &.show-boards {
+            height: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 3px;
+            padding-right: 5px;
+            background-color: rgba(247, 247, 247, 0.253);
+            .MuiSvgIcon-root{
+                background: transparent;
+            }
+        }
+    }
+
+    .app-logo {
+        font-family: dancing;
+        font-style: italic;
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
     display: flex;
-    .apps-icon {
+
+    .MuiSvgIcon-root {
         cursor: pointer;
-        padding: 6px 8px 2px 9px;
         margin: 2px;
+        padding: 4px;
+        font-size: 30px;
         color: white;
         background-color: rgba(247, 247, 247, 0.253);
         border-radius: 3px;
     }
-    .info {
-        color: white;
+
+    .MuiAvatar-root {
+        height: 30px;
+        width: 30px;
+        margin: 2px;
+        font-size: 18px;
     }
-}
-.top-header {
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: flex-start;
 }

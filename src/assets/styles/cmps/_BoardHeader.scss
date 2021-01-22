@@ -1,9 +1,40 @@
 .board-header{
-    height: 46px;
-    display: flex;
-    justify-content:space-around;
+    height: 50px;
     padding: 5px;
-    >*{
+    color: $clr2;
+    >*>*{
         cursor: pointer;
+        background-color: rgba(0,0,0, 0.08);
+        border-radius: 3px;
+        margin-right: 10px;
+        padding: 10px;
+        height: 30px;
+    }
+    
+    span{
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        &:hover{
+            background-color: rgba(0,0,0, 0.18);
+        }
+    }
+    button:hover{
+        background-color: rgba(0,0,0, 0.18);
+
+    }
+    input{
+        border: 0;
+        background: transparent;
+        font-size: 18px;
+        font-weight: 700;
+        color: $clr2;
+        &:focus{
+            background-color: $main-bgc;
+        }
+        &:hover{
+            background-color: rgba(0,0,0, 0.18);
+
+        }
     }
 }

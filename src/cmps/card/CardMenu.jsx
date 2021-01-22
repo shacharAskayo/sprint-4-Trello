@@ -30,7 +30,7 @@ export function CardMenu(props) {
             <h5>ACTIONS</h5>
             <span className="flex align-center" onClick={(ev) => setModal('move', ev)}><ArrowRightAltIcon/> Move</span>
             <span className="flex align-center" onClick={(ev) => setModal('copy', ev)}><FileCopyOutlinedIcon/> Copy</span>
-            <span className="flex align-center" onClick={(ev) => setModal('watch', ev)}><RemoveRedEyeOutlinedIcon/> Watch</span>
+            {/* <span className="flex align-center" onClick={(ev) => setModal('watch', ev)}><RemoveRedEyeOutlinedIcon/> Watch</span> */}
             <span className="flex align-center" onClick={(ev) => setModal('archive', ev)}><ArchiveOutlinedIcon/> Archive</span>
             <span className="flex align-center" onClick={(ev) => setModal('share', ev)}><ShareOutlinedIcon/> Share</span>
         </div>
