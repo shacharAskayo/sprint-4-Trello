@@ -8,13 +8,12 @@ import { loadUsers } from '../store/actions/userActions'
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
-import { utilService } from '../services/utilService'
+
 class _Dashboard extends Component {
     state = {
         groups: [],
         groupCards: null,
         dataCards: '',
-        currGroup: null,
         currGroup: {},
         dataDetails: '',
         cardDetails: null,
@@ -30,9 +29,11 @@ class _Dashboard extends Component {
         const { _id } = this.props.board
         if (!_id) return null
         this.props.getBoardById(_id)
-        this.setState({ groups: this.props.board.groups }, () => this.getcardsPerGroup())
-
-
+        this.setState({
+            groups: this.props.board.groups, currGroup: { ...this.props.board.groups[0] }, cards: this.props.board.groups[0].cards
+        })
+        this.getcardsPerGroup()
+        // this.getDetailsPerCard()
     }
 
 
@@ -47,7 +48,6 @@ class _Dashboard extends Component {
             }, {})
         this.setState({ groupCards }, () => {
             const groupsTitles = []
-            // const colors = ['#e6e6ff','#ccccff','#b3b3ff','#9999ff','#8080ff']
             const colors = []
             groups.forEach(group => {
                 groupsTitles.push(group.title)
@@ -71,7 +71,7 @@ class _Dashboard extends Component {
         this.props.history.push(`/board/${board._id}`)
     }
     getDetailsPerCard = () => {
-
+        console.log('this.state.cards:', this.state.cards);
         const cardsTitles = []
         var cardsComments = []
         var cardsChecklists = []
@@ -112,7 +112,8 @@ class _Dashboard extends Component {
                 yAxes: [
                     {
                         ticks: {
-                            beginAtZero: true,
+                            suggestedMin: 1,
+                            suggestedMax: 10
                         },
                     },
                 ],
@@ -121,19 +122,7 @@ class _Dashboard extends Component {
         this.setState({ dataDetails, options })
     }
 
-    openUsersDash = () => {
-        this.setState({ currDash: 'Users' })
-        const { users } = this.props
-        console.log('users dfghjk:', users);
-        this.getUsersDetails()
-    }
-
-    getUsersDetails = () => {
-
-    }
-
     render() {
-        const { board, users } = this.props
         const { groups } = this.props.board
         const { currGroup } = this.state
         if (!this.state.dataCards) return <h1>Loading...</h1>
@@ -155,8 +144,8 @@ class _Dashboard extends Component {
                 </div>}
                 <div className="stats-modal">
 
-                    <span className="arrow-left" onClick={() => this.setState({ currDash: 'Pie' })}><ArrowLeftIcon /></span>
-                    <span className="arrow-right" onClick={() => this.setState({ currDash: 'Bar' })}><ArrowRightIcon /></span>
+                    <span className="arrow arrow-left" onClick={() => this.setState({ currDash: (this.state.currDash === 'Bar') ? 'Pie' : 'Bar' })}><ArrowLeftIcon /></span>
+                    <span className="arrow arrow-right" onClick={() => this.setState({ currDash: (this.state.currDash === 'Pie') ? 'Bar' : 'Pie' })}><ArrowRightIcon /></span>
 
                     {this.state.currDash === 'Pie' && <section className="pie-section">
                         <div className="pie">
@@ -170,12 +159,7 @@ class _Dashboard extends Component {
                         <div className="bar-top">
                             <h1>{currGroup.title}</h1>
                         </div>
-                        {!this.state.dataDetails && <div> <img src="https://media.giphy.com/media/SufoKsersIO2Y/giphy.gif" />
-                            <pre className="placeholder">
-                                Please
-                                choose a group
-                                    to watch its statistic</pre>
-                        </div>}
+
                         {this.state.dataDetails && <Bar data={this.state.dataDetails} options={this.state.options} />}
                     </section>}
                 </div>
