@@ -77,12 +77,7 @@ async function addCard(board, group, currCard, isAddingToTop) {
     const newGroup = (isAddingToTop) ? { ...group, cards: [card, ...group.cards] } : { ...group, cards: [...group.cards, card] }
     const newGroups = board.groups.map(group => (group.id === newGroup.id ? newGroup : group))
     const newBoard = { ...board, groups: newGroups }
-    try {
-        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+   return newBoard
 }
 
 
@@ -90,12 +85,7 @@ async function addGroup(board, group) {
     const newGroup = { ...group, createdAt: Date.now(), id: utilService.makeId() }
     const newGroups = [...board.groups, newGroup]
     const newBoard = { ...board, groups: newGroups }
-    try {
-        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+    return newBoard
 }
 
 function updateCardLocation(board, source, destination) {
@@ -106,7 +96,6 @@ function updateCardLocation(board, source, destination) {
     const currCard = currBoard.groups[fromGroupIdx].cards[source.index]
     currBoard.groups[fromGroupIdx].cards.splice(source.index, 1)
     currBoard.groups[toGroupIdx].cards.splice(destination.index, 0, currCard)
-    console.log(currBoard)
     return currBoard
 }
 
@@ -122,22 +111,11 @@ async function updateGroupTitle(board, currGroup, title) {
 
     const newGroups = board.groups.map(group => (group.id === currGroup.id) ? { ...group, title } : group)
     const newBoard = { ...board, groups: newGroups }
-    try {
-        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
 }
 
 async function setStyle(board, background) {
     const newBoard = { ...board, style: background }
-    try {
-        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+   return newBoard
 }
 
 async function updateBoardDesc(board, description) {
@@ -152,7 +130,6 @@ async function updateBoardDesc(board, description) {
 
 function getActivities(board, filter) {
     const cardsComments = []
-    console.log('the fucking board board of the cukgin servcie', board);
     board.groups.forEach(group => group.cards.forEach(card => {
         if (card.comments) cardsComments.push(...card.comments)
     }))
@@ -167,12 +144,7 @@ async function copyList(board, currGroup) {
     groupCopy.cards.forEach(card => card.id = utilService.makeId())
     const groupIdx = board.groups.findIndex(group => group.id === currGroup.id)
     boardCopy.groups.splice((groupIdx + 1), 0, groupCopy)
-    try {
-        const boardAfter = await httpService.put('/board/' + boardCopy._id, boardCopy)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+    return boardCopy
 
 }
 
@@ -192,12 +164,7 @@ async function editCurrLabel(board, currLabel, deleteOption) {
     }
     const newBoard = { ...board, labels }
 
-    try {
-        const boardAfter = await httpService.put('/board/' + newBoard._id, newBoard)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+   return newBoard
 }
 
 
@@ -237,12 +204,7 @@ async function moveCard(currBoard, currCard, to) {
         return { ...group, cards }
     })
     const board = { ...currBoard, groups }
-    try {
-        const boardAfter = await httpService.put('/board/' + board._id, board)
-        return boardAfter
-    } catch (err) {
-        console.log(err)
-    }
+    return board
 }
 
 async function archiveCard(currBoard, currGroup, currCard) {

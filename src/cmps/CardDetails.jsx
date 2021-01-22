@@ -6,10 +6,10 @@ import AttachFileRoundedIcon from '@material-ui/icons/AttachFileRounded';
 import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
 import EditIcon from '@material-ui/icons/Edit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {MyAvatar} from './MyAvatar'
+import { MyAvatar } from './MyAvatar'
 
 export class CardDetails extends Component {
-  
+
     state = {
         isSmall: false
 
@@ -25,7 +25,7 @@ export class CardDetails extends Component {
     componentDidUpdate(prevProps) {
         const { card } = this.props
         if (prevProps !== this.props) {
-            if (card.comments.length > 0 || card.description.length > 0 || card.labels.length > 0 || card.attachments.length>0||card.members.length>0) {
+            if (card.comments.length > 0 || card.description.length > 0 || card.labels.length > 0 || card.attachments.length > 0 || card.members.length > 0) {
                 this.setState({ isSmall: false })
             }
         }
@@ -34,14 +34,14 @@ export class CardDetails extends Component {
 
 
     render() {
-        const { labels, isEdit, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode, enterEditMode } = this.props
+        const { labels, isDragging, isEdit, onOpenLabel, card, isLabelOpen, board, handleChange, title, EnterEditMode, enterEditMode } = this.props
         const { isSmall } = this.state
-
+        var cardClass = isDragging ? 'card-preview dragging' : 'card-preview'
 
         return (
             <React.Fragment>
                 <Link to={`/board/${board._id}/${card.id}`}>
-                    <div className={`card-preview `} style={isSmall ? { padding: '4px 2px 0px 8px ' } : card.style}   >
+                    <div className={cardClass} style={{ ...card.style }}   >
                         <div className="label-container">
                             {labels.map((label, idx) => {
                                 return <div onClick={(ev) => onOpenLabel(ev, card.id)} key={label.id} className={`label ${(isLabelOpen) ? "is-open" : "is-close"}`} style={{ backgroundColor: label.color }}>
@@ -51,13 +51,8 @@ export class CardDetails extends Component {
                             }
                         </div>
                         <div className={isSmall ? 'small-card' : `edit-and-title`} >
-                            <div>
-                                <form >
-
-                                    <p>{title}</p>
-                                </form>
-                            </div>
-                            <span className="edit-icon" onClick={(ev) => enterEditMode(ev, card.id)} >
+                            <p className="flex align-center" style={(card.style.backgroundImage || card.style.backgroundColor )? {color:'white',fontWeight:'700'}:{}}>{title}</p>
+                            <span className={`edit-icon ${labels.length ? 'with-label' : ''}`} onClick={(ev) => enterEditMode(ev, card.id)} >
                                 <EditIcon />
                             </span>
                         </div>
@@ -65,15 +60,15 @@ export class CardDetails extends Component {
 
                             <div className="card-icons-section1">
 
-                            {card.description && <SubjectIcon />}
-                            {card.comments?.length > 0 && <ChatBubbleOutlineRoundedIcon />}
-                            {card.attachments?.length > 0 && <AttachFileRoundedIcon style={{ transform: "rotate(35deg)" }} />}
-                            {card.checklists?.length > 0 && <PlaylistAddCheckSharpIcon />}
+                                {card.description && <SubjectIcon />}
+                                {card.comments?.length > 0 && <ChatBubbleOutlineRoundedIcon />}
+                                {card.attachments?.length > 0 && <AttachFileRoundedIcon style={{ transform: "rotate(35deg)" }} />}
+                                {card.checklists?.length > 0 && <PlaylistAddCheckSharpIcon />}
 
                             </div>
-                                
-                            {card.members?.length > 0 && <div className='members-container'>  {card.members.map(member=> <MyAvatar user={member}/>)} </div>}
-                            
+
+                            {card.members?.length > 0 && <div className='members-container'>  {card.members.map(member => <MyAvatar user={member} />)} </div>}
+
                             {/* {(card.members.length>=2)?`card-avatars-container`: 'card-avatars-container-single'} */}
 
                         </div>

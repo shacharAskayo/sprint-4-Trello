@@ -1,88 +1,174 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-
-import {
-    signup
-} from '../store/actions/userActions'
-class _Signup extends Component {
-    state = {
-        msg: '',
-        signupCred: {
-            username: '',
-            password: '',
-            fullname: ''
-        }
-    }
-    signupHandleChange = ev => {
-        const { name, value } = ev.target
-        this.setState(prevState => ({
-            signupCred: {
-                ...prevState.signupCred,
-                [name]: value
-            }
-        }))
-    }
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { signup } from '../store/actions/userActions';
 
 
-    doSignup = async ev => {
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(3),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
+
+function _Signup(props) {
+
+    const classes = useStyles();
+
+    const [cred, setCred] = useState({ firstname: '', lastname: '', username: '',email:'', password: '' })
+
+    const onSignup = (ev) => {
         ev.preventDefault()
-        const { username, password, fullname } = this.state.signupCred
-        if (!username || !password || !fullname) {
-            return this.setState({ msg: 'All inputs are required' })
+        for (const field in cred) {
+            if (!cred[field]) return 
         }
-        const signupCreds = { username, password, fullname }
-        this.props.signup(signupCreds)
-        this.setState({ signupCred: { username: '', password: '', fullname: '' } })
-        this.props.history.push('/board')
-    }
-    render() {
-        const { loggedInUser } = this.props
+        props.signup(cred)
 
-        let signupSection = (
-            <form className="frm" onSubmit={this.doSignup}>
-                <h2>Signup</h2>
-                <input className="input-log" autoFocus
-                    type="text"
-                    name="fullname"
-                    value={this.state.signupCred.fullname}
-                    onChange={this.signupHandleChange}
-                    placeholder="Full name"
-                    autoComplete="fullname"
-                />
-                <input className="input-log"
-                    name="password"
-                    type="password"
-                    value={this.state.signupCred.password}
-                    onChange={this.signupHandleChange}
-                    placeholder="Password"
-                    autoComplete="current-password"
-                />
-                <input className="input-log"
-                    type="text"
-                    name="username"
-                    value={this.state.signupCred.username}
-                    onChange={this.signupHandleChange}
-                    placeholder="Username"
-                    autoComplete="username"
-                />
-                <br />
-                <button>Signup</button>
-            </form>
-        )
-        return (
-            <div className="signup">
-                {!loggedInUser && signupSection}
+    }
+
+
+    const handleChange = ({ target }) => {
+        const {name, value} = target
+        setCred({ ...cred, [name]: value })
+    }
+
+    return (
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign up
+        </Typography>
+                <form className={classes.form} onSubmit={onSignup} noValidate>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                onChange={handleChange}
+                                autoComplete="fname"
+                                name="firstname"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="firstname"
+                                label="First Name"
+                                autoFocus
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                onChange={handleChange}
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="lastname"
+                                label="Last Name"
+                                name="lastname"
+                                autoComplete="lname"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                onChange={handleChange}
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="username"
+                                label="Username"
+                                name="username"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                onChange={handleChange}
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="email"
+                                label="E-mail"
+                                name="email"
+                                type="email"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                onChange={handleChange}
+                                variant="outlined"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormControlLabel
+                                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                                label="I want to receive inspiration, marketing promotions and updates via email."
+                            />
+                        </Grid>
+                    </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Sign Up
+          </Button>
+                    <Grid container justify="flex-end">
+                        <Grid item>
+                            <Link href="#/login" variant="body2">
+                                Already have an account? Sign in
+              </Link>
+                        </Grid>
+                    </Grid>
+                </form>
             </div>
-        )
-    }
+            <Box mt={5}>
+            </Box>
+        </Container>
+    )
 }
-const mapStateToProps = state => {
+
+
+const mapGlobalStateToProps = (state) => {
     return {
-        loggedInUser: state.userModule.loggedInUser
+
     }
 }
+
 const mapDispatchToProps = {
     signup
 }
-export const Signup = connect(mapStateToProps, mapDispatchToProps)(_Signup)
+export const Signup = connect(mapGlobalStateToProps, mapDispatchToProps)(_Signup)

@@ -42,7 +42,7 @@ export class CardDescription extends Component {
                         type="text"
                         onChange={({ target }) => this.setState({ description: target.value })}
                         value={description}
-                        autocomplete="off"
+                        autoComplete="off"
                         placeholder="Add a more detailed description..."
                     />
                 </form>

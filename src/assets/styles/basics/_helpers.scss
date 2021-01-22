@@ -69,6 +69,14 @@
     display: grid
 }
 
+button.clean-btn{
+    border: 0;
+    background: transparent;
+    width: fit-content;
+    text-align: start;
+    margin: 0;
+}
+
 // Media helpers
 .square-ratio {
     @include aspect-ratio(1, 1);

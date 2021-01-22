@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { cardService } from "../services/cardService";
 import { connect } from 'react-redux'
-import { updateBoardCard,copyList,onArchiveCard } from '../store/actions/boardAction'
+import { updateBoardCard, copyList, onArchiveCard } from '../store/actions/boardAction'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { CardDetails } from './CardDetails';
 import { CardEdit } from './CardEdit';
@@ -17,11 +17,13 @@ class _CardPreview extends Component {
         // labels: [],
         isEdit: false,
         title: '',
-        card: null
+        card: null,
+        editStyle: {}
     }
 
 
     componentDidMount() {
+        this.cardRef = React.createRef()
         const { card, board, isModalOpen } = this.props
         const updatedCard = cardService.getCardById(board, card.id)
         // const labels = cardService.getCardLabels(board, card.labels)
@@ -44,11 +46,11 @@ class _CardPreview extends Component {
         this.props.openLabel()
     }
 
-    enterEditMode = () => {
-        const { isEdit } = this.state
-        this.setState({
-            isEdit: !isEdit
-        })
+    enterEditMode = (ev,cardId) => {
+        ev.preventDefault()
+        ev.stopPropagation()
+        const style = this.props.enterEditMode(cardId)
+        this.setState({ editStyle: style})
     }
 
     handleChange = (ev) => {
@@ -57,7 +59,6 @@ class _CardPreview extends Component {
     }
 
     onSave = () => {
-        console.log('save');
         const { card, board } = this.props
         const { title } = this.state
         card.title = title
@@ -66,22 +67,22 @@ class _CardPreview extends Component {
         this.setState({ isEdit: false })
     }
 
-    copyList=()=>{
-        const { currGroup,board } = this.props
-        this.props.copyList(board,currGroup)
+    copyList = () => {
+        const { currGroup, board } = this.props
+        this.props.copyList(board, currGroup)
     }
 
-    onArchiveCard=()=>{
-        const {board,currGroup} = this.props
-        const {card} = this.state
-        this.props.onArchiveCard(board,currGroup,card)
+    onArchiveCard = () => {
+        const { board, currGroup } = this.props
+        const { card } = this.state
+        this.props.onArchiveCard(board, currGroup, card)
 
     }
 
     render() {
-        const { board, idx, isLabelOpen, currGroup, enterEditMode, isEdit, exitEditMode,updateBoardCard,loggedUser } = this.props
-            
-        const { title, card, } = this.state
+        const { board, idx, isLabelOpen, currGroup, isEdit, exitEditMode, updateBoardCard, loggedUser } = this.props
+
+        const { title, card, editStyle } = this.state
         if (!this.state.card) return <h1> loading</h1>
         const { labels } = this.state.card
         return (
@@ -90,13 +91,12 @@ class _CardPreview extends Component {
                     draggableId={card.id}
                     index={idx}
                 >
-                    {(draggbleProvided,snapshot) => (
+                    {(draggbleProvided, snapshot) => (
                         <div ref={draggbleProvided.innerRef}
                             {...draggbleProvided.draggableProps}
                             {...draggbleProvided.dragHandleProps}>
-
-                            { <CardDetails isDragging={snapshot.isDragging} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
-                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardEdit onArchiveCard={this.onArchiveCard} copyList={this.copyList}  loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
+                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardEdit style={editStyle} onArchiveCard={this.onArchiveCard} copyList={this.copyList} loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
+                                {<CardDetails isDragging={snapshot.isDragging} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
                         </div>
                     )}
                 </Draggable>
@@ -111,7 +111,7 @@ const mapStateToProps = state => {
         reviews: state.reviewModule.reviews,
         cards: state.cardModule.cards,
         board: state.boardModule.board,
-        loggedUser:state.boardModule.loggedUser,
+        loggedUser: state.boardModule.loggedUser,
         isLabelOpen: state.boardModule.isLabelOpen
     }
 }

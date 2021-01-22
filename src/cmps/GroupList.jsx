@@ -15,11 +15,14 @@ export class GroupList extends Component {
             cards: []
         },
         isAdding: false,
-        isEdit:{
-            isOpen:false,
-            id:''
+        isEdit: {
+            isOpen: false,
+            id: ''
         }
-    } 
+    }
+    componentDidMount() {
+        this.cardRef = React.createRef()
+    }
 
 
     handleChange = (ev) => {
@@ -64,20 +67,17 @@ export class GroupList extends Component {
         }
 
     }
-    enterEditMode = (ev,id) => {
-        ev.stopPropagation()
-        ev.preventDefault()
-        this.setState({
-            isEdit:{isOpen:true,id:id} 
-        })
+    enterEditMode = (id) => {
+
+        this.setState({ isEdit: { isOpen: true, id: id } })
     }
-    
+
     exitEditMode = (ev) => {
         ev.stopPropagation()
         ev.preventDefault()
         this.setState({
-            isEdit:{isOpen:false,id:''}
-         })
+            isEdit: { isOpen: false, id: '' }
+        })
     }
 
     render() {
@@ -87,28 +87,28 @@ export class GroupList extends Component {
             // <DragDropContext onDragEnd={this.handleOnDragEnd}>
             <DragDropContext onDragEnd={this.handleDrag}>
                 <Droppable droppableId="board" type="GROUP" direction="horizontal">
-                    {(provided ) => (
+                    {(provided) => (
 
-                            <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.exitEditMode}  >
-                                {groups && groups.map((group, idx) => {
-                                    return (
-                                        <GroupPreview  exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
-                                    )
-                                })}
-                                {provided.placeholder }
+                        <div ref={provided.innerRef} {...provided.droppableProps} className="group-container" onClick={this.exitEditMode}  >
+                            {groups && groups.map((group, idx) => {
+                                return (
+                                    <GroupPreview exitEditMode={this.exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} key={group.id} idx={idx} listId={group.id} group={group} />
+                                )
+                            })}
+                            {provided.placeholder}
 
-                                <div className="hidden-actions-form-container add-group" >
-                                    <form action="" className="hidden-actions-form">
-                                        <input onKeyDown={this.handleEnter} className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onChange={this.handleChange} />
-                                    </form>
-                                    <div className="hidden-actions flex list">
-                                        <button onClick={this.onAddGroup}>Add List</button>
-                                        <button onClick={this.discardChanges} className="icon">
-                                            <CloseSharpIcon />
-                                        </button>
-                                    </div>
+                            <div className="hidden-actions-form-container add-group" >
+                                <form action="" className="hidden-actions-form">
+                                    <input onKeyDown={this.handleEnter} className="add-list-input" type="text" placeholder="+ Add another list" value={this.state.group.title} onChange={this.handleChange} />
+                                </form>
+                                <div className="hidden-actions flex list">
+                                    <button onClick={this.onAddGroup}>Add List</button>
+                                    <button onClick={this.discardChanges} className="icon">
+                                        <CloseSharpIcon />
+                                    </button>
                                 </div>
                             </div>
+                        </div>
                     )}
                 </Droppable>
             </DragDropContext>

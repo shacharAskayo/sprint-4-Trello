@@ -1,153 +1,136 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Component } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import { connect } from "react-redux"
+import { loggin } from "../store/actions/userActions"
 
-import {
-  loadUsers,
-  removeUser,
-  login,
-  logout,
-} from '../store/actions/userActions'
+
+
 
 class _Login extends Component {
+
   state = {
-    msg: '',
-    loginCred: {
+    user: {
       username: '',
-      password: ''
-    }
+      password: '',
+      isStayLogged: false
+    },
+    msg:''
   }
 
-  componentDidMount() {
-    this.props.loadUsers()
+  handleChange = (ev) => {
+    const { name, value, type, checked } = ev.target
+    const val = (type !== 'checkbox') ? value : checked
+    this.setState({ user: { ...this.state.user, [name]: val } })
   }
 
-  loginHandleChange = ev => {
-    const { name, value } = ev.target
-    this.setState(prevState => ({
-      loginCred: {
-        ...prevState.loginCred,
-        [name]: value
-      }
-    }))
-  }
-
-
-
-  doLogin = async ev => {
+   doLoggin = async(ev) => {
     ev.preventDefault()
-    const { username, password } = this.state.loginCred
-    if (!username) {
-      return this.setState({ msg: 'Please enter user/password' })
-    }
-    const userCreds = { username, password }
-    try {
-      this.props.login(userCreds)
-      this.setState({ loginCred: { username: '', password: '' } })
-    } catch (err) {
-      this.setState({ msg: 'Login failed, try again.' })
-    }
-    this.props.history.push('/board')
+    this.setState({msg:''})
+    const {user} = this.state
+    const loggedUser = await this.props.loggin(user)
+    if (loggedUser) this.props.history.push('/board')
+    else this.setState({msg: 'Wrong username or password!'})
   }
 
-
-  removeUser = userId => {
-    this.props.removeUser(userId)
-  }
   render() {
-
-    const { loggedInUser } = this.props
-    let loginSection = (
-      <form className="frm" onSubmit={this.doLogin}>
-        <h2>Login</h2>
-        {/* <select
-          name="username"
-          value={this.state.loginCred.username}
-          onChange={this.loginHandleChange}
-        >
-          <option value="">Select User</option>
-          {this.props.users && this.props.users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-        </select> */}
-
-        <input className="input-log" autoFocus
-          type="text"
-          name="username"
-          value={this.state.loginCred.username}
-          onChange={this.loginHandleChange}
-          placeholder="Username"
-        />
-        <br />
-        <input className="input-log"
-          type="password"
-          name="password"
-          value={this.state.loginCred.password}
-          onChange={this.loginHandleChange}
-          placeholder="Password"
-        />
-        <br />
-        <button>Login</button>
-      </form>
-    )
-
-
+    const {msg} = this.state
     return (
-      <div className="login">
-        <p>{this.state.msg}</p>
-        {loggedInUser && (
-          <div>
-            <h3>
-              Welcome {loggedInUser.fullname}
-              <button onClick={this.props.logout}>Logout</button>
-            </h3>
-            <Link to="/board">Get In</Link>   |
-            <Link to={`user/${loggedInUser._id}`}>
-              {loggedInUser.fullname}'s Details
-            </Link>
-          </div>
-        )}
-        {!loggedInUser && loginSection}
+      <Container component="main" maxWidth="xs" >
+        <CssBaseline />
+        <div style={{
+          marginTop: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Avatar style={{
+            margin: '10px',
+            backgroundColor: 'blue',
+          }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h2" variant="h5">
+            Sign in
+        </Typography>
+          <form
+            onSubmit={this.doLoggin}
+            style={{
+              width: '100%',
+              marginTop: '5px'
+            }} noValidate>
+            <TextField
+              onChange={this.handleChange}
+              variant="filled"
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="UserName"
+              name="username"
+              autoFocus
 
-
-        <hr />
-        {/* <section className="admin">
-          <details>
-            <summary>Admin</summary>
-            <button onClick={this.props.loadUsers}>Refresh Users</button>
-            {this.props.isLoading && 'Loading...'}
-            {this.props.users && <ul>
-
-              {this.props.users.map(user => (
-                <li key={user._id}>
-                  <pre>{JSON.stringify(user, null, 2)}</pre>
-                  <button
-                    onClick={() => {
-                      this.removeUser(user._id)
-                    }}
-                  >
-                    Remove {user.username}
-                  </button>
-                </li>
-              ))}
-            </ul>}
-          </details>
-        </section> */}
-      </div>
-    )
+            />
+            <TextField
+              onChange={this.handleChange}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <p style={{color: 'red'}}>{msg}</p>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              style={{ marginTop: '10px' }}
+            >
+              Sign In
+          </Button>
+            <Grid container>
+              <Grid item>
+                <Link href="#/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <Box mt={8}>
+        </Box>
+      </Container >
+    );
   }
-}
 
-const mapStateToProps = state => {
+}
+const mapGlobalStateToProps = (state) => {
   return {
-    users: state.userModule.users,
-    loggedInUser: state.userModule.loggedInUser,
-    isLoading: state.systemModule.isLoading
+    loggedUser: state.userModule.loggedUser
   }
 }
+
 const mapDispatchToProps = {
-  login,
-  logout,
-  removeUser,
-  loadUsers
+  loggin
 }
 
-export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login)
+export const Login = connect(mapGlobalStateToProps, mapDispatchToProps)(_Login)

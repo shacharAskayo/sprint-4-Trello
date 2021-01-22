@@ -15,9 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import InfoIcon from '@material-ui/icons/Info';
 import WallpaperIcon from '@material-ui/icons/Wallpaper';
-import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import SearchIcon from '@material-ui/icons/Search';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 
@@ -28,12 +26,9 @@ export class Menu extends Component {
         menuTitle: 'Menu',
         currMenu: null,
         inMenu: true,
-        isMenuOpen: false
     }
 
-    toggleMenu = () => {
-        this.setState({ isMenuOpen: !this.state.isMenuOpen })
-    }
+   
 
     goBack = () => { this.setState({ currMenu: null }) }
 
@@ -48,16 +43,15 @@ export class Menu extends Component {
     render() {
 
 
-        const { currMenu, menuTitle, isMenuOpen } = this.state
-        const { board } = this.props
+        const { currMenu, menuTitle } = this.state
+        const { board, isMenuOpen, toggleMenu } = this.props
         if (!board.activities) return null
         return (
             <section className={`menu flex col ${isMenuOpen ? 'open' : ''}`}>
-                <button className="menu-btn flex align-center" onClick={this.toggleMenu}><MoreHorizIcon />Show Menu</button>
                 <div className="menu-top">
                     {currMenu && <button className="back-menu-btn" onClick={this.goBack}><ArrowBackIosIcon /></button>}
                     <h3>{(currMenu === null) ? 'Menu' : menuTitle}</h3>
-                    <button className="close-menu-btn" onClick={this.toggleMenu}><CloseIcon /></button>
+                    <button className="close-menu-btn" onClick={toggleMenu}><CloseIcon /></button>
                 </div>
                 <hr className="hr-menu" />
                 {currMenu === null && <section className="menu-options" style={{ display: "grid" }}>

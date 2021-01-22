@@ -1,18 +1,20 @@
 import { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { logout } from '../store/actions/userActions'
 
 //icons:
 import AppsIcon from '@material-ui/icons/Apps';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import AddIcon from '@material-ui/icons/Add';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import RoomIcon from '@material-ui/icons/Room';
-import InfoIcon from '@material-ui/icons/Info';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import InsertChartIcon from '@material-ui/icons/InsertChart';
 
 //cmps:
 import { MenuMapShow } from './menu/menuFirstSee/MenuMapShow';
-import { UserModalFromHeader } from './UserModalFromHeader';
+import { UserMenuModal } from './UserMenuModal';
+import { MyAvatar } from './MyAvatar';
 
 class _Header extends Component {
     state = {
@@ -25,52 +27,26 @@ class _Header extends Component {
 
     render() {
         const { isMapOpen, isUserModalOpen } = this.state
-        const { board } = this.props
-        const { createdBy } = board
-        console.log('user', createdBy, 'board', board);
+        const { board, loggedUser, logout } = this.props
+        // console.log('user', createdBy, 'board', board);
         return (
-            <header className="main-header">
-                <div className="icons-container">
-
-
-
-                    <span className="apps-icon">
-                        <AppsIcon />
-                    </span>
-                    <span className="apps-icon">
-                        <Link to="/">
-                            <DashboardIcon />
-                        </Link>
-                    </span>
+            <header className="main-header flex space-bt">
+                <div className="flex align-center">
+                    <Link to="/"><AppsIcon /></Link>
+                    <Link to="/"><HomeOutlinedIcon /></Link>
+                    <span className="show-boards flex align-center"><InsertChartIcon style={{transform: 'rotate(180deg)'}}/> Boards</span>
                 </div>
 
+                <h2 className="app-logo">Fello</h2>
 
-                <div className="icons-container">
-                    <span className="apps-icon" onClick={this.toggleMap}>
-                        <Link to="/map"></Link>
-                        <RoomIcon />
-                        {isMapOpen && <MenuMapShow />}
-                    </span>
-
-                    <span className="apps-icon">
-                        <AddIcon />
-                    </span>
-
-                    <span className="apps-icon info" >
-                        <Link to="/dashboard"><InfoIcon /></Link>
-                    </span>
-
-
-                    <span className="apps-icon" onClick={() => this.setState({ isUserModalOpen: true })}>
-                        <AccountCircleIcon />
-                    </span>
-
-                    {isUserModalOpen && <UserModalFromHeader closeModal={this.closeModal} board={board} user={createdBy} />}
+                <div className="flex align-center">
+                    <Link to="/"><AddIcon /></Link>
+                    <Link to="/dashboard"><DashboardIcon /></Link>
+                    {loggedUser ? <div onClick={() => this.setState({ isUserModalOpen: true })}> <MyAvatar user={loggedUser} /></div>
+                        :
+                        <span onClick={() => this.setState({ isUserModalOpen: true })}> <AccountCircleIcon /></span>}
+                    {isUserModalOpen && <UserMenuModal logout={logout} closeModal={this.closeModal} board={board} user={loggedUser} />}
                 </div>
-                {/* <div className="login-signup">
-                    <Link to="/login"> <button className="login"><span>Login</span></button></Link>
-                    <Link to="/signup"><button className="signup"><span>Signup</span></button></Link>
-                </div> */}
             </header>
         )
 
@@ -80,11 +56,13 @@ class _Header extends Component {
 }
 const mapStateToProps = state => {
     return {
-        loggedInUser: state.userModule.loggedInUser,
+        loggedUser: state.userModule.loggedUser,
         board: state.boardModule.board
     }
 }
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    logout
+}
 
 
 export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)

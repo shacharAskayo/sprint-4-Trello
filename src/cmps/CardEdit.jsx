@@ -103,14 +103,15 @@ export class CardEdit extends Component {
 
     render() {
         const {editPos,currModal,isModalOpen}=this.state
-        const {copyList, labels, isEdit,onSave, currGroup, onOpenLabel, updateBoardCard, card, isLabelOpen, board, handleChange, title, enterEditMode,exitEditMode } = this.props
+        const {style, copyList, labels, isEdit,onSave, currGroup, onOpenLabel, updateBoardCard, card, isLabelOpen, board, handleChange, title, enterEditMode,exitEditMode } = this.props
+        console.log(style);
         return (
             <React.Fragment>
-                <div onClick={this.edit} className={`${isEdit ? 'edit' : ''}`}  style={{top:`${editPos}px`}}>
+                <div onClick={this.edit} className={`${isEdit ? 'edit' : ''}`} >
 
                     <div className="edit-container">
 
-                        <div className={`card-preview ${isEdit ? 'edit' : ''} `}  >
+                        <div className={`card-preview flex col ${isEdit ? 'edit' : ''} `}  style={style} >
                             <div className="label-container">
                                 {labels.map((label, idx) => {
                                     return <div onClick={() => this.onOpenLabel(card.id)} key={label.id} className={`label ${(isLabelOpen) ? "is-open" : "is-close"}`} style={{ backgroundColor: label.color }}>
@@ -120,22 +121,16 @@ export class CardEdit extends Component {
                                 }
                             </div>
                             <div className="edit-and-title">
-                                <Link to={`/board/${board._id}/${card.id}`}>
                                     <div>
-                                        <form action="" onSubmit="return false">
+                                        <form onSubmit="return false">
 
-                                            <input disabled={!isEdit} onChange={handleChange}
+                                            <textarea disabled={!isEdit} onChange={handleChange}
                                                 onClick={(ev) => {
                                                     ev.preventDefault()
                                                 }}
                                                 type="text" value={title} />
                                         </form>
                                     </div>
-                                </Link>
-                                <span className="edit-icon" onClick={(ev) => {
-                                }} onClick={(ev)=>enterEditMode(ev,card.id)} >
-                                    <EditIcon />
-                                </span>
                             </div>
                             <div className="card-icons">
                                 {card.description && <SubjectIcon />}
@@ -149,13 +144,13 @@ export class CardEdit extends Component {
 
 
                         { <div className={'edit-menu'}>
-                            <div className="edit-menu-btn">  <PaymentIcon className="edit-menu-icons rotate" /> <span>  Open Card </span></div>
-                            <div className="edit-menu-btn" onClick={()=>this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons"  />  Edit labels </div>
-                            <div className="edit-menu-btn" > <PersonOutlineIcon className="edit-menu-icons"/> change members</div>
-                            <div className="edit-menu-btn"> <ArrowRightAltIcon className="edit-menu-icons"/> move  </div>
-                            <div className="edit-menu-btn"  onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate"/> copy </div>
-                            <div className="edit-menu-btn"> <AccessTimeIcon className="edit-menu-icons"/> change due date </div>
-                            <div className="edit-menu-btn"> <ArchiveOutlinedIcon className="edit-menu-icons"/> archive </div>
+                            <div className="edit-menu-btn flex align-center">  <PaymentIcon className="edit-menu-icons rotate" /> <span>  Open Card </span></div>
+                            <div className="edit-menu-btn flex align-center" onClick={()=>this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons"  />  Edit labels </div>
+                            <div className="edit-menu-btn flex align-center" > <PersonOutlineIcon className="edit-menu-icons"/> change members</div>
+                            <div className="edit-menu-btn flex align-center"> <ArrowRightAltIcon className="edit-menu-icons"/> move  </div>
+                            <div className="edit-menu-btn flex align-center"  onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate"/> copy </div>
+                            <div className="edit-menu-btn flex align-center"> <AccessTimeIcon className="edit-menu-icons"/> change due date </div>
+                            <div className="edit-menu-btn flex align-center"> <ArchiveOutlinedIcon className="edit-menu-icons"/> archive </div>
                         </div>
                         }
 
