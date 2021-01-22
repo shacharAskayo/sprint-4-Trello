@@ -79,7 +79,7 @@ class _BoardList extends Component {
 
                     <span>My Boards</span>
                     <div  className='flex '>
-                        {userBoards.map(board => <div className='board-preview' style={{ color: 'white', ...board.style}} >{board.title}</div>)}
+                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style}} >{board.title}</div> </Link>)}
                     </div>
 
 

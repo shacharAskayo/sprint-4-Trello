@@ -57,7 +57,9 @@ export class Menu extends Component {
                 <div className="menu-top">
                     {currMenu && <button className="back-menu-btn" onClick={this.goBack}><ArrowBackIosIcon /></button>}
                     <h3>{(currMenu === null) ? 'Menu' : menuTitle}</h3>
-                    <button className="close-menu-btn" onClick={this.toggleMenu}><CloseIcon /></button>
+                    <button className="close-menu-btn" onClick={() => {
+                        this.setState({ isMenuOpen: false })
+                    }}><CloseIcon /></button>
                 </div>
                 <hr className="hr-menu" />
                 {currMenu === null && <section className="menu-options" style={{ display: "grid" }}>
