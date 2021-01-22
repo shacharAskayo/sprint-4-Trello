@@ -58,12 +58,13 @@ class _CardPreview extends Component {
         this.setState({ title: value })
     }
 
-    onSave = () => {
+    onSave = (ev) => {
         const { card, board } = this.props
         const { title } = this.state
         card.title = title
         console.log(card);
         this.props.updateBoardCard(board, card)
+        this.props.exitEditMode(ev)
         this.setState({ isEdit: false })
     }
 
@@ -98,6 +99,7 @@ class _CardPreview extends Component {
                             {isEdit.isOpen && (isEdit.id === card.id) ? <CardEdit style={editStyle} onArchiveCard={this.onArchiveCard} copyList={this.copyList} loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
                                 {<CardDetails isDragging={snapshot.isDragging} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
                         </div>
+                      
                     )}
                 </Draggable>
             </React.Fragment>

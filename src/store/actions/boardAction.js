@@ -145,8 +145,8 @@ export function updateGroupLoaction(board, groupId, source, destination) {
   return async dispatch => {
     try {
       const updatedBoard = await boardService.updateGroupLoaction(board, groupId, source, destination)
-      console.log(updatedBoard)
       dispatch({ type: 'SET_BOARD', board: updatedBoard }) //drag end drop deley
+      console.log('the updated one', updatedBoard);
       boardService.updateBoard(updatedBoard)
     }
     catch (err) {
@@ -243,6 +243,31 @@ export function onArchiveCard(currBoard, currGroup, card) {
     try {
       const board = await boardService.archiveCard(currBoard, currGroup, card)
       dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+
+export function sortCards(currBoard, sortBy, group) {
+  return async dispatch => {
+    try {
+      const board = await boardService.sortCards(currBoard, sortBy, group)
+      console.log('board in action after changes', board);
+      dispatch({ type: 'SET_BOARD', board })
+    }
+    catch (err) {
+      console.log('err in loadBoard', err);
+    }
+  }
+}
+
+export function moveGroup(boards,currBoard, currGroup,  destinationBoard, position) {
+  return async dispatch => {
+    try {
+      const board = await boardService.moveGroup(boards,currBoard, currGroup, destinationBoard, position)
+      // dispatch({ type: 'SET_BOARD', board })
     }
     catch (err) {
       console.log('err in loadBoard', err);

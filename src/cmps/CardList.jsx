@@ -27,7 +27,7 @@ export class CardList extends Component {
         const div = this.cardRef.current
         const pos = div.getClientRects()
         console.log('sending', pos);
-        var { top, left } = pos[0]
+        var { left } = pos[0]
         this.props.enterEditMode(cardId)
         return { left }
     }
@@ -51,8 +51,8 @@ export class CardList extends Component {
             <Droppable droppableId={listId} type="CARD">
                 {(droppableProvided) => (
 
-                    <div className={'card-list'} ref={droppableProvided.innerRef} style={{ overflow: 'none' }} >
-                        <div style={{ height: '1px' }}></div>
+                    <div className={'card-list'} ref={droppableProvided.innerRef} style={{overflow:'none'}} >
+                        <div style={{height: '1px'}}></div>
                         {cards.map((card, idx) => {
                             if (card) {
 

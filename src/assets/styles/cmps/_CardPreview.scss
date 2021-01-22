@@ -1,6 +1,5 @@
 .card-preview {
     position: relative; // can cause a problem
-    padding: 0px 2px 2px 10px;
     margin: 5px;
     background-size: cover;
     background-color: rgb(255, 255, 255);
@@ -8,6 +7,21 @@
     box-shadow: 0px 1px 1px 0px #888888;
     border-radius: 3px;
     color: $clr2;
+    padding-bottom: 5px;
+    .details-container{
+        padding-left: 10px;
+    }
+    &.small{
+        padding-bottom: 0;
+    }
+    .card-cover{
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        &.color-bg{
+        height: 20px;
+        }
+    }
 
     &:not(.edit):hover {
         opacity: 0.8;
@@ -20,6 +34,9 @@
     p {
         margin: 0;
         font-size: em(14px);
+        line-height: 20px;
+        display: flex;
+        align-items: center;
     }
 
     textarea {
@@ -38,7 +55,7 @@
             position: relative;
             padding: 5px;
             top: 5px;
-            left: -3px;
+            left: -5px;
             color: rgba(255, 255, 255, 0);
             font-size: 1.6em;
             border-radius: 3px;
@@ -55,23 +72,32 @@
         }
     }
 
+    .small-card {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        // padding-top: 5px;
+        // padding-bottom: 2px;
+        // .MuiSvgIcon-root {
+        //     top: -7px;
+        //     left: 0;
+        // }
+    }
+
     .edit-and-title {
         display: flex;
         justify-content: space-between;
         padding-top: 5px;
     }
-    .small-card {
-        display: flex;
-        justify-content: space-between;
-        padding: 0;
-    }
 
     .card-icons {
-        display: flex;
         justify-content: space-between;
         font-size: 0.85rem;
     }
 
+    .card-icons-section1 {
+        padding-top: 2px;
+    }
     .card-icons-section1 > * {
         font-size: 1.3em;
         margin-right: 7px;
@@ -79,6 +105,7 @@
     }
 
     .members-container {
+        padding-right: 5px;
         gap: 3px;
         display: flex;
     }
@@ -87,19 +114,6 @@
         height: 25px !important;
         font-size: 0.875em;
     }
-
-    // .card-avatars-container{
-    //     display: flex;
-    //     position: absolute;
-    //     right: -2px;
-    //     gap: 3px;
-    //     bottom: 3px;
-    // }
-    // .card-avatars-container-single{
-    //     position: absolute;
-    //     right: -2px;;
-    //     bottom: 3px;
-    // }
 
     &.dragging:active {
         transform: rotate(6deg);
@@ -160,11 +174,11 @@
 .edit-menu {
     position: absolute;
     left: 250px;
+    z-index: 8;
     top: 0;
     display: grid;
     flex-direction: column;
     justify-content: space-around;
-    // background-color: lawngreen;
     padding: 6px;
     align-items: flex-start;
 
@@ -187,6 +201,9 @@
         font-size: 17px;
         margin-right: 6px;
     }
+    a{
+        color: inherit;
+    }
 }
 
 .card-save-btn {
@@ -199,7 +216,6 @@
         background-color: #5aac44;
         position: absolute;
         top: 139px;
-        // top: 235px;
         border-radius: 4px;
         color: #fff;
         border: none;
@@ -212,9 +228,5 @@
         font-size: 14px;
     }
 
-    //  align-self: flex-start;
 }
 
-.card-preview:hover {
-    // background-color: $main-bgc;
-}

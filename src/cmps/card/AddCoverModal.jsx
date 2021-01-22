@@ -28,7 +28,7 @@ export class AddCoverModal extends Component {
 
     setColor = (color) => {
         const card = JSON.parse(JSON.stringify(this.props.card))
-        const isCover = this.state
+        const {isCover} = this.state
         const NewCard = {
             ...card, style: {
                 isCover,
@@ -43,7 +43,7 @@ export class AddCoverModal extends Component {
 
     setImg = (url) => {
         const card = JSON.parse(JSON.stringify(this.props.card))
-        const isCover = this.state
+        const {isCover} = this.state
         const NewCard = {
             ...card, style: {
                 isCover,
@@ -66,7 +66,7 @@ export class AddCoverModal extends Component {
         const colors = ['lightgray', '#adad85', 'coral', '#ff4d4d', 'crimson', 'yellowgreen', 'teal', '#3385ff',]
         const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16]
         const { closeModal, style } = this.props
-        const isCover = this.state
+        const {isCover} = this.state
         return (
             <div className="cover-modal card-action-modal" style={style}>
                 <div className="flex justify-center">
@@ -76,8 +76,8 @@ export class AddCoverModal extends Component {
                 <hr />
                 <small>SIZE</small>
                 <div className="cover-style-btns flex ">
-                    <button className={isCover ? 'selected' : ''} onClick={() => this.setState({ isCover: false })}><CreditCardIcon /></button>
-                    <button className={isCover ? 'upside' : 'upside selected'} onClick={() => this.setState({ isCover: true })}><CreditCardIcon /></button>
+                    <button className={isCover ? '' : 'selected'} onClick={() => this.setState({ isCover: false })}><CreditCardIcon /></button>
+                    <button className={!isCover ? 'upside' : 'upside selected'} onClick={() => this.setState({ isCover: true })}><CreditCardIcon /></button>
                 </div>
                 <small>COLORS</small>
                 <div className="flex wrap space-bt">

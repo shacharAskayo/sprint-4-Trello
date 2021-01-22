@@ -17,10 +17,13 @@ import { UserMenuModal } from './UserMenuModal';
 import { MyAvatar } from './MyAvatar';
 
 class _Header extends Component {
+    
     state = {
         isMapOpen: false,
         isUserModalOpen: false
     }
+
+
     toggleMap = () => { this.setState({ isMapOpen: !this.state.isMapOpen }) }
 
     closeModal = () => { this.setState({ isUserModalOpen: false }) }

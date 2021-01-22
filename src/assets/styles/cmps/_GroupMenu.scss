@@ -29,13 +29,36 @@
     }
     .item {
         padding: 6px 12px;
-        &:hover {               //rgba(9,30,66,.04)
-            background-color: rgba(9,30,66,.13);
+        &:hover {
+            //rgba(9,30,66,.04)
+            background-color: rgba(9, 30, 66, 0.13);
         }
     }
     > * {
         :hover {
-            background-color: rgba(9, 30, 66, 0.13);
+            // background-color: rgba(9, 30, 66, 0.13);
         }
     }
+}
+
+.group-menu.sort {
+    height: 155px;
+    padding: 5px;
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 400;
+        font-size: 14px;
+        span > * {
+            font-size: 14px;
+        }
+    }
+    
+    .sort-options{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;//not working??!!!!
+        gap: 10px;
+        }
+    
 }

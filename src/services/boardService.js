@@ -22,7 +22,9 @@ export const boardService = {
     updateBoard,
     moveCard,
     archiveList,
-    archiveCard
+    archiveCard,
+    sortCards,
+    moveGroup
 
 
 }
@@ -31,7 +33,6 @@ export const boardService = {
 
 
 async function query() {
-    console.log('sevice got req');
     try {
         const boards = await httpService.get('/board')
         return boards
@@ -51,9 +52,9 @@ async function getById(id) {
 }
 
 async function addBoard(board) {
-    const newBoard = { ...board, _id: utilService.makeId() }
+        const copy = JSON.parse(JSON.stringify(board))
     try {
-        const boardAfter = await httpService.post('/board', newBoard)
+        const boardAfter = await httpService.post('/board', copy)
         return boardAfter
     } catch (err) {
         console.log(err)
@@ -62,13 +63,17 @@ async function addBoard(board) {
 
 
 async function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
+    console.log('board',currBoard);
+    console.log('card',card);
     const board = JSON.parse(JSON.stringify(currBoard))
     const cardToUpdate = cardService.getCardForUpdate(card)
+    console.log('after update',cardToUpdate);
     const newGroups = board.groups.map(group => {
         const cards = group.cards.map(card => (card.id === cardToUpdate.id) ? cardToUpdate : card)
         return { ...group, cards }
     })
     const newBoard = { ...board, groups: newGroups }
+    console.log('the new board in the setvice after update card',newBoard);
     return newBoard
 }
 
@@ -100,6 +105,7 @@ function updateCardLocation(board, source, destination) {
 }
 
 async function updateGroupLoaction(board, groupId, source, destination) {
+    console.log(board);
     const currBoard = JSON.parse(JSON.stringify(board))
     const currGroup = currBoard.groups.find(group => group.id === groupId)
     currBoard.groups.splice(source.index, 1)
@@ -220,4 +226,33 @@ async function archiveCard(currBoard, currGroup, currCard) {
     } catch (err) {
         console.log(err)
     }
+}
+
+ function sortCards(board,sortBy,currGroup) {
+    const boardCopy=JSON.parse(JSON.stringify(board))
+    const groupIdx=boardCopy.groups.findIndex(group=>group.id===currGroup.id)
+    if(sortBy==='name'){
+        var sortedCards=boardCopy.groups[groupIdx].cards.sort((a, b) => a.title.localeCompare(b.title))
+        boardCopy.groups[groupIdx].cards=sortedCards
+        return updateBoard(boardCopy)
+    }
+}
+
+async function moveGroup(boards,currBoard,currGroup,destinationBoard,position){
+     const allBoards= JSON.parse(JSON.stringify(boards))
+
+    // const copyBoard = JSON.parse(JSON.stringify(currBoard))
+    // const currGroupIdx = copyBoard.groups.findIndex(group=>group.id===currGroup.idx)
+    //  copyBoard.groups.splice(currGroupIdx,1)
+    //  destinationBoard.groups.splice(position,0,newGroup)
+     try {
+        // const originBoardAfter = await httpService.put('/board/' + currBoard._id, currBoard)
+        // console.log('the board after',originBoardAfter);
+        // const boardAfter = await httpService.put('/board/' + destinationBoard._id, destinationBoard)
+        // return originBoardAfter
+
+    } catch (err) {
+        console.log(err)
+    }
+
 }

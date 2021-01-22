@@ -1,9 +1,10 @@
 .group-preview {
-    .group-title-input{
-        color:#172b4d;
+    .group-title-input {
+        color: #172b4d;
         font-size: 14px;
         margin-left: 0px;
-
+        font-weight: 700;
+        text-transform: capitalize;
     }
     .hidden-actions-form-container {
         input {
@@ -15,7 +16,7 @@
     }
     border-radius: 3px;
     background-color: $sec-bgc;
-    margin: 0px 4px  4px;
+    margin: 0px 4px 4px;
     input {
         background-color: inherit;
         border: 0;
@@ -62,8 +63,15 @@
         font-weight: 600;
     }
 
-    &.dragging{
+    &.dragging {
         background-color: rgba(207, 205, 205, 0.877);
     }
 
+    .move-select-btn {
+        border: none;
+        cursor: pointer;
+        height: 30px;
+        width: 100%;
+        background-color: inherit;
+    }
 }
