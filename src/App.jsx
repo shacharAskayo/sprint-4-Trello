@@ -16,6 +16,7 @@ function _App(props) {
   socketService.setup()
   const style = props.board?.style
 
+  console.log('the props',props)
   return (
     <div className="app" style={style}>
       <Router>
