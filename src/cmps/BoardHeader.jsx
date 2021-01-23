@@ -52,6 +52,8 @@ class _BoardHeader extends Component {
         const style = board.isPrivate ? { backgroundColor: 'rgb(152 255 155 / 42%)' } : {}
         const { isAddModalOpen } = this.state
         if (!board) return
+        console.log(board);
+        console.log(board.members?.length);
         return (
             <div className="board-header flex align-center space-bt" >
                 <div className="flex">
@@ -60,8 +62,8 @@ class _BoardHeader extends Component {
                     Private
                     </span>
                     <div onClick={this.toggleAddModal} className="members flex">
-                        {board.members?.map((user, idx) => <MyAvatar style={{ left: `${-6 * idx}px` }} user={user} />)}
-                        <MyAvatar user={{ fullname: '+' }} style={{ left: `${-6 * board.members?.length}px` }} />
+                        {board.members?.map((user, idx) => <MyAvatar style={{ left: `${-4 * idx}px` }} user={user} />)}
+                        <MyAvatar user={{ fullname: '+' }} style={{ left: `${-4 * board.members?.length}px` }} />
                     </div>
                     {isAddModalOpen && <AddMembersModal closeModal={this.toggleAddModal}/>}
                     <input onChange={this.handleChange} on onBlur={this.onChangeTitle} type="text" name="title" value={this.state.title} autoComplete="off" />

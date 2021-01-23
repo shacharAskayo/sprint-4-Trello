@@ -70,7 +70,6 @@ async function updateBoardCard(currBoard, card) {
         return { ...group, cards }
     })
     const newBoard = { ...board, groups: newGroups }
-    console.log('the new board in the setvice after update card',newBoard);
     return newBoard
 }
 
@@ -91,7 +90,6 @@ async function addGroup(board, group) {
 }
 
 function updateCardLocation(board, source, destination) {
-    console.log('dnd:', source, destination)
     const currBoard = JSON.parse(JSON.stringify(board))
     const fromGroupIdx = currBoard.groups.findIndex(group => group.id === source.droppableId)
     const toGroupIdx = currBoard.groups.findIndex(group => group.id === destination.droppableId)
@@ -111,9 +109,10 @@ async function updateGroupLoaction(board, groupId, source, destination) {
 }
 
 async function updateGroupTitle(board, currGroup, title) {
-
     const newGroups = board.groups.map(group => (group.id === currGroup.id) ? { ...group, title } : group)
     const newBoard = { ...board, groups: newGroups }
+    return newBoard
+
 }
 
 async function setStyle(board, background) {

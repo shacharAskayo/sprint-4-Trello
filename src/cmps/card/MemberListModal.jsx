@@ -39,7 +39,6 @@ export class MemberListModal extends Component {
     }
 
     render() {
-
         const { closeModal, style } = this.props
         return (
             <div className="member-modal card-action-modal" style={style}>

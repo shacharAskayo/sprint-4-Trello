@@ -23,6 +23,7 @@ export class GroupList extends Component {
     }
     componentDidMount() {
         this.cardRef = React.createRef()
+        console.log('we here');
     }
 
 
@@ -73,9 +74,7 @@ export class GroupList extends Component {
         this.setState({ isEdit: { isOpen: true, id: id } })
     }
 
-    exitEditMode = (ev) => {
-        ev.stopPropagation()
-        ev.preventDefault()
+    exitEditMode = () => {
         this.setState({
             isEdit: { isOpen: false, id: '' }
         })

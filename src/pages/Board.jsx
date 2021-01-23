@@ -44,13 +44,16 @@ class _Board extends Component {
   loadBoard = async (boardId) => {
     const board = await this.props.getBoardById(boardId)
     const loggedUser = this.props.loggedUser
+    const membersIds = board?.members.map(user => user?._id)
     if (board.isPrivate) {
-      const membersIds = board.members.map(user => user?._id)
       if (!membersIds.includes(loggedUser?._id)) this.setState({ isPermited: false })
     } else {
       this.setState({ isPermited: true })
-      const newBoard = { ...board, members: [...board.members, loggedUser] }
-      this.saveBoard(newBoard)
+      if (!membersIds.includes(loggedUser?._id)) {
+        if(!loggedUser) return
+        const newBoard = { ...board, members: [...board.members, loggedUser] }
+        this.saveBoard(newBoard)
+      }
     }
   }
 
@@ -77,7 +80,6 @@ class _Board extends Component {
     if (!board) return <Loading />
     if (!isPermited) return <div className="locked-board flex center"><h1><span>This board is locked!</span><br />You can not access it as you are not a member.</h1></div>
     const { groups } = board
-
     return (
       <div className="main-board" >
         <BoardHeader board={board} toggleMenu={this.toggleMenu} openArchive={this.openArchive} />

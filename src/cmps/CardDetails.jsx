@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { MyAvatar } from './MyAvatar'
 
-export class CardDetails extends Component {
+export class  CardDetails extends Component {
 
     state = {
         isSmall: false,
@@ -45,18 +45,11 @@ export class CardDetails extends Component {
     }
 
     render() {
-        // var styleCopy = {
-        //     isCover: true,
-        //     background: {
-        //         // backgroundColor: 'lightBlue',
-        //         // backgroundImage: 'url(https://st.focusedcollection.com/13735766/i/650/focused_196865912-stock-photo-dense-coniferous-forest-covered-snow.jpg)'
-        //     }
-        // }
         const { labels, isDragging, isEdit, onOpenLabel, card, isLabelOpen, board, handleChange, title, } = this.props
         const { isSmall, editStyle } = this.state
         const { style } = card
         var cardClass = isDragging ? 'card-preview dragging' : 'card-preview'
-        const isIcons = card.description || card.comments?.length > 0 || card.attachments?.length > 0 || card.checklists?.length > 0
+        const isIcons = card.description || card.comments?.length > 0 || card.attachments?.length > 0 || card.checklists?.length > 0 || card.members?.length > 0
         var smallCard = isSmall ? 'small' : ''
         var colorBg = (style.background?.backgroundColor) ? 'color-bg' : ''
         return (

@@ -11,7 +11,7 @@ const initialState = {
     isLoged: !!loggedUser
 }
 
-console.log(loggedUser)
+console.log(initialState.loggedUser)
 export function userReducer(state = initialState, action) {
     switch (action.type) {
         case 'LOGIN':

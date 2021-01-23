@@ -1,23 +1,35 @@
 import { Link } from 'react-router-dom'
-export function BoardPreview({ board }) {
+import React, { Component } from 'react'
 
-    console.log('the board', board);
+export  class BoardPreview extends Component {
 
 
 
-    return (
 
-        
-        <div style={{ color: 'white' }}>
-            <h1>boards</h1>
+
+    render(){
+        const {boards,userBoards,openModal}=this.props
+        return (
+            
+            
+            <div className="boards-list">
+
+
+                    <span>My Boards</span>
+                    <div className='flex '>
+                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style }} >{board.title || 'No Title...'}</div> </Link>)}
+                    </div>
+
+
+                    <span>All Boards</span>
+                    <div className='all-boards ' >
+                        {boards.map(board => <Link to={`/board/${board._id}`}> <div className='board-preview' style={{ color: 'white', ...board.style }} >{board.title || 'No Title...'}</div> </Link>)}
+
+                        <div className='board-preview' onClick={openModal} > Add New Board... </div>
+                    </div>
+
         </div>
-
-
-
-        // <article className="board-preview">
-        //     <span>{board.inStock}</span>
-        //     <Link to={`/board/${board._id}`}>Details</Link>   |
-        //     {/* <button onClick={() => { onDelete(board._id) }}>X</button> */}
-        // </article>
-    )
+      
+      )
+    }
 }

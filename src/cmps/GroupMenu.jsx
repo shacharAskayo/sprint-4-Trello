@@ -25,6 +25,8 @@ export class GroupMenu extends Component {
         const { openInput, copyList, onArchive,openDynamicModal,closeMenu } = this.props
         const {currModal}=this.state
         return (
+            <div>
+
             <div className="group-menu">
                 <div className="group-menu-header"> list actions</div>
                 <hr />
@@ -52,6 +54,7 @@ export class GroupMenu extends Component {
 
             </div>
 
+            </div>
 
         )
     }

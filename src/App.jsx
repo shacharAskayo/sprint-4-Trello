@@ -22,6 +22,7 @@ function _App(props) {
     signup(loggedUser)  
   } else loggin(loggedUser)
 
+  console.log('the props',props)
   return (
     <div className="app" style={style}>
       <Router>
