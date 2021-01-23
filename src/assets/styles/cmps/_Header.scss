@@ -4,7 +4,7 @@ header.main-header {
     font-size: 1.3rem;
     align-items: center;
     height: 40px;
-    padding: 0 10px;
+    padding: 0 3px;
     a {
         height: 34px;
     }
@@ -36,6 +36,7 @@ header.main-header {
 
     .MuiSvgIcon-root {
         cursor: pointer;
+        width: 31px;
         margin: 2px;
         padding: 4px;
         font-size: 30px;

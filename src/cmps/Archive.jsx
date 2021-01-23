@@ -12,6 +12,7 @@ export class Archive extends Component {
 
     render() {
         const { board } = this.props
+        if (!board.archives) return <h1>No archived items yet...</h1>
         return (
             <React.Fragment>
 

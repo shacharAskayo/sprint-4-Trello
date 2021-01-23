@@ -1,14 +1,13 @@
 import CloseSharpIcon from '@material-ui/icons/CloseSharp';
-import { withRouter } from 'react-router';
 
 
-function _ShareCardModal(props) {
+export function ShareCardModal(props) {
 
     function handleFocus(ev) {
         ev.target.select()
     }
 
-    const { closeModal, style, location } = props
+    const { closeModal, style } = props
     return (
         <div className="share-modal card-action-modal" style={style}>
             <div className="flex justify-center">
@@ -21,11 +20,10 @@ function _ShareCardModal(props) {
                 onFocus={handleFocus}
                 autoFocus
                 type="text"
-                value={location.pathname}
+                value={window.location.href}
             />
         </div>
     )
 
 
 }
-export const ShareCardModal = withRouter(_ShareCardModal)

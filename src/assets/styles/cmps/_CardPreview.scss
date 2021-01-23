@@ -76,12 +76,6 @@
         display: flex;
         justify-content: space-between;
         padding: 0;
-        // padding-top: 5px;
-        // padding-bottom: 2px;
-        // .MuiSvgIcon-root {
-        //     top: -7px;
-        //     left: 0;
-        // }
     }
 
     .edit-and-title {
@@ -93,6 +87,8 @@
     .card-icons {
         justify-content: space-between;
         font-size: 0.85rem;
+        height: 2em;
+
     }
 
     .card-icons-section1 {
@@ -122,21 +118,40 @@
 // //// EDIT MODE
 
 .edit {
-    position: absolute;
-    z-index: 4;
+    &.modal-screen{
+        position: fixed;
+        z-index: 4;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        background-color: #0000009a;
+
+    }
+    .card-preview{
+        padding-left: 10px;
+    }
 
     .edit-menu {
         position: absolute;
         z-index: 8;
         left: 250px;
     }
-    .card-save-btn {
-        position: absolute;
-        z-index: 8;
-        bottom: 0;
+    .save-btn {
+        position: relative;
+        top: 5px;
+        left: -10px;
+        background-color: #5aac44;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        width: fit-content;
+        font-weight: 400;
+        font-size: 14px;
     }
     textarea {
         padding: 5px;
+        padding-left: 0;
         width: 220px;
     }
     .card-icons {
@@ -154,8 +169,6 @@
     padding-right: 20px;
     width: 239.8px;
     height: 129.5px;
-    position: fixed; // causing problems  with the screen scroll to the right ,and fix the screen shadow
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
 
     .edit-and-title {
         align-self: flex-start;
@@ -165,6 +178,7 @@
 
     .card-icons {
         justify-content: flex-start;
+        position: relative;
         gap: 8px;
         .MuiSvgIcon-root {
             font-size: 1.7em;
@@ -206,27 +220,6 @@
     }
 }
 
-.card-save-btn {
-    margin-left: 5px;
-    position: absolute;
-    z-index: 5;
-    box-shadow: 0 0 0 0vmax rgba(0, 0, 0, 0.3);
 
-    button {
-        background-color: #5aac44;
-        position: absolute;
-        top: 139px;
-        border-radius: 4px;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        margin-top: 8px;
-        font-weight: 400;
-        height: 32px;
-        width: 76px;
-        text-transform: capitalize;
-        font-size: 14px;
-    }
 
-}
 

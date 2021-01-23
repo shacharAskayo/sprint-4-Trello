@@ -15,29 +15,34 @@ import InsertChartIcon from '@material-ui/icons/InsertChart';
 import { MenuMapShow } from './menu/menuFirstSee/MenuMapShow';
 import { UserMenuModal } from './UserMenuModal';
 import { MyAvatar } from './MyAvatar';
+import { UserBoardsModal } from './UserBoardsModal';
 
 class _Header extends Component {
     
     state = {
-        isMapOpen: false,
-        isUserModalOpen: false
+        isUserModalOpen: false,
+        isBoardsModalOpen: false
     }
 
-
-    toggleMap = () => { this.setState({ isMapOpen: !this.state.isMapOpen }) }
-
-    closeModal = () => { this.setState({ isUserModalOpen: false }) }
+    toggleMemberModal = () => { 
+        const {isUserModalOpen} = this.state
+        this.setState({ isUserModalOpen: !isUserModalOpen }) 
+    }
+    toggleBoardsModal = () => { 
+        const {isBoardsModalOpen} = this.state
+        this.setState({ isBoardsModalOpen: !isBoardsModalOpen }) 
+    }
 
     render() {
-        const { isMapOpen, isUserModalOpen } = this.state
-        const { board, loggedUser, logout } = this.props
+        const { isUserModalOpen, isBoardsModalOpen } = this.state
+        const { board, boards, loggedUser, logout, style } = this.props
         // console.log('user', createdBy, 'board', board);
         return (
-            <header className="main-header flex space-bt">
+            <header style={style} className="main-header flex space-bt">
                 <div className="flex align-center">
                     <Link to="/"><AppsIcon /></Link>
                     <Link to="/"><HomeOutlinedIcon /></Link>
-                    <span className="show-boards flex align-center"><InsertChartIcon style={{transform: 'rotate(180deg)'}}/> Boards</span>
+                    <span onClick={this.toggleBoardsModal} className="show-boards flex align-center"><InsertChartIcon style={{transform: 'rotate(180deg)'}}/> Boards</span>
                 </div>
 
                 <h2 className="app-logo">Fello</h2>
@@ -45,10 +50,11 @@ class _Header extends Component {
                 <div className="flex align-center">
                     <Link to="/"><AddIcon /></Link>
                     <Link to="/dashboard"><DashboardIcon /></Link>
-                    {loggedUser ? <div onClick={() => this.setState({ isUserModalOpen: true })}> <MyAvatar user={loggedUser} /></div>
+                    {loggedUser ? <div onClick={this.toggleMemberModal}> <MyAvatar user={loggedUser} /></div>
                         :
-                        <span onClick={() => this.setState({ isUserModalOpen: true })}> <AccountCircleIcon /></span>}
-                    {isUserModalOpen && <UserMenuModal logout={logout} closeModal={this.closeModal} board={board} user={loggedUser} />}
+                        <span onClick={this.toggleMemberModal}> <AccountCircleIcon /></span>}
+                    {isUserModalOpen && <UserMenuModal logout={logout} closeModal={this.toggleMemberModal} board={board} user={loggedUser} />}
+                    {isBoardsModalOpen && <UserBoardsModal logout={logout} closeModal={this.toggleBoardsModal} boards={boards} user={loggedUser}/>}
                 </div>
             </header>
         )
@@ -60,7 +66,8 @@ class _Header extends Component {
 const mapStateToProps = state => {
     return {
         loggedUser: state.userModule.loggedUser,
-        board: state.boardModule.board
+        board: state.boardModule.board,
+        boards: state.boardModule.boards
     }
 }
 const mapDispatchToProps = {

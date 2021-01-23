@@ -18,7 +18,7 @@ export class CardAttachmentList extends Component {
 
     openModal = (ev) => {
         const top = ev.target.offsetTop
-        this.props.setCurrModal({name: 'attachment', style: {left: 'calc(50% - 350px)', top, transform: 'translateY(-80%)'}})
+        this.props.setCurrModal({name: 'attachment', style: {left: 'calc(50% - 336px)', top, transform: 'translateY(-80%)'}})
     }
 
 

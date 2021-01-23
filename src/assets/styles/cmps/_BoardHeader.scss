@@ -4,7 +4,7 @@
     color: $clr2;
     >*>*{
         cursor: pointer;
-        background-color: rgba(0,0,0, 0.08);
+        background-color: hsla(0,0%,100%,.24);
         border-radius: 3px;
         margin-right: 10px;
         padding: 10px;
@@ -35,6 +35,38 @@
         &:hover{
             background-color: rgba(0,0,0, 0.18);
 
+        }
+    }
+    .menu-btn{
+        margin: 0;
+    }
+    .members{
+        background: transparent;
+        padding: 0;
+        .MuiAvatar-root{
+            height: 30px;
+            width: 30px;
+            position: relative;
+        }
+    }
+    .add-modal-screen{
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.445);
+    }
+    .add-members-modal{
+        background-color: white;
+        top: 90px;
+        left: 100px;
+        height: 200px;
+        box-shadow: 0px 0px 2px;
+        input{
+            font-size: 14px;
+            font-weight: 400;
         }
     }
 }

@@ -19,9 +19,7 @@ class _BoardList extends Component {
         this.props.loadBoards()
         const { boards, loggedUser } = this.props
         if(boards&&loggedUser){
-            console.log('the boards we run on ',boards);
-            console.log(loggedUser);
-            const userBoards = boards.filter(board => board.createdBy.id === loggedUser.id)
+            const userBoards = boards.filter(board => board.createdBy?._id === loggedUser?._id)
             this.setState({ userBoards })
         }
     }
@@ -30,11 +28,12 @@ class _BoardList extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             const { boards, loggedUser } = this.props
-            console.log(boards);
-            const userBoards = boards.filter(board => board.createdBy.id === loggedUser.id)
+            console.log('boards!!!!!', boards);
+            const userBoards = boards.filter(board => board.createdBy?._id === loggedUser?._id)
             this.setState({ userBoards })
         }
     }
+
     closeModal=(ev)=>{
             ev.stopPropagation()
             ev.preventDefault()
@@ -54,8 +53,8 @@ class _BoardList extends Component {
     render() {
         const { boards, loggedUser,addBoard } = this.props
         const { userBoards, isModalOpen } = this.state
-        if (!boards) return
-        if (!userBoards) return
+        if (!boards) return null
+        if (!userBoards) return null
         return (
             <div className='home-container' onClick={this.closeModal}>
                 {/* <BoardsPick/> */}
@@ -78,14 +77,16 @@ class _BoardList extends Component {
 
 
                     <span>My Boards</span>
-                    <div  className='flex '>
-                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style}} >{board.title}</div> </Link>)}
+                    <div  className='flex wrap'>
+                        {userBoards.map(board => <Link to={`/board/${board._id}`}>  <div className='board-preview' style={{ color: 'white', ...board.style}} >{board.title || 'No Title...'}</div> </Link>)}
+                        <div className='board-preview' onClick={this.openBoardModal} onClick={ this.openModal} > Add New Board... </div>
+
                     </div>
 
 
                     <span>All Boards</span>
-                    <div className='flex ' >
-                        {boards.map(board => <Link to={`/board/${board._id}`}> <div className='board-preview' style={{ color: 'white',  ...board.style }} >{board.title}</div> </Link>)}
+                    <div className='flex wrap' >
+                        {boards.map(board => <Link to={`/board/${board._id}`}> <div className='board-preview' style={{ color: 'white',  ...board.style }} >{board.title || 'No Title...'}</div> </Link>)}
 
                         <div className='board-preview' onClick={this.openBoardModal} onClick={ this.openModal} > Add New Board... </div>
                     </div>
@@ -109,7 +110,7 @@ class _BoardList extends Component {
 const mapStateToProps = (state) => {
     return {
         boards: state.boardModule.boards,
-        loggedUser: state.boardModule.loggedUser
+        loggedUser: state.userModule.loggedUser
     }
 }
 const mapDispatchToProps = {

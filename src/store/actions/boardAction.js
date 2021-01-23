@@ -44,6 +44,7 @@ export function getBoardById(id) {
         console.log('got socket event');
         dispatch({ type: 'SET_BOARD', board: updatedBoard })
       })
+      return board
     }
     catch (err) {
       console.log('err in loadBoard', err)
