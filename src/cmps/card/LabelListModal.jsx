@@ -9,25 +9,25 @@ export class LabelListModal extends Component {
     state = {
         filter: ''
     }
-
     get labels() {
         const { filter } = this.state
         const { labels } = this.props.board
         const regex = new RegExp(filter, 'i')
         return labels.filter(label => label.title.match(regex))
     }
-
+    
     onAddLabel = (label) => {
+        console.log('label',label);
         const card = { ...this.props.card, labels: [...this.props.card.labels, label] }
         this.props.save(card, `added label ${label.title}`)
     }
-
+    
     removeLabel = (labelId) => {
         const labels = this.props.card.labels.filter(label => label.id !== labelId)
         const card = { ...this.props.card, labels }
         this.props.save(card, `removed a label`)
     }
-
+    
     render() {
 
         const { card, closeModal, style } = this.props

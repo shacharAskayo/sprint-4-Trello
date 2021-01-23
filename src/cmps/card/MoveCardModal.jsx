@@ -28,7 +28,6 @@ class _MoveCardModal extends Component {
 
         const { closeModal, style, board } = this.props
         const group = board.groups[this.state.groupIdx]
-        console.log(group);
         return (
             <div fer className="move-card-modal card-action-modal" style={style}>
                 <div className="flex justify-center">

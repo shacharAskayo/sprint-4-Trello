@@ -1,9 +1,10 @@
 .card-action-modal {
     position: fixed;
     z-index: 1;
-    left: calc(50% + 185px);
+    left: calc(50% + 195px);
     width: 305px;
     background-color: white;
+    border-radius: 3px;
     padding: 12px;
     color: $clr1;
     hr {
@@ -201,6 +202,28 @@
             margin-top: 10px;
             border-radius: 5px;
         }
+        .cover-style-btns{
+            button{
+                padding: 0;
+                margin: 0;
+                background: transparent;
+                &.selected{
+                    box-shadow: 0px 0px 3px $clr1;
+                }
+            }
+            .MuiSvgIcon-root{
+                font-size: 100px;
+                background-color: white;
+                color: #cfd3da;
+                margin: 0;
+            }
+            .upside{
+                .MuiSvgIcon-root{
+                    transform: rotate(180deg);
+                }
+
+            }
+        }
     }
 
     &.move-card-modal{
@@ -210,4 +233,7 @@
         top: 55%;
     }
 
+    &.share-modal{
+        top: 64%;
+    }
 }

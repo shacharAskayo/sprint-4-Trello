@@ -3,7 +3,7 @@ import { Component } from 'react'
 import { GroupList } from "../cmps/GroupList"
 import { connect } from 'react-redux'
 import { Menu } from '../cmps/menu/Menu'
-import { getBoardById, addGroup, updateGroupLoaction, updateCardLocation } from '../store/actions/boardAction'
+import { getBoardById, addGroup, updateGroupLoaction, updateCardLocation, cleanBoard } from '../store/actions/boardAction'
 import { Card } from '../cmps/card/Card'
 import { BoardHeader } from '../cmps/BoardHeader'
 import { Archive } from '../cmps/Archive'
@@ -14,8 +14,9 @@ import { Archive } from '../cmps/Archive'
 
 class _Board extends Component {
 
-  state={
-    isArchiveOpen:false
+  state = {
+    isArchiveOpen: false,
+    isMenuOpen: false,
   }
 
 
@@ -26,25 +27,32 @@ class _Board extends Component {
 
   }
 
-  openArchive=()=>{
-    const {isArchiveOpen} = this.state
-    this.setState({isArchiveOpen:!isArchiveOpen})
+  componentWillUnmount() {
+    this.props.cleanBoard()
   }
- 
+
+  openArchive = () => {
+    const { isArchiveOpen } = this.state
+    this.setState({ isArchiveOpen: !isArchiveOpen })
+  }
+
+  toggleMenu = () => {
+    const { isMenuOpen } = this.state
+    this.setState({ isMenuOpen: !isMenuOpen })
+  }
 
   render() {
 
     if (!this.props.board) return null
     const { board, updateGroupLoaction, updateCardLocation, addGroup } = this.props
     const { groups } = board
-    const {isArchiveOpen} = this.state
-
+    const { isArchiveOpen, isMenuOpen } = this.state
     return (
       <div className="main-board" >
-        <BoardHeader openArchive={this.openArchive} />
-        <Menu board={board} />
-      {!isArchiveOpen&&  <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />}
-        {isArchiveOpen&&<Archive board={board}/>}
+        <BoardHeader board={board} toggleMenu={this.toggleMenu} openArchive={this.openArchive} />
+        <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} board={board} />
+        {!isArchiveOpen && <GroupList groups={groups} updateCardLocation={updateCardLocation} updateGroupLoaction={updateGroupLoaction} board={board} addGroup={addGroup} />}
+        {isArchiveOpen && <Archive board={board} />}
         <Card />
       </ div>
     )
@@ -66,7 +74,8 @@ const mapDispatchToProps = {
   getBoardById,
   addGroup,
   updateGroupLoaction,
-  updateCardLocation
+  updateCardLocation,
+  cleanBoard
 }
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board)

@@ -12,6 +12,7 @@ export class CardList extends Component {
         cards: []
     }
     componentDidMount() {
+        this.cardRef = React.createRef()
         const { cards } = this.props
         this.setState({ cards })
     }
@@ -20,6 +21,15 @@ export class CardList extends Component {
             const { cards } = this.props
             this.setState({ cards })
         }
+    }
+
+    enterEditMode = (cardId) => {
+        const div = this.cardRef.current
+        const pos = div.getClientRects()
+        console.log('sending', pos);
+        var { left } = pos[0]
+        this.props.enterEditMode(cardId)
+        return { left }
     }
 
 
@@ -36,7 +46,7 @@ export class CardList extends Component {
     }
 
     render() {
-        const { board,cards, listId, isLabelOpen, openLabel, currGroup,isEdit,enterEditMode,exitEditMode } = this.props
+        const { board, cards, listId, isLabelOpen, openLabel, currGroup, isEdit, exitEditMode } = this.props
         return (
             <Droppable droppableId={listId} type="CARD">
                 {(droppableProvided) => (
@@ -47,14 +57,15 @@ export class CardList extends Component {
                             if (card) {
 
                                 return (
-
-                                    <CardPreview exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} currGroup={currGroup} key={card.id} listId={listId} board={board} idx={idx} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
+                                    <div ref={this.cardRef}>
+                                        <CardPreview exitEditMode={exitEditMode} enterEditMode={this.enterEditMode} isEdit={isEdit} currGroup={currGroup} key={card.id} listId={listId} board={board} idx={idx} card={card} isLabelOpen={isLabelOpen} openLabel={openLabel} />
+                                    </div>
                                 )
                             }
-                            
+
                         })}
                         {droppableProvided.placeholder}
-          
+
                     </div>
                 )}
             </Droppable>

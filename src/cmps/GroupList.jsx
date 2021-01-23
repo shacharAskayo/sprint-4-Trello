@@ -15,12 +15,16 @@ export class GroupList extends Component {
             cards: []
         },
         isAdding: false,
-        isEdit:{
-            isOpen:false,
-            id:''
+        isEdit: {
+            isOpen: false,
+            id: ''
         },
         isMenuOpen:false
-    } 
+    }
+    componentDidMount() {
+        this.cardRef = React.createRef()
+        console.log('we here');
+    }
 
 
     handleChange = (ev) => {
@@ -66,20 +70,16 @@ export class GroupList extends Component {
         }
 
     }
-    enterEditMode = (ev,id) => {
-        ev.stopPropagation()
-        ev.preventDefault()
-        this.setState({
-            isEdit:{isOpen:true,id:id} 
-        })
+    enterEditMode = (id) => {
+        this.setState({ isEdit: { isOpen: true, id: id } })
     }
-    
+
     exitEditMode = (ev) => {
         ev.stopPropagation()
         ev.preventDefault()
         this.setState({
-            isEdit:{isOpen:false,id:''}
-         })
+            isEdit: { isOpen: false, id: '' }
+        })
     }
     // openMenu=()=>{
     //     this.setState({isMenuOpen:true})

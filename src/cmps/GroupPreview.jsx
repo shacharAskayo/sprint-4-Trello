@@ -9,13 +9,14 @@ import { GroupMenu } from './GroupMenu';
 import { AddCardInput } from './AddCardInput';
 import { DynamicCardActionModal } from './card/DynamicCardActionModal';
 import { DynamicGroupModal } from './DynamicGroupModal';
+import { Transform } from '@material-ui/icons';
 
 
 export class _GroupPreview extends Component {
 
     state = {
         isModalOpen: false,
-        modalName:'',
+        modalName: '',
         groupTitle: '',
         card: {
             createdBy: {},
@@ -82,6 +83,8 @@ export class _GroupPreview extends Component {
 
     handleEditGroupTitle = (ev) => {
         const { value } = ev.target
+        console.log(value);
+
         this.setState({ groupTitle: value })
     }
 
@@ -135,17 +138,18 @@ export class _GroupPreview extends Component {
         this.props.onArchiveList(board, group)
 
     }
-    
+
     openDynamicModal = (modalName) => {
-        this.setState({modalName,
-        isMenuOpen:false,
-        isModalOpen:true
-    })
-    
-}
-closeModal=()=>{
-    this.setState({isModalOpen:false})
-    
+        this.setState({
+            modalName,
+            isMenuOpen: false,
+            isModalOpen: true
+        })
+
+    }
+    closeModal = () => {
+        this.setState({ isModalOpen: false })
+
     }
 
 
@@ -153,38 +157,39 @@ closeModal=()=>{
     render() {
         const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation, isEdit, enterEditMode, exitEditMode } = this.props
         const { cards } = group
-        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen,modalName } = this.state
+        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen, modalName } = this.state
         const { title } = this.state.card
         return (
             <Draggable draggableId={listId} index={idx} >
                 {(provided, snapshot) => (
 
 
-                    <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
+                        
+                        <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
+                            <div {...provided.dragHandleProps} listId={listId}>
 
-                        <div {...provided.dragHandleProps} listId={listId}>
-                            <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
+                                <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
 
-                            {isMenuOpen && <GroupMenu openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
-                            {isModalOpen && <DynamicGroupModal  closeModal={this.closeModal} group={group} modalName={modalName} />}
+                                {isMenuOpen && <GroupMenu openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
+                                {isModalOpen && <DynamicGroupModal closeModal={this.closeModal} group={group} modalName={modalName} />}
 
-                            <div className={`hidden-actions-form-container`}>
-                                <form className={`hidden-actions-form`}>
-                                    <input className="group-title-input" onClick={this.openTitleBtn} onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
-                                </form>
-                                {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
-                                    <button type="button" onClick={this.editGroupTitle}  > save </button>
-                                    <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
-                                </div>}
+                                <div className={`hidden-actions-form-container`}>
+                                    <form className={`hidden-actions-form`}>
+                                        <input className="group-title-input" onClick={this.openTitleBtn} onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
+                                    </form>
+                                    {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
+                                        <button type="button" onClick={this.editGroupTitle}  > save </button>
+                                        <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
+                                    </div>}
+                                </div>
                             </div>
+
+                            {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
+                            <CardList isDragging={snapshot.isDragging} exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
+                            {!isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
+
+
                         </div>
-
-                        {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
-                        <CardList isDragging={snapshot.isDragging} exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
-                        {!isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
-
-
-                    </div>
                 )}
             </Draggable>
         )

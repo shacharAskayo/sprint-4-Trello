@@ -20,13 +20,13 @@
 @import "/pages/BoardsPick";
 // @import "/pages/LoginSignup";
 @import "/pages/Dashboard";
+@import "views/HomePage";
 
 // Components:::
-@import "/cmps/AppHeader";
 @import "cmps/Header";
 @import "cmps/ReviewList";
 @import "cmps/BoardHeader";
-@import "/cmps/UserModalFromHeader";
+@import "/cmps/UserMenuModal";
 //group:
 @import "cmps/GroupList";
 @import "cmps/GroupPreview";

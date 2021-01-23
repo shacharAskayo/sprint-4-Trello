@@ -26,9 +26,9 @@ function getCardById(board, cardId) {
 }
 
 function getCardForUpdate(card) {
-    console.log('card in card service',card);
     const labels = card.labels.map(label => label?.id)
     const newCard = JSON.parse(JSON.stringify(card))
+    console.log(newCard);
     delete newCard.activities
     // const newCard = JSON.parse(JSON.stringify(card))  //got error on json actions
     return { ...newCard, labels }

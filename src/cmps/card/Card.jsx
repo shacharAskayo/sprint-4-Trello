@@ -102,7 +102,7 @@ class _Card extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedUser: state.boardModule.loggedUser, 
+        loggedUser: state.userModule.loggedUser, 
         board: state.boardModule.board
     }
 }

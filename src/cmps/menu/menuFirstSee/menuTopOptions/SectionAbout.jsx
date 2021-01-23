@@ -8,7 +8,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 
 //functions:
-import { loadUser } from '../../../../store/actions/userActions.js'
 import { saveBoardDesc } from '../../../../store/actions/menuAction.js'
 
 //cmps:
@@ -20,10 +19,6 @@ class _SectionAbout extends Component {
         description: '',
         isDescClicked: false,
         isDescExist: false
-    }
-
-    componentDidMount() {
-        this.props.loadUser()
     }
 
     openDesc = () => { this.setState({ isDescClicked: true }) }
@@ -90,11 +85,10 @@ class _SectionAbout extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        user: state.userModule.user
+        user: state.userModule.loggedUser
     }
 }
 const mapDispatchToProps = {
-    loadUser,
     saveBoardDesc
 }
 export const SectionAbout = connect(mapStateToProps, mapDispatchToProps)(_SectionAbout)

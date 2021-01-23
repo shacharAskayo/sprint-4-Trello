@@ -8,6 +8,7 @@ import { AddDueDateModal } from "./AddDueDateModal";
 import { AddCoverModal } from "./AddCoverModal";
 import { MoveCardModal } from "./MoveCardModal";
 import { CopyCardModal } from "./CopyCardModal";
+import { ShareCardModal } from "./ShareCardModal";
 
 
 class _DynamicCardActionModal extends Component {
@@ -35,8 +36,8 @@ class _DynamicCardActionModal extends Component {
             //     return
             // case 'archive':
             //     return
-            // case 'share':
-            //     return
+            case 'share':
+                return <ShareCardModal style={currModal.style} closeModal={closeModal} />
             default :
             return null
         }

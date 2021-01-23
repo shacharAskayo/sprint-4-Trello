@@ -67,14 +67,25 @@
         grid-template-columns: 1fr 10fr 1fr;
         grid-template-rows: 1fr 4fr;
         padding: 3px;
-
+        .arrow {
+            cursor: pointer;
+            height: 2px;
+            width: 5px;
+            position: absolute;
+            margin-top: 17%;
+        }
+        .arrow:hover {
+            color: black;
+        }
+        .arrow > * {
+            font-size: 80px;
+        }
         .arrow-left {
             grid-column: 1/2;
         }
         .arrow-right {
             grid-column: -2/-1;
-            position: absolute;
-            margin-left: 61%;
+            margin-left: 57%;
         }
 
         .pie-section {
@@ -83,7 +94,7 @@
             .pie {
                 width: 60vw;
                 height: 70vh;
-                margin: 40px auto;
+                margin: 60px auto;
                 .pie-title {
                     color: rgba(0, 0, 0, 0.726);
                     text-align: center;

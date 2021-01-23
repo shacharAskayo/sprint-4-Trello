@@ -41,13 +41,13 @@
             margin-top: 5px;
             border-radius: 4px;
             transition: width 0.2s, height 0.4s;
-        }
-        .is-close {
-            width: 35px;
+            color: white;
+            min-width: 35px;
+            max-width: 200px;
             height: 7px;
         }
         .is-open {
-            width: 65px;
+            min-width: 55px;
             height: 20px;
             padding: 0px 5px;
             overflow: hidden;
