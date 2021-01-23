@@ -72,7 +72,7 @@ export class CardEdit extends Component {
     }
 
     openModal = (currName) => {
-        console.log('curr name ',currName);
+        console.log('curr name ', currName);
         this.setState({
             isModalOpen: true,
             currModal: { ...this.state.currModal, name: currName }
@@ -113,7 +113,7 @@ export class CardEdit extends Component {
 
                     <div className="edit-container">
 
-                        <div className={`card-preview flex col ${isEdit ? 'edit' : ''} `}  style={style} >
+                        <div className={`card-preview flex col ${isEdit ? 'edit' : ''} `} style={style} >
                             <div className="label-container">
                                 {labels.map((label, idx) => {
                                     return <div onClick={() => this.onOpenLabel(card.id)} key={label.id} className={`label ${(isLabelOpen) ? "is-open" : "is-close"}`} style={{ backgroundColor: label.color }}>
@@ -123,16 +123,16 @@ export class CardEdit extends Component {
                                 }
                             </div>
                             <div className="edit-and-title">
-                                    <div>
-                                        <form onSubmit="return false">
+                                <div>
+                                    <form onSubmit="return false">
 
-                                            <textarea disabled={!isEdit} onChange={handleChange}
-                                                onClick={(ev) => {
-                                                    ev.preventDefault()
-                                                }}
-                                                type="text" value={title} />
-                                        </form>
-                                    </div>
+                                        <textarea disabled={!isEdit} onChange={handleChange}
+                                            onClick={(ev) => {
+                                                ev.preventDefault()
+                                            }}
+                                            type="text" value={title} />
+                                    </form>
+                                </div>
                             </div>
                             <div className="card-icons">
                                 {card.description && <SubjectIcon />}
@@ -145,28 +145,28 @@ export class CardEdit extends Component {
                         </div>
 
 
-                        { <div className={'edit-menu'}>
+                        {<div className={'edit-menu'}>
                             <div className="edit-menu-btn"> <PaymentIcon className="edit-menu-icons rotate" /> <Link to={`/board/${board.id}/${card.id}`}>     Open Card  </Link> </div>
-                    <div className="edit-menu-btn" onClick={() => this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons" />  Edit labels </div>
-                    <div className="edit-menu-btn" onClick={() => this.openModal('members')} > <PersonOutlineIcon className="edit-menu-icons" /> change members</div>
-                    <div className="edit-menu-btn" onClick={() => this.openModal('move')}> <ArrowRightAltIcon className="edit-menu-icons" /> move  </div>
-                    <div className="edit-menu-btn" onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate" /> copy </div>
-                    <div className="edit-menu-btn" > <AccessTimeIcon className="edit-menu-icons" /> change due date </div>
-                    <div className="edit-menu-btn" onClick={onArchiveCard}> <ArchiveOutlinedIcon className="edit-menu-icons" /> archive </div>
-                </div>
+                            <div className="edit-menu-btn" onClick={() => this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons" />  Edit labels </div>
+                            <div className="edit-menu-btn" onClick={() => this.openModal('members')} > <PersonOutlineIcon className="edit-menu-icons" /> change members</div>
+                            <div className="edit-menu-btn" onClick={() => this.openModal('move')}> <ArrowRightAltIcon className="edit-menu-icons" /> move  </div>
+                            <div className="edit-menu-btn" onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate" /> copy </div>
+                            <div className="edit-menu-btn" > <AccessTimeIcon className="edit-menu-icons" /> change due date </div>
+                            <div className="edit-menu-btn" onClick={onArchiveCard}> <ArchiveOutlinedIcon className="edit-menu-icons" /> archive </div>
+                        </div>
                         }
 
 
                     </div>
-            <div className='card-save-btn'>
-                <button onClick={onSave} style={{ cursor: 'pointer' }} >Save</button>
-            </div>
+                    <div className='card-save-btn'>
+                        <button onClick={onSave} style={{ cursor: 'pointer' }} >Save</button>
+                    </div>
 
-               {
-            isModalOpen && <div className="card-edit-modals" >
-                <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board} />
-            </div>
-        }
+                    {
+                        isModalOpen && <div className="card-edit-modals" >
+                            <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board} />
+                        </div>
+                    }
 
 
 
