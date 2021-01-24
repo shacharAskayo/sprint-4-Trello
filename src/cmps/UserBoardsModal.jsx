@@ -36,6 +36,7 @@ export function UserBoardsModal(props) {
                         )}
                     </div>}
                 </div>
+                
             </div>
         </div>
     )

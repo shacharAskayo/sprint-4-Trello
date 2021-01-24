@@ -11,6 +11,12 @@ import { templateService } from '../services/templateService.js'
 import Templates from './Templates.jsx';
 import { TemplatePreview } from './TemplatePreview'
 
+import img  from '../templates/templatesBg/falafel.gif'
+import img2  from '../templates/templatesBg/falafel-bg.png'
+import img3  from '../templates/templatesBg/design-system.png'
+import img4  from '../templates/templatesBg/design.png'
+import img5  from '../templates/templatesBg/buisness-template.png'
+
 
 class _BoardList extends Component {
 
@@ -78,6 +84,7 @@ class _BoardList extends Component {
 
 
     render() {
+        console.log(img);
         const { boards, loggedUser, addBoard } = this.props
         const { userBoards, isModalOpen, templates, type, isTemplatesOpen,isPreviewOpen,currTemplate } = this.state
         if (!boards) return null

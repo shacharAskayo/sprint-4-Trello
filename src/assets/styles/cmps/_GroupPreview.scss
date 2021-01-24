@@ -1,12 +1,32 @@
+.draggble-headline:focus{
+    outline-width: 0;
+    outline-color: inherit;
+}
 .group-preview {
+    .menu-screen{
+    width: 100vw;
+     height: 100vh;
+     position: absolute;
+     top: 0;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     top: 0;
+    }
     .group-title-input {
         color: #172b4d;
         font-size: 14px;
         margin-left: 0px;
         font-weight: 700;
+        max-width: 240px;
         text-transform: capitalize;
+        background-color: inherit;
     }
+    
     .hidden-actions-form-container {
+        &:focus {
+            outline-width: inherit;
+        }
         input {
             line-height: 20px;
         }

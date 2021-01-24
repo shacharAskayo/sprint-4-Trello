@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { addBoard } from '../store/actions/boardAction';
 import Templates from './Templates';
-import img from '../templates/templatesBg/design.png'
+import img from '../templates/templatesBg/design-system.png'
 
 
 export class TemplatePreview extends Component {

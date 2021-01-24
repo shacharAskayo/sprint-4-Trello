@@ -65,7 +65,6 @@ export class CardEdit extends Component {
     }
 
     openModal = (currName) => {
-
         this.setState({
             isModalOpen: true,
             currModal: { ...this.state.currModal, name: currName }
@@ -146,7 +145,7 @@ export class CardEdit extends Component {
                     </div>
 
 
-                    {<div className={'edit-menu'}>
+                   <div className={'edit-menu'}>
                         <div className="edit-menu-btn"> <PaymentIcon className="edit-menu-icons rotate" /> <Link to={`/board/${board._id}/${card.id}`}>     Open Card  </Link> </div>
                         <div className="edit-menu-btn" onClick={() => this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons" />  Edit labels </div>
                         <div className="edit-menu-btn" onClick={() => this.openModal('members')} > <PersonOutlineIcon className="edit-menu-icons" /> change members</div>
@@ -155,15 +154,15 @@ export class CardEdit extends Component {
                         <div className="edit-menu-btn" > <AccessTimeIcon className="edit-menu-icons" /> change due date </div>
                         <div className="edit-menu-btn" onClick={onArchiveCard}> <ArchiveOutlinedIcon className="edit-menu-icons" /> archive </div>
                     </div>
-                    }
 
-                </div>
 
                 {
                     isModalOpen && <div onClick={(ev) => ev.stopPropagation()} className="card-edit-modals" >
                         <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board} />
                     </div>
                 }
+
+                </div>
 
 
 

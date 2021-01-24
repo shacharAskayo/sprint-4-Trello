@@ -40,8 +40,8 @@ class _Header extends Component {
         return (
             <header style={style} className="main-header flex space-bt">
                 <div className="flex align-center">
-                    <Link to="/"><AppsIcon /></Link>
                     <Link to="/"><HomeOutlinedIcon /></Link>
+                    <Link to="/board"><AppsIcon /></Link>
                     <span onClick={this.toggleBoardsModal} className="show-boards flex align-center"><InsertChartIcon style={{transform: 'rotate(180deg)'}}/> Boards</span>
                 </div>
 
