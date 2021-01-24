@@ -1,3 +1,7 @@
+
+
+
+
 {
     "boards": [
         {
@@ -2336,14 +2340,10 @@
                 "groups" : [],
                 "cards" : []
             },
-            "style" : {
-                "isCover" : false,
-                "background" : {
-                    "backgroundColor" : "",
-                    "backgroundImage" : ""
-                },
-                "backgroundColor" : "#adad85"
+            "style": {
+                "backgroundColor": "#515151"
             },
+            "templateImg":"url(/static/media/falafel-bg.19c3a0e1.png)",
             "isPrivate" : false,
             "labels" : [ 
                 {
@@ -2395,7 +2395,12 @@
                             "title" : "Soak Hummus",
                             "description" : "",
                             "dueDate" : "",
-                            "style" : {},
+                            "style" : {
+                                "isCover" : false,
+                                "background" : {
+                                    "backgroundImage" : "url(/static/media/falafel.e80f6223.gif)"
+                                }
+                            },
                             "comments" : [],
                             "checklists" : [],
                             "attachments" : [],
@@ -2546,6 +2551,28 @@
                     ],
                     "createdAt" : 1611421616291.0,
                     "id" : "fVHmYswgXa"
+                },
+                {
+                    "title" : "Taste testing",
+                    "style" : {},
+                    "cards" : [ 
+                        {
+                            "createdBy" : {},
+                            "title" : "hummus taste",
+                            "description" : "",
+                            "dueDate" : "",
+                            "style" : {},
+                            "comments" : [],
+                            "checklists" : [],
+                            "attachments" : [],
+                            "members" : [],
+                            "labels" : [],
+                            "createdAt" : 1611425377086.0,
+                            "id" : "ZlZx9UB9wn"
+                        }
+                    ],
+                    "createdAt" : 1611425371921.0,
+                    "id" : "swSVvOIEBE"
                 }
             ],
             "activities" : [ 

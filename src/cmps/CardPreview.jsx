@@ -23,7 +23,6 @@ class _CardPreview extends Component {
 
 
     componentDidMount() {
-        this.cardRef = React.createRef()
         const { card, board, isModalOpen } = this.props
         const updatedCard = cardService.getCardById(board, card.id)
         // const labels = cardService.getCardLabels(board, card.labels)
@@ -44,13 +43,6 @@ class _CardPreview extends Component {
     onOpenLabel = (ev) => {
         ev.preventDefault()
         this.props.openLabel()
-    }
-
-    enterEditMode = (ev,cardId) => {
-        ev.preventDefault()
-        ev.stopPropagation()
-        const style = this.props.enterEditMode(cardId)
-        this.setState({ editStyle: style})
     }
 
     handleChange = (ev) => {
@@ -80,6 +72,11 @@ class _CardPreview extends Component {
 
     }
 
+    enterEditMode = (cardId, editStyle) => {
+        this.setState({editStyle})
+        this.props.enterEditMode(cardId)
+    }
+
     render() {
         const { board, idx, isLabelOpen, currGroup, isEdit, exitEditMode, updateBoardCard, loggedUser } = this.props
 
@@ -88,6 +85,7 @@ class _CardPreview extends Component {
         const { labels } = this.state.card
         return (
             <React.Fragment>
+                {isEdit && (isEdit.id === card.id) ? <CardEdit style={editStyle} onArchiveCard={this.onArchiveCard} copyList={this.copyList} loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
                 <Draggable
                     draggableId={card.id}
                     index={idx}
@@ -96,10 +94,9 @@ class _CardPreview extends Component {
                         <div ref={draggbleProvided.innerRef}
                             {...draggbleProvided.draggableProps}
                             {...draggbleProvided.dragHandleProps}>
-                            {isEdit.isOpen && (isEdit.id === card.id) ? <CardEdit style={editStyle} onArchiveCard={this.onArchiveCard} copyList={this.copyList} loggedUser={loggedUser} updateBoardCard={updateBoardCard} exitEditMode={exitEditMode} onSave={this.onSave} currGroup={currGroup} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} /> : ''}
                                 {<CardDetails isDragging={snapshot.isDragging} isEdit={isEdit.isOpen} onOpenLabel={this.onOpenLabel} handleChange={this.handleChange} enterEditMode={this.enterEditMode} labels={labels} isLabelOpen={isLabelOpen} board={board} card={card} title={title} />}
                         </div>
-                      
+
                     )}
                 </Draggable>
             </React.Fragment>

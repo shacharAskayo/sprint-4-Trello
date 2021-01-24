@@ -13,16 +13,21 @@ export function _UserMenuModal(props) {
         await logout()
         history.push('/login')
     }
+    function onCloseModal(ev){
+        ev.preventDefault()
+        ev.stopPropagation()
+        closeModal()
+    }
 
     return (
-        <div onClick={closeModal} className="user-menu-screen">
+        <div onClick={onCloseModal} className="user-menu-screen">
             <div className="user-menu-modal card-action-modal">
                 <div className="flex justify-center" style={{ paddingTop: '10px' }}>
                     Account
             </div>
                 <button className="icon" onClick={closeModal}><CloseSharpIcon /></button>
                 <hr />
-                <div className="flex">
+                <div className="user flex">
                     <MyAvatar user={user} />
                     <div className="flex col" style={{ paddingLeft: '5px' }}>
                         <span style={{ lineHeight: '22px' }}>{user?.fullname}</span>
@@ -42,7 +47,6 @@ export function _UserMenuModal(props) {
             </div >
         </div>
     )
-
 }
 
 export const UserMenuModal = withRouter(_UserMenuModal)

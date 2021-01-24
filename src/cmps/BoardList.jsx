@@ -7,9 +7,15 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import { BoardsPick } from '../pages/BoardsPick'
 import { HomePickModal } from './HomePickModal'
 import { Link } from 'react-router-dom';
-import { templateService } from '../services/template'
+import { templateService } from '../services/templateService.js'
 import Templates from './Templates.jsx';
-import {TemplatePreview} from './TemplatePreview'
+import { TemplatePreview } from './TemplatePreview'
+
+import img  from '../templates/templatesBg/falafel.gif'
+import img2  from '../templates/templatesBg/falafel-bg.png'
+import img3  from '../templates/templatesBg/design-system.png'
+import img4  from '../templates/templatesBg/design.png'
+import img5  from '../templates/templatesBg/buisness-template.png'
 
 
 class _BoardList extends Component {
@@ -17,11 +23,11 @@ class _BoardList extends Component {
     state = {
         userBoards: [],
         isModalOpen: false,
-        currTemplate:null,
+        currTemplate: null,
         templates: [],
         type: '',
         isTemplatesOpen: false,
-        isPreviewOpen:false
+        isPreviewOpen: false
     }
 
     componentDidMount() {
@@ -30,7 +36,6 @@ class _BoardList extends Component {
         this.props.loadBoards()
         const { boards, loggedUser } = this.props
         if (boards && loggedUser) {
-            console.log(loggedUser);
             const userBoards = boards.filter(board => board.createdBy?._id === loggedUser?._id)
             this.setState({ userBoards })
         }
@@ -40,10 +45,11 @@ class _BoardList extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             const { boards, loggedUser } = this.props
-            const userBoards = boards.filter(board => board.createdBy?._id === loggedUser?._id)
+            const userBoards = boards.filter(board => board.createdBy?._id === loggedUser?._id) //shuold be on server side
             this.setState({ userBoards })
         }
     }
+
     closeModal = (ev) => {
         ev.stopPropagation()
         ev.preventDefault()
@@ -62,22 +68,23 @@ class _BoardList extends Component {
 
 
     OnChoosingCategory = (type) => {
-        this.setState({ type, isTemplatesOpen: true,isPreviewOpen:false })
+        this.setState({ type, isTemplatesOpen: true, isPreviewOpen: false })
     }
 
     goBackToBoard = (template) => {
-        if(template) this.props.addBoard(template)
+        if (template) this.props.addBoard(template)
 
-        this.setState({  isTemplatesOpen: false,isPreviewOpen:false })
+        this.setState({ isTemplatesOpen: false, isPreviewOpen: false })
     }
 
-    setTemplatePreview=(template)=>{
-        this.setState({currTemplate:template,isPreviewOpen:true,isTemplatesOpen:false})
+    setTemplatePreview = (template) => {
+        this.setState({ currTemplate: template, isPreviewOpen: true, isTemplatesOpen: false })
     }
 
 
 
     render() {
+        console.log(img);
         const { boards, loggedUser, addBoard } = this.props
         const { userBoards, isModalOpen, templates, type, isTemplatesOpen,isPreviewOpen,currTemplate } = this.state
         if (!boards) return null

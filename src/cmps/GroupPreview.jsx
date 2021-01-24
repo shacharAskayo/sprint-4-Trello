@@ -10,6 +10,7 @@ import { AddCardInput } from './AddCardInput';
 import { DynamicCardActionModal } from './card/DynamicCardActionModal';
 import { DynamicGroupModal } from './DynamicGroupModal';
 import { Transform } from '@material-ui/icons';
+import img from '../templates/templatesBg/falafel-bg.png'
 
 
 export class _GroupPreview extends Component {
@@ -34,7 +35,8 @@ export class _GroupPreview extends Component {
         isChangeTitle: false,
         isMenuOpen: false,
         isAddingToTop: false,
-        topTitle: ''
+        topTitle: '',
+        isInputDisabled:true
     }
 
 
@@ -45,7 +47,9 @@ export class _GroupPreview extends Component {
     }
 
     openTitleBtn = () => {
-        this.setState({ isChangeTitle: true })
+        this.setState({ isChangeTitle: true,isInputDisabled:false })
+        this.setState({isInputDisabled:false})
+
     }
 
     handleChange = (ev) => {
@@ -90,7 +94,8 @@ export class _GroupPreview extends Component {
 
     discardChanges = (ev) => {
         this.setState({
-            card: { ...this.state.card, title: '' }
+            card: { ...this.state.card, title: '' },
+            isInputDisabled:true
         })
         ev.currentTarget.blur()
     }
@@ -101,7 +106,8 @@ export class _GroupPreview extends Component {
         const { board, group } = this.props
         const { groupTitle } = this.state
         this.props.editGroupTitle(board, group, groupTitle)
-        this.setState({ isChangeTitle: false })
+        this.setState({ isChangeTitle: false,isInputDisabled:true })
+        
         ev.currentTarget.blur()
     }
     handleEnter = (ev) => {
@@ -157,7 +163,7 @@ export class _GroupPreview extends Component {
     render() {
         const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation, isEdit, enterEditMode, exitEditMode } = this.props
         const { cards } = group
-        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen, modalName } = this.state
+        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen, modalName,isInputDisabled } = this.state
         const { title } = this.state.card
         return (
             <Draggable draggableId={listId} index={idx} >
@@ -166,16 +172,17 @@ export class _GroupPreview extends Component {
 
                         
                         <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
-                            <div {...provided.dragHandleProps} listId={listId}>
+                            <div {...provided.dragHandleProps} listId={listId} className='draggble-headline' >
 
                                 <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
 
-                                {isMenuOpen && <GroupMenu openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
+                                {isMenuOpen && <GroupMenu closeMenu={this.closeMenu} openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
                                 {isModalOpen && <DynamicGroupModal closeModal={this.closeModal} group={group} modalName={modalName} />}
 
                                 <div className={`hidden-actions-form-container`}>
                                     <form className={`hidden-actions-form`}>
-                                        <input className="group-title-input" onClick={this.openTitleBtn} onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />
+                                    { isInputDisabled&&<p onDoubleClick={this.openTitleBtn} className="group-title-input"> {groupTitle}</p>}
+                                     { !isInputDisabled&&   <input onClick={this.editGroupTitle} className="group-title-input" autoFocus  onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />}
                                     </form>
                                     {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
                                         <button type="button" onClick={this.editGroupTitle}  > save </button>

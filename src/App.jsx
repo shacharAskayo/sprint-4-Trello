@@ -11,23 +11,22 @@ import { Dashboard } from './pages/Dashboard'
 import { Login } from './pages/Login'
 import { Signup } from './pages/Signup'
 
-import { signup } from './store/actions/userActions.js'
+import { loadBoards } from './store/actions/boardAction.js'
+import { signup, loggin } from './store/actions/userActions.js'
 
 function _App(props) {
-  const {isLoged,loggedUser, signup, board} = props
-  const style = board?.style
-  console.log('user', loggedUser, isLoged);
+  const {isLoged,loggedUser, signup, board, loadBoards} = props
+  loadBoards()
+  const style = board?.style 
   if(!isLoged) {
-    console.log('guest', loggedUser);
     signup(loggedUser)  
-
-  }
+  } else loggin(loggedUser)
 
   console.log('the props',props)
   return (
     <div className="app" style={style}>
       <Router>
-          <Header />
+          <Header style={style ? {} : {backgroundColor: '#026aa7'} }/>
           <Switch>
             <Route path="/board/:boardId/:cardId?" component={Board} />
             <Route path="/board" component={BoardList} />
@@ -50,5 +49,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
   signup,
+  loggin,
+  loadBoards
+
 }
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

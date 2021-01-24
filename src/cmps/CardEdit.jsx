@@ -20,7 +20,6 @@ import { cardService } from '../services/cardService'
 
 export class CardEdit extends Component {
     state = {
-        editPos: 100,
         isModalOpen: false,
         currModal: {
             name: '',
@@ -29,7 +28,8 @@ export class CardEdit extends Component {
                 left: '257px',
                 'z-index': '20'
             }
-        }
+        },
+        style: {}
     }
 
 
@@ -64,19 +64,12 @@ export class CardEdit extends Component {
 
     }
 
-
-
-    edit = (ev) => {
-        ev.stopPropagation()
-        ev.preventDefault()
-    }
-
     openModal = (currName) => {
-        console.log('curr name ', currName);
         this.setState({
             isModalOpen: true,
             currModal: { ...this.state.currModal, name: currName }
         })
+        
     }
 
     closeModal = () => {
@@ -92,7 +85,9 @@ export class CardEdit extends Component {
             board = { ...board, activities: [activity, ...board.activities] }
         }
         await this.props.updateBoardCard(board, card)
-        this.loadCard()
+        await this.loadCard()
+        
+        this.props.exitEditMode()
     }
 
     loadCard = () => {
@@ -104,75 +99,74 @@ export class CardEdit extends Component {
         } else this.setState({ card: null })
     }
 
+    handleDefault = (ev) => {
+        ev.preventDefault()
+        ev.stopPropagation()
+    }
+
     render() {
-        const { editPos, currModal, isModalOpen } = this.state
-        const { style, copyList, labels, isEdit, updateBoardCard, card, isLabelOpen, board, handleChange, title, enterEditMode, exitEditMode, onArchiveCard, onSave } = this.props
+        const { currModal, isModalOpen } = this.state
+        const { style, copyList, labels, isEdit, updateBoardCard, card, isLabelOpen, board, handleChange, title, exitEditMode, onArchiveCard, onSave } = this.props
+        console.log('board in edit', board);
         return (
-            <React.Fragment>
-                <div onClick={this.edit} className={`${isEdit ? 'edit' : ''}`} >
+            <div onClick={exitEditMode} className={`modal-screen edit`} >
 
-                    <div className="edit-container">
+                <div onClick={this.handleDefault} className="edit-container" style={style}>
 
-                        <div className={`card-preview flex col ${isEdit ? 'edit' : ''} `} style={style} >
-                            <div className="label-container">
-                                {labels.map((label, idx) => {
-                                    return <div onClick={() => this.onOpenLabel(card.id)} key={label.id} className={`label ${(isLabelOpen) ? "is-open" : "is-close"}`} style={{ backgroundColor: label.color }}>
-                                        {isLabelOpen && label.title}
-                                    </div>
-                                })
-                                }
-                            </div>
-                            <div className="edit-and-title">
-                                <div>
-                                    <form onSubmit="return false">
-
-                                        <textarea disabled={!isEdit} onChange={handleChange}
-                                            onClick={(ev) => {
-                                                ev.preventDefault()
-                                            }}
-                                            type="text" value={title} />
-                                    </form>
+                    <div className={`card-preview flex col ${isEdit ? 'edit' : ''} `}  >
+                        <div className="label-container">
+                            {labels.map((label, idx) => {
+                                return <div onClick={() => this.onOpenLabel(card.id)} key={label.id} className={`label is-close}`} style={{ backgroundColor: label.color }}>
                                 </div>
-                            </div>
-                            <div className="card-icons">
-                                {card.description && <SubjectIcon />}
-                                {card.comments?.length > 0 && <ChatBubbleOutlineRoundedIcon />}
-                                {card.attachments?.length > 0 && <AttachFileRoundedIcon style={{ transform: "rotate(35deg)" }} />}
-                                {card.checklists?.length > 0 && <PlaylistAddCheckSharpIcon />}
-                            </div>
+                            })
+                            }
+                        </div>
+                        <div className="edit-and-title">
+                            <div>
+                                <form onSubmit="return false">
 
-
+                                    <textarea disabled={!isEdit} onChange={handleChange}
+                                        onClick={(ev) => {
+                                            ev.preventDefault()
+                                        }}
+                                        type="text" value={title} />
+                                </form>
+                            </div>
+                        </div>
+                        <div className="card-icons">
+                            {card.description && <SubjectIcon />}
+                            {card.comments?.length > 0 && <ChatBubbleOutlineRoundedIcon />}
+                            {card.attachments?.length > 0 && <AttachFileRoundedIcon style={{ transform: "rotate(35deg)" }} />}
+                            {card.checklists?.length > 0 && <PlaylistAddCheckSharpIcon />}
                         </div>
 
-
-                        {<div className={'edit-menu'}>
-                            <div className="edit-menu-btn"> <PaymentIcon className="edit-menu-icons rotate" /> <Link to={`/board/${board.id}/${card.id}`}>     Open Card  </Link> </div>
-                            <div className="edit-menu-btn" onClick={() => this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons" />  Edit labels </div>
-                            <div className="edit-menu-btn" onClick={() => this.openModal('members')} > <PersonOutlineIcon className="edit-menu-icons" /> change members</div>
-                            <div className="edit-menu-btn" onClick={() => this.openModal('move')}> <ArrowRightAltIcon className="edit-menu-icons" /> move  </div>
-                            <div className="edit-menu-btn" onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate" /> copy </div>
-                            <div className="edit-menu-btn" > <AccessTimeIcon className="edit-menu-icons" /> change due date </div>
-                            <div className="edit-menu-btn" onClick={onArchiveCard}> <ArchiveOutlinedIcon className="edit-menu-icons" /> archive </div>
-                        </div>
-                        }
-
+                        <button className="save-btn" onClick={onSave} >Save</button>
 
                     </div>
-                    <div className='card-save-btn'>
-                        <button onClick={onSave} style={{ cursor: 'pointer' }} >Save</button>
+
+
+                   <div className={'edit-menu'}>
+                        <div className="edit-menu-btn"> <PaymentIcon className="edit-menu-icons rotate" /> <Link to={`/board/${board._id}/${card.id}`}>     Open Card  </Link> </div>
+                        <div className="edit-menu-btn" onClick={() => this.openModal('labels')} >  <LabelOutlinedIcon className="edit-menu-icons" />  Edit labels </div>
+                        <div className="edit-menu-btn" onClick={() => this.openModal('members')} > <PersonOutlineIcon className="edit-menu-icons" /> change members</div>
+                        <div className="edit-menu-btn" onClick={() => this.openModal('move')}> <ArrowRightAltIcon className="edit-menu-icons" /> move  </div>
+                        <div className="edit-menu-btn" onClick={copyList} > <PaymentIcon className="edit-menu-icons rotate" /> copy </div>
+                        <div className="edit-menu-btn" > <AccessTimeIcon className="edit-menu-icons" /> change due date </div>
+                        <div className="edit-menu-btn" onClick={onArchiveCard}> <ArchiveOutlinedIcon className="edit-menu-icons" /> archive </div>
                     </div>
 
-                    {
-                        isModalOpen && <div className="card-edit-modals" >
-                            <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board} />
-                        </div>
-                    }
+
+                {
+                    isModalOpen && <div onClick={(ev) => ev.stopPropagation()} className="card-edit-modals" >
+                        <DynamicCardActionModal closeModal={this.closeModal} updateBoardCard={updateBoardCard} save={this.saveCardChanges} currModal={currModal} card={card} board={board} />
+                    </div>
+                }
+
+                </div>
 
 
 
-                </div >
-            </React.Fragment >
-
+            </div >
         )
     }
 }

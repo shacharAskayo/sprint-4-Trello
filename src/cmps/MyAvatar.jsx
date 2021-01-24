@@ -10,10 +10,11 @@ const useStyles = makeStyles((theme) => ({
     },
   }))
 
-export function MyAvatar({user}){
+export function MyAvatar(props){
      const classes = useStyles()
+     const {user, style} = props
     if (!user) return null
-    if (user.imgUrl) return  <Avatar alt={user.fullname} className={classes.small} src={user.imgUrl} />
-    return <Avatar className={classes[user.color], classes.small}>{user.fullname?.substring(0, 1)}</Avatar>
+    if (user.imgUrl) return  <Avatar style={style} alt={user.fullname} className={classes.small} src={user.imgUrl} />
+    return <Avatar style={style} className={classes[user.color], classes.small}>{user.fullname?.substring(0, 1)}</Avatar>
 
 }

@@ -62,7 +62,7 @@ async function addBoard(board) {
 }
 
 
-async function updateBoardCard(currBoard, card) { //will it be a problem with idxs due to d&d?
+async function updateBoardCard(currBoard, card) {
     const board = JSON.parse(JSON.stringify(currBoard))
     const cardToUpdate = cardService.getCardForUpdate(card)
     const newGroups = board.groups.map(group => {

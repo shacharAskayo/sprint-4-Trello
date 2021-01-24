@@ -1,4 +1,4 @@
-const templates = require('../Templates/templates.json')
+const templates = require('../templates/templates.json')
 
 
 export const templateService = {

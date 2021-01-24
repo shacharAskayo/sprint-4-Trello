@@ -25,7 +25,7 @@ export class GroupMenu extends Component {
         const { openInput, copyList, onArchive,openDynamicModal,closeMenu } = this.props
         const {currModal}=this.state
         return (
-            <div>
+            <div className="menu-screen" onClick={()=>closeMenu}>
 
             <div className="group-menu">
                 <div className="group-menu-header"> list actions</div>
