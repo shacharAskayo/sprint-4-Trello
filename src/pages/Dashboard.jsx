@@ -7,6 +7,7 @@ import { getBoardById } from '../store/actions/boardAction'
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import { Loading } from '../cmps/Loading'
 
 
 class _Dashboard extends Component {
@@ -26,13 +27,13 @@ class _Dashboard extends Component {
         currDash: 'Pie'
     }
     componentDidMount() {
-        const { _id } = this.props.board
-        if (!_id) return null
-        this.props.getBoardById(_id)
+
+        // const { _id } = this.props.board
+        // if (!_id) return null
+        const { board } = this.props
         this.setState({
-            groups: this.props.board.groups, currGroup: { ...this.props.board.groups[0] }, cards: this.props.board.groups[0].cards
-        })
-        this.getcardsPerGroup()
+            groups: board.groups, currGroup: { ...board.groups[0] }, cards: [...board.groups[0].cards]
+        }, () => this.getcardsPerGroup())
         // this.getDetailsPerCard()
     }
 
@@ -123,11 +124,12 @@ class _Dashboard extends Component {
     }
 
     render() {
-        const { groups } = this.props.board
         const { board } = this.props
-        if (!board) return null
+        if (!board) return <Loading />
+        const { groups } = this.props.board
         const { currGroup } = this.state
-        if (!this.state.dataCards) return <h1>Loading...</h1>
+
+        // if (!this.state.dataCards) return <Loading />
         return (
             <section className="dashboard">
                 <div className="dashboard-top">
@@ -135,6 +137,7 @@ class _Dashboard extends Component {
                     <button className="close-modal-btn" onClick={this.goBack}><CloseRoundedIcon /></button>
                 </div>
                 {this.state.currDash === 'Bar' && <div className="cards-in-groups">
+                    <h3>All groups</h3>
                     {groups.map((group, idx) => {
                         return <div className="card-in-group" key={idx}
                             onClick={() => {

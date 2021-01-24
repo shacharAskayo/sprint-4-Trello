@@ -28,7 +28,7 @@ export class Menu extends Component {
         inMenu: true,
     }
 
-   
+
 
     goBack = () => { this.setState({ currMenu: null }) }
 
@@ -68,16 +68,6 @@ export class Menu extends Component {
                         <span>< WallpaperIcon /></span>
                         <h4 className="option-title">Change Background</h4>
                     </button>
-
-                    {/* <button className="menu-option" onClick={this.openSearch}>
-                        <span><SearchIcon /></span>
-                        <h4 className="option-title">Search Cards</h4>
-                    </button> */}
-
-                    {/* <button className="menu-option" onClick={this.openStickers}>
-                        <span><LabelImportantIcon /></span>
-                        <h4 className="option-title">Stickers</h4>
-                    </button> */}
 
                     <button className="menu-option" onClick={this.openLabels}>
                         <span><LabelOutlinedIcon /></span>
