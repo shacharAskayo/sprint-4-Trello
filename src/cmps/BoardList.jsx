@@ -23,6 +23,8 @@ import mongoScreenshot from '../templates/templatesBg/mongo-screenshot.png'
 import bugScreenshot from '../templates/templatesBg/bug-screenshot.png'
 import presentation from '../templates/templatesBg/presentation.jpg'
 
+
+
 class _BoardList extends Component {
 
     state = {
