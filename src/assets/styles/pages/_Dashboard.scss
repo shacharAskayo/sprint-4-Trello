@@ -1,5 +1,6 @@
 .dashboard {
-    background-image: url("../../bgImgs/statistics.jpg");
+    // background-image: url("../../bgImgs/statistics.jpg");
+    background-color: #b7bfcd6b;
     object-fit: contain;
     width: 90%;
     margin: 20px auto;
@@ -16,6 +17,7 @@
         .dashboard-title {
             grid-column: 2/3;
             text-align: center;
+            color: black;
         }
         .close-modal-btn {
             grid-column: -2/-1;
@@ -34,26 +36,40 @@
     .cards-in-groups {
         grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
         width: 10%;
-        grid-gap: 15px;
         gap: 15px;
         display: inline-grid;
         height: 70px;
         margin-bottom: -15%;
         margin-left: 30px;
         position: absolute;
-        .card-in-group {
-            height: 30px;
-            box-shadow: 0 0 20px #00000085;
-            cursor: pointer;
-            transition: 0.1s;
+        h3 {
+            color: black;
             text-align: center;
+            font-family: inherit;
+            display: block;
+            width: 100%;
+            // position: absolute;
+            margin-bottom: 8px;
+        }
+        .card-in-group {
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            border-radius: 2px;
+            height: auto;
+            width: 92%;
             color: rgba(0, 0, 0, 0.726);
+            border: 1.5px solid rgba(0, 0, 0, 0);
+            // border: 1.5px solid black;
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 2px;
+            margin: -3.5px auto;
         }
         .card-in-group:hover {
-            opacity: 0.6;
-        }
-        .card-in-group::after {
-            border: 1px solid black;
+            color: black;
+            // border: 1.5px solid rgba(0, 0, 0, 0);
+            border: 1.5px solid black;
         }
     }
     .stats-modal {
@@ -62,11 +78,14 @@
         height: 80vh;
         margin: auto;
         border-radius: 8px;
-        box-shadow: 0 0 20px 0px #a99494;
+        box-shadow: 0 0 5px 0px #a99494;
         display: grid;
         grid-template-columns: 1fr 10fr 1fr;
         grid-template-rows: 1fr 4fr;
         padding: 3px;
+        h1 {
+            margin-top: -20px;
+        }
         .arrow {
             cursor: pointer;
             height: 2px;
@@ -100,11 +119,13 @@
                     text-align: center;
                     margin-bottom: 40px;
                     margin-top: -10px;
+                    font-size: 18px;
                 }
             }
         }
         .bar-side {
             grid-column: 2/3;
+            margin-right: 15px;
             .bar-top {
                 display: grid;
                 grid-template-columns: 20fr 1fr;

@@ -28,7 +28,7 @@ export class Menu extends Component {
         inMenu: true,
     }
 
-   
+
 
     goBack = () => { this.setState({ currMenu: null }) }
 

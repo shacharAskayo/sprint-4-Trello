@@ -36,7 +36,7 @@ export class _GroupPreview extends Component {
         isMenuOpen: false,
         isAddingToTop: false,
         topTitle: '',
-        isInputDisabled:true
+        isInputDisabled: true
     }
 
 
@@ -47,8 +47,8 @@ export class _GroupPreview extends Component {
     }
 
     openTitleBtn = () => {
-        this.setState({ isChangeTitle: true,isInputDisabled:false })
-        this.setState({isInputDisabled:false})
+        this.setState({ isChangeTitle: true, isInputDisabled: false })
+        this.setState({ isInputDisabled: false })
 
     }
 
@@ -95,7 +95,7 @@ export class _GroupPreview extends Component {
     discardChanges = (ev) => {
         this.setState({
             card: { ...this.state.card, title: '' },
-            isInputDisabled:true
+            isInputDisabled: true
         })
         ev.currentTarget.blur()
     }
@@ -106,8 +106,8 @@ export class _GroupPreview extends Component {
         const { board, group } = this.props
         const { groupTitle } = this.state
         this.props.editGroupTitle(board, group, groupTitle)
-        this.setState({ isChangeTitle: false,isInputDisabled:true })
-        
+        this.setState({ isChangeTitle: false, isInputDisabled: true })
+
         ev.currentTarget.blur()
     }
     handleEnter = (ev) => {
@@ -163,39 +163,38 @@ export class _GroupPreview extends Component {
     render() {
         const { listId, idx, group, board, isLabelOpen, openLabel, updateCardsLocation, isEdit, enterEditMode, exitEditMode } = this.props
         const { cards } = group
-        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen, modalName,isInputDisabled } = this.state
+        const { groupTitle, isChangeTitle, isMenuOpen, isAddingToTop, isModalOpen, modalName, isInputDisabled } = this.state
         const { title } = this.state.card
         return (
             <Draggable draggableId={listId} index={idx} >
                 {(provided, snapshot) => (
 
-                        
-                        <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
-                            <div {...provided.dragHandleProps} listId={listId} className='draggble-headline' >
 
-                                <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
+                    <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
+                        <div {...provided.dragHandleProps} listId={listId} className='draggble-headline' >
 
-                                {isMenuOpen && <GroupMenu closeMenu={this.closeMenu} openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
-                                {isModalOpen && <DynamicGroupModal closeModal={this.closeModal} group={group} modalName={modalName} />}
+                            <span className="group-menu-btn" onClick={this.toggleMenu} >...</span>
 
-                                <div className={`hidden-actions-form-container`}>
-                                    <form className={`hidden-actions-form`}>
-                                    { isInputDisabled&&<p onDoubleClick={this.openTitleBtn} className="group-title-input"> {groupTitle}</p>}
-                                     { !isInputDisabled&&   <input onClick={this.editGroupTitle} className="group-title-input" autoFocus  onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />}
-                                    </form>
-                                    {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
-                                        <button type="button" onClick={this.editGroupTitle}  > save </button>
-                                        <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
-                                    </div>}
-                                </div>
+                            {isMenuOpen && <GroupMenu closeMenu={this.closeMenu} openDynamicModal={this.openDynamicModal} onArchive={this.onArchive} openInput={this.openInput} copyList={this.copyList} />}
+                            {isModalOpen && <DynamicGroupModal closeModal={this.closeModal} group={group} modalName={modalName} />}
+
+                            <div className={`hidden-actions-form-container`}>
+                                <form className={`hidden-actions-form`}>
+                                    {isInputDisabled && <p onDoubleClick={this.openTitleBtn} className="group-title-input"> {groupTitle}</p>}
+                                    {!isInputDisabled && <input onClick={this.editGroupTitle} className="group-title-input" autoFocus onKeyUp={this.editGroupTitle} onChange={this.handleEditGroupTitle} type="text" value={groupTitle} autoComplete="off" />}
+                                </form>
+                                {isChangeTitle && <div className="hidden-actions flex" style={{ marginLeft: '0' }}>
+                                    <button type="button" onClick={this.editGroupTitle}  > save </button>
+                                    <button onClick={this.discardChanges} className="icon"><CloseSharpIcon /></button>
+                                </div>}
                             </div>
-
-                            {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
-                            <CardList isDragging={snapshot.isDragging} exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
-                            {!isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
-
-
                         </div>
+
+
+                        {isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
+                        <CardList isDragging={snapshot.isDragging} exitEditMode={exitEditMode} enterEditMode={enterEditMode} isEdit={isEdit} listId={listId} cards={cards} board={board} updateCardsLocation={updateCardsLocation} isLabelOpen={isLabelOpen} openLabel={openLabel} currGroup={group} />
+                        {!isAddingToTop && <AddCardInput isAddingToTop={isAddingToTop} title={title} onShowAddBtn={this.onShowAddBtn} handleEnter={this.handleEnter} onAddCard={this.onAddCard} discardChanges={this.discardChanges} handleChange={this.handleChange} />}
+                    </div>
                 )}
             </Draggable>
         )
