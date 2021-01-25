@@ -169,7 +169,6 @@ export class _GroupPreview extends Component {
             <Draggable draggableId={listId} index={idx} >
                 {(provided, snapshot) => (
 
-
                         
                         <div className={(snapshot.isDragging) ? 'group-preview dragging' : 'group-preview'} onClick={this.closeMenu} ref={provided.innerRef} {...provided.draggableProps} >
                             <div {...provided.dragHandleProps} listId={listId} className='draggble-headline' >

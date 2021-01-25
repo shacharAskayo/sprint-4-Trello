@@ -1,7 +1,3 @@
-
-
-
-
 {
     "boards": [
         {
@@ -11,7 +7,7 @@
             ],
             "title": "Business Modal",
             "description": "Use this board to manage inventory or swag requests with the Crmble Power-Up! It's perfect for managing requests for sending swag or inventory to customers! Crmble syncs with many sources so your orders and requests can flow into your Trello board, and then you can move them along throughout the process and you package, ship, and deliver products! Manage the process with ease, and see detailed levels of reporting with the Crmble Power-Up.  You can even combine with more power-ups like Time in List and Package Tracker to supercharge your order management process even more. Learn more in our accompanying blog post about Order Management with Crmble for Trello",
-            "templateImg":"url(./static/media/buisness-template.c8d4e94c.png)",
+            "templateImg": "url(./static/media/buisness-template.c8d4e94c.png)",
             "createdAt": 1611351243228.0,
             "archives": {
                 "groups": [
@@ -303,8 +299,8 @@
                 "Design"
             ],
             "title": "Design Fashion",
-            "description":"To get started, make a copy of this Trello board. Then, read through all five checklists in Instructions + Checklists and a few of the best practice cards in Best Practices. The best practice cards contain tips and examples to improve your practice and avoid rookie mistakes. Then, start working through the Before research starts checklist #25. You'll find instructions to fill out the goals, documentation, participants, quotes, insights, and action items lists as you complete the checklists. At the end of the iteration, move completed action items to the Done list.",
-            "templateImg":"url(./static/media/design.194a6ab5.png)",
+            "description": "To get started, make a copy of this Trello board. Then, read through all five checklists in Instructions + Checklists and a few of the best practice cards in Best Practices. The best practice cards contain tips and examples to improve your practice and avoid rookie mistakes. Then, start working through the Before research starts checklist #25. You'll find instructions to fill out the goals, documentation, participants, quotes, insights, and action items lists as you complete the checklists. At the end of the iteration, move completed action items to the Done list.",
+            "templateImg": "url(./static/media/design.194a6ab5.png)",
             "createdAt": 1611358577454.0,
             "archives": {
                 "groups": [
@@ -1170,7 +1166,7 @@
             ],
             "title": "Design System",
             "description": "Why a new design system? A design system unites product teams around a common visual language. It reduces the design debt, accelerates the design process, and builds bridges between teams working in concert to bring products to life. UI and UX Unification and standardization across any product or service is a key parameter. Having a design system lets your job easier. I've used the following Power-Ups in this board: This allows you to create custom views, attach tickets to Trello cards, and boost your team collaboration effortlessly.",
-            "templateImg":"url(./static/media/design-system.b6b9b43b.png)",
+            "templateImg": "url(./static/media/design-system.b6b9b43b.png)",
             "createdAt": 1611363215551.0,
             "archives": {
                 "groups": [
@@ -2328,366 +2324,1159 @@
                 }
             ]
         },
+{
+    "type" : [ 
+        "Projact Managment", 
+        "sales"
+    ],
+    "title" : "demo",
+    "createdAt" : 1611509939330.0,
+    "archives" : {
+        "groups" : [ 
+            {
+                "title" : "what people need",
+                "style" : {},
+                "cards" : [ 
+                    {
+                        "createdBy" : {},
+                        "title" : "way to communicate with \nother nomads",
+                        "description" : "",
+                        "dueDate" : "",
+                        "style" : {},
+                        "comments" : [],
+                        "checklists" : [],
+                        "attachments" : [],
+                        "members" : [],
+                        "labels" : [],
+                        "createdAt" : 1611510438602.0,
+                        "id" : "ktVylMQpDG"
+                    }
+                ],
+                "createdAt" : 1611510399810.0,
+                "id" : "Gnqxew48ix"
+            }, 
+            {
+                "title" : "what we found",
+                "style" : {},
+                "cards" : [ 
+                    {
+                        "createdBy" : {},
+                        "title" : "an amzaing idea to connect  between digital nomads\n\n",
+                        "description" : "",
+                        "dueDate" : "",
+                        "style" : {},
+                        "comments" : [],
+                        "checklists" : [],
+                        "attachments" : [],
+                        "members" : [],
+                        "labels" : [],
+                        "createdAt" : 1611510527443.0,
+                        "id" : "fvZ6prlJ40"
+                    }
+                ],
+                "createdAt" : 1611510408606.0,
+                "id" : "0CWGoe0gbO"
+            }
+        ],
+        "cards" : [ 
+            {
+                "createdBy" : {},
+                "title" : "sdas",
+                "description" : "",
+                "dueDate" : "",
+                "style" : {},
+                "comments" : [],
+                "checklists" : [],
+                "attachments" : [],
+                "members" : [],
+                "labels" : [],
+                "createdAt" : 1611510075469.0,
+                "id" : "wT4UN6Pfhs",
+                "activities" : []
+            }
+        ]
+    },
+    "style" : {
+        "backgroundImage" : "url(/static/media/image-08.84a25ce2.jpg)"
+    },
+    "isPrivate" : false,
+    "labels" : [ 
         {
-            "type" : [ 
-                "Cooking", 
-                "sales"
-            ],
-            "description":"When made with chickpeas, falafel is high in protein, complex carbohydrates, and fiber.[54] Key nutrients are calcium, iron, magnesium, phosphorus, potassium, zinc, copper, manganese, vitamin C, thiamine, pantothenic acid, vitamin B, and folate. Phytochemicals include beta-carotene.[55] Falafel is high in soluble fiber, which has been shown to be effective in lowering blood cholesterol.[56][57]",
-            "title" : "Falafel Start-Up",
-            "createdAt" : 1611420554830.0,
-            "archives" : {
-                "groups" : [],
-                "cards" : []
-            },
-            "style": {
-                "backgroundColor": "#515151"
-            },
-            "templateImg":"url(/static/media/falafel-bg.19c3a0e1.png)",
-            "isPrivate" : false,
-            "labels" : [ 
+            "id" : "l101",
+            "title" : "fun",
+            "color" : "#F2D600"
+        }, 
+        {
+            "id" : "l102",
+            "title" : "",
+            "color" : "#FF9F1A"
+        }, 
+        {
+            "id" : "l103",
+            "title" : "important",
+            "color" : "#EB5B46"
+        }, 
+        {
+            "id" : "l104",
+            "title" : "",
+            "color" : "#C377E0"
+        }, 
+        {
+            "id" : "l105",
+            "title" : "",
+            "color" : "#01C2DF"
+        }, 
+        {
+            "id" : "l106",
+            "title" : "",
+            "color" : "#52E898"
+        }
+    ],
+    "members" : [ 
+        {
+            "_id" : "600af62628336e6a201a44b2",
+            "username" : "neo",
+            "fullname" : "shachar askayo",
+            "email" : "askayo122@gmail.com"
+        }
+    ],
+    "groups" : [ 
+        {
+            "title" : "thing to discuss",
+            "style" : {},
+            "cards" : [ 
                 {
-                    "id" : "l101",
-                    "title" : "fun",
-                    "color" : "#F2D600"
-                }, 
-                {
-                    "id" : "l102",
-                    "title" : "",
-                    "color" : "#FF9F1A"
-                }, 
-                {
-                    "id" : "l103",
-                    "title" : "important",
-                    "color" : "#EB5B46"
-                }, 
-                {
-                    "id" : "l104",
-                    "title" : "",
-                    "color" : "#C377E0"
-                }, 
-                {
-                    "id" : "l105",
-                    "title" : "",
-                    "color" : "#01C2DF"
-                }, 
-                {
-                    "id" : "l106",
-                    "title" : "",
-                    "color" : "#52E898"
-                }
-            ],
-            "members" : [ 
-                {
-                    "_id" : "600af62628336e6a201a44b2",
-                    "username" : "neo",
-                    "fullname" : "shachar askayo",
-                    "email" : "askayo122@gmail.com"
-                }
-            ],
-            "groups" : [ 
-                {
-                    "title" : "basic tasks",
+                    "createdBy" : {},
+                    "title" : "the flow of the user authintication in the backend",
+                    "description" : "",
+                    "dueDate" : "",
                     "style" : {},
-                    "cards" : [ 
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l103"
+                    ],
+                    "createdAt" : 1611511274610.0,
+                    "id" : "4LHWnB3PzQ"
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "staff meeting",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611510156070.0,
+                    "id" : "4NvHvuJzPF"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "GdhpGXFw1z",
+                    "title" : "project presentation",
+                    "description" : "",
+                    "createdAt" : 1611512245918.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "36YBihywAn",
+                    "title" : "templates",
+                    "description" : "",
+                    "createdAt" : 1611513277831.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l105", 
+                        "l104"
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "sockets flow",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611558800968.0,
+                    "id" : "UuLDwr6Car"
+                }
+            ],
+            "createdAt" : 1611509971031.0,
+            "id" : "38NxrFs9Yn"
+        }, 
+        {
+            "title" : "to do",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "id" : "NYM9dT8qIs",
+                    "title" : "login with google",
+                    "description" : "",
+                    "createdAt" : 1611513186951.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundColor" : "#ff4d4d"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "40PYvqIcjr",
+                    "title" : "login with facebook",
+                    "description" : "",
+                    "createdAt" : 1611559155304.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundColor" : "#3385ff"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "05edst5Odk",
+                    "title" : "Ading PWA",
+                    "description" : "",
+                    "createdAt" : 1611512162601.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundColor" : "lightgray"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        null
+                    ]
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "twm36IpHJS",
+                    "title" : "support adding an attachment",
+                    "description" : "",
+                    "createdAt" : 1611512540483.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "adding hooks into the project",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611558691522.0,
+                    "id" : "CmyTgevGWv"
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "adding admin middlewares ",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611560985892.0,
+                    "id" : "0TSRcshhiB"
+                }
+            ],
+            "createdAt" : 1611510008645.0,
+            "id" : "J0MAMyZEdw"
+        }, 
+        {
+            "title" : "doing",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "id" : "YBz2POnDHd",
+                    "title" : "responsive design",
+                    "description" : "",
+                    "createdAt" : 1611512884647.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundColor" : "yellowgreen"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "statistics dashboard",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundImage" : "url(/static/media/chart-screenshot.57ad1eb3.png)"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611511785091.0,
+                    "id" : "7VnSzOugQ9"
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "Script",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [ 
                         {
-                            "createdBy" : {},
-                            "title" : "Soak Hummus",
-                            "description" : "",
-                            "dueDate" : "",
-                            "style" : {
-                                "isCover" : false,
-                                "background" : {
-                                    "backgroundImage" : "url(/static/media/falafel.e80f6223.gif)"
-                                }
+                            "txt" : "scriptt",
+                            "createdAt" : 1611561069297.0,
+                            "createdBy" : {
+                                "_id" : "600af62628336e6a201a44b2",
+                                "username" : "neo",
+                                "fullname" : "shachar askayo",
+                                "email" : "askayo122@gmail.com"
                             },
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [ 
-                                "l103"
-                            ],
-                            "createdAt" : 1611420958042.0,
-                            "id" : "Cc72crolE4"
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "4VdKWSYnEg",
-                            "title" : "Making Amba",
-                            "description" : "",
-                            "createdAt" : 1611420985262.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : []
+                            "id" : "0PWe3MbieN"
                         }
                     ],
-                    "createdAt" : 1611420876115.0,
-                    "id" : "I78bZx3RXl"
-                }, 
-                {
-                    "title" : "game plan",
-                    "style" : {},
-                    "cards" : [ 
+                    "checklists" : [ 
                         {
-                            "createdBy" : {},
-                            "title" : "Find People That Love Falafel",
-                            "description" : "",
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [],
-                            "createdAt" : 1611421319929.0,
-                            "id" : "fBJ9uG1n1b"
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "OfBh7Kozt9",
-                            "title" : "Make Them Pay For It",
-                            "description" : "",
-                            "createdAt" : 1611421348836.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [ 
-                                "l101"
-                            ]
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "ZATebpM0b3",
-                            "title" : "Make A Hell Lot Of Money",
-                            "description" : "",
-                            "createdAt" : 1611421384860.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [ 
-                                "l104", 
-                                "l105", 
-                                "l106", 
-                                "l103"
-                            ]
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "HrCAyrSwII",
-                            "title" : "Go Global!!",
-                            "description" : "",
-                            "createdAt" : 1611421589711.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [ 
-                                "l103"
+                            "id" : "0B8LNChz2M",
+                            "title" : "scriptt",
+                            "createdAt" : 1611561074548.0,
+                            "createdBy" : {
+                                "_id" : "u101",
+                                "fullname" : "Tal Tarablus",
+                                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            },
+                            "todos" : [ 
+                                {
+                                    "title" : "scriptt",
+                                    "isDone" : false,
+                                    "id" : "qajs7HpGWI"
+                                }
                             ]
                         }
                     ],
-                    "createdAt" : 1611421019664.0,
-                    "id" : "DlWmxne25T"
-                }, 
-                {
-                    "title" : "Product",
-                    "style" : {},
-                    "cards" : [ 
+                    "attachments" : [ 
                         {
-                            "createdBy" : {},
-                            "title" : "Falafel Testing",
-                            "description" : "",
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [],
-                            "createdAt" : 1611421650944.0,
-                            "id" : "UGPxyZ7Ok2"
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "wzGhCJfQg0",
-                            "title" : "Make Sauces",
-                            "description" : "",
-                            "createdAt" : 1611421746455.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : []
-                        }, 
-                        {
-                            "createdBy" : {},
-                            "id" : "qj4qAHnqf3",
-                            "title" : "Find The Best Pitas\n",
-                            "description" : "",
-                            "createdAt" : 1611421883881.0,
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : []
+                            "id" : "Kq0WnM4Zgt",
+                            "title" : "",
+                            "url" : "s"
                         }
                     ],
-                    "createdAt" : 1611421616291.0,
-                    "id" : "fVHmYswgXa"
-                },
-                {
-                    "title" : "Taste testing",
-                    "style" : {},
-                    "cards" : [ 
+                    "members" : [ 
                         {
-                            "createdBy" : {},
-                            "title" : "hummus taste",
-                            "description" : "",
-                            "dueDate" : "",
-                            "style" : {},
-                            "comments" : [],
-                            "checklists" : [],
-                            "attachments" : [],
-                            "members" : [],
-                            "labels" : [],
-                            "createdAt" : 1611425377086.0,
-                            "id" : "ZlZx9UB9wn"
+                            "_id" : "600af62628336e6a201a44b2",
+                            "username" : "neo",
+                            "fullname" : "shachar askayo",
+                            "email" : "askayo122@gmail.com"
                         }
                     ],
-                    "createdAt" : 1611425371921.0,
-                    "id" : "swSVvOIEBE"
+                    "labels" : [ 
+                        null, 
+                        null, 
+                        null, 
+                        null
+                    ],
+                    "createdAt" : 1611561025653.0,
+                    "id" : "xLuw8jiO4a"
                 }
             ],
-            "activities" : [ 
+            "createdAt" : 1611510015466.0,
+            "id" : "UyLxBykVRr"
+        }, 
+        {
+            "title" : "done",
+            "style" : {},
+            "cards" : [ 
                 {
-                    "id" : "vPavoL0VeD",
-                    "txt" : "added label important",
-                    "createdAt" : 1611421602268.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
+                    "createdBy" : {},
+                    "title" : "groups rendering",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundColor" : "coral"
+                        }
                     },
-                    "card" : {
-                        "id" : "ZATebpM0b3",
-                        "title" : "Make A Hell Lot Of Money"
-                    }
+                    "comments" : [ 
+                        {
+                            "txt" : "render!!!",
+                            "createdAt" : 1611527904567.0,
+                            "createdBy" : {
+                                "_id" : "600af62628336e6a201a44b2",
+                                "username" : "neo",
+                                "fullname" : "shachar askayo",
+                                "email" : "askayo122@gmail.com"
+                            },
+                            "id" : "FvuTwLvq95"
+                        }
+                    ],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [ 
+                        {
+                            "_id" : "600af62628336e6a201a44b2",
+                            "username" : "neo",
+                            "fullname" : "shachar askayo",
+                            "email" : "askayo122@gmail.com"
+                        }
+                    ],
+                    "labels" : [],
+                    "createdAt" : 1611511893377.0,
+                    "id" : "0BMjZylYb4"
                 }, 
                 {
-                    "id" : "QTwcci5sg6",
-                    "txt" : "added label ",
-                    "createdAt" : 1611421601952.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
-                    },
-                    "card" : {
-                        "id" : "ZATebpM0b3",
-                        "title" : "Make A Hell Lot Of Money"
-                    }
+                    "createdBy" : {},
+                    "id" : "4TXlD0ziqt",
+                    "title" : "support card edit mode",
+                    "description" : "",
+                    "createdAt" : 1611511858722.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [ 
+                        {
+                            "id" : "duv852VB3G",
+                            "title" : "edit mode checklist",
+                            "createdAt" : 1611528076937.0,
+                            "createdBy" : {
+                                "_id" : "u101",
+                                "fullname" : "Tal Tarablus",
+                                "imgUrl" : "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            },
+                            "todos" : [ 
+                                {
+                                    "title" : "Menu Position",
+                                    "isDone" : false,
+                                    "id" : "crOEjGjmF0"
+                                }
+                            ]
+                        }
+                    ],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [ 
+                        "l102"
+                    ]
                 }, 
                 {
-                    "id" : "5q976mHRkC",
-                    "txt" : "added label ",
-                    "createdAt" : 1611421601344.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
+                    "createdBy" : {},
+                    "title" : "adding description support in menu",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundImage" : "url(/static/media/menuDesc-screenshot.2dbc7807.png)"
+                        }
                     },
-                    "card" : {
-                        "id" : "ZATebpM0b3",
-                        "title" : "Make A Hell Lot Of Money"
-                    }
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611511944217.0,
+                    "id" : "mzImVkofVn"
                 }, 
                 {
-                    "id" : "5Ml733fsUk",
-                    "txt" : "added label ",
-                    "createdAt" : 1611421600916.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
-                    },
-                    "card" : {
-                        "id" : "ZATebpM0b3",
-                        "title" : "Make A Hell Lot Of Money"
-                    }
+                    "createdBy" : {},
+                    "id" : "hwYBhlxDSU",
+                    "title" : "adding double clicked function on the group header",
+                    "description" : "",
+                    "createdAt" : 1611512221170.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [ 
+                        {
+                            "id" : "W9qqGT9pNG",
+                            "title" : "",
+                            "url" : "d"
+                        }
+                    ],
+                    "members" : [],
+                    "labels" : [ 
+                        "l105"
+                    ]
                 }, 
                 {
-                    "id" : "WoQSBTp03T",
-                    "txt" : "added label important",
-                    "createdAt" : 1611421595149.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
-                    },
-                    "card" : {
-                        "id" : "HrCAyrSwII",
-                        "title" : "Go Global!!"
-                    }
+                    "createdBy" : {},
+                    "id" : "OqYUPtuSrF",
+                    "title" : "adding card details route",
+                    "description" : "",
+                    "createdAt" : 1611512183479.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
                 }, 
                 {
-                    "id" : "Rt3dKeJtxY",
-                    "txt" : "added label fun",
-                    "createdAt" : 1611421357055.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
-                    },
-                    "card" : {
-                        "id" : "OfBh7Kozt9",
-                        "title" : "Make Them Pay For It"
-                    }
+                    "createdBy" : {},
+                    "id" : "zvkAWMgGba",
+                    "title" : "card preview rendering",
+                    "description" : "",
+                    "createdAt" : 1611511846027.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
                 }, 
                 {
-                    "id" : "iRM6hWkCvY",
-                    "txt" : "added label important",
-                    "createdAt" : 1611420961530.0,
-                    "createdBy" : {
-                        "_id" : "600af62628336e6a201a44b2",
-                        "username" : "neo",
-                        "fullname" : "shachar askayo",
-                        "email" : "askayo122@gmail.com"
-                    },
-                    "card" : {
-                        "id" : "Cc72crolE4",
-                        "title" : "Soak Hummus"
-                    }
+                    "createdBy" : {},
+                    "id" : "bbgIgiWeFY",
+                    "title" : "support edit mode\n in card",
+                    "description" : "",
+                    "createdAt" : 1611511901554.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "PR6Y2FeG5o",
+                    "title" : "card list rendering",
+                    "description" : "",
+                    "createdAt" : 1611511867473.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "21502CjfZV",
+                    "title" : "adding background colors and images  support",
+                    "description" : "",
+                    "createdAt" : 1611512027062.0,
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
                 }
             ],
+            "createdAt" : 1611510031278.0,
+            "id" : "OCC0K4wZ93"
+        }, 
+        {
+            "title" : "issues and bugs",
+            "style" : {},
+            "cards" : [ 
+                {
+                    "createdBy" : {},
+                    "title" : "server requests",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611510255751.0,
+                    "id" : "q4dPTyQITX"
+                }, 
+                {
+                    "createdBy" : {},
+                    "title" : "group rotate in dnd\n",
+                    "description" : "",
+                    "dueDate" : "",
+                    "style" : {},
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : [],
+                    "createdAt" : 1611511744871.0,
+                    "id" : "hoHxDO4VoR"
+                }, 
+                {
+                    "createdBy" : {},
+                    "id" : "SL0mS7hujo",
+                    "title" : "server side filtering  by members, with mongo",
+                    "description" : "",
+                    "createdAt" : 1611513016320.0,
+                    "dueDate" : "",
+                    "style" : {
+                        "isCover" : false,
+                        "background" : {
+                            "backgroundImage" : "url(/static/media/mongo-screenshot.c4a0ffac.png)"
+                        }
+                    },
+                    "comments" : [],
+                    "checklists" : [],
+                    "attachments" : [],
+                    "members" : [],
+                    "labels" : []
+                }
+            ],
+            "createdAt" : 1611509978504.0,
+            "id" : "Qs7FjAIg9C"
+        }
+    ],
+    "activities" : [ 
+        {
+            "id" : "0ZZV9c4OEs",
+            "txt" : "removed a label",
+            "createdAt" : 1611561121400.0,
             "createdBy" : {
                 "_id" : "600af62628336e6a201a44b2",
                 "username" : "neo",
                 "fullname" : "shachar askayo",
                 "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "aJ18r5tTBB",
+            "txt" : "removed a label",
+            "createdAt" : 1611561120241.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "yZFAv4wCgd",
+            "txt" : "added attachment to  to card",
+            "createdAt" : 1611561098322.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "HG2AQIpkLT",
+            "txt" : "added shachar askayo to card",
+            "createdAt" : 1611561082498.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "9vOGmTr30n",
+            "txt" : "Edited scriptt checklist",
+            "createdAt" : 1611561078261.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "vo0FAxsYeI",
+            "txt" : "added checklist scriptt to card",
+            "createdAt" : 1611561074548.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "KvLW2xlDyp",
+            "txt" : "added label ",
+            "createdAt" : 1611561040542.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "5w0e3wvuen",
+            "txt" : "added label ",
+            "createdAt" : 1611561039882.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "bvUSz6GDJn",
+            "txt" : "added label ",
+            "createdAt" : 1611561039133.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "YIcXYfQVQn",
+            "txt" : "added label important",
+            "createdAt" : 1611561038388.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "GjOdH8yz8X",
+            "txt" : "added label ",
+            "createdAt" : 1611561037065.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "E48pefqedC",
+            "txt" : "added label fun",
+            "createdAt" : 1611561031504.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "xLuw8jiO4a",
+                "title" : "script"
+            }
+        }, 
+        {
+            "id" : "9iVAG4DC5W",
+            "txt" : "Set background color",
+            "createdAt" : 1611559337921.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "YBz2POnDHd",
+                "title" : "responsive design"
+            }
+        }, 
+        {
+            "id" : "5RFskpGJ9I",
+            "txt" : "Set background color",
+            "createdAt" : 1611559163853.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "40PYvqIcjr",
+                "title" : "login with facebook"
+            }
+        }, 
+        {
+            "id" : "EU17Y3UhVb",
+            "txt" : "Set background color",
+            "createdAt" : 1611558844116.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "0BMjZylYb4",
+                "title" : "groups rendering"
+            }
+        }, 
+        {
+            "id" : "Brhb16ciFr",
+            "txt" : "added label ",
+            "createdAt" : 1611558829629.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "hwYBhlxDSU",
+                "title" : "adding double clicked function on the group header"
+            }
+        }, 
+        {
+            "id" : "10vQafnmJM",
+            "txt" : "added attachment to  to card",
+            "createdAt" : 1611558816869.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "hwYBhlxDSU",
+                "title" : "adding double clicked function on the group header"
+            }
+        }, 
+        {
+            "id" : "7CQg9fLiPy",
+            "txt" : "Set background color",
+            "createdAt" : 1611558592049.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "YBz2POnDHd",
+                "title" : "responsive design"
+            }
+        }, 
+        {
+            "id" : "f8A9g8Lyu2",
+            "txt" : "Set background color",
+            "createdAt" : 1611528529849.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "SL0mS7hujo",
+                "title" : "server side filtering  by members, with mongo"
+            }
+        }, 
+        {
+            "id" : "SA86cxyfFE",
+            "txt" : "Set background color",
+            "createdAt" : 1611528158487.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "SL0mS7hujo",
+                "title" : "server side filtering  by members, with mongo"
+            }
+        }, 
+        {
+            "id" : "AODoocyqtS",
+            "txt" : "Set background color",
+            "createdAt" : 1611528136639.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "NYM9dT8qIs",
+                "title" : "login with google"
+            }
+        }, 
+        {
+            "id" : "yyVP896Cnw",
+            "txt" : "Set background color",
+            "createdAt" : 1611528130162.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "05edst5Odk",
+                "title" : "adding PWA"
+            }
+        }, 
+        {
+            "id" : "xJM6OX0aqe",
+            "txt" : "added label important",
+            "createdAt" : 1611528119029.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "05edst5Odk",
+                "title" : "adding PWA"
+            }
+        }, 
+        {
+            "id" : "ewupBYBuhR",
+            "txt" : "added label ",
+            "createdAt" : 1611528114324.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4TXlD0ziqt",
+                "title" : "support card edit mode"
+            }
+        }, 
+        {
+            "id" : "UnC5yqvg0c",
+            "txt" : "Edited edit mode checklist checklist",
+            "createdAt" : 1611528105637.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4TXlD0ziqt",
+                "title" : "support card edit mode"
+            }
+        }, 
+        {
+            "id" : "WhfEJWHfMm",
+            "txt" : "added checklist edit mode checklist to card",
+            "createdAt" : 1611528076937.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4TXlD0ziqt",
+                "title" : "support card edit mode"
+            }
+        }, 
+        {
+            "id" : "D9uMSdQQlx",
+            "txt" : "removed Checklist checklist",
+            "createdAt" : 1611528063505.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4TXlD0ziqt",
+                "title" : "support card edit mode"
+            }
+        }, 
+        {
+            "id" : "gqMDXXElb9",
+            "txt" : "added checklist Checklist to card",
+            "createdAt" : 1611528056769.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4TXlD0ziqt",
+                "title" : "support card edit mode"
+            }
+        }, 
+        {
+            "id" : "CvICu5agLv",
+            "txt" : "added shachar askayo to card",
+            "createdAt" : 1611528050012.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "0BMjZylYb4",
+                "title" : "groups rendering"
+            }
+        }, 
+        {
+            "id" : "LrpTMSWj6H",
+            "txt" : "added label ",
+            "createdAt" : 1611527888979.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "36YBihywAn",
+                "title" : "templates"
+            }
+        }, 
+        {
+            "id" : "tMmJBc6pUY",
+            "txt" : "added label ",
+            "createdAt" : 1611527885328.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "36YBihywAn",
+                "title" : "templates"
+            }
+        }, 
+        {
+            "id" : "bW5xryGKrb",
+            "txt" : "added label important",
+            "createdAt" : 1611523858811.0,
+            "createdBy" : {
+                "_id" : "600af62628336e6a201a44b2",
+                "username" : "neo",
+                "fullname" : "shachar askayo",
+                "email" : "askayo122@gmail.com"
+            },
+            "card" : {
+                "id" : "4LHWnB3PzQ",
+                "title" : "the flow of the user authintication in the backend"
             }
         }
+    ],
+    "createdBy" : {
+        "_id" : "600af62628336e6a201a44b2",
+        "username" : "neo",
+        "fullname" : "shachar askayo",
+        "email" : "askayo122@gmail.com"
+    }
+}
+        
     ]
 }

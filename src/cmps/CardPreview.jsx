@@ -79,7 +79,6 @@ class _CardPreview extends Component {
 
     render() {
         const { board, idx, isLabelOpen, currGroup, isEdit, exitEditMode, updateBoardCard, loggedUser } = this.props
-
         const { title, card, editStyle } = this.state
         if (!this.state.card) return <h1> loading</h1>
         const { labels } = this.state.card

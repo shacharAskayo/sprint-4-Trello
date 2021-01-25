@@ -40,11 +40,13 @@ class _Card extends Component {
 
     saveCardChanges = async (card, txt) => {
         var { board, loggedUser } = this.props
+        const newBoard = {...board}
         if (txt) {
             const activity = cardService.getActivityToAdd(card, loggedUser, txt)
-            board = {...board, activities: [activity, ...board.activities]}
+            newBoard.activities= [activity, ...newBoard.activities]
+            // board = {...board, activities: [activity, ...board.activities]}
         } 
-        await this.props.updateBoardCard(board, card)
+        await this.props.updateBoardCard(newBoard, card)
         this.loadCard()
     }
 

@@ -24,6 +24,7 @@ export class  CardDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
+
         const { card } = this.props
         if (prevProps !== this.props) {
             if (card.checklists.length > 0 || card.comments.length > 0 || card.description.length > 0 || card.labels.length > 0 || card.attachments.length > 0 || card.members.length > 0) {

@@ -1,3 +1,28 @@
+
+.card-modal-screen::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+    position: absolute;
+    z-index: 0;
+    
+}
+/* Track */
+.card-modal-screen::-webkit-scrollbar-track {
+    background: rgba(9,30,66,.08);; 
+    border-radius: 8px;
+    
+}
+/* Handle */
+.card-modal-screen::-webkit-scrollbar-thumb {
+    background: rgba(190, 190, 189, 0.788);
+    border-radius: 8px;
+    
+    // border
+    
+  }
+
+
+
 .card-modal-screen {
     scroll-behavior: smooth;
     min-height: 100vh;

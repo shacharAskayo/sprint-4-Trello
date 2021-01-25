@@ -56,6 +56,7 @@ export function addBoard(newBoard) {
   return async dispatch => {
     const board = await boardService.addBoard(newBoard)
     dispatch({ type: 'ADD_BOARD', board })
+    return board
   }
 }
 

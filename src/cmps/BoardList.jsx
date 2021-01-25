@@ -16,6 +16,13 @@ import img2  from '../templates/templatesBg/falafel-bg.png'
 import img3  from '../templates/templatesBg/design-system.png'
 import img4  from '../templates/templatesBg/design.png'
 import img5  from '../templates/templatesBg/buisness-template.png'
+import statisticsScreenshot from '../templates/templatesBg/dashboard-screenshot.png'
+import menuscreenshot from '../templates/templatesBg/menuDesc-screenshot.png'
+import chartScreenshot from '../templates/templatesBg/chart-screenshot.png'
+import mongoScreenshot from '../templates/templatesBg/mongo-screenshot.png'
+
+    console.log('dasdasdsadadasdasdas',mongoScreenshot);
+
 
 
 class _BoardList extends Component {
@@ -71,8 +78,11 @@ class _BoardList extends Component {
         this.setState({ type, isTemplatesOpen: true, isPreviewOpen: false })
     }
 
-    goBackToBoard = (template) => {
-        if (template) this.props.addBoard(template)
+    goBackToBoard =  async (template) => {
+        if (template) {
+            const board= await this.props.addBoard(template)
+            this.props.history.push(`/board/${board._id}`)
+        } 
 
         this.setState({ isTemplatesOpen: false, isPreviewOpen: false })
     }
