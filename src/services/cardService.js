@@ -30,10 +30,10 @@ function getCardForUpdate(card) {
     const newCard = JSON.parse(JSON.stringify(card))
     console.log(newCard);
     delete newCard.activities
-    // const newCard = JSON.parse(JSON.stringify(card))  //got error on json actions
     return { ...newCard, labels }
-
 }
+
+
 function _getCardActivities(board, cardId) {
     return board.activities.filter(act => act.card.id === cardId)
 }

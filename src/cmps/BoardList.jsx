@@ -20,10 +20,8 @@ import statisticsScreenshot from '../templates/templatesBg/dashboard-screenshot.
 import menuscreenshot from '../templates/templatesBg/menuDesc-screenshot.png'
 import chartScreenshot from '../templates/templatesBg/chart-screenshot.png'
 import mongoScreenshot from '../templates/templatesBg/mongo-screenshot.png'
-
-    console.log('dasdasdsadadasdasdas',mongoScreenshot);
-
-
+import bugScreenshot from '../templates/templatesBg/bug-screenshot.png'
+import presentation from '../templates/templatesBg/presentation.jpg'
 
 class _BoardList extends Component {
 
@@ -80,6 +78,9 @@ class _BoardList extends Component {
 
     goBackToBoard =  async (template) => {
         if (template) {
+            delete template.templateImg
+            delete template.description
+            
             const board= await this.props.addBoard(template)
             this.props.history.push(`/board/${board._id}`)
         } 
